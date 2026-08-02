@@ -19,7 +19,7 @@ The **HackHub SSH tool** sits at the center of every serious network infiltratio
 
 What makes the tool feel different from a generic in-game console is the depth of its integration with the broader **HackHub** simulation. Each connected host exposes its own filesystem, user accounts, and services, meaning the same SSH session behaves differently depending on whether you have hit a corporate gateway, an internal database server, or a hidden development node. Reported by players on community forums, runs that ignore SSH capability routinely stall when a target gates its payroll data behind a **jump box** that only accepts remote logins, while operators who lean into SSH clear the same contract in roughly half the wall-clock time. If you want to speed up payouts, unlock stealth bonuses, or chain exploits across multiple hosts, the SSH tool is the single most valuable utility in your loadout.
 
-This guide walks you through the entire workflow, from launching your first session to scripting multi-host automation, so you can stop fumbling through pop-up dialogs and start working like a real network operator. For players still getting oriented with the broader client, our [HackHub beginner walkthrough](/en/tools/HackHub-beginner-walkthrough/) covers the prerequisite knowledge you'll want before diving into terminal work.
+This guide walks you through the entire workflow, from launching your first session to scripting multi-host automation, so you can stop fumbling through pop-up dialogs and start working like a real network operator. For players still getting oriented with the broader client, our [HackHub beginner walkthrough](/en/tools/) covers the prerequisite knowledge you'll want before diving into terminal work.
 
 ## Setting Up Your First SSH Session in HackHub
 
@@ -95,7 +95,7 @@ Multi-hop tunneling lets you bounce through several compromised hosts before rea
 
 Once you have a foothold that repeats across contracts, wrap the escalation steps in a **bash script** that lives in your operator's `/home/scripts` directory. A typical script chains an SUID scan, applies a known exploit, and verifies root access, which compresses a five-minute manual process into a single `./escalate.sh` call. Save your scripts with descriptive names like `db_pivot.sh` or `web_enum.sh` so muscle memory takes over during high-pressure runs, and always include an `exit` line at the bottom so the script returns cleanly to the parent prompt.
 
-Pro operators also stash their scripts inside a shared **operator repository** that syncs across machines, so a script written on your workstation is available the moment you SSH into a pivot host. The HackHub SSH tool guide officially endorses this pattern because it keeps your workflow portable between contracts without copy-pasting through every session. For players who want to explore even more efficiency tricks, our [HackHub automation toolkit overview](/en/tools/HackHub-automation-toolkit/) covers complementary utilities beyond SSH.
+Pro operators also stash their scripts inside a shared **operator repository** that syncs across machines, so a script written on your workstation is available the moment you SSH into a pivot host. The HackHub SSH tool guide officially endorses this pattern because it keeps your workflow portable between contracts without copy-pasting through every session. For players who want to explore even more efficiency tricks, our [HackHub automation toolkit overview](/en/tools/) covers complementary utilities beyond SSH.
 
 ## Troubleshooting Common SSH Issues in HackHub
 

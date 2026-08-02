@@ -17,7 +17,7 @@ export const metadata = {
 
 A HackHub man in the middle attack is the most iconic interception technique in the entire network-hacking simulation, and mastering it separates casual packet-watchers from operators who can reroute, clone, and rewrite traffic on a live subnet. In plain terms, the attack places your rig physically and logically between two virtual endpoints — usually a target server and a client — so every packet they exchange passes through your sniffer before continuing to its destination. HackHub models this in a deliberately sandboxed environment, which is why so many players treat the HackHub man in the middle attack as a rite of passage.
 
-The reason this attack matters so much is that it unlocks every other branch of network manipulation. Once you can sit in the middle of a conversation, you can read credentials, rewrite DNS responses, inject scripts, replay sessions, or simply log everything for offline analysis. Players who skip straight to brute-force or DDoS mechanics without learning interception often stall around tier 3 contracts, because the simulation gates its higher-paying jobs behind proof that you understand traffic flow. If you have not yet mapped the broader network, our [HackHub network mapping walkthrough](/en/network-hacking/HackHub-Network-Mapping/) is a useful primer before diving deep into MITM.
+The reason this attack matters so much is that it unlocks every other branch of network manipulation. Once you can sit in the middle of a conversation, you can read credentials, rewrite DNS responses, inject scripts, replay sessions, or simply log everything for offline analysis. Players who skip straight to brute-force or DDoS mechanics without learning interception often stall around tier 3 contracts, because the simulation gates its higher-paying jobs behind proof that you understand traffic flow. If you have not yet mapped the broader network, our [HackHub network mapping walkthrough](/en/network-hacking/) is a useful primer before diving deep into MITM.
 
 HackHub frames the attack in three discrete phases — positioning, poisoning, and harvesting — and each phase has its own toolset, its own timing window, and its own failure state. The first run rarely succeeds, which is intentional: the game wants you to fail at least once so you learn how the **Address Resolution Protocol cache** behaves when it receives contradictory replies. That single lesson carries through every subsequent contract.
 
@@ -86,7 +86,7 @@ Once traffic flows through you, decide whether you are harvesting credentials or
 
 ### Step 5 — Clean Exit
 
-The final step is restoring the target's ARP cache to its original state. Skipping this leaves behind a "dirty subnet" flag that increases detection risk on your next contract. The cleanest exit takes about 30 seconds and costs 5 energy, which is well worth it for long-term reputation. If you want a deeper look at cleaning up traces, our [HackHub packet sniffing basics](/en/network-hacking/HackHub-Packet-Sniffing/) covers the related logging hygiene in more detail.
+The final step is restoring the target's ARP cache to its original state. Skipping this leaves behind a "dirty subnet" flag that increases detection risk on your next contract. The cleanest exit takes about 30 seconds and costs 5 energy, which is well worth it for long-term reputation. If you want a deeper look at cleaning up traces, our [HackHub packet sniffing basics](/en/network-hacking/) covers the related logging hygiene in more detail.
 
 ## Defending Against a HackHub Man in the Middle Attack
 

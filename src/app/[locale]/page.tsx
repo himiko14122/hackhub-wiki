@@ -77,7 +77,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div>
       <JsonLd data={websiteJsonLd()} />
       <JsonLd data={itemListJsonLd(
-        heroes.map((hero) => ({ name: translate(t, hero.nameKey) || hero.id, path: '/heroes' })),
+        heroes.map((hero) => ({ name: translate(t, hero.nameKey) || hero.id, path: '/tools' })),
         validLocale
       )} />
 
@@ -294,7 +294,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="section-label">{t('home_module_heroes')}</div>
             <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] gradient-text">{t('home_module_heroes_title')}</h2>
           </div>
-          <Link href="/heroes" className="text-sm font-semibold text-[var(--color-accent)] hover:underline flex items-center gap-1">{t('view_all')} <ArrowRight className="w-3 h-3" /></Link>
+          <Link href="/tools" className="text-sm font-semibold text-[var(--color-accent)] hover:underline flex items-center gap-1">{t('view_all')} <ArrowRight className="w-3 h-3" /></Link>
         </div>
         <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed">{t('home_module_heroes_desc')}</p>
         <div className="rounded-2xl bg-white/[0.02] border border-white/[0.08] overflow-hidden backdrop-blur-sm">
@@ -305,7 +305,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             const tc = tierColor(hero.tier);
             const Icon = HERO_ICONS[hero.id] || Shield;
             return (
-              <Link key={hero.id} href="/heroes" className="grid grid-cols-[2rem_1fr_1fr_1fr_1fr] sm:grid-cols-[2.5rem_1fr_1fr_1fr_1fr] items-center gap-4 px-4 py-3 border-b border-white/[0.04] last:border-b-0 hover:bg-[var(--color-accent)]/5 transition-colors group">
+              <Link key={hero.id} href="/tools-tier-list" className="grid grid-cols-[2rem_1fr_1fr_1fr_1fr] sm:grid-cols-[2.5rem_1fr_1fr_1fr_1fr] items-center gap-4 px-4 py-3 border-b border-white/[0.04] last:border-b-0 hover:bg-[var(--color-accent)]/5 transition-colors group">
                 <span className="text-xs font-mono text-[var(--color-text-muted)]">{idx + 1}</span>
                 <span className="flex items-center gap-2">
                   <Icon className="w-4 h-4 text-[var(--color-accent)] shrink-0" />

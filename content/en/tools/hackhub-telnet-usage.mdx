@@ -21,7 +21,7 @@ Telnet in HackHub functions as a lightweight remote shell client that lets your 
 
 The tool itself is delivered through the **Terminal Console** module, which you unlock after completing the Network Fundamentals tutorial chain. Once active, you can open multiple parallel sessions, pipe output into log files, and feed pre-built scripts from your **Script Library**. Think of it as the command-line bridge between your operator avatar and the rest of the map. Players who skip this layer tend to fall behind on timed objectives because the GUI wrappers add three to five seconds per interaction, while a single typed command collapses the same workflow into a fraction of a second.
 
-For a wider look at the surrounding toolkit, the [HackHub terminal commands overview](/en/tools/HackHub-Terminal-Commands/) covers how telnet fits next to FTP, Nmap, and packet sniffers. That article is a useful companion if you are building a full remote-access workflow rather than just memorizing one protocol.
+For a wider look at the surrounding toolkit, the [HackHub terminal commands overview](/en/tools/) covers how telnet fits next to FTP, Nmap, and packet sniffers. That article is a useful companion if you are building a full remote-access workflow rather than just memorizing one protocol.
 
 ## Setting Up Your First Telnet Session in HackHub
 
@@ -41,7 +41,7 @@ The console parses the command, opens a **TCP/IP handshake**, and prints a banne
 
 Most mid-game servers use a simple username and password combo. Once the banner appears, the prompt switches to `login:`. Type the credential you harvested earlier, press Enter, and repeat for the password field. HackHub validates against an in-memory **credential cache** that persists between missions, so successful logins are remembered across the campaign. Failed logins trigger a soft lockout after five attempts, so brute-forcing through telnet is intentionally punished — you are expected to gather credentials first.
 
-If you are new to the broader credential loop, the [HackHub network scanner basics](/en/tools/HackHub-Network-Scanner/) guide explains how to find open ports and harvest banners without burning attempts.
+If you are new to the broader credential loop, the [HackHub network scanner basics](/en/tools/) guide explains how to find open ports and harvest banners without burning attempts.
 
 ## HackHub Telnet Usage: Command Reference and Syntax
 

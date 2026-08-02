@@ -50,7 +50,7 @@ The cost is steeper: each proxy adds **8 bandwidth units** per second of active 
 
 **Port forwarding** is the surgical option: it exposes a single internal service from a compromised host back to your toolkit, without routing your full session through the pivot. Most HackHub veterans use port forwards when they need to crack one specific service — a database daemon, an internal mail relay, or a CI runner — without paying for a full tunnel.
 
-The interesting edge case is the **relay node**. When you forward through a relay, the relay does not see the contents of your payload, only the metadata of the forward itself. That makes relays the cleanest way to **pivot through firewalls** that monitor for active session signatures. If you are still learning how firewall detection works, the [firewall bypass tactics walkthrough](/en/network-hacking/HackHub-Firewall-Bypass/) covers the detection rules in more detail.
+The interesting edge case is the **relay node**. When you forward through a relay, the relay does not see the contents of your payload, only the metadata of the forward itself. That makes relays the cleanest way to **pivot through firewalls** that monitor for active session signatures. If you are still learning how firewall detection works, the [firewall bypass tactics walkthrough](en/network-hacking/hackhub-firewall-bypass/) covers the detection rules in more detail.
 
 ### Comparing the Four Lateral Movement Techniques
 
@@ -106,7 +106,7 @@ Not every host accepts every pivot. Workstations are **SSH-friendly** but **prox
 | Firewall | No | No | No | Yes (with cracked admin) |
 | CI Runner | Yes | Yes | Yes | No |
 
-Reading this table carefully explains why no single technique covers every node in a real subnet. A clean HackHub lateral movement build cycles between techniques as the chain crosses different host types. To find which subnets expose which node mix, scan them first with the [network scanning basics toolkit](/en/network-hacking/HackHub-Network-Scanning/) before you commit to a route.
+Reading this table carefully explains why no single technique covers every node in a real subnet. A clean HackHub lateral movement build cycles between techniques as the chain crosses different host types. To find which subnets expose which node mix, scan them first with the [network scanning basics toolkit](/en/network-hacking/) before you commit to a route.
 
 ## Building an Effective Lateral Movement Strategy
 

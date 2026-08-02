@@ -50,7 +50,7 @@ The community has embraced this design. Reported by players on modding Discord s
 
 The Lua sandbox sits between the engine and the mod folder. When a mission loads, the engine reads the entry script and exposes a global `hub` table containing registered APIs. Calling `hub.entity.find("terminal_01")` returns a handle, and from there you can chain methods like `:set_state("locked")` or `:play_sound("beep_short")` to drive behavior.
 
-This chaining syntax is a deliberate choice. It keeps mod code close to natural language ("find this terminal, lock it, play a sound"), which lowers the barrier for designers who came to HackHub for the hacking fantasy, not for software engineering credentials. If you are coming from another modding ecosystem, the curve feels familiar; if not, the [HackHub beginner guide](/en/beginner/HackHub-beginner-guide/) walks through the first mission hook in plain terms.
+This chaining syntax is a deliberate choice. It keeps mod code close to natural language ("find this terminal, lock it, play a sound"), which lowers the barrier for designers who came to HackHub for the hacking fantasy, not for software engineering credentials. If you are coming from another modding ecosystem, the curve feels familiar; if not, the [HackHub beginner guide](/en/guides/) walks through the first mission hook in plain terms.
 
 ### Custom DSL Commands
 
@@ -93,7 +93,7 @@ Plugins in the HackHub game engine ecosystem fall into a few recognizable bucket
 - **AI Behavior Packs** — New decision trees for NPCs and firewall sentries. These plug directly into the AIBehaviorComponent and can dramatically change mission pacing.
 - **Audio Mods** — Custom sound banks and music layers. Because the engine streams audio asynchronously, audio mods rarely impact frame rate even on modest hardware.
 
-If you want a deeper dive into mission design patterns, the [HackHub best missions guide](/en/beginner/HackHub-best-missions/) covers reward balancing and pacing curves. Audio modders, meanwhile, often collaborate with mission authors to ship synchronized bundles, which the engine treats as a single plugin during load.
+If you want a deeper dive into mission design patterns, the [HackHub best missions guide](/en/guides/) covers reward balancing and pacing curves. Audio modders, meanwhile, often collaborate with mission authors to ship synchronized bundles, which the engine treats as a single plugin during load.
 
 ## Engine Performance and Optimization Techniques
 
@@ -122,7 +122,7 @@ A few habits separate performant mods from laggy ones, and adopting them early s
 - **Batch UI redraws** by grouping overlay updates into a single frame request rather than redrawing per element, which keeps the Presentation Layer under budget.
 - **Profile before shipping** using the built-in `hub.profile.start()` and `hub.profile.stop()` functions. The output tells you exactly which subsystem ate your frame, which is invaluable when debugging spikes.
 
-The built-in tracer is a hidden gem. You can dump a per-frame report to the developer console, and it will flag any subsystem that exceeded its budget. For detailed tuning advice on specific mission types, the [HackHub advanced tips guide](/en/beginner/HackHub-advanced-tips/) includes worked examples from top-rated community missions and shows how the tracer output maps to specific fixes.
+The built-in tracer is a hidden gem. You can dump a per-frame report to the developer console, and it will flag any subsystem that exceeded its budget. For detailed tuning advice on specific mission types, the [HackHub advanced tips guide](/en/guides/) includes worked examples from top-rated community missions and shows how the tracer output maps to specific fixes.
 
 ## Building Your First HackHub Mod
 

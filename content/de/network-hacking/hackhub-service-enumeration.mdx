@@ -32,7 +32,7 @@ Ein erfolgreicher Scan zieht vier Kategorien von Informationen aus einem Ziel, u
 | **OS-Fingerabdruck** | Vertrauensgewichtete Vermutung (Win/Linux/IOT) | Anpassung der Payload-Kodierung an den Ziel-Stack |
 | **Zugriffsstufe** | Öffentlich, Eingeschränkt, Geheim | Bestimmt, ob du vor dem Exploit Anmeldedaten brauchst |
 
-Der Banner ist das wertvollste Element, weil HackHubs Schwachstellen-Datenbank Versionszeichenketten sofort nach Abschluss eines Scans mit bekannten CVEs abgleicht. Ein Banner mit der Aufschrift `Apache/2.4.49` schaltet sofort das **Path Traversal Module** frei, während `OpenSSH 7.2` einen völlig anderen Exploit-Pfad öffnet. Wenn du einen breiteren Überblick darüber haben möchtest, wie Aufklärung in einen vollständigen Lauf passt, behandelt die [HackHub Anfänger-Progression-Anleitung](/en/network-hacking/HackHub-Beginner-Guide/) den größeren Zusammenhang.
+Der Banner ist das wertvollste Element, weil HackHubs Schwachstellen-Datenbank Versionszeichenketten sofort nach Abschluss eines Scans mit bekannten CVEs abgleicht. Ein Banner mit der Aufschrift `Apache/2.4.49` schaltet sofort das **Path Traversal Module** frei, während `OpenSSH 7.2` einen völlig anderen Exploit-Pfad öffnet. Wenn du einen breiteren Überblick darüber haben möchtest, wie Aufklärung in einen vollständigen Lauf passt, behandelt die [HackHub Anfänger-Progression-Anleitung](/en/network-hacking/) den größeren Zusammenhang.
 
 ### Warum Enumeration der entscheidende Schritt ist
 
@@ -59,7 +59,7 @@ Die obigen Zahlen spiegeln von der Community gemeldete Durchschnittswerte wider 
 
 Jedes Sondierungs-Paket erhöht das **Detection Meter** des Ziels, das sich auf gehärteten Hosts und Unternehmens-Tier-Netzwerken schneller füllt. Wenn das Messer sein Maximum erreicht, sperrt dich der Host aus und löst ein Counter-Hack-Ereignis aus, das deine Krypto-Wallet leert. Das Geräusch wird aus der Anzahl der Sonden, dem Sondentyp und der Frage berechnet, ob das Ziel ein IDS-Modul installiert hat — daher summiert sich ein SYN-Stealth-Scan auf einem gehärteten Geheim-Host auch dann auf, wenn du ihn zehn Minuten lang laufen lässt.
 
-Wenn du die Grundlagen lernst, wie sich Scan-Geräusche auf dein gesamtes Trace-Messer auswirken, geht der [HackHub Stealth-Mechanik-Überblick](/en/network-hacking/HackHub-Stealth-Guide/) tiefer auf Erkennungsschwellen und Counter-Hack-Auslöser ein.
+Wenn du die Grundlagen lernst, wie sich Scan-Geräusche auf dein gesamtes Trace-Messer auswirken, geht der [HackHub Stealth-Mechanik-Überblick](/en/network-hacking/hackhub-stealth-guide/) tiefer auf Erkennungsschwellen und Counter-Hack-Auslöser ein.
 
 ## Scan-Ergebnisse lesen und interpretieren
 
@@ -110,7 +110,7 @@ Verträge der mittleren Stufe installieren IDS-Module, die aggressives Scannen b
 
 ### Tier-3-Netzwerke — Geduld ist das ganze Spiel
 
-Netzwerke im späten Spiel betreiben gehärtete Kernel, geschichtete Proxies und aggressive IDS-Module, die jedes einzelne SYN-Paket über der Grundlinie flaggen. Community-Daten zeigen, dass erfolgreiche Tier-3-Läufe ausschließlich **SYN Stealth** verwenden, Scans mit 30–60-sekündigen Abklingfenstern durchsetzen und die Enumeration über mehrere kurze Sitzungen statt eine lange Sondierung aufteilen. Das Warten fühlt sich mühsam an, aber den Scan-Timer durch das Hinzufügen von Abklingzeiten zu verkürzen ist das, was eine saubere Verletzung von einem Counter-Hack unterscheidet. Wenn du gerade einen Tier-3-Vertrag durcharbeitest, lohnt es sich, die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) in einem zweiten Tab zur schnellen Referenz geöffnet zu halten.
+Netzwerke im späten Spiel betreiben gehärtete Kernel, geschichtete Proxies und aggressive IDS-Module, die jedes einzelne SYN-Paket über der Grundlinie flaggen. Community-Daten zeigen, dass erfolgreiche Tier-3-Läufe ausschließlich **SYN Stealth** verwenden, Scans mit 30–60-sekündigen Abklingfenstern durchsetzen und die Enumeration über mehrere kurze Sitzungen statt eine lange Sondierung aufteilen. Das Warten fühlt sich mühsam an, aber den Scan-Timer durch das Hinzufügen von Abklingzeiten zu verkürzen ist das, was eine saubere Verletzung von einem Counter-Hack unterscheidet. Wenn du gerade einen Tier-3-Vertrag durcharbeitest, lohnt es sich, die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/) in einem zweiten Tab zur schnellen Referenz geöffnet zu halten.
 
 ## Häufige Fallstricke und Optimierungstipps
 
@@ -126,7 +126,7 @@ Auch erfahrene Läufer fallen in einige wiederholbare Fallen während der Enumer
 
 Die Läufer mit der höchsten Missionsabschlussrate teilen tendenziell vier kleine Gewohnheiten. Sie führen immer zuerst einen **Ping Sweep** aus, um zu bestätigen, dass der Host tatsächlich lebt, bevor sie sich auf einen längeren Scan festlegen. Sie binden **SYN Stealth und Full TCP** an separate Hotkeys, damit sie mitten in der Mission wechseln können, ohne den Flow zu verlieren. Sie scannen nach jeder Privilegien-Eskalation erneut, weil neue Zugriffsstufen verschiedene Ports enthüllen. Und sie führen ein persönliches Protokoll darüber, welche Scanner-Kombinationen auf welchen Netzwerktypen Counter-Hacks auslösen — die Art von Musterdaten, die die In-Game-Telemetrie nie direkt ans Licht bringt.
 
-Wenn ein Muster wie dieses Protokoll nach etwas klingt, das du aufbauen möchtest, ist die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) der richtige Begleiter, den du neben diesem Enumeration-Leitfaden behältst, während du übst.
+Wenn ein Muster wie dieses Protokoll nach etwas klingt, das du aufbauen möchtest, ist die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/) der richtige Begleiter, den du neben diesem Enumeration-Leitfaden behältst, während du übst.
 
 HackHub Service Enumeration zu meistern bedeutet weniger, Ports auswendig zu lernen, als einen wiederholbaren Rhythmus aufzubauen: entdecken, sondieren, interpretieren, exploitieren, protokollieren. Sobald dieser Rhythmus klickt, fühlen sich selbst Tier-3-Verträge wie eine Checkliste statt wie eine Plackerei an.
 

@@ -78,7 +78,7 @@ A typical vulnerability sweep looks like `nmap -p- --script vuln 10.10.0.5`, whi
 
 When a mission hands you a login screen and a hunch about the password, the `brute` category is your fastest path through. Scripts like `ssh-brute`, `ftp-brute`, and `http-form-brute` read from a wordlist you specify with `--script-args userdb=/path/to/users.txt,passdb=/path/to/passwords.txt`. The default wordlist inside HackHub lives at `/opt/hackhub/wordlists/rockyou-mini.txt` with about 14 million entries, and you can unlock the full 32-million-line `rockyou.txt` by completing the **Data Heist** side quest chain.
 
-Pair brute scripts with `--script-timeout 120s` to keep a slow target from stalling your whole sweep, and always wrap the command in a `tmux` session so a network blip does not kill your progress. If you want to learn how other tools complement Nmap during credential work, our walkthrough on [Wireshark traffic analysis](/en/tools/HackHub-Wireshark-Tutorial/) covers the packet-capture side of the same workflow.
+Pair brute scripts with `--script-timeout 120s` to keep a slow target from stalling your whole sweep, and always wrap the command in a `tmux` session so a network blip does not kill your progress. If you want to learn how other tools complement Nmap during credential work, our walkthrough on [Wireshark traffic analysis](/en/tools/) covers the packet-capture side of the same workflow.
 
 ## HackHub-Specific Network Mapping Strategies
 
@@ -120,7 +120,7 @@ Even with the right flags, sloppy habits will burn your scan window and expose y
 
 Another habit worth building is aliasing your favorite scan profiles in `~/.bashrc` so you can fire them off with a single keyword. A common pattern looks like `alias quickscan='nmap -sS -T4 -F --open -oA ~/scans/quick'` and `alias deepscan='nmap -sS -p- -T4 -sV -sC --reason -oA ~/scans/deep'`. After twenty hours of play, your muscle memory will pick the right alias before you finish typing the target IP.
 
-Finally, remember that every scan you launch inside HackHub is logged to the in-game SOC dashboard, and a long streak of suspicious activity will lock your character out of the terminal for 30 real-time minutes. Spread your reconnaissance across multiple burner identities, schedule noisy scans during the in-game maintenance windows (02:00-04:00 server time), and pair this nmap tutorial with a solid opsec routine so your reputation score never dips below the **Neutral** threshold. For a complementary look at packet-level forensics after a scan, check our guide on [HackHub Wireshark packet analysis](/en/tools/HackHub-Wireshark-Tutorial/) to round out your recon toolkit.
+Finally, remember that every scan you launch inside HackHub is logged to the in-game SOC dashboard, and a long streak of suspicious activity will lock your character out of the terminal for 30 real-time minutes. Spread your reconnaissance across multiple burner identities, schedule noisy scans during the in-game maintenance windows (02:00-04:00 server time), and pair this nmap tutorial with a solid opsec routine so your reputation score never dips below the **Neutral** threshold. For a complementary look at packet-level forensics after a scan, check our guide on [HackHub Wireshark packet analysis](/en/tools/) to round out your recon toolkit.
 
 ## Frequently Asked Questions
 

@@ -50,7 +50,7 @@ Die Kosten sind steiler: Jeder Proxy fügt **8 Bandwidth-Einheiten** pro Sekunde
 
 **Port Forwarding** ist die chirurgische Option: Es exponiert einen einzelnen internen Dienst von einem kompromittierten Host zurück zu deinem Toolkit, ohne deine gesamte Session durch den Pivot zu routen. Die meisten HackHub-Veteranen verwenden Port-Forwards, wenn sie einen bestimmten Dienst knacken müssen — einen Database-Daemon, ein internes Mail-Relay oder einen CI-Runner — ohne für einen vollen Tunnel zu zahlen.
 
-Der interessante Edge Case ist der **Relay Node**. Wenn du durch ein Relay forwardst, sieht das Relay nicht den Inhalt deiner Payload, sondern nur die Metadaten des Forwards selbst. Das macht Relays zum saubersten Weg, um **durch Firewalls zu pivotieren**, die auf aktive Session-Signaturen achten. Wenn du noch lernst, wie Firewall-Erkennung funktioniert, behandelt der [Firewall-Bypass-Taktiken-Walkthrough](/en/network-hacking/HackHub-Firewall-Bypass/) die Erkennungsregeln detaillierter.
+Der interessante Edge Case ist der **Relay Node**. Wenn du durch ein Relay forwardst, sieht das Relay nicht den Inhalt deiner Payload, sondern nur die Metadaten des Forwards selbst. Das macht Relays zum saubersten Weg, um **durch Firewalls zu pivotieren**, die auf aktive Session-Signaturen achten. Wenn du noch lernst, wie Firewall-Erkennung funktioniert, behandelt der [Firewall-Bypass-Taktiken-Walkthrough](/en/network-hacking/hackhub-firewall-bypass/) die Erkennungsregeln detaillierter.
 
 ### Vergleich der vier Lateral-Movement-Techniken
 
@@ -106,7 +106,7 @@ Nicht jeder Host akzeptiert jeden Pivot. Workstations sind **SSH-freundlich**, a
 | Firewall | Nein | Nein | Nein | Ja (mit geknackter Admin) |
 | CI-Runner | Ja | Ja | Ja | Nein |
 
-Wenn du diese Tabelle sorgfältig liest, erklärt sie, warum keine einzelne Technik jeden Node in einem echten Subnet abdeckt. Ein sauberer HackHub-Lateral-Movement-Build wechselt zwischen Techniken, während die Kette verschiedene Host-Typen kreuzt. Um herauszufinden, welche Subnets welche Node-Mischung exponieren, scanne sie zuerst mit dem [Network-Scanning-Basics-Toolkit](/en/network-hacking/HackHub-Network-Scanning/), bevor du dich auf eine Route festlegst.
+Wenn du diese Tabelle sorgfältig liest, erklärt sie, warum keine einzelne Technik jeden Node in einem echten Subnet abdeckt. Ein sauberer HackHub-Lateral-Movement-Build wechselt zwischen Techniken, während die Kette verschiedene Host-Typen kreuzt. Um herauszufinden, welche Subnets welche Node-Mischung exponieren, scanne sie zuerst mit dem [Network-Scanning-Basics-Toolkit](/en/network-hacking/), bevor du dich auf eine Route festlegst.
 
 ## Eine effektive Lateral-Movement-Strategie aufbauen
 

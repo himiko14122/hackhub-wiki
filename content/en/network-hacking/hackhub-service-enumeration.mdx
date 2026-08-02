@@ -32,7 +32,7 @@ A successful scan pulls four categories of intel from a target, and each one fee
 | **OS Fingerprint** | Confidence-weighted guess (Win/Linux/IOT) | Tune payload encoding for the target stack |
 | **Access Tier** | Public, Restricted, Classified | Determines if you need creds before exploiting |
 
-The banner is the most valuable piece because HackHub's vulnerability database cross-references version strings against known CVEs the moment a scan completes. A banner reading `Apache/2.4.49` instantly unlocks the **Path Traversal Module**, while `OpenSSH 7.2` opens a different exploit path entirely. If you want a broader primer on how recon fits into a full run, the [HackHub beginner progression walkthrough](/en/network-hacking/HackHub-Beginner-Guide/) covers the wider context.
+The banner is the most valuable piece because HackHub's vulnerability database cross-references version strings against known CVEs the moment a scan completes. A banner reading `Apache/2.4.49` instantly unlocks the **Path Traversal Module**, while `OpenSSH 7.2` opens a different exploit path entirely. If you want a broader primer on how recon fits into a full run, the [HackHub beginner progression walkthrough](/en/network-hacking/) covers the wider context.
 
 ### Why Enumeration Is the Make-or-Break Step
 
@@ -59,7 +59,7 @@ The numbers above reflect community-reported averages and may vary by mission di
 
 Every probe packet increments the target's **Detection Meter**, which fills faster on hardened hosts and corporate-tier networks. When the meter maxes out, the host locks you out and spawns a counter-hack event that drains your crypto wallet. Noise is calculated from probe count, probe type, and whether the target has an IDS module installed, so a SYN Stealth scan on a hardened Classified host still adds up if you let it run for ten minutes straight.
 
-If you're learning the basics of how scan noise feeds into your overall trace meter, the [HackHub stealth mechanics overview](/en/network-hacking/HackHub-Stealth-Guide/) goes deeper into detection thresholds and counter-hack triggers.
+If you're learning the basics of how scan noise feeds into your overall trace meter, the [HackHub stealth mechanics overview](en/network-hacking/hackhub-stealth-guide/) goes deeper into detection thresholds and counter-hack triggers.
 
 ## Reading and Interpreting Scan Results
 
@@ -111,7 +111,7 @@ Mid-tier contracts install IDS modules that punish aggressive scanning, but the 
 
 ### Tier 3 Networks — Patience Is the Whole Game
 
-Late-game networks run hardened kernels, layered proxies, and aggressive IDS modules that flag any single SYN packet above baseline. Community data shows that successful Tier 3 runs use **SYN Stealth exclusively**, intersperse scans with 30-60 second cooldown windows, and split enumeration across multiple short sessions rather than one long probe. The wait feels tedious, but pushing the scan timer down by adding cooldowns is what separates a clean breach from a counter-hack. If you're working your way through a Tier 3 contract right now, the [HackHub command list and cheat sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) is worth keeping open in a second tab for quick reference.
+Late-game networks run hardened kernels, layered proxies, and aggressive IDS modules that flag any single SYN packet above baseline. Community data shows that successful Tier 3 runs use **SYN Stealth exclusively**, intersperse scans with 30-60 second cooldown windows, and split enumeration across multiple short sessions rather than one long probe. The wait feels tedious, but pushing the scan timer down by adding cooldowns is what separates a clean breach from a counter-hack. If you're working your way through a Tier 3 contract right now, the [HackHub command list and cheat sheet](/en/network-hacking/) is worth keeping open in a second tab for quick reference.
 
 ## Common Pitfalls and Optimization Tips
 
@@ -127,7 +127,7 @@ Even experienced runners fall into a few repeatable traps during enumeration. Re
 
 The runners with the highest mission-clearing rate tend to share four small habits. They always run a **Ping Sweep first** to confirm the host is actually alive before committing to a longer scan. They bind **SYN Stealth and Full TCP** to separate hotkeys so they can switch mid-mission without losing flow. They re-scan after every privilege escalation because new access tiers reveal different ports. And they keep a personal log of which scanner combinations trigger counter-hacks on which network types, which is the kind of pattern data the in-game telemetry never surfaces directly.
 
-If a pattern like that log sounds like something you want to build out, the [HackHub command list and cheat sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) is the right companion piece to keep alongside this enumeration guide while you practice.
+If a pattern like that log sounds like something you want to build out, the [HackHub command list and cheat sheet](/en/network-hacking/) is the right companion piece to keep alongside this enumeration guide while you practice.
 
 Mastering HackHub service enumeration is less about memorizing ports and more about building a repeatable rhythm: discover, probe, interpret, exploit, log. Once that rhythm clicks, even Tier 3 contracts start to feel like a checklist rather than a grind.
 

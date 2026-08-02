@@ -50,7 +50,7 @@ Die Community hat dieses Design angenommen. Wie Spieler auf Modding-Discord-Serv
 
 Die Lua-Sandbox sitzt zwischen der Engine und dem Mod-Ordner. Wenn eine Mission geladen wird, liest die Engine das Einstiegsskript und stellt eine globale `hub`-Tabelle mit registrierten APIs bereit. Der Aufruf von `hub.entity.find("terminal_01")` gibt ein Handle zurück, und von dort aus kannst du Methoden wie `:set_state("locked")` oder `:play_sound("beep_short")` verketten, um Verhalten zu steuern.
 
-Diese Verkettungssyntax ist eine bewusste Entscheidung. Sie hält Mod-Code nah an natürlicher Sprache („finde dieses Terminal, sperre es, spiele einen Sound ab"), was die Hürde für Designer senkt, die wegen der Hacking-Fantasie zu HackHub kamen, nicht wegen Software-Engineering-Qualifikationen. Wenn du aus einem anderen Modding-Ökosystem kommst, fühlt sich die Lernkurve vertraut an; falls nicht, führt der [HackHub-Anfängerleitfaden](/en/beginner/HackHub-beginner-guide/) durch den ersten Missions-Hook in einfachen Worten.
+Diese Verkettungssyntax ist eine bewusste Entscheidung. Sie hält Mod-Code nah an natürlicher Sprache („finde dieses Terminal, sperre es, spiele einen Sound ab"), was die Hürde für Designer senkt, die wegen der Hacking-Fantasie zu HackHub kamen, nicht wegen Software-Engineering-Qualifikationen. Wenn du aus einem anderen Modding-Ökosystem kommst, fühlt sich die Lernkurve vertraut an; falls nicht, führt der [HackHub-Anfängerleitfaden](/en/guides/) durch den ersten Missions-Hook in einfachen Worten.
 
 ### Benutzerdefinierte DSL-Befehle
 
@@ -93,7 +93,7 @@ Plugins im Ökosystem der HackHub-Spielengine fallen in einige erkennbare Katego
 - **KI-Verhaltenspakete** — Neue Entscheidungsbäume für NPCs und Firewall-Wachen. Diese binden sich direkt in die AIBehaviorComponent ein und können das Missionstempo drastisch verändern.
 - **Audio-Mods** — Benutzerdefinierte Soundbänke und Musikschichten. Da die Engine Audio asynchron streamt, beeinträchtigen Audio-Mods selten die Bildrate, selbst auf bescheidener Hardware.
 
-Wenn du tiefer in Missionsdesignmuster eintauchen möchtest, behandelt der [HackHub-Leitfaden für die besten Missionen](/en/beginner/HackHub-best-missions/) Belohnungsbalance und Tempo-Kurven. Audio-Modder arbeiten unterdessen oft mit Missionsautoren zusammen, um synchronisierte Bundles zu veröffentlichen, die die Engine beim Laden als ein einziges Plugin behandelt.
+Wenn du tiefer in Missionsdesignmuster eintauchen möchtest, behandelt der [HackHub-Leitfaden für die besten Missionen](/en/guides/) Belohnungsbalance und Tempo-Kurven. Audio-Modder arbeiten unterdessen oft mit Missionsautoren zusammen, um synchronisierte Bundles zu veröffentlichen, die die Engine beim Laden als ein einziges Plugin behandelt.
 
 ## Engine-Leistung und Optimierungstechniken
 
@@ -122,7 +122,7 @@ Einige Gewohnheiten unterscheiden performante Mods von laggy, und sie früh zu �
 - **UI-Nezeichnungen batchen**, indem Overlay-Updates in einer einzigen Frame-Anfrage gruppiert werden, statt pro Element neu zu zeichnen, was die Präsentationsschicht im Budget hält.
 - **Vor dem Veröffentlichen profilen** mit den eingebauten Funktionen `hub.profile.start()` und `hub.profile.stop()`. Die Ausgabe sagt dir genau, welches Subsystem deinen Frame verbraucht hat, was beim Debuggen von Spitzen von unschätzbarem Wert ist.
 
-Der eingebaute Tracer ist ein verstecktes Juwel. Du kannst einen Per-Frame-Bericht in die Entwicklerkonsole ausgeben, und er markiert jedes Subsystem, das sein Budget überschritten hat. Für detaillierte Tuning-Tipps zu bestimmten Missionstypen enthält der [HackHub-Leitfaden für fortgeschrittene Tipps](/en/beginner/HackHub-advanced-tips/) ausgearbeitete Beispiele aus den am besten bewerteten Community-Missionen und zeigt, wie sich die Tracer-Ausgabe bestimmten Fixes zuordnen lässt.
+Der eingebaute Tracer ist ein verstecktes Juwel. Du kannst einen Per-Frame-Bericht in die Entwicklerkonsole ausgeben, und er markiert jedes Subsystem, das sein Budget überschritten hat. Für detaillierte Tuning-Tipps zu bestimmten Missionstypen enthält der [HackHub-Leitfaden für fortgeschrittene Tipps](/en/guides/) ausgearbeitete Beispiele aus den am besten bewerteten Community-Missionen und zeigt, wie sich die Tracer-Ausgabe bestimmten Fixes zuordnen lässt.
 
 ## Baue deinen ersten HackHub-Mod
 

