@@ -1,20 +1,20 @@
 import { routing, type Locale } from '@/i18n/routing';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dragon-sword-awakening.wiki';
-export const SITE_NAME = 'DragonSword: Awakening Wiki';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.hackhub.wiki';
+export const SITE_NAME = 'HackHub Wiki';
 export const HERO_IMAGE = '/images/hero.webp';
 export const LOGO_IMAGE = '/favicon.svg';
-export const TWITTER_HANDLE = 'DSAwakening';
-export const GA_TRACKING_ID = 'G-E0TW3YDWR6';
-export const SLUG_PREFIX = 'DragonSword-Awakening-';
+export const TWITTER_HANDLE = 'gdevscom1';
+export const GA_TRACKING_ID = 'G-5C70VYZG4T';
+export const SLUG_PREFIX = 'HackHub-';
 
 export const EXTERNAL_LINKS = {
-  steam: 'https://store.steampowered.com/app/4570720/DragonSword__Awakening/',
-  discord: 'https://discord.gg/CzZ5ddkMVg',
-  youtube: 'https://www.youtube.com/@DragonSwordAwakening',
-  reddit: 'https://www.reddit.com/r/DragonSwordAwakening/',
-  twitter: 'https://x.com/DSAwakening',
-  website: 'https://www.hound13.com/en/',
+  steam: 'https://store.steampowered.com/app/2980270/HackHub__Ultimate_Hacker_Simulator/',
+  discord: 'https://discord.gg/U7pZFXXtcn',
+  youtube: 'https://www.youtube.com/channel/UCz1v5ix2zR6Uxi-58pm-IXw',
+  reddit: '',
+  twitter: 'https://x.com/gdevscom1',
+  website: 'https://g-devs.com',
 } as const;
 
 export function absoluteUrl(path = '/') {

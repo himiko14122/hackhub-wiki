@@ -1,137 +1,113 @@
-import { Sword, Shield, Flame, Snowflake, Wind, Droplets, Zap, Mountain, Sparkles, Heart, type LucideIcon } from 'lucide-react';
+// HackHub game data — replaces HackHub Awakening data
+// This file provides data structures used by homepage and category page components
+import type { LucideIcon } from 'lucide-react';
+import { Search, Key, Globe, Terminal, Radio, Plug, ArrowUpRight, Download, Shield, Zap, Eye, Flame, Users, BookOpen, Bug, ListChecks } from 'lucide-react';
 
-/* ──────────────── Hero Interface ──────────────── */
-export interface Hero {
+export interface HeroEntry {
   id: string;
   nameKey: string;
+  name: string;
   tier: string;
-  elementKey: string;
+  icon: string;
+  description: string;
   ailmentKey: string;
-  roleKey: string;
   factionKey: string;
-  icon: LucideIcon;
 }
 
-export const heroes: Hero[] = [
-  { id: 'lute', nameKey: 'hero_lute', tier: 'S', elementKey: 'hero_element_physicalLight', ailmentKey: 'hero_ailment_knockdown', roleKey: 'hero_role_dps', factionKey: 'hero_faction_redFox', icon: Sword },
-  { id: 'aria', nameKey: 'hero_aria', tier: 'S', elementKey: 'hero_element_lightHoly', ailmentKey: 'hero_ailment_shock', roleKey: 'hero_role_support', factionKey: 'hero_faction_sanctum', icon: Shield },
-  { id: 'castella', nameKey: 'hero_castella', tier: 'S', elementKey: 'hero_element_gale', ailmentKey: 'hero_ailment_airborne', roleKey: 'hero_role_cc', factionKey: 'hero_faction_redFox', icon: Wind },
-  { id: 'dana', nameKey: 'hero_dana', tier: 'S', elementKey: 'hero_element_ice', ailmentKey: 'hero_ailment_freeze', roleKey: 'hero_role_tank', factionKey: 'hero_faction_redFox', icon: Snowflake },
-  { id: 'roxy', nameKey: 'hero_roxy', tier: 'A', elementKey: 'hero_element_physical', ailmentKey: 'hero_ailment_bleed', roleKey: 'hero_role_dps', factionKey: 'hero_faction_redFox', icon: Sword },
-  { id: 'johnny', nameKey: 'hero_johnny', tier: 'A', elementKey: 'hero_element_physical', ailmentKey: 'hero_ailment_knockdown', roleKey: 'hero_role_dps', factionKey: 'hero_faction_redFox', icon: Sword },
-  { id: 'kalien', nameKey: 'hero_kalien', tier: 'A', elementKey: 'hero_element_fire', ailmentKey: 'hero_ailment_shock', roleKey: 'hero_role_dps', factionKey: 'hero_faction_organa', icon: Flame },
-  { id: 'alex', nameKey: 'hero_alex', tier: 'A', elementKey: 'hero_element_physical', ailmentKey: 'hero_ailment_knockdown', roleKey: 'hero_role_tank', factionKey: 'hero_faction_redFox', icon: Sword },
-  { id: 'theresia', nameKey: 'hero_theresia', tier: 'A', elementKey: 'hero_element_holy', ailmentKey: 'hero_ailment_shock', roleKey: 'hero_role_support', factionKey: 'hero_faction_organa', icon: Shield },
-  { id: 'ornette', nameKey: 'hero_ornette', tier: 'A', elementKey: 'hero_element_ice', ailmentKey: 'hero_ailment_freeze', roleKey: 'hero_role_cc', factionKey: 'hero_faction_organa', icon: Snowflake },
-  { id: 'tarte', nameKey: 'hero_tarte', tier: 'B', elementKey: 'hero_element_earth', ailmentKey: 'hero_ailment_knockdown', roleKey: 'hero_role_tank', factionKey: 'hero_faction_organa', icon: Mountain },
-  { id: 'kalsion', nameKey: 'hero_kalsion', tier: 'B', elementKey: 'hero_element_fire', ailmentKey: 'hero_ailment_shock', roleKey: 'hero_role_dps', factionKey: 'hero_faction_organa', icon: Flame },
-  { id: 'renia', nameKey: 'hero_renia', tier: 'B', elementKey: 'hero_element_ice', ailmentKey: 'hero_ailment_freeze', roleKey: 'hero_role_support', factionKey: 'hero_faction_organa', icon: Snowflake },
-  { id: 'eileen', nameKey: 'hero_eileen', tier: 'B', elementKey: 'hero_element_gale', ailmentKey: 'hero_ailment_airborne', roleKey: 'hero_role_cc', factionKey: 'hero_faction_redFox', icon: Wind },
-  { id: 'cerese', nameKey: 'hero_cerese', tier: 'B', elementKey: 'hero_element_holy', ailmentKey: 'hero_ailment_shock', roleKey: 'hero_role_support', factionKey: 'hero_faction_organa', icon: Shield },
-  { id: 'othello', nameKey: 'hero_othello', tier: 'B', elementKey: 'hero_element_physical', ailmentKey: 'hero_ailment_bleed', roleKey: 'hero_role_dps', factionKey: 'hero_faction_organa', icon: Sword },
-  { id: 'charlotte', nameKey: 'hero_charlotte', tier: 'C', elementKey: 'hero_element_gale', ailmentKey: 'hero_ailment_airborne', roleKey: 'hero_role_cc', factionKey: 'hero_faction_organa', icon: Wind },
-];
-
-/* ──────────────── Status Ailment Interface ──────────────── */
-export interface StatusAilment {
+export interface AilmentEntry {
   id: string;
   nameKey: string;
-  tier: string;
   descKey: string;
-  effectKey: string;
-  heroesKey: string;
-  icon: LucideIcon;
+  name: string;
+  tier: string;
+  icon: string;
+  description: string;
 }
 
-export const statusAilments: StatusAilment[] = [
-  { id: 'knockdown', nameKey: 'ailment_knockdown', tier: 'S', descKey: 'ailment_knockdown_desc', effectKey: 'ailment_knockdown_effect', heroesKey: 'ailment_knockdown_heroes', icon: Sword },
-  { id: 'shock', nameKey: 'ailment_shock', tier: 'S', descKey: 'ailment_shock_desc', effectKey: 'ailment_shock_effect', heroesKey: 'ailment_shock_heroes', icon: Zap },
-  { id: 'freeze', nameKey: 'ailment_freeze', tier: 'A', descKey: 'ailment_freeze_desc', effectKey: 'ailment_freeze_effect', heroesKey: 'ailment_freeze_heroes', icon: Snowflake },
-  { id: 'airborne', nameKey: 'ailment_airborne', tier: 'A', descKey: 'ailment_airborne_desc', effectKey: 'ailment_airborne_effect', heroesKey: 'ailment_airborne_heroes', icon: Wind },
-  { id: 'bleed', nameKey: 'ailment_bleed', tier: 'B', descKey: 'ailment_bleed_desc', effectKey: 'ailment_bleed_effect', heroesKey: 'ailment_bleed_heroes', icon: Droplets },
-];
-
-/* ──────────────── Familiar Interface ──────────────── */
-export interface Familiar {
+export interface FamiliarEntry {
   id: string;
   nameKey: string;
-  sourceKey: string;
-  abilityKey: string;
   badgeKey: string;
-  icon: LucideIcon;
+  sourceKey: string;
+  name: string;
+  tier: string;
+  icon: string;
+  description: string;
 }
 
-export const familiars: Familiar[] = [
-  { id: 'abyssal-direwolf', nameKey: 'familiar_abyssalDirewolf', sourceKey: 'familiar_source_preorder', abilityKey: 'familiar_abyssalDirewolf_ability', badgeKey: 'familiar_badge_bonus', icon: Shield },
-  { id: 'valiant-hatchling', nameKey: 'familiar_valiantHatchling', sourceKey: 'familiar_source_deluxe', abilityKey: 'familiar_valiantHatchling_ability', badgeKey: 'familiar_badge_dlc', icon: Sparkles },
-  { id: 'chako', nameKey: 'familiar_chako', sourceKey: 'familiar_source_story', abilityKey: 'familiar_chako_ability', badgeKey: 'familiar_badge_free', icon: Snowflake },
-  { id: 'red-fox-pup', nameKey: 'familiar_redFoxPup', sourceKey: 'familiar_source_exploration', abilityKey: 'familiar_redFoxPup_ability', badgeKey: 'familiar_badge_free', icon: Wind },
-  { id: 'organa-owl', nameKey: 'familiar_organaOwl', sourceKey: 'familiar_source_quest', abilityKey: 'familiar_organaOwl_ability', badgeKey: 'familiar_badge_free', icon: Shield },
-  { id: 'meadow-sprite', nameKey: 'familiar_meadowSprite', sourceKey: 'familiar_source_exploration', abilityKey: 'familiar_meadowSprite_ability', badgeKey: 'familiar_badge_free', icon: Sparkles },
+// Tool tier data as array (homepage expects heroes.map())
+export const heroes: HeroEntry[] = [
+  { id: 'nmap', nameKey: 'tool_nmap', name: 'nmap', tier: 'S', icon: 'search', description: 'Network scanning & port discovery', ailmentKey: 'ailment_recon', factionKey: 'faction_offensive' },
+  { id: 'hydra', nameKey: 'tool_hydra', name: 'hydra', tier: 'S', icon: 'key', description: 'Password cracking & brute force', ailmentKey: 'ailment_cracking', factionKey: 'faction_offensive' },
+  { id: 'nslookup', nameKey: 'tool_nslookup', name: 'nslookup', tier: 'A', icon: 'globe', description: 'DNS reconnaissance & lookup', ailmentKey: 'ailment_recon', factionKey: 'faction_recon' },
+  { id: 'ssh', nameKey: 'tool_ssh', name: 'SSH', tier: 'A', icon: 'terminal', description: 'Secure remote shell access', ailmentKey: 'ailment_exploit', factionKey: 'faction_offensive' },
+  { id: 'telnet', nameKey: 'tool_telnet', name: 'telnet', tier: 'B', icon: 'radio', description: 'Remote connection protocol', ailmentKey: 'ailment_exploit', factionKey: 'faction_recon' },
+  { id: 'netcat', nameKey: 'tool_netcat', name: 'netcat', tier: 'B', icon: 'plug', description: 'Network utility tool', ailmentKey: 'ailment_exploit', factionKey: 'faction_utility' },
+  { id: 'curl', nameKey: 'tool_curl', name: 'curl', tier: 'C', icon: 'arrow-up-right', description: 'Data transfer tool', ailmentKey: 'ailment_recon', factionKey: 'faction_utility' },
+  { id: 'wget', nameKey: 'tool_wget', name: 'wget', tier: 'C', icon: 'download', description: 'File download utility', ailmentKey: 'ailment_recon', factionKey: 'faction_utility' },
 ];
 
-/* ──────────────── Color Maps ──────────────── */
-export const TIER_COLOR_MAP: Record<string, string> = {
-  S: 'var(--color-tier-s)',
-  A: 'var(--color-tier-a)',
-  B: 'var(--color-tier-b)',
-  C: 'var(--color-tier-c)',
-};
-export const TIER_COLOR_DEFAULT = 'var(--color-tier-c)';
+// Hacking strategies as "status ailments" for homepage module compatibility
+export const statusAilments: AilmentEntry[] = [
+  { id: 'recon', nameKey: 'ailment_recon', descKey: 'ailment_recon_desc', name: 'Reconnaissance', tier: 'S', icon: 'search', description: 'Network scanning and information gathering' },
+  { id: 'cracking', nameKey: 'ailment_cracking', descKey: 'ailment_cracking_desc', name: 'Password Cracking', tier: 'S', icon: 'key', description: 'Brute force and dictionary attacks' },
+  { id: 'stealth', nameKey: 'ailment_stealth', descKey: 'ailment_stealth_desc', name: 'Stealth Hacking', tier: 'A', icon: 'eye', description: 'Low-noise covert operations' },
+  { id: 'exploit', nameKey: 'ailment_exploit', descKey: 'ailment_exploit_desc', name: 'Exploitation', tier: 'A', icon: 'zap', description: 'Vulnerability exploitation and pivoting' },
+  { id: 'social', nameKey: 'ailment_social', descKey: 'ailment_social_desc', name: 'Social Engineering', tier: 'B', icon: 'users', description: 'Human-targeted manipulation' },
+];
+
+// Mission types as "familiars" for homepage module compatibility
+export const familiars: FamiliarEntry[] = [
+  { id: 'story', nameKey: 'familiar_story', badgeKey: 'familiar_story_badge', sourceKey: 'familiar_story_source', name: 'Story Missions', tier: 'S', icon: 'book-open', description: 'Main campaign progression' },
+  { id: 'bugbounty', nameKey: 'familiar_bugbounty', badgeKey: 'familiar_bugbounty_badge', sourceKey: 'familiar_bugbounty_source', name: 'BugBounty Hub', tier: 'A', icon: 'bug', description: 'Special vulnerability missions' },
+  { id: 'side', nameKey: 'familiar_side', badgeKey: 'familiar_side_badge', sourceKey: 'familiar_side_source', name: 'Side Objectives', tier: 'B', icon: 'list-checks', description: 'Optional challenges and rewards' },
+];
+
+// Tool tier lookup
+export const toolTiers: Record<string, HeroEntry> = {};
+heroes.forEach(h => { toolTiers[h.id] = h; });
 
 export function tierColor(tier: string): string {
-  return TIER_COLOR_MAP[tier] ?? TIER_COLOR_DEFAULT;
+  const colors: Record<string, string> = {
+    S: '#00ff41',
+    A: '#00d4ff',
+    B: '#3b82f6',
+    C: '#6b7280',
+    D: '#4b5563',
+  };
+  return colors[tier] || '#6b7280';
 }
 
-export const AILMENT_COLOR_MAP: Record<string, string> = {
-  knockdown: 'var(--color-tier-s)',
-  shock: 'var(--color-tier-a)',
-  freeze: 'var(--color-tier-b)',
-  airborne: 'var(--color-accent)',
-  bleed: 'var(--color-accent-secondary)',
-};
-
-export function ailmentColor(ailment: string): string {
-  return AILMENT_COLOR_MAP[ailment] ?? TIER_COLOR_DEFAULT;
+export function ailmentColor(_ailment: string): string {
+  return '#ff0055';
 }
 
-export const ELEMENT_COLOR_MAP: Record<string, string> = {
-  physical: 'var(--color-text-primary)',
-  light: 'var(--color-tier-s)',
-  holy: 'var(--color-tier-s)',
-  gale: 'var(--color-accent)',
-  fire: 'var(--color-accent-secondary)',
-  ice: 'var(--color-tier-b)',
-  earth: 'var(--color-tier-a)',
-  physicalLight: 'var(--color-tier-s)',
-};
+export function factionColor(_faction: string): string {
+  return '#00d4ff';
+}
 
+// Lucide React icon components for homepage rendering
 export const HERO_ICONS: Record<string, LucideIcon> = {
-  lute: Sword,
-  aria: Shield,
-  castella: Wind,
-  dana: Snowflake,
-  roxy: Sword,
-  johnny: Sword,
-  kalien: Flame,
-  alex: Sword,
-  theresia: Shield,
-  ornette: Snowflake,
-  tarte: Mountain,
-  kalsion: Flame,
-  renia: Snowflake,
-  eileen: Wind,
-  cerese: Shield,
-  othello: Sword,
-  charlotte: Wind,
+  nmap: Search,
+  hydra: Key,
+  nslookup: Globe,
+  ssh: Terminal,
+  telnet: Radio,
+  netcat: Plug,
+  curl: ArrowUpRight,
+  wget: Download,
 };
 
-export const FACTION_COLOR_MAP: Record<string, string> = {
-  redFox: 'var(--color-accent-secondary)',
-  sanctum: 'var(--color-tier-s)',
-  organa: 'var(--color-tier-b)',
+export const AILMENT_ICONS: Record<string, LucideIcon> = {
+  recon: Search,
+  cracking: Key,
+  stealth: Eye,
+  exploit: Zap,
+  social: Users,
 };
 
-export function factionColor(faction: string): string {
-  return FACTION_COLOR_MAP[faction] ?? 'var(--color-text-muted)';
-}
+export const FAMILIAR_ICONS: Record<string, LucideIcon> = {
+  story: BookOpen,
+  bugbounty: Bug,
+  side: ListChecks,
+};

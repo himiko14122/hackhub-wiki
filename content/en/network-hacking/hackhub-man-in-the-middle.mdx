@@ -1,0 +1,139 @@
+export const metadata = {
+    id: "hackhub-man-in-the-middle",
+    slug: "hackhub-man-in-the-middle",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub Man in the Middle Attack Full Strategy Guide",
+    description: "Master the HackHub man in the middle attack with tool comparisons, step-by-step execution, defense tips, and FAQ for network interception.",
+    keywords: ["HackHub man in the middle attack", "HackHub MITM guide", "HackHub network interception", "HackHub packet sniffing", "HackHub ARP spoofing", "HackHub beginner MITM", "HackHub interception tools", "HackHub network hacking tips"],
+    image: "/images/articles/DJrrUqNeNMQ.webp",
+    video: "DJrrUqNeNMQ",
+    category: "network-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## What Is a Man-in-the-Middle Attack in HackHub
+
+A HackHub man in the middle attack is the most iconic interception technique in the entire network-hacking simulation, and mastering it separates casual packet-watchers from operators who can reroute, clone, and rewrite traffic on a live subnet. In plain terms, the attack places your rig physically and logically between two virtual endpoints — usually a target server and a client — so every packet they exchange passes through your sniffer before continuing to its destination. HackHub models this in a deliberately sandboxed environment, which is why so many players treat the HackHub man in the middle attack as a rite of passage.
+
+The reason this attack matters so much is that it unlocks every other branch of network manipulation. Once you can sit in the middle of a conversation, you can read credentials, rewrite DNS responses, inject scripts, replay sessions, or simply log everything for offline analysis. Players who skip straight to brute-force or DDoS mechanics without learning interception often stall around tier 3 contracts, because the simulation gates its higher-paying jobs behind proof that you understand traffic flow. If you have not yet mapped the broader network, our [HackHub network mapping walkthrough](/en/network-hacking/HackHub-Network-Mapping/) is a useful primer before diving deep into MITM.
+
+HackHub frames the attack in three discrete phases — positioning, poisoning, and harvesting — and each phase has its own toolset, its own timing window, and its own failure state. The first run rarely succeeds, which is intentional: the game wants you to fail at least once so you learn how the **Address Resolution Protocol cache** behaves when it receives contradictory replies. That single lesson carries through every subsequent contract.
+
+## Core Mechanics Behind the HackHub Man in the Middle Attack
+
+The underlying engine in HackHub is a stripped-down simulation of how real LANs resolve addresses, forward frames, and trust neighbors. Before you click any tool, you need to internalize the flow of a normal packet, because the entire attack is built around breaking the assumptions that flow relies on.
+
+### How Traffic Flows Without Interception
+
+Under normal conditions, when Host A wants to talk to Host B, it first broadcasts an ARP request asking "who has this IP?" Every device on the subnet receives the request, but only Host B answers. A keeps B's MAC-to-IP mapping in a small cache for a few minutes, then sends frames directly to B. This conversation is invisible to you because your rig never appears in it. The HackHub man in the middle attack works by injecting your rig into that invisible conversation.
+
+### What Changes When You Position Yourself
+
+When you launch a MITM tool, HackHub shifts your node into **promiscuous mode** and tells the simulator to treat your interface as a transparent bridge. You do not actually steal packets — you receive copies and forward the originals. The target never knows you are there, which is why the attack is so satisfying in practice. The trick is making sure your forwarded packets arrive faster than the real ones, otherwise the target's cache updates and locks you out.
+
+### Poison, Don't Break
+
+A common rookie error is to disconnect the real endpoint entirely. HackHub punishes this immediately by flagging the contract as "noisy" and slashing your payout. Proper MITM requires **cache poisoning** rather than disconnection. You send forged ARP replies that slowly rewrite the victim's idea of where the gateway lives, so traffic flows through you instead of around you. If your forged reply rate is too aggressive, the victim's operating system snaps back to the real entry, which is the simulation's way of teaching rate limiting.
+
+## MITM Tools and Arsenal Comparison
+
+HackHub ships with five interception tools, each tuned for a different contract type. Choosing the right one matters because some tools are stealthy but slow, while others are fast but burn reputation if the target's IDS triggers. Below is the full comparison based on community testing as of the August 2026 patch cycle.
+
+| Tool | Speed | Stealth Rating | Best Used For | Energy Cost |
+|------|-------|----------------|---------------|-------------|
+| **ArpSpoon** | Fast | Low (visible logs) | Quick credential grabs on low-tier contracts | 12 energy |
+| **GhostBridge** | Medium | High | Long-form packet capture without tripping IDS | 20 energy |
+| **OxideRelay** | Slow | Very High | High-value contracts where patience pays | 35 energy |
+| **PacketVamp** | Very Fast | Medium | Replay attacks and session hijack chains | 18 energy |
+| **SilentFern** | Medium | High | DNS and HTTPS interception with cert cloning | 28 energy |
+
+The energy column is critical because contracts in HackHub recover energy at a fixed rate, and burning 35 energy on **OxideRelay** when you only have 40 left locks you out of recovery actions for the next two in-game hours. Players who favor GhostBridge for the first 60% of any contract, then escalate to PacketVamp for the final capture, report the highest success rate according to community data.
+
+### Tool Tier Ranking by Use Case
+
+Not every tool wins in every scenario, so here is how the community ranks them across the four most common contract types.
+
+| Contract Type | #1 Pick | #2 Pick | Avoid |
+|---------------|---------|---------|-------|
+| Credential Harvest | GhostBridge | ArpSpoon | SilentFern |
+| Session Replay | PacketVamp | GhostBridge | OxideRelay |
+| DNS Hijack | SilentFern | ArpSpoon | OxideRelay |
+| Long Logging Job | OxideRelay | SilentFern | PacketVamp |
+
+If you are brand new to the HackHub man in the middle attack, stick with GhostBridge for your first ten contracts. Its stealth rating means you can afford mistakes without failing the job, and the energy cost stays manageable. After roughly ten successful runs, you should have enough contract credits to unlock **SilentFern**, which is the gateway tool for HTTPS-grade contracts.
+
+## Step-by-Step: Executing Your First MITM Contract
+
+Walking through a single contract end-to-end is the fastest way to internalize the HackHub man in the middle attack, because each click in the UI maps to a real network concept. The walkthrough below assumes you are on the standard starter subnet with default tools unlocked.
+
+### Step 1 — Recon the Subnet
+
+Open the **Network Map** overlay and ping every host. You are looking for two things: the gateway IP and the target IP. Most contracts label them, but the simulation occasionally hides the target behind a decoy host. Use a lightweight scan rather than a full port sweep, because sweeps generate noise that lowers your stealth score before the attack even begins. Players report that the **ICMP echo** probe is the quietest option.
+
+### Step 2 — Launch GhostBridge
+
+Select GhostBridge from the tool wheel, point it at the target IP, and confirm. The tool begins sending low-rate ARP replies to the target, slowly rewriting its cache. Do not rush this phase. If you accelerate the rate, the target's defense layer will trigger and you will need to restart the contract. The default rate takes about 90 seconds to fully poison the cache, which feels slow but is the safest path.
+
+### Step 3 — Verify the Poison
+
+Open the **Packet Inspector** and watch for return traffic that originates from the gateway but arrives at your interface. If you see it, the poisoning worked. If the inspector stays empty for two full minutes, the target's cache held firm and you need to restart from Step 2. The community calls this the "two-minute silence" failure mode, and it almost always points to a wrong subnet assumption.
+
+### Step 4 — Harvest or Inject
+
+Once traffic flows through you, decide whether you are harvesting credentials or injecting a payload. For a harvest job, simply log the session for the contract duration. For an injection job, switch to PacketVamp and queue the payload. The HackHub man in the middle attack officially supports both branches from the same poisoned state, so do not waste energy re-poisoning if you can chain actions.
+
+### Step 5 — Clean Exit
+
+The final step is restoring the target's ARP cache to its original state. Skipping this leaves behind a "dirty subnet" flag that increases detection risk on your next contract. The cleanest exit takes about 30 seconds and costs 5 energy, which is well worth it for long-term reputation. If you want a deeper look at cleaning up traces, our [HackHub packet sniffing basics](/en/network-hacking/HackHub-Packet-Sniffing/) covers the related logging hygiene in more detail.
+
+## Defending Against a HackHub Man in the Middle Attack
+
+Defense matters even in an offensive simulation, because the game frequently flips the script and asks you to detect and block an incoming MITM aimed at your own rig. Understanding the attacker side, which you just learned, makes defense dramatically easier, because every offensive move has a defensive counter.
+
+### Detection Cues You Should Always Watch
+
+The simulator exposes three reliable indicators that someone is trying to poison your cache. If any of them spike during a contract, abort and investigate before proceeding.
+
+| Indicator | Normal Range | Suspicious Threshold | Action |
+|-----------|--------------|----------------------|--------|
+| ARP reply rate | 0–2/sec | Over 8/sec | Block sender MAC |
+| Duplicate IP warnings | 0/hour | 1 or more | Reboot virtual NIC |
+| Gateway MAC changes | 0/hour | 1 or more | Drop all sessions |
+
+Players who monitor all three indicators at once report catching 95% of incoming MITM attempts within the first 30 seconds, based on community testing. The simulator rewards fast detection with a **Counter-Intel** bonus, which can fund better offensive tools down the line.
+
+### Hardening Your Own Node
+
+Beyond detection, HackHub offers three defensive modules that reduce your exposure to incoming MITM contracts. The **Static ARP** module locks your cache so forged replies are ignored entirely, which sounds perfect but actually breaks legitimate DHCP renewals, so most experienced players only enable it for high-value contracts. The **Port Isolation** module separates your node onto a private VLAN, making you invisible to scan traffic at the cost of slower contract matchmaking. Finally, the **IDS Watchdog** module is the lightest option — it logs suspicious activity without blocking it, which lets you study attacker patterns over time.
+
+A balanced loadout for intermediate players is Static ARP for tier 4+ contracts, Port Isolation for offline study sessions, and IDS Watchdog everywhere else. Beginners should start with IDS Watchdog only, because the other two modules have sharp learning curves that can hurt early progression if misconfigured.
+
+### When Defense Beats Offense
+
+There is a class of contract in HackHub where the optimal strategy is to defend rather than attack. These are called **Mirror Contracts**, and they flip the standard objective: instead of poisoning a target, you must remain un-poisoned for the full duration. Success on these jobs pays significantly more than offensive MITM contracts at the same tier, which makes them a strong revenue source once you have mastered both sides of the HackHub man in the middle attack.
+
+## Frequently Asked Questions
+
+**What is the easiest tool to start with for the HackHub man in the middle attack?**
+
+GhostBridge is the most beginner-friendly tool because of its high stealth rating and medium energy cost. It forgives timing mistakes and rarely trips the target's IDS, which means new players can focus on learning the cache-poisoning phase without worrying about detection penalties. Most community guides recommend running at least ten GhostBridge contracts before unlocking any other MITM tool.
+
+**Can I chain multiple MITM contracts on the same subnet?**
+
+Yes, the simulator supports contract chaining as long as your stealth score stays above 70% between runs. Dropping below 70% triggers a cooldown period during which the subnet refuses new contracts, so the key is to clean exit every job before starting the next. Players report that chaining three to four contracts in a row is realistic if you consistently restore the ARP cache at the end of each run.
+
+**Does the HackHub man in the middle attack work against HTTPS targets?**
+
+Standard MITM will not read HTTPS payloads directly because they are encrypted, but SilentFern includes a cert cloning feature that lets you present a forged certificate to the target. The forged cert lets you see encrypted payloads, though the simulator flags this as a high-risk action that lowers your reputation if caught. For training purposes, the game exposes a sandbox HTTPS contract where cert cloning is fully permitted.
+
+**How long does it take to fully poison an ARP cache?**
+
+A typical cache takes 60 to 120 seconds to poison at the default rate, depending on the target's defensive posture. Aggressive poisoning can complete the process in 30 seconds, but it dramatically increases the chance of triggering the target's IDS. The community-accepted sweet spot is around 90 seconds, which balances speed against detection risk.
+
+**Is there a way to practice MITM without risking reputation?**
+
+Yes, the simulator includes a dedicated **Lab Mode** where every node is friendly and no reputation is tracked. Lab Mode lets you experiment with forged ARP replies, packet injection, and tool switching without any career consequences. Most experienced players recommend spending at least two hours in Lab Mode before attempting tier 2 contracts, because the muscle memory you build there translates directly into higher success rates on live jobs.
+
+Want to push your interception skills even further? Drop a comment below with the toughest MITM contract you have cleared, and share this guide with a fellow operator who is still stuck on tier 2.

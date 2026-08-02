@@ -1,5 +1,5 @@
-const INDEXNOW_KEY = '4a8dd9b1bef346e8268e1e510d12ca61';
-const HOST = 'www.dragon-sword-awakening.wiki';
+const INDEXNOW_KEY = '9bad20ed1f0fb2d9bf3e7ab1309d3bd3';
+const HOST = 'www.hackhub.wiki';
 const SEARCH_ENGINES = [
   'https://www.bing.com/indexnow',
   'https://api.indexnow.org/indexnow',
@@ -49,11 +49,10 @@ export async function onRequestPost(context) {
 
 export async function onRequestGet(context) {
   const baseUrl = `https://${HOST}`;
-  const locales = ['en'];
+  const locales = ['en', 'ko', 'ja', 'de'];
   const categories = [
-    'heroes', 'tier-list', 'tag-combos', 'guides', 'builds',
-    'status-ailments', 'exploration', 'familiars', 'updates',
-    'cooking-crafting', 'story-lore', 'system-requirements', 'buying-guide',
+    'developer', 'guides', 'missions', 'network-hacking', 'password-hacking',
+    'stealth-strategy', 'tools', 'tools-tier-list', 'updates',
   ];
   const allUrls = [];
 

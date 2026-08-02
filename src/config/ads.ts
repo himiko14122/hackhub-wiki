@@ -64,7 +64,7 @@ export const BANNER_SLOTS: Record<BannerType, BannerSlot> = {
   },
 };
 
-// DragonSword: Awakening native banner
+// HackHub native banner
 export const NATIVE_SLOT: NativeSlot = {
   type: 'native-banner',
   containerId: 'container-be665e91585b7614e78b5ac674512405',

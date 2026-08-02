@@ -1,0 +1,129 @@
+export const metadata = {
+    id: "hackhub-suspicion-system",
+    slug: "hackhub-suspicion-system",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Verdachtssystem erklärt: Bleib verborgen",
+    description: "Lerne, wie das HackHub-Verdachtssystem funktioniert, was jede Stufe auslöst, und bewährte Strategien, um bei jedem Infiltrationslauf in diesem Stealth-Strategiespiel unentdeckt zu bleiben.",
+    keywords: ["HackHub Verdachtssystem", "HackHub Stealth-Erkennung", "Verdachtsmesser HackHub", "wie man Verdacht in HackHub senkt", "HackHub Patrouillenbewusstsein", "HackHub Wacherkennung", "HackHub Ghost-Run Tipps"],
+    image: "/images/articles/yfoI-m6Ux00.webp",
+    video: "yfoI-m6Ux00",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Das HackHub-Verdachtssystem ist der zentrale Erkennungsmechanismus, der bestimmt, wie aufmerksam feindliche Wachen, Kameras und automatisierte Wachposten bei jedem Infiltrationslauf auf deine Anwesenheit reagieren. Anstatt eines einfachen binären "entdeckt oder nicht"-Zustands verfolgt dieses Stealth-Strategiespiel deine Hitze auf einer abgestuften Skala, belohnt Geduld und bestraft rücksichtsloses Verhalten mit eskalierenden Konsequenzen. Zu meistern, wie der Messer steigt, seinen Höhepunkt erreicht und abfällt, ist der Unterschied zwischen dem ghosting eines Levels unentdeckt und dem Neustart am letzten Checkpoint mit heulenden Alarmen.
+
+## Was das HackHub-Verdachtssystem tatsächlich verfolgt
+
+Jede Aktion, die du innerhalb einer Anlage ausführst, fließt in deinen aktuellen Verdachtswert ein, und das System arbeitet auf einer internen Skala von 0–100, die durch Community-Tests auf vier unterschiedliche Verhaltensstufen abgebildet wurde. Diese Stufen bestimmen, ob Gegner beiläufig ermitteln, ihre Waffen ziehen, Verstärkung rufen oder eine vollständige Sperrung auslösen. Das HackHub-Verdachtssystem verarbeitet ungefähr fünf verschiedene Erkennungskanäle gleichzeitig und gewichtet jeden basierend auf dem umgebenden Kontext, der Beleuchtung und der Schwierigkeitseinstellung.
+
+Der Grund, warum sich dieses System so anders anfühlt als ein typischer "Stealth-Messer" in anderen Spielen, ist, dass es zwischen Begegnungen nie vollständig zurückgesetzt wird, es sei denn, du erreichst einen Speicherpunkt oder extrahierst dich aus dem Level. Eine Wache, die dich in Raum eins entdeckt hat, wird auch dann noch alarmiert sein, wenn du 90 Sekunden später Raum drei wieder betrittst, da die KI-Direktion eine persistente Aufzeichnung deiner letzten bekannten Position führt. Diese Persistenz zwingt Stealth-Spieler dazu, in vollständigen Missionsbögen zu denken, anstatt in einzelnen Raumklärungen.
+
+### Die vier Verdachtsstufen
+
+| Stufe | Schwellenwert | Wachverhalten | Spielerrisiko |
+|------|-----------|----------------|-------------|
+| **Entspannt** | 0–24 | Normale Patrouillenrouten, keine Bewusstseinsverschiebung | Minimal — freie Bewegung |
+| **Alarmiert** | 25–49 | Untersucht letzte bekannte Geräusch- oder Sichtposition | Moderat — Patrouille ändert Route |
+| **Feindlich** | 50–79 | Zieht Waffe, bewegt sich auf Spieler zu, ruft einen Verbündeten | Hoch — Kampf wahrscheinlich |
+| **Sperrung** | 80–100 | Vollständige Anlagensperrung, alle Abkürzungstüren versiegeln sich | Kritisch — Mission scheitert oft |
+
+Jeder Stufenwechsel dauert in Community-Berichten ungefähr 8–12 Sekunden und gibt dir ein schmales Zeitfenster, um die Sichtlinie zu unterbrechen oder in Deckung zu gehen, bevor die nächste Eskalation einsetzt. Die **Sperrungs**-Stufe ist besonders bestrafend, weil sie dauerhaft Abkürzungstüren versiegelt, die du möglicherweise bereits geöffnet hast, wodurch deine vorherige Routenplanung effektiv zunichtegemacht wird und ein längerer, exponierterer Ausgangspfad erzwungen wird.
+
+### Schlüsselfaktoren, die den Messer füttern
+
+Mehrere Variablen tragen dazu bei, wie schnell dein HackHub-Verdachtssystem-Wert steigt. Community-Daten deuten darauf hin, dass die Bewegungsgeschwindigkeit der größte einzelne Faktor ist — ein sprintender Spieler fügt ungefähr 3× mehr Hitze pro Sekunde hinzu als ein geduckter Gang. Laute Interaktionen, wie das Hacken eines geräuschvollen Terminals oder das Treten einer Lüftungsabdeckung, laden einen flachen +15 auf den Messer in einem einzigen Ausbruch. Das Tragen eines Körpers oder das Ziehen einer bewusstlosen Wache fügt kontinuierlich +1 pro Sekunde hinzu, was bedeutet, dass du einen Ausstiegsplan brauchst, bevor du dich auf den Ausschalten einlässt, da die Hitze weiter steigt, selbst wenn du in einer Ecke hockst.
+
+Die Schwierigkeit spielt ebenfalls eine größere Rolle, als den meisten Spielern bewusst ist. Auf der einfachsten Einstellung beträgt der Basis-Verdachts-Offset -8, was bedeutet, dass du jede Begegnung mit einem kleinen Puffer startest und Wachen langsamer reagieren. Auf der schwierigsten Einstellung beträgt der Offset +6, und Sichtkegel sind breiter, Audio-Abkling ist langsamer, und die KI-Direktion spawnt Verstärkung 30% schneller. Diese Modifikatoren stapeln sich, weshalb ein sauberer Lauf auf Easy auf derselben Karte bei Hard zu einem chaotischen Blutbad werden kann.
+
+## Verdachtsauslöser und Erkennungsmechaniken
+
+Nicht jede Aktion hat das gleiche Gewicht, und das Erlernen der genauen Auslöserwerte ist es, wie Veteranenspieler lautlose Läufe immer wieder aneinanderketten. Das HackHub-Verdachtssystem verarbeitet Eingaben aus fünf verschiedenen Erkennungskanälen, jeder mit seinem eigenen Spitzenwert, Abklingrate und Eskalationsregel. Das Zusammenspiel zwischen diesen Kanälen zu meistern, ist die wahre Fähigkeitsgrenze des Stealth-Spiels, da die Optimierung eines Kanals unter Ignorierung der anderen ein Rezept für plötzliche, unerklärliche Sprünge zu **Feindlich** ist.
+
+### Die fünf Erkennungskanäle
+
+| Kanal | Primärquelle | Spitzenwert | Abklingrate |
+|---------|---------------|-------------|------------|
+| **Visuell** | Wachsichtkegel, Kameras | +2/Sek. im Kegel | -1/Sek. nach LoS-Unterbrechung |
+| **Auditiv** | Fußschritte, fallende Gegenstände, Schüsse | +5 Burst pro lautes Geräusch | -2/Sek. im Stillstand |
+| **Verhaltensbezogen** | Körperentdeckung, fehlende NPC-Berichte | +20 flach beim Auslösen | -0.5/Sek., sehr langsam |
+| **Elektronisch** | Stolperdrähte, Bewegungssensoren, Lasergitter | +10 pro Verletzung | -1.5/Sek. |
+| **Umgebungsbezogen** | Geworfene Objekte, Sicherungsauslösungen, Alarme | +25 pro manueller Auslösung | Klebrig bis zum Zurücksetzen |
+
+Der **verhaltensbezogene** Kanal ist derjenige, den die meisten Spieler unterschätzen. Selbst wenn du eine Wache sauber mit einem lautlosen Ausschalten niederstreckst, wird ein patrouillierender Mitarbeiter, der 30 Sekunden später den leeren Posten bemerkt, das Verschwinden melden, und diese Meldung lädt eine +15-Spitze ab, die nicht durch einfaches Verstecken im nächsten Raum stummgeschaltet werden kann. Community-Berichte bestätigen, dass dies die häufigste Ursache für plötzliche Sprünge von **Alarmiert** direkt zu **Feindlich** ohne hörbare Warnung ist, da die visuelle Anzeige im selben Moment erscheint, in dem die Spitze auftritt.
+
+### Sichtlinie und Kegelmechaniken
+
+Der Sichtkegel jeder Wache rendert sich ungefähr 65° nach vorne und 15° peripher, mit einer maximalen Erkennungsreichweite von etwa 18 Metern unter normalen Beleuchtungsbedingungen. In den Kegel hocken erhöht die visuelle Hitze immer noch, aber mit halber Rate der stehenden Bewegung. Stillstehen am äußersten Rand des Kegels, innerhalb von etwa 2 Metern der Grenzlinie, reduziert den Zuwachs weiter, was **Edge-Walking** zu einer brauchbaren Technik macht, um sich an engen Patrouillen vorbeizudrücken, ohne den Messer zu füttern. Das HackHub-Verdachtssystem wendet auch einen Entfernungsmodifikator an — aus 20 Metern Entfernung entdeckt zu werden, erzeugt weniger Hitze als aus nächster Nähe entdeckt zu werden, da die Wache ein paar zusätzliche Frames braucht, um die Identität zu bestätigen, bevor sie einen Alarmruf absetzt.
+
+Beleuchtung spielt hier ebenfalls eine versteckte Rolle. Schattenzonen reduzieren die visuelle Hitze um zusätzliche 30%, während helle Zonen (Überkopf-Leuchtstofflampen, Notbeleuchtung nach einem Stromauslöser) die visuelle Hitze um 20% erhöhen. Kluge Spieler memorisieren das Beleuchtungslayout jeder Karte und leiten ihre Bewegung durch Schattenketten statt durch den geometrisch kürzesten Pfad, selbst wenn dieser Umweg 10 Sekunden zum Lauf hinzufügt.
+
+## Wie sich Patrouillen-KI auf jeder Stufe neu verdrahtet
+
+Das HackHub-Verdachtssystem verfolgt nicht nur eine Zahl — es schreibt aktiv den Patrouillengraphen neu, dem Wachen folgen. Wenn deine Hitze einen Stufenschwellenwert überschreitet, weist die KI-Direktion Patrouillen-Wegpunkte neu zu, tauscht Wachenausrüstungen aus und spawnt in einigen Fällen völlig neue Patrouilleneinheiten aus Seitenräumen, die du für leer gehalten hattest. Dieses dynamische Respawning ist der Grund, warum selbst nachdem du die Sichtlinie unterbrochen hast, das Anlagenlayout effektiv um dich herum schrumpft, da die KI den Raum mit Backup-Einheiten füllt, sobald du einen Schwellenwert überschreitest.
+
+### Patrouillengraph-Verhalten nach Stufe
+
+| Stufenübergang | Patrouillengraph-Änderung | Spawn-Verhalten |
+|-----------------|--------------------|-----------------|
+| Entspannt → Alarmiert | Eine Wache ändert Route, um letzte bekannte Position zu untersuchen | Keine neuen Spawns |
+| Alarmiert → Feindlich | Zwei Wachen konvergieren auf Spielerzone, Waffenwechsel | 1 Verstärkung aus Seitenkorridor |
+| Feindlich → Sperrung | Alle Wachen konvergieren, Patrouillenrouten kollabieren | 2–3 Verstärkungen + Sperrtüren |
+| Beliebig → Abklingen (unter Stufe fallen) | Kehrt zur letzten bekannten Patrouillenroute zurück | Überschüssige Einheiten despawnen nach 20s |
+
+Ein Flur, der zu Beginn einer Infiltration völlig leer war, kann vier Wachen halten, wenn du den Serverraum erreichst, da die KI-Direktion den Raum mit Backup-Einheiten füllt, sobald dein HackHub-Verdachtssystem-Wert in **Feindlich** übergeht. Der Despawn-Timer greift erst, nachdem deine Hitze zurückgegangen ist, was bedeutet, dass ausgedehnte Alarmperioden die Patrouillendichte des restlichen Levels dauerhaft verändern können.
+
+### Audio-Hinweise, die du lernen solltest
+
+Das Spiel verwendet drei eskalierende Audio-Stinger, um Stufenübergänge anzukündigen: ein tiefes Summen bei **Alarmiert**, ein scharfer Warnklaxon bei **Feindlich** und eine vollständige Alarmschleife bei **Sperrung**. Diese Hinweise zu erkennen, lässt dich reagieren, bevor der Bildschirm-Messer aufholt, was kritisch ist, da die visuelle Anzeige eine ungefähr 0,4-Sekunden-Anzeigeverzögerung im Vergleich zum Audio hat. Für Spieler, die ihren Stealth-Build noch weiter pushen wollen, macht die Kombination dieses Bewusstseins mit der richtigen Ausrüstung einen dramatischen Unterschied — siehe unseren [HackHub besten Stealth-Build-Leitfaden](/en/stealth-strategy/HackHub-best-stealth-build/) für die vollständige Aufschlüsselung der Ausrüstung, die einen Verdacht-armen Spielstil ergänzt.
+
+## Strategien, um unter dem Radar zu bleiben
+
+Jetzt, da du die Mechaniken verstehst, ist hier ein praktisches Playbook, um den HackHub-Verdachtssystem-Messer über eine gesamte Mission nahe null zu halten. Dies sind die gleichen Techniken, auf die sich erfahrene Spieler für die "Keine-Erkennung"-Errungenschaften und die höchsten Punkteboni verlassen, und sie stapeln sich zu einer konsistenten Ghost-Run-Formel.
+
+### Die 1-2-3-Reset-Schleife
+
+1. **Bewegen** — Überquere einen offenen Bereich geduckt, schmiege dich an Wände und vermeide alle Kegelzentren. Bleibe nach Möglichkeit in Schattenzonen, um visuelle Hitze um 30% zu reduzieren.
+2. **Pause** — Halte in einer Totzone (einem Ort, den kein Patrouillenkegel, keine Kamera und kein Sensor erreichen kann) für mindestens 6 Sekunden an, damit visuelle und auditive Hitze Richtung Null abklingen.
+3. **Zurücksetzen** — Nutze das Pausenfenster, um den nächsten Patrouillenpfad zu erkunden, bevor du dich auf die nächste Bewegung festlegst, und bewerte erneut, ob deine Route angesichts der letzten bekannten Position der KI noch gangbar ist.
+
+Diese Schleife ist die Grundlage jedes erfolgreichen Ghost-Runs, und Spieler, die sie verinnerlichen, verkürzen typischerweise ihre Missionszeiten um 20–30% innerhalb weniger Übungsstunden. Wenn du die Karten noch lernst, möchtest du vielleicht auch unsere [HackHub Anfänger-Infiltrationstipps](/en/stealth-strategy/HackHub-beginner-tips/) überprüfen, um dich mit Patrouillen-Timing vertraut zu machen, bevor du dir Sorgen um fortgeschrittene Resets machst.
+
+### Hochwertige Unterdrückungstaktiken
+
+- **Locke Patrouillen mit geworfenen Münzen an** — eine Münze, die einen Flur hinunter geworfen wird, fügt eine kleine auditive Spitze zum **Auditiven** Kanal hinzu, klingt aber schneller ab als das Durchqueren eines Kegels, sodass du Wachen von deinem beabsichtigten Pfad wegleiten kannst.
+- **Deaktiviere Kameras, bevor du ihren Bogen überquerst** — eine gehackte Kamera senkt ihren visuellen Beitrag auf null, und der Hack selbst ist lautlos ohne Hitze, wenn du die richtige Cyberware ausgerüstet hast.
+- **Verwende Sicherungskästen, um Stromabschnitte abzutöten** — das Umlegen einer Sicherung fügt +25 zum **Umgebungsbezogenen** Kanal hinzu, aber schaltet jede Kamera und jeden elektronischen Sensor in diesem Flügel für 18 Sekunden ab, was ein großartiger Handel ist, wenn deine Ausgangsroute frei ist.
+- **Verstecke Körper in Spinden oder Lüftungsschächten** — unentdeckte Körper füttern nie den **Verhaltensbezogenen** Kanal, sodass das Lagern eines Ausschalters für 3 zusätzliche Sekunden dir später eine +20-Spitze im Lauf ersparen kann.
+- **Vermeide Sprints, es sei denn der Messer steht auf null** — Sprinten in **Entspannt** fügt bescheidene Hitze hinzu, aber Sprinten in **Alarmiert** kann dich in unter 4 Sekunden direkt nach **Feindlich** katapultieren.
+
+### Häufige Fehler, die den Messer sprengen
+
+- **Wiederbetreten eines Raums, den du bereits geklärt hast** — der **Verhaltensbezogene** Kanal erinnert sich an den Körper und löst eine Spitze aus, wenn eine Wache den leeren Posten während einer Nachuntersuchung entdeckt.
+- **Hack-Terminals in der offenen Umgebung** — jeder Terminal-Hack dauert 4–6 Sekunden, und so lange Stillstehen in einer umkämpften Zone ist eine garantierte visuelle Spitze, die oft in **Alarmiert** übergeht.
+- **Einen Körper über einen Kamerabogen ziehen** — Kameras erkennen Körper nicht direkt, aber die Wache, die den Kamera-Feed beobachtet, tut es, und der **Verhaltensbezogene** Bericht ist automatisch, sobald sie ihn entdeckt.
+- **Vergessen, Türen hinter dir zu schließen** — eine offene Tür ist eine visuelle Flagge, die smarte Patrouillen-KI innerhalb von 15 Sekunden untersuchen wird, laut Community-Tests auf Patch 1.4.
+
+## Häufig gestellte Fragen
+
+**Was ist der maximale Wert des HackHub-Verdachtssystem-Messers?**
+
+Die interne Skala ist auf 100 begrenzt, und sobald dein Wert 80 oder höher erreicht, geht die Anlage in den **Sperrungs**-Status über. An diesem Punkt versiegeln sich alle Abkürzungstüren, drei bis fünf Verstärkungswachen spawnen, und dein Missionsfehler-Timer startet, es sei denn, du kannst den Messer innerhalb von 90 Sekunden wieder unter 50 drücken.
+
+**Wie lange dauert es, bis der Verdacht vollständig auf null abklingt?**
+
+Unter idealen Bedingungen (keine Wachen in der Nähe, Spieler geduckt und stillstehend, keine Umgebungsauslöser) klingt der Messer von 100 auf 0 in ungefähr 65 Sekunden ab. Der **Verhaltensbezogene** Kanal klingt am langsamsten mit -0,5 pro Sekunde ab, sodass du, wenn ein Körper entdeckt wurde, mit einer vollständigen Abklingzeit von näher an 90 Sekunden rechnen musst, selbst in einem perfekten Versteck.
+
+**Kann man den Verdachtsmesser in HackHub vollständig vermeiden?**
+
+Ja, aber nur auf der einfachsten Schwierigkeitsstufe, wo das HackHub-Verdachtssystem jeden Lauf mit einem Basis-Offset startet, der Wachen weniger reaktiv macht. Auf Normal und darüber ist jeder Erkennungskanal von Missionsbeginn an aktiv, sodass eine gewisse Hitzeansammlung unvermeidlich ist.
+
+**Beeinflussen Verkleidungen, wie der Verdachtsmesser funktioniert?**
+
+Verkleidungen reduzieren den Beitrag des **Visuellen** Kanals um ungefähr 60%, aber sie beeinflussen keine auditiven oder verhaltensbezogenen Auslöser. Eine Wachenuniform vor einer anderen Wache zu tragen funktioniert gut, obwohl das Tragen einer solchen beim Sprinten an einer Kamera vorbei nichts daran ändert, das Geräusch deiner Fußschritte zu maskieren.
+
+**Was passiert, wenn zwei Wachen dich genau gleichzeitig entdecken?**
+
+Eine gleichzeitige Erkennung aus zwei Quellen stapelt ihre Spitzenwerte, weshalb es passieren kann, dass du von einer Wache und einer Kamera gleichzeitig entdeckt von **Entspannt** direkt zu **Feindlich** in einem einzigen Frame katapultiert wirst. Community-Tests legen nahe, dass das Spiel einen 1,5×-Multiplikator anwendet, wenn mehrere Kanäle im selben 0,5-Sekunden-Fenster ausgelöst werden.

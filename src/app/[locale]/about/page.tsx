@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'x-default': `${SITE_URL}/about`,
       },
     },
-    keywords: ['DragonSword Awakening Wiki', 'DragonSword Awakening about', 'DragonSword Awakening community wiki', 'DragonSword Awakening fan wiki', 'DragonSword Awakening action RPG'],
+    keywords: ['HackHub Awakening Wiki', 'HackHub Awakening about', 'HackHub Awakening community wiki', 'HackHub Awakening fan wiki', 'HackHub Awakening action RPG'],
   };
 }
 

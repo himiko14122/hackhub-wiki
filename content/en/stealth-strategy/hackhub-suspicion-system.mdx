@@ -1,0 +1,129 @@
+export const metadata = {
+    id: "hackhub-suspicion-system",
+    slug: "hackhub-suspicion-system",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Suspicion System Explained: Stay Hidden",
+    description: "Learn how the HackHub suspicion system works, what triggers each tier, and proven strategies to stay undetected on every infiltration run in this stealth-strategy game.",
+    keywords: ["HackHub suspicion system", "HackHub stealth detection", "suspicion meter HackHub", "how to lower suspicion in HackHub", "HackHub patrol awareness", "HackHub guard detection", "HackHub ghost run tips"],
+    image: "/images/articles/yfoI-m6Ux00.webp",
+    video: "yfoI-m6Ux00",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+The HackHub suspicion system is the central detection mechanic that governs how aware enemy guards, cameras, and automated sentries become of your presence during every infiltration run. Rather than a simple binary spotted-or-not state, this stealth-strategy game tracks your heat on a graduated scale, rewarding patience and punishing reckless movement with cascading consequences. Mastering how the meter rises, peaks, and decays is the difference between ghosting a level undetected and restarting from the last checkpoint with alarms blaring.
+
+## What the HackHub Suspicion System Actually Tracks
+
+Every action you take while inside a facility feeds into your current suspicion value, and the system runs on a 0–100 internal scale that community testing has mapped to four distinct behavioral tiers. These tiers dictate whether enemies investigate casually, raise their weapons, call for backup, or trigger a full lockdown. The HackHub suspicion system processes roughly five different detection channels simultaneously, weighting each one based on the surrounding context, lighting, and difficulty setting.
+
+The reason this system feels so different from a typical "stealth meter" in other games is that it never fully resets between encounters unless you reach a save point or extract from the level. A guard who spotted you in room one will still be on alert when you re-enter room three 90 seconds later, because the AI director keeps a persistent record of your last known position. This persistence is what forces stealth players to think in terms of full mission arcs rather than individual room clears.
+
+### The Four Suspicion Tiers
+
+| Tier | Threshold | Guard Behavior | Player Risk |
+|------|-----------|----------------|-------------|
+| **Relaxed** | 0–24 | Normal patrol routes, no awareness shift | Minimal — free movement |
+| **Alerted** | 25–49 | Investigates last known noise or sight position | Moderate — patrol reroutes |
+| **Hostile** | 50–79 | Draws weapon, moves toward player, calls one ally | High — combat likely |
+| **Lockdown** | 80–100 | Full facility lockdown, all shortcut doors seal | Critical — mission often fails |
+
+Each tier shift lasts roughly 8–12 seconds in community-reported runs, giving you a narrow window to break line of sight or duck behind cover before the next escalation kicks in. The **Lockdown** tier is particularly punishing because it permanently seals shortcut doors you may have already unlocked, effectively undoing your prior route planning and forcing a longer, more exposed exit path.
+
+### Key Factors That Feed the Meter
+
+Several variables contribute to how fast your HackHub suspicion system value climbs. Community data points to movement speed as the single biggest contributor — a sprinting player adds roughly 3× more heat per second than a crouched walk. Loud interactions, such as hacking a noisy terminal or kicking a vent cover, dump a flat +15 onto the meter in one burst. Carrying a body or dragging a knocked-out guard also adds a continuous +1 per second, which means you need an exit plan before you commit to the takedown, because the heat will keep climbing even while you crouch in a corner.
+
+Difficulty also matters more than most players realize. On the easiest setting, the baseline suspicion offset is -8, meaning you start every encounter with a small buffer and guards react more slowly. On the hardest setting, the offset is +6, and visual cones are wider, audio decay is slower, and the AI director spawns reinforcements 30% faster. These modifiers stack, which is why a clean run on Easy can turn into a chaotic bloodbath on the same map at Hard.
+
+## Suspicion Triggers and Detection Mechanics
+
+Not every action carries the same weight, and learning the exact trigger values is how veteran players chain silent runs back to back. The HackHub suspicion system processes inputs from five distinct detection channels, each with its own spike value, decay rate, and escalation rule. Mastering the interplay between these channels is the real skill ceiling of stealth play, because optimizing one channel while ignoring the others is a recipe for sudden, unexplained jumps to **Hostile**.
+
+### The Five Detection Channels
+
+| Channel | Primary Source | Spike Value | Decay Rate |
+|---------|---------------|-------------|------------|
+| **Visual** | Guard sight cones, cameras | +2/sec while in cone | -1/sec after breaking LoS |
+| **Auditory** | Footsteps, item drops, gunshots | +5 burst per loud noise | -2/sec while stationary |
+| **Behavioral** | Body discovery, missing NPC reports | +20 flat on trigger | -0.5/sec, very slow |
+| **Electronic** | Tripwires, motion sensors, laser grids | +10 per breach | -1.5/sec |
+| **Environmental** | Thrown objects, breaker flips, alarms | +25 per manual trigger | Sticky until reset |
+
+The **Behavioral** channel is the one most players underestimate. Even if you knock out a guard cleanly with a silent takedown, a patrolling coworker who notices the empty post 30 seconds later will report the disappearance, and that report dumps a +20 spike that cannot be silenced by simply hiding in the next room. Community reports confirm this is the number-one cause of sudden jumps from **Alerted** straight to **Hostile** with no audible warning, because the visual indicator appears at the same moment the spike lands.
+
+### Line of Sight and Cone Mechanics
+
+Each guard's sight cone renders at roughly 65° forward and 15° peripheral, with a maximum detection range of about 18 meters under normal lighting conditions. Crouching inside the cone still raises visual heat, but at half the rate of standing movement. Standing still at the very edge of the cone, within about 2 meters of the boundary line, reduces the gain further, which makes **edge-walking** a viable technique for squeezing past tight patrols without feeding the meter. The HackHub suspicion system also applies a distance modifier — being spotted from 20 meters away generates less heat than being spotted at point-blank range, because the guard needs a few extra frames to confirm identity before committing to an alert call.
+
+Lighting plays a hidden role here too. Shadow zones reduce visual heat by an additional 30%, while bright zones (overhead fluorescents, emergency lighting after a power flip) boost visual heat by 20%. Smart players memorize the lighting layout of each map and route their movement through shadow chains rather than the geometrically shortest path, even if that detour adds 10 seconds to their run.
+
+## How Patrol AI Rewires at Each Tier
+
+The HackHub suspicion system doesn't just track a number — it actively rewrites the patrol graph that guards follow. When your heat crosses a tier threshold, the AI director reassigns patrol waypoints, swaps guard loadouts, and in some cases spawns entirely new patrol units from side rooms you thought were empty. This dynamic respawning is why even after you break line of sight, the facility layout effectively shrinks around you, because the AI fills the space with backup units the moment you cross a threshold.
+
+### Patrol Graph Behavior by Tier
+
+| Tier Transition | Patrol Graph Change | Spawn Behavior |
+|-----------------|--------------------|-----------------|
+| Relaxed → Alerted | One guard reroutes to investigate last known position | No new spawns |
+| Alerted → Hostile | Two guards converge on player zone, weapon swap | 1 reinforcement from side corridor |
+| Hostile → Lockdown | All guards converge, patrol routes collapse | 2–3 reinforcements + lockdown doors |
+| Any → Decay (drop below tier) | Returns to last known patrol route | Excess units despawn after 20s |
+
+A hallway that was completely empty at the start of an infiltration can hold four guards by the time you reach the server room, because the AI director fills the space with backup units the moment your HackHub suspicion system value crosses into **Hostile**. The despawn timer only kicks in after your heat drops back down, which means extended alert periods can permanently alter the patrol density of the rest of the level.
+
+### Audio Cues You Should Learn
+
+The game uses three escalating audio stingers to telegraph tier transitions: a low hum at **Alerted**, a sharp warning klaxon at **Hostile**, and a full alarm loop at **Lockdown**. Learning to recognize these cues lets you react before the on-screen meter catches up, which is critical because the visual indicator has a roughly 0.4-second display lag compared to the audio. For players who want to push their stealth build even further, pairing this awareness with the right loadout makes a dramatic difference — see our [HackHub best stealth build guide](/en/stealth-strategy/HackHub-best-stealth-build/) for the full breakdown of gear that complements a low-suspicion playstyle.
+
+## Strategies to Stay Under the Radar
+
+Now that you understand the mechanics, here is a practical playbook for keeping the HackHub suspicion system meter pinned near zero across an entire mission. These are the same techniques that experienced players rely on for the no-detection achievements and the highest-tier score bonuses, and they stack together into a consistent ghost-run formula.
+
+### The 1-2-3 Reset Loop
+
+1. **Move** — Cross an open area while crouched, hugging walls and avoiding all cone centers. Stay in shadow zones whenever possible to cut visual heat by 30%.
+2. **Pause** — Stop in a dead zone (a spot no patrol cone, camera, or sensor can reach) for at least 6 seconds to let visual and auditory heat decay back toward zero.
+3. **Reset** — Use the pause window to scout the next patrol path before committing to the next move, and re-evaluate whether your route is still viable given the AI's last known position.
+
+This loop is the foundation of every successful ghost run, and players who internalize it typically cut their mission times by 20–30% within a few hours of practice. If you're still learning the maps, you might also want to check our [HackHub beginner infiltration tips](/en/stealth-strategy/HackHub-beginner-tips/) to get comfortable with patrol timing before worrying about advanced resets.
+
+### High-Value Suppression Tactics
+
+- **Lure patrols with thrown coins** — a coin tossed down a hallway adds a small auditory spike to the **Auditory** channel but resets faster than running through a cone, letting you funnel guards away from your intended path.
+- **Disable cameras before crossing their arc** — a hacked camera drops its visual contribution to zero, and the hack itself is silent with no heat added if you have the right cyberware equipped.
+- **Use breaker boxes to kill power sections** — flipping a breaker adds +25 to the **Environmental** channel but shuts down every camera and electronic sensor in that wing for 18 seconds, which is a great trade if your exit route is clear.
+- **Hide bodies in lockers or vents** — undiscovered bodies never feed the **Behavioral** channel, so taking 3 extra seconds to stash a knockout can save you a +20 spike later in the run.
+- **Avoid sprinting unless the meter is at zero** — sprinting while in **Relaxed** adds modest heat, but sprinting while in **Alerted** can catapult you straight into **Hostile** in under 4 seconds.
+
+### Common Mistakes That Blow the Meter
+
+- **Re-entering a room you've already cleared** — the **Behavioral** channel remembers the body and will trigger a spike if a guard discovers the empty post during a follow-up sweep.
+- **Hacking terminals in the open** — every terminal hack takes 4–6 seconds, and standing still that long in a contested zone is a guaranteed visual spike that often crosses into **Alerted**.
+- **Dragging a body across a camera arc** — cameras do not detect bodies directly, but the guard watching the camera feed does, and the **Behavioral** report is automatic once they spot it.
+- **Forgetting to close doors behind you** — an open door is a visual flag that smart patrol AI will investigate within 15 seconds, per community testing on Patch 1.4.
+
+## Frequently Asked Questions
+
+**What is the maximum value of the HackHub suspicion system meter?**
+
+The internal scale caps at 100, and once your value hits 80 or above, the facility enters **Lockdown** status. At that point, all shortcut doors seal, three to five reinforcement guards spawn, and your mission failure timer starts unless you can drop the meter back below 50 within 90 seconds.
+
+**How long does it take for suspicion to fully decay back to zero?**
+
+Under ideal conditions (no guards in the area, player crouched and stationary, no environmental triggers), the meter decays from 100 to 0 in roughly 65 seconds. The **Behavioral** channel decays slowest at -0.5 per second, so if a body was discovered, expect the full decay to take closer to 90 seconds even in a perfect hiding spot.
+
+**Can you completely avoid the suspicion meter in HackHub?**
+
+Yes, but only on the easiest difficulty tier, where the HackHub suspicion system starts each run with a baseline offset that makes guards less reactive. On Normal and above, every detection channel is active from mission start, so some heat accumulation is unavoidable.
+
+**Do disguises affect how the suspicion meter works?**
+
+Disguises reduce the **Visual** channel's contribution by roughly 60%, but they do not affect auditory or behavioral triggers. Wearing a guard uniform in front of another guard works well, although wearing one while sprinting past a camera does nothing to mask the audio of your footsteps.
+
+**What happens if two guards spot you at the exact same time?**
+
+A simultaneous detection from two sources stacks their spike values, which is why being spotted by both a guard and a camera at once can rocket you from **Relaxed** straight to **Hostile** in a single frame. Community testing suggests the game applies a 1.5× multiplier when multiple channels trigger within the same 0.5-second window.

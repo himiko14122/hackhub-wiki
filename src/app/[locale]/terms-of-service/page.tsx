@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'x-default': `${SITE_URL}/terms-of-service`,
       },
     },
-    keywords: ['DragonSword Awakening Wiki Terms of Service', 'DragonSword Awakening terms', 'DragonSword Awakening usage terms'],
+    keywords: ['HackHub Awakening Wiki Terms of Service', 'HackHub Awakening terms', 'HackHub Awakening usage terms'],
   };
 }
 

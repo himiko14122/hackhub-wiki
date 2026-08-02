@@ -9,6 +9,7 @@ import type { ContentMetadata } from '@/lib/content';
 interface ArticleItem {
   slug: string;
   metadata: ContentMetadata;
+  path?: string;
 }
 
 interface CategoryPageProps {

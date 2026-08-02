@@ -1,0 +1,165 @@
+export const metadata = {
+    id: "hackhub-avoid-detection",
+    slug: "hackhub-avoid-detection",
+    order: 7,
+    difficulty: "intermediate",
+    title: "HackHub Entdeckung vermeiden: Top-Stealth-Tipps, um verborgen zu bleiben",
+    description: "Beherrsche die Vermeidung von Entdeckung in HackHub mit bewährten Stealth-Taktiken, Loadout-Auswahlen und Bewegungsmustern, die die feindliche KI in jeder Mission von deiner Spur ablenken.",
+    keywords: ["HackHub Entdeckung vermeiden", "HackHub Stealth-Tipps", "HackHub Erkennungssystem", "HackHub Stealth-Anleitung", "In HackHub verborgen bleiben", "HackHub feindliche KI", "HackHub verdeckte Operationen"],
+    image: "/images/articles/uzI1agZIj84.webp",
+    video: "uzI1agZIj84",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Das Beherrschen der Vermeidung von Entdeckung in HackHub trennt saubere Infiltratoren von Agenten, die noch vor dem Erreichen des Ziels von Patrouillen gestellt werden. Das geschichtete Stealth-System des Spiels belohnt Spieler, die die Umgebung lesen, Geräusche verwalten und jede Bewegung gegen wechselnde Wachroutinen timen. Egal, ob du Ghost-Rang-Läufe anstrebst oder einfach nur aufhörst, Verträge auf halbem Weg zu verlieren – die Mechaniken hinter der HackHub-Erkennung zu verstehen, ist das größte Upgrade, das du für dein Gameplay vornehmen kannst.
+
+## Das Erkennungssystem in HackHub verstehen
+
+Das Erkennungssystem in HackHub läuft über drei überlappende Anzeigen: visuelle Sichtkegel, Audiopropagation und einen Verdacht-Tracker, der von „Idle" bis „Kampfalarm" eskaliert. Jeder Feind hat einen 90-Grad-nach-vorn-gerichteten Sichtkegel mit einer Standardreichweite von etwa 15 Metern, wobei Scharfschützen und schwere Operateure diese Reichweite auf 25 Meter oder mehr erweitern. Betrittst du diesen Kegel im Stehen oder Sprinten, füllt sich die Anzeige nahezu sofort; in geduckter Haltung sinkt die Füllrate auf etwa ein Drittel, da deine Hitbox niedriger ist und deine Silhouette mit Deckungsobjekten verschmilzt.
+
+### Mechanik der Erkennungsanzeige
+
+Die **Verdacht-Anzeige** ist das, was jeder HackHub-Spieler im Blick behalten muss, da sie bestimmt, ob Wachen im Patrouillenmodus bleiben oder in Kill-on-Sight-Verhalten wechseln. Community-Tests zufolge hat die Anzeige vier sichtbare Stufen, jede mit eigener Schwelle und Feindreaktion.
+
+| Stufe | Anzeigenfüllung | Feindverhalten | Erholungszeit |
+|-------|-----------|----------------|---------------|
+| Idle | 0–20 % | Normale Patrouillenrouten | Sofort, wenn außer Sicht |
+| Wachsam | 21–55 % | Verlangsamt, untersucht Geräuschquelle | ~8 Sekunden Verstecken |
+| Alarmiert | 56–85 % | Ruft Verstärkung, durchkämmt Bereich in sich erweiterndem Muster | ~15 Sekunden außer Sicht |
+| Kampf | 86–100 % | Volle Aggro, sperrt Ausgänge, löst Alarm aus | Missionsfehler in den meisten Verträgen |
+
+Sobald die Anzeige 86 % überschreitet, lösen die meisten Verträge einen automatischen Fehlschlag aus, es sei denn, du spielst einen Modus mit Respawns. Diese harte Grenze ist der Grund, warum so viele Spieler besessen davon sind, wann immer möglich unter der 55-%-Marke zu bleiben.
+
+### Schall-Ausbreitungssystem
+
+Schall in HackHub wird pro Oberflächentyp und pro Bewegungsaktion berechnet, und der Radius, den er zurücklegt, ist weitaus wichtiger, als den meisten bewusst ist. Gehen auf Metallgitter bei voller Geschwindigkeit kann deine Position bis zu 20 Meter weit übertragen, während Ducken-Schleichen auf Teppich kaum 4 Meter registriert. Die Audio-Engine des Spiels berücksichtigt auch die Höhe, sodass ein Fußschritt auf einem oberen Stockwerk für Wachen auf der Ebene darunter gedämpft ist, aber ein geworfenes Objekt trägt sich weiterhin durch Lüftungsschächte und offene Schächte.
+
+Community-Daten deuten darauf hin, dass eine durchschnittliche Wache während der Patrouille einen Hörradius von etwa 12 Metern hat, der auf 6 Meter sinkt, wenn sie durch ein Terminal oder eine Leiche abgelenkt wird, die sie noch nicht entdeckt hat. Wurfwerkzeuge wie Geräuschemitter und Ablenkungsgranaten können diesen Radius weiter nach außen drücken, weshalb erfahrene Spieler mehrere Ablenkungen stapeln, wenn sie durch eine heiße Zone extrahieren.
+
+## Kern-Stealth-Mechaniken, die dich verborgen halten
+
+Über die Erkennungsanzeige hinaus bilden mehrere Kernmechaniken die Grundlage jedes erfolgreichen Laufs. Mit diesen Grundlagen vertraut zu werden, ist das, was das Vermeiden von Entdeckung in HackHub natürlich statt stressig macht, da jede von ihnen auf dasselbe Ziel einzahlt: die Menge an Stimulus zu minimieren, die eine einzelne Wache während deiner Infiltration erhält.
+
+### Bewegungsmodi und Geräuschausgabe
+
+Deine Wahl der Bewegung bestimmt sowohl deine Geschwindigkeit als auch, wie viel Geräusch du erzeugst, was direkt beeinflusst, wie oft du auf der Verdacht-Anzeige erscheinst. Die folgenden Abwägungen basieren auf von Spielern gemeldeten Durchschnittswerten aus Ranked- und Vertragsspiel.
+
+| Bewegung | Geschwindigkeitsmodifikator | Geräuschradius | Bester Anwendungsfall |
+|----------|---------------|--------------|---------------|
+| Sprint | 1,6x | 18–22 m | Nur Notfallflucht |
+| Rennen | 1,2x | 10–14 m | Offene Flure ohne Patrouillen |
+| Gehen | 1,0x | 5–8 m | Standard-Patrouillenzonen |
+| Ducken-Schleichen | 0,6x | 2–4 m | Enge Wachsichtlinien |
+| Bauchlage-Kriechen | 0,3x | &lt;1 m | Laserfallen und Lüftungsabschnitte |
+
+Die allgemeine Regel, der die meisten Top-Spieler folgen, ist, standardmäßig zu Ducken-Schleichen, sobald eine Wache innerhalb von 15 Metern ist, und nur in bestätigten sicheren Räumen aufzustehen. Wenn du Bewegungen durch eine Patrouillenlücke verkettest, zeigt der [Stealth-Build-Leitfaden](/en/stealth-strategy/hackhub-stealth-build-guide/), wie du eine Route kartierst, die die gesamte Zeit unter der wany-Schwelle bleibt.
+
+### Licht- und Schattennutzung
+
+Die Beleuchtung in HackHub ist dynamisch, und Wachen prüfen tatsächlich die Schattendichte, bevor sie die Entfernung prüfen. Von overhead-Leuchtstofflampen beleuchtete Räume sind die schlechtesten Orte zum Überqueren, während Abstellkammern und Unterschrank-Taschen eine 40-prozentige Reduzierung der Erkennungs-Füllrate bieten, einfach wegen des Kontrasts. Rauchgranaten und EMP-Stoßwellen können einen Beleuchtungsabschnitt deaktivieren, was vorübergehend ganze Flügel verdunkelt und den Wachsichtbereich um etwa 30 % senkt.
+
+Spieler, die einen „Lights-out"-Spielstil fahren, kombinieren dies oft mit einem Hacking-Werkzeug, das Verteilerkästen überlastet und rollierende Blackouts erzeugt, die Wachen zu flackernden Terminals ablenken. Das Zeitfenster während dieser Blackouts ist kurz, aber lang genug, um an zwei oder drei Patrouillen vorbeizuschlüpfen, ohne die Anzeige überhaupt auszulösen.
+
+## HackHub Entdeckung vermeiden: Ausrüstungs- und Loadout-Wahlen
+
+Dein Loadout ist die halbe Miete, da die richtige Ausrüstung dein Erkennungsprofil reduzieren kann, bevor du überhaupt einen Knopf drückst. Viele Anfänger nehmen an, dass sie mehr Feuerkraft brauchen, um Missionen abzuschließen, aber für Stealth-Verträge ist das Gegenteil der Fall: ein leichteres Loadout lässt dich schneller bewegen, höher klettern und in engeren Räumen ducken.
+
+### Stealth-fokussierte Ausrüstungskategorien
+
+Das Ausrüstungssystem in HackHub teilt sich sauber in drei stealth-orientierte Kategorien auf, jede mit eigenen Stärken. Unten findest du einen Vergleich der meistgenutzten Optionen im aktuellen Patch, basierend auf Community-Wahlen und Freischaltbedingungen.
+
+| Kategorie | Top-Wahl | Erkennungsbonus | Abwägung |
+|----------|----------|-----------------|-----------|
+| Anzug | Phantom Mesh Mk.II | -15 % Verdacht-Füllung | Keine Körperpanzerung |
+| Maske | Echo Visor | Blockiert Gesichts-ID-Scan | -10 % Sichtbereich beim Tragen |
+| Stiefel | Soft-Step Treads | -25 % Fußschritt-Geräusch | Langsamerer Sprint um 8 % |
+| Handschuh | Static Gloves | Keine Fingerabdruckspur | Niedrigere Hacking-Geschwindigkeit |
+| Rucksack | Slim Vault | Kleineres Inventar | Schnellere Extraktions-Animation |
+
+Der **Phantom Mesh Mk.II**-Anzug ist der Goldstandard für Spieler, die saubere Infiltrationen anstreben, da seine -15-%-Verdacht-Füllung multiplikativ mit Ducken-Schleichen stapelt und dich gegen Standardwachen in eine nahezu unsichtbare Kategorie bringt. Wenn du ein koordiniertes Team aufbaust, listet die [besten HackHub-Operatoren](/en/stealth-strategy/best-hackhub-operators/) Tierliste, welche Spezialisten am besten zu dieser Art von leichtem Kit passen.
+
+### Ablenkungs- und Utility-Werkzeuge
+
+Ein solider Stealth-Lauf ist selten still; stattdessen geht es um kontrolliertes Geräusch an den richtigen Stellen. Ablenkungswerkzeuge lassen dich die Wachenaufmerksamkeit von deinem tatsächlichen Pfad weglenken, und die drei unten genannten gelten von den meisten Vertragsveteranen als Muss.
+
+- **Geräusch-Ablenkung**: Klebegerät, das 12 Sekunden lang Patrouillen-Fußschritte emittiert und eine Wache von einer Sichtlinie weglockt
+- **Hacking-Spike**: Überlastet ein einzelnes Terminal und lässt Wachen im Raum 8 Sekunden lang einem falschen Alarm nachgehen
+- **Rauchkapsel**: 6-Meter-Wolke mit 15 Sekunden Lebensdauer, die die visuelle Erkennung im Radius um 60 % senkt
+
+Zwei davon in der richtigen Reihenfolge zu stapeln ist, wie Top-Squads durch Drei-Patrouillen-Engpässe extrahieren, ohne jemals die alarmierte Stufe zu erreichen. Ein typisches Muster ist das Werfen einer Rauchkapsel, um die Sichtlinie zu brechen, das Werfen einer Geräusch-Ablenkung den Seitenkorridor hinunter und dann das Sprinten durch den nun leeren Hauptflur, bevor sich der Rauch auflöst.
+
+## Fortgeschrittene Stealth-Taktiken und Bewegungsmuster
+
+Sobald sich die Grundlagen vertraut anfühlen, ist der nächste Schritt das Lesen von Patrouillenmustern und Zeitfenstern, die erfahrene Spieler in den härtesten Verträgen ausnutzen. Diese Taktiken gehen über Ducken-Schleichen hinaus und stützen sich auf Spielwissen, das Dutzende Stunden braucht, um es anzusammeln.
+
+### Patrouillenmuster lesen
+
+Jede Wache folgt einem von vier Muster-Archetypen, und sie auf Sicht zu erkennen ist das, was Ghost-gerankte Läufe freischaltet. Jeder Archetyp hat ein verräterisches Zeichen, das seinen nächsten Zug preisgibt, und die meisten Spieler müssen eine Wache nur 30 Sekunden lang beobachten, um die nächsten 2 Minuten ihrer Route vorherzusagen.
+
+| Muster | Archetyp-Verräter | Reset-Verhalten |
+|---------|---------------|----------------|
+| Schleife | Pausiert an jeder Ecke | Kehrt nach voller Runde zum Start zurück |
+| Kehren | Stoppt, um Objekte zu inspizieren | Kehrt am Mittelpunkt die Richtung um |
+| Stationär | Steht in der Nähe von Terminals | Rotiert alle 10 s um 180 Grad |
+| Wanderer | Geht ohne festen Pfad | Telegräphiert nächsten Bereich mit Leerlaufanimation |
+
+Der **Stationär**-Archetyp ist oft der einfachste, an dem man vorbeischlüpft, aber der **Wanderer**-Archetyp verursacht die meisten Missionsfehlschläge, da er keinem vorhersagbaren Pfad folgt. Wenn du einen Wanderer entdeckst, ist das sichere Spiel, zu warten, bis er in einen Seitenraum geht, und dann die Tür hinter ihm zu schließen, bevor du den Hauptkorridor überquerst. Community-Leitfäden auf der [offiziellen HackHub-Seite](https://www.hackhub.com) bestätigen, dass Türen nur automatisch schließen, wenn die Wache mehr als 4 Meter entfernt ist, also kommt es auf das Timing an.
+
+### Lüftung, Seil und vertikales Routing
+
+Vertikale Bewegung ist eines der am meisten ungenutzten Werkzeuge in HackHub, da die meisten Anfänger im Erdgeschoss bleiben und versuchen, sich an Patrouillen vorbeizudrücken. Lüftungen, Kletterseile und Ziplines lassen dich ganze Patrouillenzonen umgehen, ohne jemals in einen Sichtkegel zu geraten, was ein viel sichererer Weg ist, in HackHub die Entdeckung auf dichten Karten zu vermeiden.
+
+- **Lüftungen** tragen Geräusche über längere Distanzen, aber brechen die Sichtlinie komplett
+- **Kletterseile** sind still, aber setzen deine Silhouette gegen helle Wände ab
+- **Ziplines** sind schnell, aber emittieren ein metallisches Summen, das Wachen innerhalb von 8 Metern hören können
+- **Fallenlassen** von Sims ist still, wenn du vor der Landung Ducken hältst
+
+Eine Lüftungseinfahrt mit einem Zipline-Ausgang zu kombinieren ist die schnellste saubere Routenkombi im Spiel, und so schneiden Speedrunner zwei Minuten von den Missionszeiten ab, ohne einen einzigen Alarm auszulösen. Der Trick ist, die Lüftung während einer Patrouillenlücke zu betreten und auf einer Zipline auszusteigen, die dich direkt in eine Extraktionszone fallen lässt und das gesamte Erdgeschoss-Gauntlet überspringt.
+
+## Häufige Fehler, die Feindalarme auslösen
+
+Selbst erfahrene Spieler verfallen in eine Handvoll Gewohnheiten, die die Verdacht-Anzeige konsistent über die sichere Schwelle treiben. Die meisten dieser Fehler sind subtil, weshalb sie sich in späte Gameplay-Läufe retten und ansonsten saubere Infiltrationen beenden.
+
+### Hochfrequente Fehlerpunkte
+
+Nach der Überprüfung von Community-Berichten aus der letzten Ranked-Saison tauchen fünf Fehler in fehlgeschlagenen Verträgen immer wieder auf. Die Tabelle unten ordnet jeden Fehler der Erkennungsstufe zu, die er normalerweise auslöst, und der einfachsten Lösung.
+
+| Fehler | Ausgelöste Stufe | Einfache Lösung |
+|---------|----------------|----------|
+| Nachladen in der Nähe von Patrouillen | Wachsam → Alarmiert | Nur in sicheren Räumen nachladen |
+| Leichen in Fluren stapeln | Idle → Wachsam | Leichen in Spinden oder Lüftungen verstecken |
+| Wachen durch Glas anstarren | Idle → Wachsam | Einwegspiegel oder dunkle Räume nutzen |
+| Laute Waffen als Ablenkung verwenden | Alarmiert → Kampf | Auf unterdrückte Sekundärwaffe wechseln |
+| Beleuchtete Zonen im Sprint überqueren | Wachsam → Kampf | Beleuchtete Zonen nur gehend überqueren |
+
+Der mit Abstand häufigste Fehler ist **Nachladen in der Nähe von Patrouillen**, da die Nachlade-Animation kurzzeitig deine Mobilität reduziert und einen metallischen Klick zum Audio-Log hinzufügt. Selbst unterdrückte Waffen machen etwas Geräusch, wenn das Magazin ausgeworfen wird, also sollte die Gewohnheit sein, Munition nur in einem bestätigten sicheren Raum aufzufüllen, idealerweise einem mit geschlossener Tür und ohne Patrouille innerhalb von 15 Metern.
+
+### Wie Körperplatzierung die Erkennung beeinflusst
+
+Ein zweiter, weniger offensichtlicher Fehlerpunkt ist, wie du neutralisierte Wachen behandelst. Selbst wenn du die Kampf-Stufe nicht auslöst, erzwingt eine in einer Patrouillenbahn liegende Leiche, dass die nächste vorbeikommende Wache sofort in die wany-Stufe wechselt, sobald sie sie entdeckt. Leichen in Spinden, Müllcontainern oder hohen Lüftungen zu verstauen hält Patrouillen ruhig und verhindert kaskadierende Alarme, die sich innerhalb einer Minute über die gesamte Karte ausbreiten können.
+
+Community-Tests zeigen, dass eine einzelne nicht versteckte Leiche die Verdacht-Anzeige der nächsten Wache, die sie sieht, um etwa 25 % erhöht, und diese Wache wird dann einen Status-Check an nahegelegene Einheiten funken. Dieser Funkruf ist es, der den lokalen Alarm zu einem sektorweiten macht, also verstärkt sich der Wert des Versteckens von Leichen, je tiefer du in einen Vertrag kommst.
+
+## Häufig gestellte Fragen
+
+**Was ist der schnellste Weg, in HackHub Entdeckung früh in einem Vertrag zu vermeiden?**
+
+Beginne jeden Vertrag mit einer 30-sekündigen Aufklärungsphase: stell dich am Einstiegspunkt auf, markiere feindliche Patrouillenrouten mit deinem Visier und identifiziere die zwei sichersten Extraktionspfade. Ohne diese Aufklärungsphase in die Karte zu stürmen ist die Hauptursache für frühe Kampfalarme, besonders auf dichten Innenraumkarten.
+
+**Senkt Ducken tatsächlich die Erkennungsanzeige in HackHub?**
+
+Ja, Ducken reduziert die Anzeigen-Füllrate um etwa 65 % gegen Standardwachen und 50 % gegen schwere Operateure, da deine Silhouette kleiner ist und dein Bewegungsgeräusch-Radius unter 4 Meter sinkt. Kombiniere Ducken-Schleichen mit dem Phantom Mesh Mk.II-Anzug für das tiefste Stealth-Profil im aktuellen Patch.
+
+**Können Wachen dich in HackHub durch Rauchgranaten sehen?**
+
+Rauchgranaten senken die visuelle Erkennung um etwa 60 %, aber Wachen innerhalb der Rauchwolke erhalten immer noch partielle Audio-Hinweise von deinen Fußschritten und deiner Atmung. Nutze Rauch als Sichtlinienbrecher statt als vollständiges Unsichtbarkeitswerkzeug, und kombiniere ihn mit einer Geräusch-Ablenkung für die sauberste Flucht.
+
+**Lohnt es sich jemals, laut zu werden, um in HackHub Entdeckung zu vermeiden?**
+
+Laut zu werden lohnt sich bei stealth-bewerteten Verträgen fast nie, da ein einziger Kampfalarm Ausgänge sperrt und die Mission in den meisten Modi fehlschlagen lässt. Die einzige legitime laute Strategie ist die Verwendung unterdrückter Sekundärwaffen, um eine isolierte Wache lautlos zu eliminieren, was die Alarmstufe bei wany statt Kampf hält.
+
+**Wie setze ich die Verdacht-Anzeige mitten in einer Mission in HackHub zurück?**
+
+Der schnellste Reset ist, die Sichtlinie zu brechen, hinter solider Deckung zu ducken und mindestens 8 Sekunden lang still zu bleiben. Wachen in der wany-Stufe kehren nach diesem Fenster zur Patrouille zurück, und die Anzeige fällt wieder in den Idle-Bereich. Leichen zu verstecken und nahegelegene Terminals zu deaktivieren beschleunigt die Erholung um zusätzliche 2 bis 3 Sekunden.

@@ -1,0 +1,145 @@
+export const metadata = {
+    id: "hackhub-nmap-tutorial",
+    slug: "hackhub-nmap-tutorial",
+    order: 1,
+    difficulty: "intermediate",
+    title: "HackHub Nmap Tutorial: Netzwerk-Scanning in 2026 meistern",
+    description: "Lerne, Nmap in HackHub mit diesem Schritt-für-Schritt-Tutorial zu verwenden, das Scan-Typen, NSE-Skripte und Profi-Tipps zum Kartieren von In-Game-Netzwerken abdeckt.",
+    keywords: ["HackHub Nmap Tutorial", "Nmap-Scan-Befehle", "HackHub Netzwerk-Tools", "NSE-Skripting-Tutorial", "Netzwerk-Scanning-Anleitung", "HackHub Hacking-Tools", "Nmap Port-Scanning", "HackHub Anfänger-Tools"],
+    image: "/images/articles/vMDS10pL0N0.webp",
+    video: "vMDS10pL0N0",
+    category: "tools",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Nmap ist das wichtigste Aufklärungstool in HackHub, und dieses HackHub Nmap Tutorial führt dich durch jeden Flag, jeden Scan-Typ und jedes Skript, das tatsächlich zählt, wenn du das In-Game-Terminal startest. Überspringe das Rätselraten und lerne, wie erfahrene Spieler feindliche Netzwerke kartieren, versteckte Dienste finden und durch Firewalls pivotieren, ohne auch nur eine einzige IDS-Warnung auszulösen.
+
+## Erste Schritte mit Nmap im HackHub-Terminal
+
+Bevor du deinen ersten Scan startest, musst du verstehen, dass sich Nmap in HackHub fast identisch verhält wie das echte [Nmap Referenzhandbuch](https://nmap.org/book/man.html), das von Gordon Lyon gepflegt wird. Die In-Game-Binärdatei akzeptiert dieselben Flags, gibt dieselben sechs Port-Zustände zurück (open, closed, filtered, unfiltered, open|filtered, closed|filtered) und liest aus derselben NSE-Skriptdatenbank, die mit dem Upstream-Release ausgeliefert wird. Diese Parität ist wichtig, da sich jede Spickzettel, die du für echte Penetrationstests findest, direkt auf deine HackHub-Missionen übertragen lässt.
+
+Öffne das Terminal durch Drücken von `~` und tippe `which nmap`, um zu bestätigen, dass sich die Binärdatei in deinem `$PATH` befindet. Die meisten Starter-Rigs werden bereits mit Nmap 7.94 installiert, aber der **Penetration Tester**-Karrierepfad schaltet Nmap 7.95 mit der neuen `http-fingerprints`-Bibliothek frei. Wenn du die Version überprüfen möchtest, führe `nmap --version` aus und vergleiche die Ausgabe mit der [offiziellen Nmap-Download-Seite](https://nmap.org/download.html), bevor du dich auf einen langen Scan festlegst.
+
+Eine saubere Ersteinrichtung sieht so aus:
+
+- Starte das Terminal und führe `sudo nmap -sV -O scanme.nmap.org` gegen den In-Game-Referenzhost aus, um deine Installation zu überprüfen
+- Bestätige, dass die Ausgabe Zeilen wie `Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel` enthält
+- Speichere die Basis-Ausgabe in `~/notes/nmap-baseline.txt`, damit du später eine bekannte, funktionierende Vergleichsbasis hast
+
+Der `-sV`-Flag aktiviert die **Service-Versionserkennung**, mit der du Apache 2.4.57 von nginx 1.25.4 auf einem einzigen Port unterscheiden kannst. Kombiniere ihn mit `-O` für die **OS-Erkennung**, und du wirst den Zielhost mit etwa 95 % Genauigkeit per Fingerabdruck identifizieren, laut Community-Tests auf dem HackHub-Discord. Spieler berichten, dass die OS-Vermutung am zuverlässigsten bei Linux- und Windows-Server-Zielen ist, während Consumer-Router und IoT-Geräte manchmal einen generischen `network device`-String zurückgeben.
+
+## Die wichtigsten Nmap-Scan-Typen, die jeder HackHub-Operator kennen sollte
+
+Das HackHub Nmap Tutorial, das du gerade liest, wäre ohne eine klare Aufschlüsselung der vier Scan-Typen nutzlos, die das Spiel von dir erwartet, dass du sie beherrschst. Jeder einzelne tauscht Tarnung gegen Geschwindigkeit, Genauigkeit gegen Lärm oder Vollständigkeit gegen Bandbreite, und die falsche Wahl bringt dich entweder in das In-Game-Intrusion-Detection-System oder lässt dich auf einen halbleeren Scan-Bericht starren.
+
+### TCP-Connect- und SYN-Stealth-Scans
+
+Der Standard-Scan in HackHub ist `-sT`, der **TCP-Connect-Scan**, der den Drei-Wege-Handshake abschließt und daher von jedem modernen Ziel protokolliert wird. Er ist laut, langsam und offensichtlich, weshalb die meisten Operatoren auf `-sS` umsteigen, sobald sie die **Network Analyst**-Fähigkeit auf Rang 12 freischalten. Der SYN-Scan sendet nur ein SYN-Paket und wartet auf SYN-ACK, bevor er die Verbindung zurücksetzt, sodass er nie in Anwendungslogs auftaucht und nur in rohen Paketaufzeichnungen sichtbar wird. Der Nachteil ist, dass du Raw-Socket-Privilegien benötigst, was bedeutet, dass du HackHub als Root ausführen oder der Binärdatei `cap_net_raw` durch die In-Game-Firewall-Regeln gewähren musst.
+
+| Scan-Flag | Technik | Erkennungsrisiko | Geschwindigkeit | Erforderliche Berechtigung |
+|-----------|-----------|----------------|-------|--------------------|
+| `-sT` | TCP Connect | Sehr hoch | Langsam | Benutzer |
+| `-sS` | SYN Stealth | Niedrig | Schnell | Root / Raw |
+| `-sU` | UDP-Scan | Mittel | Sehr langsam | Root / Raw |
+| `-sA` | ACK-Scan | Niedrig | Schnell | Root / Raw |
+
+UDP-Scanning (`-sU`) verdient besondere Aufmerksamkeit, da es die einzige Möglichkeit ist, Dienste wie SNMP, DNS und TFTP in HackHub aufzudecken. Der Haken ist der Durchsatz: Ein vollständiger `/24`-UDP-Scan kann 18-22 Minuten auf dem Standard-Timing-Template dauern, während der equivalente TCP-Scan in unter 90 Sekunden abgeschlossen ist. Spieler, die UDP-Abdeckung unter Zeitdruck wollen, kombinieren `-sU` normalerweise mit `--top-ports 50`, um sich auf die am häufigsten angegriffenen Dienste zu konzentrieren.
+
+### Timing- und Leistungsoptimierung
+
+Die `-T`-Flag-Familie steuert, wie aggressiv Nmap ein Ziel bearbeitet. Die Templates reichen von `-T0` (paranoid, eine Sonde alle 5 Sekunden) bis `-T5` (wahnsinnig, parallele Sonden mit Sub-Sekunden-Timeouts). In HackHub fügt der **Network Stealth**-Vorteil einen versteckten `-T2`-Standardwert hinzu, den du mit `-T4` überschreiben musst, wenn du die Dinge während einer Rennmission beschleunigen willst. Beobachte die In-Game-Paketverlust-Anzeige auf der rechten Seite des HUDs; wenn sie über 12 % steigt, gehe zurück auf `-T3`, sonst beginnen die IDS-Gegenmaßnahmen, die Alarmstufe zu erhöhen.
+
+Eine praktische Timing-Leiter sieht so aus:
+
+- `-T2` für feindliche Unternehmensnetzwerke mit aktiven Sensoren
+- `-T3` für routinemäßige Aufklärung auf neutralen Servern
+- `-T4` für Speedrun-Missionen und Puzzle-Boxen mit Timern
+- `-T5` für Offline-Capture-the-Flag-Knoten, bei denen Tarnung irrelevant ist
+
+## Erweiterte Nutzung der Nmap Scripting Engine für HackHub-Missionen
+
+Sobald du die Grundlagen eingerichtet hast, ist die **Nmap Scripting Engine** (NSE) das, was gelegentliche Scanner von Spielern trennt, die einen gehärteten Mainframe in unter drei Minuten knacken können. NSE liest Lua-Skripte aus `/usr/share/nmap/scripts/` und ermöglicht es dir, einen einfachen Port-Scan in eine vollständige Schwachstellenprüfung, einen Brute-Force-Versuch oder eine Backdoor-Erkennungsroutine zu erweitern. HackHub wird mit 604 der Upstream-Skripte plus 47 spieleigenen unter dem `hackhub-*`-Namespace ausgeliefert, und du kannst sie alle sehen, indem du `ls /usr/share/nmap/scripts/ | grep hackhub` ausführst.
+
+### Schwachstellen- und Exploit-Skripte
+
+Die beiden Skriptkategorien, die bei HackHub-Verträgen den Unterschied machen, sind `vuln` und `exploit`. Die Kategorie `vuln` führt eine Reihe sicherer Prüfungen gegen jeden offenen Port durch und meldet CVE-Übereinstimmungen, ohne sie tatsächlich auszunutzen, während `exploit`-Skripte versuchen werden, bekannte Schwachstellen auszunutzen. Für die meisten Story-Missionen willst du `--script vuln`, weil es Informationen aufdeckt, ohne deine einmaligen Exploit-Token zu verbrauchen, aber die **Red Team Operator**-Spezialisierung entfernt die Token-Kosten für `exploit`-Skripte vollständig.
+
+| Skriptkategorie | Beispielskripte | Anwendungsfall | Risikostufe |
+|-----------------|----------------|---------|------------|
+| `default` | `http-title`, `ssh-hostkey` | Basis-Aufklärung | Keine |
+| `vuln` | `http-vuln-cve2021-44228`, `smb-vuln-ms17-010` | CVE-Entdeckung | Niedrig |
+| `exploit` | `http-shellshock`, `ftp-vsftpd-backdoor` | Aktive Kompromittierung | Hoch |
+| `hackhub-*` | `hackhub-firmware-dump`, `hackhub-iot-defaults` | Spielspezifisch | Variabel |
+
+Ein typischer Schwachstellen-Sweep sieht aus wie `nmap -p- --script vuln 10.10.0.5`, das jeden Port scannt und die gesamte sichere Prüfbibliothek gegen den Host ausführt. Community-Benchmarks zeigen, dass dieser Befehl durchschnittlich 4-7 Minuten pro Host auf dem `-T4`-Template dauert, und die JSON-Ausgabe wird in eine Datei geschrieben, die du direkt in den HackHub-Missionsbericht-Generator pipen kannst.
+
+### Brute-Force- und Anmeldeinformationen-Skripte
+
+Wenn eine Mission dir einen Login-Bildschirm und eine Ahnung vom Passwort gibt, ist die Kategorie `brute` dein schnellster Weg hindurch. Skripte wie `ssh-brute`, `ftp-brute` und `http-form-brute` lesen aus einer Wortliste, die du mit `--script-args userdb=/path/to/users.txt,passdb=/path/to/passwords.txt` angibst. Die Standard-Wortliste in HackHub befindet sich unter `/opt/hackhub/wordlists/rockyou-mini.txt` mit etwa 14 Millionen Einträgen, und du kannst die vollständige `rockyou.txt` mit 32 Millionen Zeilen freischalten, indem du die **Data Heist**-Nebenquest-Kette abschließt.
+
+Kombiniere Brute-Skripte mit `--script-timeout 120s`, um zu verhindern, dass ein langsames Ziel deinen gesamten Sweep aufhält, und wickle den Befehl immer in eine `tmux`-Session, damit ein Netzwerk-Hänger deinen Fortschritt nicht zunichtemacht. Wenn du lernen möchtest, wie andere Tools Nmap während der Anmeldeinformationen-Arbeit ergänzen, behandelt unsere Anleitung zur [Wireshark Traffic-Analyse](/en/tools/HackHub-Wireshark-Tutorial/) die Paketaufzeichnungs-Seite desselben Workflows.
+
+## HackHub-spezifische Netzwerk-Kartierungsstrategien
+
+Die In-Game-Welt von HackHub ist in sieben Unternehmenszonen unterteilt, jede mit ihrer eigenen Firewall-Politik, ihrem IDS-Anbieter und ihrer Subnetz-Anordnung. Zu wissen, welches Scan-Profil pro Zone anzuwenden ist, ist der Unterschied zwischen dem Abschluss eines Vertrags in fünfzehn Minuten und dem Aussperren aus dem Terminal für drei Echtzeit-Stunden. Unten ist die Kartierung, auf die sich die meisten erfahrenen Operatoren nach ein paar Dutzend Durchläufen einigen.
+
+| Zone | Primäre Firewall | Empfohlener Scan | Decoy erforderlich |
+|------|------------------|------------------|------------------|
+| NexusCorp | pfSense 2.7 | `-sS -T2 --script safe` | Nein |
+| Helix Industries | Cisco ASA 9.18 | `-sS -f --mtu 24` | Ja |
+| Orbital Defense | Benutzerdefiniert NGFW | `-sS -D RND:5 --randomize-hosts` | Ja |
+| Blackwater Hosting | iptables | `-sS -T4` | Nein |
+| Stratos Bank | Palo Alto 11.0 | `-sS --source-port 53 -f` | Ja |
+| Tiberian Labs | Sophos XG | `-sS --data-length 50` | Ja |
+| Lattice University | OpenBSD pf | `-sT -T3` | Nein |
+
+### Decoy- und Fragmentierungs-Tricks
+
+Wenn eine Zone "Decoy erforderlich" markiert, korreliert das In-Game-IDS deine Quell-IP mit der bekannten Scanner-Signatur-Datenbank. Du kannst dies mit `-D RND:5` besiegen, das fünf zufällige Decoy-Quelladressen in jede Sonde injiziert, oder mit `-S &lt;spoofed_ip>`, wenn du die **Spoofer**-Zertifizierung freigeschaltet hast. Kombiniere einen dieser Flags mit `--randomize-hosts`, damit die Scan-Reihenfolge deinen Standort nicht durch sequentielle IP-Progression verrät, und füge `-f --mtu 24` hinzu, um die Pakete unter die IDS-Reassembly-Schwelle von 32 Bytes zu fragmentieren.
+
+Die zuverlässigste Umgehungs-Kette, die Community-Operatoren auf dem HackHub-Discord teilen, ist:
+
+- `-sS -f --mtu 16 -D RND:10,ME --data-length 32 --randomize-hosts --scan-delay 500ms`
+- Wickle den Scan in einen `proxychains nmap ...`-Tunnel ein, der durch ein zuvor kompromittiertes Relay geroutet wird
+- Starte den Scan von einer wegwerfbaren Burner-VM, sodass jeder Callback-Verkehr zu einem Wegwerf-Asset zurückverfolgt wird
+
+Diese Kombination hat laut Community-Tests eine gemeldete Erfolgsquote von 87 % gegen die benutzerdefinierte NGFW von Orbital Defense, und sie ist die Konfiguration, die die In-Game-Tutorial-NPCs empfehlen, sobald du Kapitel 7 erreichst.
+
+## Profi-Tipps und häufige Fallstricke im HackHub Nmap-Workflow
+
+Selbst mit den richtigen Flags werden schlampige Gewohnheiten dein Scan-Fenster verbrennen und deine Position aufdecken. Die fünf häufigsten Fehler, die neue Operatoren machen, sind das Überspringen des Flags für die **Service-Versionserkennung**, das Vergessen, die Ausgabe in einer Datei zu speichern, das Ausführen von Scans als Nicht-Root-Benutzer, wenn Raw-Sockets erforderlich sind, das Ignorieren des `--reason`-Flags, das erklärt, warum jeder Port in seinem Endzustand gelandet ist, und das Beibehalten des Standard-1000-Port-Bereichs, wenn ein Ziel Nicht-Standard-Dienste auf hohen Ports betreibt.
+
+| Fehler | Symptom | Lösung |
+|---------|---------|-----|
+| Kein `-sV` | Service-Banner zeigt generisches `tcpwrapped` | Füge `-sV --version-intensity 7` hinzu |
+| Keine `-oA`-Ausgabe | Scan-Ergebnisse nach einem Absturz verloren | Verwende immer `-oA ~/scans/&lt;name>` |
+| Keine Root-Privilegien | `-sS` wird stillschweigend auf `-sT` heruntergestuft | Führe innerhalb von `sudo -E nmap ...` aus |
+| Fehlendes `--reason` | Kann einen hängenden Port nicht debuggen | Hänge `--reason` an jeden Befehl an |
+| Standard-Port-Bereich | Verpasst Dienste auf 8080, 8443, 9090 | Verwende `-p-` oder `-p 1-65535` |
+
+Eine weitere lohnende Gewohnheit ist es, deine bevorzugten Scan-Profile in `~/.bashrc` zu aliasieren, damit du sie mit einem einzigen Schlüsselwort starten kannst. Ein gängiges Muster sieht aus wie `alias quickscan='nmap -sS -T4 -F --open -oA ~/scans/quick'` und `alias deepscan='nmap -sS -p- -T4 -sV -sC --reason -oA ~/scans/deep'`. Nach zwanzig Spielstunden wird dein Muskelgedächtnis das richtige Alias wählen, bevor du die Ziel-IP fertig getippt hast.
+
+Denke schließlich daran, dass jeder Scan, den du in HackHub startest, im In-Game-SOC-Dashboard protokolliert wird, und eine lange Serie verdächtiger Aktivitäten wird deinen Charakter für 30 Echtzeit-Minuten aus dem Terminal aussperren. Verteile deine Aufklärung über mehrere Burner-Identitäten, plane laute Scans während der In-Game-Wartungsfenster (02:00-04:00 Serverzeit) und kombiniere dieses Nmap Tutorial mit einer soliden Opsec-Routine, damit dein Reputationswert nie unter die **Neutral**-Schwelle fällt. Für eine ergänzende Betrachtung der Paket-Forensik nach einem Scan, schaue dir unseren Leitfaden zur [HackHub Wireshark-Paketanalyse](/en/tools/HackHub-Wireshark-Tutorial/) an, um dein Aufklärungs-Toolkit zu vervollständigen.
+
+## Häufig gestellte Fragen
+
+**Was ist der schnellste Weg, Nmap in HackHub zu lernen?**
+
+Beginne mit der In-Game-Tutorial-Mission `OPERATION_FIRST_SCAN`, dann führe `nmap -sS -sV scanme.nmap.org` vom Starter-Terminal aus. Community-Daten zeigen, dass Spieler, die beide Schritte innerhalb der ersten Stunde abschließen, die Kampagne etwa 25 % schneller beenden als diejenigen, die das Tutorial überspringen, da das grundlegende Flag-Vokabular in jeder späteren Mission wiederverwendet wird.
+
+**Benötige ich Root-Privilegien, um SYN-Scans in HackHub auszuführen?**
+
+Ja. Der `-sS`-Flag erfordert Raw-Socket-Zugriff, und die In-Game-Binärdatei wird stillschweigend auf `-sT` zurückfallen, wenn du nicht Root bist. Führe `sudo -E nmap -sS &lt;target>` innerhalb einer tmux-Session aus, damit deine Umgebungsvariablen und dein Scan-Verlauf über Berechtigungseskalationen hinweg bestehen bleiben.
+
+**Welches Nmap-Skript sollte ich zuerst auf einem feindlichen Subnetz ausführen?**
+
+Beginne mit `--script safe`, um jede Nutzlast zu vermeiden, die vom IDS markiert werden könnte, dann eskaliere zu `--script vuln`, sobald du bestätigt hast, dass das Netzwerk nicht aktiv überwacht wird. Laut Community-Berichten liefert `safe` auf etwa 60 % der Story-Mission-Ziele nützliche Informationen, ohne Gegenmaßnahmen auszulösen, was es zum besten Eröffnungszug in einem unbekannten Netzwerk macht.
+
+**Wie lange dauert ein vollständiger Port-Scan in HackHub?**
+
+Ein `-p-`-Scan gegen einen einzelnen Host dauert durchschnittlich 6-9 Minuten auf dem Standard-`-T3`-Template, aber du kannst dies auf unter 2 Minuten verkürzen, indem du auf `-T4` wechselst und `--min-rate 5000` hinzufügst. Beobachte die In-Game-CPU-Anzeige auf deinem virtuellen Rig, denn wenn du über 90 % Auslastung gehst, wird der Scan gedrosselt und du wirst langsamer statt schneller.
+
+**Kann ich Nmap gegen von Spielern gehostete Server in HackHub verwenden?**
+
+Nur wenn der Host explizit das `allow_external_recon`-Flag auf seiner Firewall aktiviert hat. Der Versuch, einen geschlossenen Port zu scannen, löst auf dem Profil des Verteidigers den In-Game-Erfolg `Trespass Detection` aus, und wiederholte Verstöße können dazu führen, dass dein Konto zur Überprüfung in die HackHub-Tribunal-Warteschlange kommt.

@@ -1,0 +1,135 @@
+export const metadata = {
+    id: "hackhub-game-engine",
+    slug: "hackhub-game-engine",
+    order: 8,
+    difficulty: "intermediate",
+    title: "HackHub Game Engine: Architecture, Scripting & Mods",
+    description: "Explore the HackHub game engine architecture, scripting API, and modding tools. A hands-on developer guide covering runtime, plugins, and performance.",
+    keywords: ["HackHub game engine", "HackHub engine architecture", "HackHub scripting API", "HackHub modding tools", "HackHub developer guide", "HackHub engine performance", "HackHub plugin system", "HackHub runtime"],
+    image: "/images/articles/vhtTKB2_scM.webp",
+    video: "vhtTKB2_scM",
+    category: "developer",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Curious how HackHub keeps its fast-paced terminal sim feeling responsive even when dozens of NPCs are pinging the network graph at once? The HackHub game engine is the unsung backbone, a modular runtime built specifically to let developers script missions, wire up AI behavior, and ship mods without wrestling a monolithic codebase.
+
+## Inside the HackHub Game Engine Architecture
+
+Most players never touch the engine directly, but every command prompt, packet trace, and chain reaction funnels through a layered stack designed for low overhead. According to community data shared on developer forums, the HackHub game engine splits work across three primary tiers: a **Simulation Kernel** for ticking entity updates, a **Scripting Layer** that hosts Lua-style hooks, and a **Presentation Layer** that streams UI, audio, and overlay graphics to the player.
+
+This separation matters because hacking sims tend to spike unpredictably. One second the world is idle, the next a player triggers a cascading firewall event that touches hundreds of nodes. The HackHub game engine handles these spikes by isolating systems, so a heavy script never stalls the rendering thread. The architecture mirrors patterns popularized by modern ECS designs, but the team tuned it for network-graph simulation rather than open-world streaming.
+
+### Core Runtime Layers
+
+The runtime is broken into discrete modules that communicate through an event bus. Each module owns its own update budget, and the engine arbitrates priorities when frames get tight.
+
+| Layer | Primary Role | Update Cadence | Typical Cost |
+|-------|--------------|----------------|--------------|
+| Simulation Kernel | Entity ticks, state changes | Fixed 60 Hz | 2–4 ms |
+| Scripting Layer | Lua hooks, mission logic | Variable | 1–3 ms |
+| Presentation Layer | UI, audio, overlays | Render-locked | 3–5 ms |
+| Network Sync | Multiplayer replication | 20 Hz | 1–2 ms |
+
+The **Simulation Kernel** is the heart of the HackHub game engine. It runs at a fixed 60 Hz tick so scripted timers stay deterministic, which is critical for replay systems and synchronized multiplayer puzzles. If you have ever wondered why two players see the same firewall pattern at the same time, that is the kernel doing its job in the background.
+
+### Entity Component System Approach
+
+Rather than relying on deep inheritance trees, the HackHub game engine uses a flat entity model. Every NPC, terminal, firewall, and packet is an entity with attachable components: a HealthComponent, a NetworkNodeComponent, an AIBehaviorComponent. Scripts read and write components directly, which keeps behavior graphs readable and prevents the dreaded "superclass changed everything" bug that plagues older engines.
+
+This approach also helps modders. You can drop in a custom EnemyComponent without touching the engine's source, and the simulation will pick it up on the next tick. Players who want to experiment with new enemy archetypes can prototype them in minutes, not days, which lowers the barrier between idea and playable content.
+
+## HackHub Scripting API and Language Support
+
+Scripting is where most of the HackHub game engine's flexibility shines. The engine exposes a sandboxed Lua runtime by default, which means mission designers can write behaviors without compiling C++. The API surface is intentionally compact: around 120 core functions cover entity access, UI hooks, networking, and audio triggers, which is small enough to learn in a weekend.
+
+The community has embraced this design. Reported by players on modding Discord servers, over 60 percent of top-rated custom missions use the Lua scripting layer exclusively, with no native plugin required. That adoption rate is remarkable for a sim whose brand is rooted in terminals and command lines rather than code editors.
+
+### Lua Integration Deep Dive
+
+The Lua sandbox sits between the engine and the mod folder. When a mission loads, the engine reads the entry script and exposes a global `hub` table containing registered APIs. Calling `hub.entity.find("terminal_01")` returns a handle, and from there you can chain methods like `:set_state("locked")` or `:play_sound("beep_short")` to drive behavior.
+
+This chaining syntax is a deliberate choice. It keeps mod code close to natural language ("find this terminal, lock it, play a sound"), which lowers the barrier for designers who came to HackHub for the hacking fantasy, not for software engineering credentials. If you are coming from another modding ecosystem, the curve feels familiar; if not, the [HackHub beginner guide](/en/beginner/HackHub-beginner-guide/) walks through the first mission hook in plain terms.
+
+### Custom DSL Commands
+
+Beyond Lua, the HackHub game engine ships a lightweight domain-specific language for in-game terminals. Commands like `scan`, `breach`, and `route` are not hardcoded; they resolve through a command registry that mods can extend. Adding a new command is as simple as registering a function and a parser hint, which keeps the door open for genre-bending mission types.
+
+| Command Category | Default Commands | Extensibility | Use Case |
+|-----------------|------------------|---------------|----------|
+| Network Ops | scan, ping, trace | High | Recon missions |
+| Breach Ops | breach, exploit, escalate | High | Combat terminals |
+| Defensive Ops | firewall, isolate, patch | Medium | Survival scenarios |
+| Utility Ops | help, save, load | Low | Quality-of-life |
+
+The **Defensive Ops** category is especially interesting. Community-reported testing suggests that custom defensive commands tend to perform best in co-op missions, where one player handles offense while another maintains the firewall perimeter. This kind of role split is hard to script in a generic engine, but the HackHub game engine makes it almost trivial because the command registry already understands defensive verbs natively.
+
+## Modding Tools and Plugin System
+
+The plugin system is the public face of the HackHub game engine for most creators. Plugins are signed bundles that live in the `mods/` directory and are loaded at startup. The engine validates each bundle against a manifest, checks for dependency conflicts, and only then injects the plugin into the runtime, which means a stable baseline is preserved before user content runs.
+
+This strict loading order has a practical benefit: a broken plugin will not crash the entire game. Instead, the engine logs the failure and continues with the remaining plugins. If you have ever installed a mod that silently failed, you will appreciate how much smoother onboarding becomes when bad mods simply get skipped instead of nuking the launch sequence.
+
+### Plugin Lifecycle Stages
+
+Every plugin passes through four stages. Understanding these stages helps when you are debugging why your custom script never seems to fire, because each stage has its own failure mode.
+
+| Stage | Trigger | Common Pitfall |
+|-------|---------|----------------|
+| Discovery | Engine startup scan | Missing manifest.json |
+| Validation | Signature + dependency check | Unsigned plugin on strict servers |
+| Load | Sandbox injection | Lua syntax error blocks load |
+| Activate | Mission start signal | Late-binding to non-existent entity |
+
+The **Discovery** stage is where most first-time modders lose hours. If your folder structure is off by one level, the engine silently skips the bundle, leaving you staring at a mod list with no obvious explanation. Community threads on the official modding Discord post a recommended template, and following it verbatim saves a lot of trial-and-error.
+
+### Plugin Types and Examples
+
+Plugins in the HackHub game engine ecosystem fall into a few recognizable buckets. Each bucket has its own conventions, and experienced modders tend to specialize in one before branching out.
+
+- **Mission Plugins** — Full custom scenarios with bespoke objectives, NPCs, and reward tables. These are the most ambitious projects and often span multiple Lua files plus custom assets.
+- **UI Overlays** — Cosmetic or functional overlays that add new terminal panels, minimap widgets, or notification streams. Lightweight and a great starting point for new modders.
+- **AI Behavior Packs** — New decision trees for NPCs and firewall sentries. These plug directly into the AIBehaviorComponent and can dramatically change mission pacing.
+- **Audio Mods** — Custom sound banks and music layers. Because the engine streams audio asynchronously, audio mods rarely impact frame rate even on modest hardware.
+
+If you want a deeper dive into mission design patterns, the [HackHub best missions guide](/en/beginner/HackHub-best-missions/) covers reward balancing and pacing curves. Audio modders, meanwhile, often collaborate with mission authors to ship synchronized bundles, which the engine treats as a single plugin during load.
+
+## Engine Performance and Optimization Techniques
+
+Performance is where the HackHub game engine earns its reputation. On a mid-range desktop, the engine holds a steady 60 fps even during a 200-node network cascade. On lower-end hardware, it gracefully degrades by skipping non-critical animations and reducing overlay opacity so the experience remains playable.
+
+Community-reported benchmarks suggest the engine spends roughly 40 percent of its frame budget on the **Simulation Kernel**, 25 percent on the **Scripting Layer**, 20 percent on the **Presentation Layer**, and the remainder on overhead and networking. Knowing where the budget goes is the first step toward writing mods that play nice with the rest of the world rather than starving the frame.
+
+### Frame Budget Breakdown
+
+| Subsystem | Budget Share | Optimization Lever |
+|-----------|--------------|--------------------|
+| Simulation Kernel | 40% | Entity pooling, tick throttling |
+| Scripting Layer | 25% | Cache entity handles, avoid hot loops |
+| Presentation Layer | 20% | Sprite atlasing, reduce overlay count |
+| Networking | 10% | Batch packet sends, compress payloads |
+| Engine Overhead | 5% | Profile with built-in tracer |
+
+The trickiest subsystem to optimize is usually the **Scripting Layer**, because Lua is interpreted and a tight loop can stall the frame if it runs every tick. Experienced modders cache entity handles in local variables rather than re-querying them each pass, which cuts lookups from O(n) to O(1) for repeated references and frees up headroom for new features.
+
+### Optimization Playbook
+
+A few habits separate performant mods from laggy ones, and adopting them early saves rewrites later.
+
+- **Pool frequently spawned entities** instead of creating and destroying them. The engine reuses pooled instances automatically, but your script has to request the pool from the registry.
+- **Throttle AI updates** for distant NPCs. Setting a 4 Hz tick on far-away sentries cuts scripting cost without changing visible behavior, because players cannot perceive the difference.
+- **Batch UI redraws** by grouping overlay updates into a single frame request rather than redrawing per element, which keeps the Presentation Layer under budget.
+- **Profile before shipping** using the built-in `hub.profile.start()` and `hub.profile.stop()` functions. The output tells you exactly which subsystem ate your frame, which is invaluable when debugging spikes.
+
+The built-in tracer is a hidden gem. You can dump a per-frame report to the developer console, and it will flag any subsystem that exceeded its budget. For detailed tuning advice on specific mission types, the [HackHub advanced tips guide](/en/beginner/HackHub-advanced-tips/) includes worked examples from top-rated community missions and shows how the tracer output maps to specific fixes.
+
+## Building Your First HackHub Mod
+
+Ready to ship something? The shortest path from idea to working mod is well-trodden, and starting small while validating each step is the pattern that consistently produces playable releases. Resisting the urge to bundle too many features into a first release pays off in higher ratings and fewer crash reports.
+
+The HackHub game engine scaffolds a starter plugin when you run the `hub-cli init` command in the SDK. The scaffold includes a `manifest.json`, an entry script, a sample command, and a README that doubles as a checklist. Following that README gets you to a "hello world" plugin in under ten minutes, which is faster than installing most game launchers.
+
+Once the scaffold runs, the natural progression is to add one feature at a time. A custom command, a new NPC behavior, a UI overlay; each adds a few lines of code and one more entry in your changelog. Community testing on beta branches suggests that plugins with a single, clear feature tend to earn higher ratings than sprawling multi-feature bundles, partly because users can describe them in a single sentence and decide whether to install quickly.
+
+Before publishing, run the engine's built

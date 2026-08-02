@@ -1,0 +1,154 @@
+export const metadata = {
+    id: "hackhub-service-enumeration",
+    slug: "hackhub-service-enumeration",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Service Enumeration Guide and Scan Tips",
+    description: "Learn HackHub service enumeration techniques, scan tools, and tactics to map networks and uncover hidden ports on every mission.",
+    keywords: ["HackHub service enumeration", "HackHub scan tools", "HackHub port scanning", "HackHub network mapping", "HackHub enumeration guide", "HackHub beginner tips", "HackHub hacking guide", "HackHub command list", "HackHub stealth scan", "HackHub firewall bypass"],
+    image: "/images/articles/8yEVvmCxr2E.webp",
+    video: "8yEVvmCxr2E",
+    category: "network-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Every successful HackHub run starts the same way: you stare at a black console, pick a target, and ask the network what it's running. That single act of asking — cleanly, methodically, and without tripping the IDS — is what HackHub service enumeration is all about. Get it right and the rest of the intrusion feels like reading a recipe; get it wrong and you trigger a trace before the first packet lands.
+
+This guide breaks down the **HackHub service enumeration** loop from tool selection to result interpretation, with concrete scan strategies for early, mid, and late-game networks. Whether you're chasing the **Phantom Contract** ending or just trying to clear Tier 2 without getting logged, the patterns below will sharpen every recon phase you run.
+
+## Understanding Service Enumeration in HackHub
+
+Service enumeration is the in-game discipline of probing a target host's open ports and pulling banners from the services sitting behind them. HackHub models this with a small but surprisingly deep set of mechanics: each host runs a versioned service stack, each service reacts differently to probe payloads, and each scan type leaves a distinct footprint on the target's intrusion detection system.
+
+### What Enumeration Actually Reveals
+
+A successful scan pulls four categories of intel from a target, and each one feeds a different part of your plan. The table below shows what HackHub surfaces during enumeration and how it shapes your next move.
+
+| Intel Type | What HackHub Reports | How You Use It |
+|---|---|---|
+| **Open Ports** | Port number + protocol (TCP/UDP) | Decide which exploit modules are eligible |
+| **Service Banner** | Service name, version, build hash | Match against your known-vulnerability library |
+| **OS Fingerprint** | Confidence-weighted guess (Win/Linux/IOT) | Tune payload encoding for the target stack |
+| **Access Tier** | Public, Restricted, Classified | Determines if you need creds before exploiting |
+
+The banner is the most valuable piece because HackHub's vulnerability database cross-references version strings against known CVEs the moment a scan completes. A banner reading `Apache/2.4.49` instantly unlocks the **Path Traversal Module**, while `OpenSSH 7.2` opens a different exploit path entirely. If you want a broader primer on how recon fits into a full run, the [HackHub beginner progression walkthrough](/en/network-hacking/HackHub-Beginner-Guide/) covers the wider context.
+
+### Why Enumeration Is the Make-or-Break Step
+
+Players who skip straight to exploit launching usually hit one of two walls: the wrong module fails silently, or the loud module trips the trace meter before the exploit completes. Enumeration gives you the patience tax back. Once you know what's listening, you can pick a **stealth-compatible exploit** that matches both the service version and the target's detection threshold, which is why experienced runners treat the scan phase as non-negotiable setup rather than optional homework.
+
+## Core Scan Mechanics and Tool Selection
+
+HackHub ships six scanner modules in the default loadout, plus a handful of unlockables gated behind the **Network Architect** skill tree. Each scanner has its own speed, noise, and accuracy profile, and choosing between them is the first real decision you'll make on every mission.
+
+### The Six Default Scanners Compared
+
+| Scanner | Speed | Noise | Banner Accuracy | Best Use Case |
+|---|---|---|---|---|
+| **Ping Sweep** | Instant | None | N/A | Host discovery only |
+| **Quick TCP** | Fast | Low | 60% | Initial recon on noisy networks |
+| **Full TCP** | Medium | Medium | 85% | Standard deep scan |
+| **SYN Stealth** | Slow | Very Low | 80% | Avoiding IDS on hardened hosts |
+| **UDP Probe** | Slow | Medium | 50% | Catching DNS/SNMP services |
+| **Aggressive** | Fast | High | 95% | Final pre-exploit confirmation |
+
+The numbers above reflect community-reported averages and may vary by mission difficulty. As one veteran runner put it in a Discord thread, "I keep **SYN Stealth** bound to my left hotbar and **Full TCP** bound to my right — everything else is situational."
+
+### How Scan Noise Actually Works
+
+Every probe packet increments the target's **Detection Meter**, which fills faster on hardened hosts and corporate-tier networks. When the meter maxes out, the host locks you out and spawns a counter-hack event that drains your crypto wallet. Noise is calculated from probe count, probe type, and whether the target has an IDS module installed, so a SYN Stealth scan on a hardened Classified host still adds up if you let it run for ten minutes straight.
+
+If you're learning the basics of how scan noise feeds into your overall trace meter, the [HackHub stealth mechanics overview](/en/network-hacking/HackHub-Stealth-Guide/) goes deeper into detection thresholds and counter-hack triggers.
+
+## Reading and Interpreting Scan Results
+
+The post-scan terminal dump is dense, and new players often skim it for the obvious "open port" line and miss the metadata that actually decides the exploit path. A clean result block contains seven fields, and the last three are where the real intel hides.
+
+### Anatomy of a HackHub Scan Result
+
+Here's a representative result block, annotated with what each field means:
+
+
+[+] Target: 10.42.18.7  (host-arcade.corp)
+[+] Scan:    Full TCP, 1-65535
+[+] Duration: 47s   Noise: MED   Trace: +12%
+[+] Open Ports:
+    22/tcp   ssh        OpenSSH 7.2        (Linux, 91% conf)
+    80/tcp   http       nginx 1.18.0       (Linux, 88% conf)
+   443/tcp   https      nginx 1.18.0       (Linux, 88% conf)
+  3306/tcp   mysql      MySQL 5.7.33       (Linux, 84% conf)
+[+] Notes:   Banner mismatch on 443 — possible WAF proxy
+
+The **Banner mismatch** note at the bottom is the kind of detail that turns a 50% success rate into an 80% one. A mismatch usually means a reverse proxy or WAF sits in front of the real service, which means you need to chain through the proxy before your exploit can reach the backend. Ignoring it gets you logged, which is exactly the failure mode that frustrates newer players.
+
+### Prioritizing Ports by Exploit Value
+
+Not all open ports are equal. Some map to high-value exploits with low detection cost, others are decoys that waste your trace budget. Community testing across hundreds of contracts suggests the following priority order for most contracts:
+
+| Priority | Port / Service | Why It Matters |
+|---|---|---|
+| 1 | **SSH (22)** | Brute-force friendly, slow trace accumulation |
+| 2 | **HTTP (80/443)** | Unlocks web exploitation modules |
+| 3 | **SMB (445)** | Highest loot yield when vulnerable |
+| 4 | **RDP (3389)** | Direct shell access on Windows hosts |
+| 5 | **MySQL (3306)** | Credential dumps unlock adjacent hosts |
+| 6 | **FTP (21)** | Anonymous login often enabled in Tier 1 |
+
+Notice that **SSH** ranks first despite being "old" — because brute-forcing SSH in HackHub generates far less trace noise than probing web services, which makes it the cleanest path to shell on hardened networks.
+
+## Service Enumeration Strategy by Network Tier
+
+HackHub scales its network complexity across three difficulty tiers, and the right enumeration approach shifts dramatically between them. Running a Tier 1 strategy on a Tier 3 network will get you detected in under a minute, while a Tier 3 strategy on Tier 1 wastes your mission clock.
+
+### Tier 1 Networks — Speed Over Stealth
+
+Early contracts put you against lightly defended hosts with default configurations and minimal IDS coverage. The fastest path through these is a **Quick TCP** sweep followed by an **Aggressive** confirmation scan on any open port, because the detection meter fills slowly and most services are running vanilla banners with known vulnerabilities. Players report clearing Tier 1 contracts in roughly 4-6 minutes when they skip SYN Stealth entirely, which is the right trade when your mission timer is the binding constraint.
+
+### Tier 2 Networks — Balanced Scans
+
+Mid-tier contracts install IDS modules that punish aggressive scanning, but the services themselves still have known CVEs if you bother to check. The optimal pattern here is a **Ping Sweep** for host discovery, a **SYN Stealth** sweep for port mapping, and a targeted **Full TCP** against only the 3-5 ports you actually intend to exploit. This three-phase approach keeps your trace meter under 40% while still pulling full banners, which is the threshold where most Tier 2 contracts stay solvable.
+
+### Tier 3 Networks — Patience Is the Whole Game
+
+Late-game networks run hardened kernels, layered proxies, and aggressive IDS modules that flag any single SYN packet above baseline. Community data shows that successful Tier 3 runs use **SYN Stealth exclusively**, intersperse scans with 30-60 second cooldown windows, and split enumeration across multiple short sessions rather than one long probe. The wait feels tedious, but pushing the scan timer down by adding cooldowns is what separates a clean breach from a counter-hack. If you're working your way through a Tier 3 contract right now, the [HackHub command list and cheat sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) is worth keeping open in a second tab for quick reference.
+
+## Common Pitfalls and Optimization Tips
+
+Even experienced runners fall into a few repeatable traps during enumeration. Recognizing them early keeps your trace budget intact and your mission timer comfortable.
+
+### Three Pitfalls Worth Calling Out
+
+- **Running Aggressive scans on hardened hosts** — the detection penalty compounds across probes, and a single 95%-accurate Aggressive scan can push a hardened host past its lockout threshold before your exploit even fires.
+- **Trusting the OS fingerprint blindly** — banners can lie, especially behind reverse proxies. A Linux fingerprint on port 443 with a Windows fingerprint on port 80 usually means there's a dual-stack proxy in front, and your exploit needs to chain through it.
+- **Forgetting UDP services** — most players default to TCP-only scans and miss DNS, SNMP, and NetBIOS services that often expose the weakest credentials on the network.
+
+### Four Habits That Compound
+
+The runners with the highest mission-clearing rate tend to share four small habits. They always run a **Ping Sweep first** to confirm the host is actually alive before committing to a longer scan. They bind **SYN Stealth and Full TCP** to separate hotkeys so they can switch mid-mission without losing flow. They re-scan after every privilege escalation because new access tiers reveal different ports. And they keep a personal log of which scanner combinations trigger counter-hacks on which network types, which is the kind of pattern data the in-game telemetry never surfaces directly.
+
+If a pattern like that log sounds like something you want to build out, the [HackHub command list and cheat sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) is the right companion piece to keep alongside this enumeration guide while you practice.
+
+Mastering HackHub service enumeration is less about memorizing ports and more about building a repeatable rhythm: discover, probe, interpret, exploit, log. Once that rhythm clicks, even Tier 3 contracts start to feel like a checklist rather than a grind.
+
+## Frequently Asked Questions
+
+**What is the fastest scanner to use in HackHub?**
+
+Quick TCP is the fastest built-in scanner and clears most hosts in under 20 seconds, but it only pulls partial banners and leaves a moderate noise footprint. For hardened or Tier 3 networks, SYN Stealth is faster in practice because it doesn't trigger the detection counter that would otherwise force you to restart the mission.
+
+**Does HackHub service enumeration ever trigger counter-hacks?**
+
+Yes, particularly when you run Aggressive scans on hardened hosts or when the Detection Meter fills past 80% on corporate-tier networks. The counter-hack event drains your in-game crypto wallet and locks you out of the target for the rest of the contract, so it's worth keeping your trace budget under control from the first probe.
+
+**Can you enumerate services without raising the trace meter?**
+
+The trace meter only moves when you actually send probes to the target, so passive intelligence gathering — reading mission briefings, checking the intel shop, scanning adjacent hosts — never contributes to it. Active scanning always adds at least a small amount, even with SYN Stealth, because the IDS still sees the packets even if it can't classify them as quickly.
+
+**Which scanner gives the most accurate banners?**
+
+Aggressive scanning reports the most complete banner data with roughly 95% accuracy according to community testing, but it also generates the highest noise. Full TCP is the practical middle ground at around 85% accuracy with medium noise, which is enough precision to match against the in-game vulnerability database for most contracts.
+
+**Should I scan UDP services on every contract?**
+
+Not every contract, but you should always run at least one UDP probe on Tier 2 and Tier 3 networks because DNS, SNMP, and NetBIOS services often expose credentials that TCP scans miss entirely. On Tier 1 networks, UDP probing usually wastes more mission clock than it saves, so it's safe to skip unless the briefing hints at database or IoT infrastructure.

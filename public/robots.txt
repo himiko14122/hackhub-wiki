@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://dragon-sword-awakening.wiki/sitemap.xml
+Sitemap: https://www.hackhub.wiki/sitemap.xml

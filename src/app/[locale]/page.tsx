@@ -5,7 +5,7 @@ import JsonLd from '@/components/JsonLd';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { getBaseMetadata, websiteJsonLd, itemListJsonLd } from '@/lib/seo';
-import { heroes, statusAilments, familiars, tierColor, ailmentColor, factionColor, HERO_ICONS } from '@/data/game-data';
+import { heroes, statusAilments, familiars, tierColor, ailmentColor, factionColor, HERO_ICONS, AILMENT_ICONS, FAMILIAR_ICONS } from '@/data/game-data';
 import { getAllContent, getAllContentByDate } from '@/lib/content';
 import { translate } from '@/lib/i18n';
 import { EXTERNAL_LINKS } from '@/config/site';
@@ -72,15 +72,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }));
 
   const adKey = process.env.NEXT_PUBLIC_AD_BANNER_KEY;
-
-  /* ── Ailment icon map ── */
-  const AILMENT_ICONS: Record<string, typeof Swords> = {
-    knockdown: Swords,
-    shock: Zap,
-    freeze: Snowflake,
-    airborne: Wind,
-    bleed: Droplets,
-  };
 
   return (
     <div>

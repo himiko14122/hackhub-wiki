@@ -1,0 +1,142 @@
+export const metadata = {
+    id: "hackhub-wordlist-guide",
+    slug: "hackhub-wordlist-guide",
+    order: 5,
+    difficulty: "beginner",
+    title: "HackHub-Wortlisten-Guide: Bessere Passwortlisten erstellen",
+    description: "Erstelle, beziehe und optimiere HackHub-Wortlisten, die Passwörter schneller knacken. Lerne Wortlistentypen, benutzerdefinierte Listen und von der Community geteilte Dateien in diesem praxisnahen Leitfaden kennen.",
+    keywords: ["HackHub Wortlisten-Guide", "HackHub Passwort-Knacken", "HackHub Wortlisten-Tipps", "beste Wortliste HackHub", "HackHub Einsteiger-Wortliste", "HackHub benutzerdefinierte Wortliste", "HackHub Passwortlisten", "HackHub Wortlisten-Optimierung", "HackHub Brute-Force-Guide", "HackHub Wörterbuchangriff"],
+    image: "/images/articles/eRZuGK53D5U.webp",
+    video: "eRZuGK53D5U",
+    category: "password-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Dieser HackHub-Wortlisten-Guide zeigt dir, wie du Passwortlisten erstellst, beziehst und optimierst, die im Spiel tatsächlich schneller knacken. Überspringe das Herumprobieren und starte mit Dateien, die dir ab Tag eins echte Treffer liefern.
+
+## Warum deine HackHub-Wortliste wichtiger ist als deine Werkzeuge
+
+Die meisten neuen Operatoren in HackHub sind besessen davon, ihre Knack-Engine aufzurüsten oder das neueste Hash-Dienstprogramm zu jagen, während sie die **Wortlisten-Engine** komplett ignorieren, die unter jedem Angriff sitzt. Diese Priorität ist falsch, denn deine Wortliste bestimmt, welche Passwörter zuerst ausprobiert werden, wie viele Versuche die Engine für tote Kandidaten verschwendet, und letztlich, wie schnell deine Warteschlange abgearbeitet wird. Eine großartige Engine, die mit einer Müllliste gefüttert wird, wird trotzdem kriechen, während eine Basis-Engine mit einer kuratierten Liste ein Ziel in Minuten räumen kann.
+
+Das Spiel modelliert reales Passwort-Knacken nah genug, dass die gleichen Lehren gelten. Ziele in HackHub werden nach Entropie, Länge und Musterkomplexität bewertet, und das Punktesystem belohnt Operatoren, die ihre Wortliste auf die Zielklasse abstimmen. Wenn du ein Firmen-Postfach mit einer rockyou-artigen Liste angreifst, lässt du Punkte liegen. Wenn du einen Gamer-Account mit einer **Wörterbuchangriff**-Datei voller Fantasy-Begriffe und E-Sport-Tags angreifst, wirst du ebenfalls verfehlen.
+
+Dieser Abschnitt bereitet den Rest des Guides vor. Das Ziel ist nicht, dir eine einzige magische Datei zu geben, sondern dir beizubringen, wie du ein Ziel liest, die richtige Listenfamilie auswählst und weißt, wann du aufhörst, eine Liste zu bearbeiten, und zur nächsten wechselst. Jedes weitere Kapitel baut auf dieser Fähigkeit auf.
+
+- **Wortlistenqualität > Engine-Stufe** in fast jedem Szenario, das das Spiel präsentiert.
+- Die Zielklasse bestimmt die Listenfamilie mehr als der Schwierigkeitsgrad.
+- Ein rotierender Satz von 3-4 fokussierten Listen schlägt einen riesigen 50-GB-Dump.
+- Von der Community geteilte Listen sparen Dutzende Stunden Grind pro Kampagne.
+
+## Kern-Wortlistentypen und woher sie kommen
+
+HackHub wird mit mehreren eingebauten Wortlistenfamilien ausgeliefert, und Operatoren können auch externe Dateien aus dem Content-Ordner des Spiels importieren. Jede Familie füllt einen anderen Platz in deiner Rotation, und zu lernen, die Kompromisse zu erkennen, ist die erste wirkliche Fähigkeit, die das Spiel testet.
+
+### Eingebaute Listen versus importierte Listen
+
+Die Starterdatei **Häufige Passwörter** deckt die offensichtlichen Früchte ab: "password123", "qwerty", "admin2024" und ähnliche Muster, die echte Menschen wählen, wenn sie müde oder faul sind. Sie ist klein (unter 10 MB in den meisten Installationen) und sehr schnell zu scannen, was sie zur richtigen Eröffnung gegen jedes Ziel macht, bevor du auf schwerere Listen eskalierst.
+
+Importierte Listen stammen aus Community-Packs, Modder-Ordnern und der offiziellen HubLibrary, dem In-Game-Repository für Community-geprüfte Dateien. Diese tendieren dazu, größer, spezialisierter und oft auf eine bestimmte Zielklasse ausgerichtet zu sein. Ein E-Sport-thematisiertes Pack wird zum Beispiel ein generisches Wörterbuch übertreffen, wenn das Ziel ein kompetitiver Spieler-Account ist.
+
+Der Kompromiss ist einfach. Eingebaute Listen sind sicher und vorhersagbar, aber begrenzt. Importierte Listen bringen viel höhere Trefferquoten mit sich, benötigen aber Speicherplatz, Überprüfung und gelegentliche Bereinigung, bevor sie sauber laufen. Laut Community-Daten berichten Operatoren, die zwischen einer kleinen eingebauten und einer thematisierten importierten Liste rotieren, von den besten Ergebnissen zu Beginn der Kampagne.
+
+### Vergleich der Wortlistenfamilien
+
+| Typ | Typische Größe | Beste Zielklasse | Knack-Geschwindigkeit |
+|------|--------------|-------------------|-------------|
+| Häufige Passwörter | ~10 MB | Müde Nutzer, Standard-Accounts | Sehr schnell |
+| Standard-Wörterbuch | ~100 MB | Allgemeine öffentliche Accounts | Schnell |
+| RockYou-artiger Leak | ~140 MB | Echte geleakte Muster | Moderat |
+| Thematisiertes Community-Pack | 50-500 MB | Nischen-Zielgruppen (Gamer, Entwickler) | Variabel |
+| Benutzerdefinierte zielgerichtete Liste | 1-50 MB | Spezifisches bekanntes Ziel | Am schnellsten |
+
+Beachte, wie die **beste Wortliste für HackHub**, die Operatoren verwenden, selten die größte ist. Die richtige Liste ist diejenige, deren Einträge zum wahrscheinlichen Vokabular des Ziels passen. Eine 50 MB große benutzerdefinierte Liste, die aus den sozialen Medien eines Ziels erstellt wurde, wird einen 5 GB großen generischen Dump jedes Mal übertreffen, weil der Kandidatenraum bereits vorgefiltert ist.
+
+## Eine benutzerdefinierte Wortliste von Grund auf erstellen
+
+Sobald du die eingebauten und importierten Optionen verstehst, ist der nächste Schritt, deine eigene zu erstellen. Benutzerdefinierte Listen sind die ertragreichste Fähigkeit in HackHub, weil sie dich die exakten Passwortgewohnheiten des Ziels treffen lassen, und das Spiel belohnt diese Präzision mit Bonuspunkte-Multiplikatoren auf erfolgreiche Knack-Vorgänge.
+
+### Kandidatenmaterial sammeln
+
+Jedes HackHub-Zielprofil kommt mit einer Reihe öffentlicher Hinweise: Anzeigename, Bio, Arbeitgeber-Tag, Beitrittsdatum und gelegentlich eine Beispiel-Post- oder Kommentarhistorie. Das sind deine Rohmaterialien. Ein Ziel namens "kira_1998_dev", dessen Bio "lab", "coffee" und "archlinux" erwähnt, gibt dir einen Kandidatenpool, den keine öffentliche Wortliste gut abdeckt.
+
+Der Sammel-Workflow sieht in der Praxis so aus. Ziehe die Hinweise in eine Textdatei, normalisiere die Groß-/Kleinschreibung und generiere dann Kandidaten mit den eingebauten Mangler-Regeln des Spiels. Du wirst mit Varianten wie "kira1998", "Kira_Dev", "arch_lab_98" und "kiraCoffee!" enden — die meisten davon würden in keiner generischen Liste auftauchen.
+
+### Benutzerdefinierte Wortlistenquellen auf einen Blick
+
+| Quelle | Datentyp | Qualität | Sicher zu verwenden |
+|--------|-----------|---------|-------------|
+| Öffentliche soziale Medien | Namen, Hobbys, Haustiere | Hoch | Ja |
+| Benutzernamen-Permutationen | Handle-Varianten | Mittel | Ja |
+| Eigene Posts des Ziels | Slang, Phrasen | Sehr hoch | Ja |
+| Tastaturmuster | qwerty, asdf | Niedrig | Ja |
+| Geleakte Breach-Dumps | Echte Passwörter | Hoch | Grauzone |
+
+Die **HackHub-Wortlisten-Tipps**, die Veteranen-Operatoren im Community-Discord teilen, kommen fast immer darauf zurück: Verbringe 10 Minuten mit Sammeln, spare Stunden beim Knacken. Eine 200-Einträge-große benutzerdefinierte Liste, die aus echten Hinweisen gebaut wurde, wird Ziele knacken, die 200 Millionen generische Einträge nie berühren, weil die Entropie bereits für dich eingegrenzt wurde.
+
+Wenn du neu im Listenbau bist, starte mit einem Ziel, sammle 30-50 Hinweise und lass deine erste benutzerdefinierte Datei durch einen einzelnen Angriffsjob laufen. Du wirst Treffer in den ersten 5% des Kandidatenraums sehen, was das deutlichste Signal ist, dass dein Sammeln funktioniert hat.
+
+## Wortlisten für Geschwindigkeit tunen und optimieren
+
+Eine rohe Wortliste ist selten so wie sie ist lauffähig. Tuning ist der Schritt, in dem du toten Ballast herauspresst, Encoding-Probleme behebst und Einträge so anordnest, dass die **Hash-Rate** während des gesamten Laufs hoch bleibt. Überspringe diesen Schritt und selbst eine großartige Liste wird unterperformen.
+
+### Häufige Hygiene-Probleme
+
+Die drei häufigsten Probleme, die Community-Operatoren melden, sind doppelte Einträge, eingebettete Kommentare und inkonsistentes Encoding. Duplikate verschwenden Zeit, weil die Engine denselben Hash gegen denselben Kandidaten erneut prüft. Kommentare — normalerweise vom ursprünglichen Ersteller der Datei — brechen das Parsing in einigen Import-Tools und zwingen die Engine, große Teile zu überspringen. Encoding-Probleme, besonders gemischtes **UTF-8-Encoding** und Windows-Codepage-Zeichen, korrumpieren stillschweigend Kandidaten, sodass das richtige Passwort nie in seiner wahren Form getestet wird.
+
+Das Beheben ist mechanisch. Lasse deine Liste durch einen Deduptor laufen, entferne Zeilen, die mit "#" beginnen, und konvertiere alles zu UTF-8 ohne BOM. Laut Spielerberichten stellt allein diese Bereinigung 5-15% der Gesamtlaufzeit wieder her, weil die Engine aufhört, an schlechtem Input zu würgen, und jeden Zyklus für echte Kandidaten verwendet.
+
+### Optimierungstechniken und ihre Auswirkungen
+
+| Technik | Geschwindigkeitsgewinn | Speicherkosten | Erforderliches Können |
+|-----------|-----------|-------------|----------------|
+| Deduplizierung | 5-15% | Niedriger | Einfach |
+| Kommentare entfernen | 1-3% | Niedriger | Einfach |
+| Nach Häufigkeit sortieren | 10-25% | Gleich | Moderat |
+| Datei komprimieren | 20-40% I/O | Gleich | Einfach |
+| **Regelbasierte Mutationen** anwenden | 2-5x | Höher | Fortgeschritten |
+| Hybrid mit Masken | 1,5-3x | Höher | Fortgeschritten |
+
+Die Tabelle zeigt, warum **HackHub-Wortlisten-Optimierung** als eigene Disziplin behandelt wird. Das Sortieren nach Häufigkeit setzt zum Beispiel deine wahrscheinlichsten Treffer an den Anfang der Datei. Weil das Punktesystem von HackHub Teilpunkte basierend darauf vergibt, wie früh im Lauf du einen Treffer findest, kann Sortieren deinen Kampagnen-Score boosten, selbst wenn die Gesamtzahl der Knack-Vorgänge gleich bleibt. Das ist die Art von Hebel, die mittelmäßige Operatoren von der Bestenliste trennt.
+
+Für mehr darüber, wie Masken und Regelketten mit sortierten Listen interagieren, deckt der [HackHub-Bruteforce-Guide](/en/password-hacking/HackHub-Bruteforce-Explained/) das Engine-seitige Tuning ab, das gut zum Datei-seitigen Tuning passt, das hier behandelt wird.
+
+## Community-Ressourcen und Teil-Kultur
+
+HackHub hat eine überraschend aktive Wortlisten-Kultur, und sie zu ignorieren wird deinen Fortschritt verlangsamen. Die Community betreibt geteilte Laufwerke, wöchentliche thematisierte Herausforderungen und ein Verifikationssystem, das Listen markiert, die bekanntermaßen Malware oder Müll-Einträge enthalten. Dieses Netzwerk zu nutzen ist einer der Moves mit dem höchsten Hebel, die ein neuer Operator machen kann.
+
+### Wo du geprüfte Listen findest
+
+Die HubLibrary ist der offizielle In-Game-Marktplatz für Community-Wortlisten. Jedes Pack dort wurde gescannt, und die Auflistung zeigt die Dateigröße, das Thema, das letzte Update und eine Community-Bewertung. Halte dich an Packs mit 4 Sternen oder höher und überprüfe die Kommentare auf Berichte über veraltete oder kaputte Einträge. Die besten Packs tendieren dazu, eng thematisiert zu sein — "E-Sport-Handles 2024", "Indie-Entwickler", "Retro-Gaming-Foren" — weil das Thema den Kandidatenraum eng hält.
+
+Außerhalb des Spiels unterhält der offizielle Discord einen Wortlisten-Kanal, in dem Operatoren kleinere benutzerdefinierte Listen teilen und Feedback anfordern. Laut Community-Testberichten schreiten Operatoren, die in diesen Kanälen teilnehmen, etwa 30% schneller voran als Solo-Spieler, weil der Feedback-Loop schlechte Listen abfängt, bevor sie Stunden an Laufzeit verschwenden.
+
+### Eine Reputation als Listenbauer aufbauen
+
+Sobald du einige benutzerdefinierte Listen unter dem Gürtel hast, erwäge, sie zurückzugeben. Packe deine Liste mit einer kurzen README, die das Thema, die Sammelmethode und alle bekannten Grenzen erklärt. Verwende einen sauberen Dateinamen wie `esports_handles_v3.txt`, damit andere sie finden können. Laut Community-Berichten erhalten Bauer, die regelmäßig teilen, frühen Zugang zu thematisierten Herausforderungen und verdienen gelegentlich In-Game-Cosmetics durch das Contributor-Programm.
+
+Wenn du dein Verständnis vertiefen möchtest, wie Wortlisten in den breiteren Knack-Workflow passen, führt der [HackHub-Tool-Chain-Guide](/en/password-hacking/HackHub-Tool-Chain-Guide/) durch, wie deine Listenwahl in Werkzeugauswahl, Angriffsmodus und Scoring-Ergebnisse kaskadiert.
+
+## Häufig gestellte Fragen
+
+**Was ist die eine beste Wortliste für Einsteiger in HackHub?**
+
+Die eingebaute Datei mit häufigen Passwörtern ist der richtige Starter für fast jeden neuen Operator. Sie ist klein, schnell und deckt die niedrig hängenden Früchte ab, die 30-40% der Ziele verwenden. Sobald du anfängst, härtere Ziele zu treffen, kombiniere sie mit einem thematisierten Community-Pack aus der HubLibrary, anstatt zur größten Datei zu greifen, die du finden kannst.
+
+**Wie groß sollte eine benutzerdefinierte HackHub-Wortliste sein?**
+
+Qualität schlägt Größe jedes Mal. Eine benutzerdefinierte Liste von 200-500 gut zielgerichteten Einträgen wird einen generischen 5-GB-Dump auf jedem Ziel übertreffen, dessen Profil du tatsächlich gelesen hast. Als Faustregel: Höre auf, Einträge hinzuzufügen, wenn neue Zeilen anfangen, Themen zu duplizieren, die du bereits abdeckst.
+
+**Funktionieren Wortlisten aus echten Breach-Dumps in HackHub?**
+
+Ja, und das Spiel unterstützt den Import über den Content-Ordner. Stelle nur sicher, dass du jede Breach-Liste dedupst und bereinigst, bevor du sie laufen lässt, weil rohe Breach-Dumps oft Encoding-Müll und doppelte Einträge enthalten. Laut Community-Daten übertrifft eine bereinigte RockYou-artige Liste die rohe Version um 10-20% auf echten Zielen.
+
+**Kann ich mehrere Wortlisten in einem Angriff kombinieren?**
+
+Ja, und HackHub unterstützt sowohl Verkettung als auch den Hybrid-Angriffsmodus. Verkettung ist am schnellsten für kleine Kampagnen, während der Hybrid-Modus dir erlaubt, eine Basisliste on-the-fly mit Regeln oder Masken zu mischen. Für Multi-Ziel-Kampagnen punktet der Hybrid-Modus normalerweise besser, weil er sich pro Ziel anpasst, ohne die Datei jedes Mal neu zu bauen.
+
+**Wie oft sollte ich meine Wortlisten-Rotation auffrischen?**
+
+Frische sie auf, wann immer sich das Meta verschiebt oder du bemerkst, dass deine Trefferquote auf ähnlichen Zielklassen sinkt. Community-Packs werden monatlich aktualisiert, und thematisierte Herausforderungen führen oft Vokabular ein, das ältere Listen verfehlen. Eine gute Kadenz ist eine vollständige Rotationsüberprüfung alle 2-3 Wochen während aktivem Spiel.
+
+Wenn du deine erste benutzerdefinierte Liste gebaut hast und Notizen vergleichen möchtest, gehe in den Wortlisten-Kanal auf dem offiziellen Discord und teile deine Sammelmethode — du bekommst normalerweise mindestens einen Tipp zurück, der dir Stunden bei deinem nächsten Lauf spart.

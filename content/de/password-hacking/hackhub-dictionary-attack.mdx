@@ -1,0 +1,143 @@
+export const metadata = {
+    id: "hackhub-dictionary-attack",
+    slug: "hackhub-dictionary-attack",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Wörterbuchangriff: Passwörter knacken wie ein Profi",
+    description: "Beherrsche den HackHub Wörterbuchangriff mit bewährten Wortlisten, optimalen Einstellungen und Gegenmaßnahmen-Tipps, um jeden Passwort-Hacking-Auftrag zu dominieren.",
+    keywords: ["HackHub Wörterbuchangriff", "HackHub Passwort-Knacken", "HackHub Wortlisten-Guide", "Wörterbuchangriff HackHub", "HackHub Brute Force vs Wörterbuch", "HackHub Hacking-Tipps"],
+    image: "/images/articles/3tpKdkExJrM.webp",
+    video: "3tpKdkExJrM",
+    category: "password-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Ein HackHub Wörterbuchangriff ist eine der zuverlässigsten Methoden, um schwache Kundenpasswörter zu durchbrechen und Credits auf der globalen Bestenliste zu sammeln, da er rohe CPU-Leistung gegen eine clevere Kuratierung der Wortliste eintauscht. Hol dir die neuesten fortgeschrittenen Wortlisten-Techniken und knacke Tresore in dem Moment, in dem dein nächster Auftrag geladen wird.
+
+## Was ist ein HackHub Wörterbuchangriff?
+
+Ein HackHub Wörterbuchangriff ist eine Passwort-Knack-Technik, die eine kuratierte Liste wahrscheinlicher Zeichenketten durchläuft, anstatt jede mögliche Kombination per Brute-Force zu erzwingen. Spieler erstellen eine **Wortliste** mit echten Passwörtern aus öffentlichen Leak-Datenbanken, häufigen Tiernamen, Popkultur-Referenzen und Tastatur-Walk-Mustern und füttern sie dann direkt in das HackHub-Terminal während eines **Passwort-Hacking-Auftrags**.
+
+Die Mechanik belohnt Vorbereitung statt roher Gewalt, weshalb erfahrene Operator die ersten zehn Minuten innerhalb eines Auftrags damit verbringen, eine kompakte Liste aufzubauen, anstatt einen generischen Angriff abzufeuern. Jeder Eintrag in der Wortliste ist ein Versuch, und der Wörterbuchangriff testet einfach jeden Versuch gegen den Ziel-Hash, bis einer passt. Wenn der Treffer sitzt, blinkt das Terminal grün und dein Auftragszähler füllt sich um einen beachtlichen Batzen.
+
+Im Vergleich zu einem reinen **Brute-Force**-Versuch ist der Wörterbuchangriff in HackHub leiser im Netzwerkverkehrs-Simulator und löst selten den **Eindringungszähler** des Kunden aus, bis du die ersten 300 Einträge durchlaufen hast. Laut Community-Daten berichten Anfänger, die auf Wörterbuchmethoden umsteigen, von einem Sprung von etwa 40 Prozent bei erfolgreichen Cracks auf mittelschweren Tresoren, einfach weil der durchschnittliche NPC in HackHub Passwörter wie saisonale Feiertage, Familienmitglieder oder Lieblingssportteams wählt.
+
+Wenn du einen direkten Vergleich mit verwandten Passwortmethoden möchtest, behandelt unser Überblick über die [HackHub Brute-Force-Methode](/en/password-hacking/HackHub-Bruteforce-Method/) die Kompromisse ausführlicher. Für einen noch breiteren Blick auf das Werkzeugset indexiert das [HackHub Passwort-Hacking-Hub](/en/password-hacking/) jeden zugehörigen Auftragsguide.
+
+## Die richtige Wortliste aufbauen
+
+Jeder erfolgreiche HackHub Wörterbuchangriff beginnt mit der **Wortliste**, denn das Terminal knackt nur das, was du ihm gibst. Die Standard-Starterliste in HackHub umfasst etwa 12.000 gängige Einträge, aber Veteranen-Operator basteln benutzerdefinierte Listen, die über 80.000 Zeichenketten hinausgehen. Das Ziel ist Volumen ohne Ballast, da überdimensionierte Listen deinen **Spur-Timer** aufzehren, ohne proportional mehr Cracks zu liefern.
+
+### Wörter effizient beschaffen
+
+Die besten Wortlisten mischen **geleakte Korpora**, **kontextbezogene Substantive** und **Tastaturmuster**. Spieler berichten, dass das Ziehen aus öffentlichen Leak-Datenbanken die höchste Trefferquote bei Unternehmens-Tresoren liefert, während Popkultur-Listen Heimanwender-Konten zertrümmern. Ein solides Starter-Trio umfasst das **RockYou-Subset** (die häufigsten 5.000 geleakten Passwörter), ein **Sport-und-Promis-Paket** und eine benutzerdefinierte **Ziel-Profil-Liste**, die aus dem Auftragsbrief selbst erstellt wurde.
+
+### Wortlisten-Zusammensetzung auf einen Blick
+
+| Quellentyp | Ungefähre Größe | Am besten gegen | Spurkosten |
+|---|---|---|---|
+| RockYou-Leak-Subset | 5.000–10.000 | Generische Heimanwender | Niedrig |
+| Sport + Promis | 8.000–15.000 | Social-Media-artige NPCs | Niedrig |
+| Tastatur-Walks (qwerty, 1234) | 1.200 | Faule Passwort-Setzer | Sehr niedrig |
+| Ziel-Profil benutzerdefiniert | 500–2.000 | Story-Modus-Aufträge | Vernachlässigbar |
+| Saisonal + Feiertage | 3.000–6.000 | NPC-Saisondialoge | Niedrig |
+
+Die Stufe **Ziel-Profil benutzerdefiniert** verdient eine Hervorhebung, da sie direkt aus dem In-Game-Dossier des Auftrags schöpft. Wenn der NPC eine Tochter namens Lily oder einen Hund namens Biscuit erwähnt, füge diese der Liste hinzu, bevor du startest. Community-Berichte deuten darauf hin, dass dies allein deine Erstversuch-Trefferquote bei schweren Tresoren um zusätzliche 15 Prozent steigert.
+
+### Den Wortlisten-Loader konfigurieren
+
+Tippe im HackHub-Terminal auf den **Wortlisten-Loader**-Tab und staple deine Quellen in Prioritätsreihenfolge. Die Engine liest von oben nach unten, daher sollte deine ertragreichste Liste auf Index null sitzen. Ein praktisches Setup sieht so aus:
+
+- **Stufe 1**: Ziel-Profil benutzerdefinierte Einträge (immer zuerst).
+- **Stufe 2**: RockYou-Leak-Subset, gefiltert auf 8-Zeichen-Minimum.
+- **Stufe 3**: Tastatur-Walks und reine Zahlenfolgen.
+- **Stufe 4**: Saisonale und Popkultur-Füller als Sicherheitsnetz.
+
+Spieler im HackHub Discord bestätigen, dass das Umordnen dieser Stufen der größte einzelne Geschwindigkeitsschub ist, den sie nach einem Monat mit Aufträgen entdeckt haben. Der Unterschied zwischen einem 90-Sekunden-Crack und einem 6-Minuten-Mahlwerk lässt sich normalerweise auf dieses Layout zurückführen.
+
+## Den Wörterbuchangriff ausführen
+
+Sobald die Wortliste bereitgestellt ist, startest du den Wörterbuchangriff über das **Angriff**-Menü. Das HackHub-Terminal bietet zwei Ausführungsmodi: **Sequenziell** und **Parallel**. Der sequenzielle Modus liest die Liste der Reihe nach und ist schonender für deinen **Spurmesser**, während der parallele Modus die Last auf simulierte Kerne verteilt und schneller durch Einträge brennt, aber den doppelten Lärm auf dem Netzwerkmonitor des Ziels erzeugt.
+
+### Zwischen Sequenziell und Parallel wählen
+
+| Modus | Geschwindigkeit | Spuraufbau | Bester Anwendungsfall |
+|---|---|---|---|
+| Sequenziell | 1× Basislinie | Langsam | Hochsicherheits-Tresore, Stealth-Aufträge |
+| Parallel | 2,4× Basislinie | Schnell | Speedrun-Aufträge, NPCs niedriger Stufe |
+| Hybrid (Auto) | 1,8× Basislinie | Moderat | Die meisten Standardaufträge |
+
+Die meisten Aufträge fallen in den **Hybrid (Auto)**-Eimer, den die Engine basierend auf dem Schwierigkeitsgrad des Tresors umschaltet. Wenn du die volle Kontrolle willst, wechsle zu Sequenziell, wenn der Auftrag einen Schwierigkeitsgrad über 7 zeigt, und wechsle zu Parallel für jeden Tresor mit Bewertung 3 oder niedriger. Community-Tests auf dem v2.6-Patch-Branch deuten darauf hin, dass der Entwickler diesen Auto-Switcher für feinere Granularität justiert, also erwarte Ende 2026 eine kleine Anpassung.
+
+### Den Spurmesser ablesen
+
+Der **Spurmesser** in der unteren rechten Ecke ist deine wichtigste Anzeige. Er steigt mit jedem Versuch, und sobald er die **75-Prozent-Schwelle** überschreitet, ruft der Ziel-NPC den IT-Support. Wenn der Messer 100 Prozent erreicht, schlägt der Auftrag fehl und du verlierst die Hälfte der Credit-Auszahlung. Kombiniere deinen Wörterbuchangriff mit einem **Ablenkungs-Ping** alle 40 Versuche, um den Messer um 2–4 Prozent pro Nutzung zurückzubrennen.
+
+Spieler, die den Spurmesser ignorieren, brennen in der Regel beim dritten oder vierten Auftrag einer Session aus. Diejenigen, die ihn respektieren, räumen routinemäßig eine Kette von sechs Aufträgen ohne einen einzigen Reset ab. Die Mathematik ist einfach: ein diszipliniertes Spur-Lesen hält deinen Durchschnittszyklus über der Gewinnschwelle, während blindes Hämmern Credits schneller abfließen lässt, als die Auftragsbelohnungen sie auffüllen können.
+
+## Gegenmaßnahmen und Verteidiger-KI
+
+Selbst wenn du auf der angreifenden Seite bist, hilft dir das Verständnis der **Verteidiger-KI** vorherzusagen, welche Tresore deinem Wörterbuchangriff widerstehen werden. Die Verteidigungsschicht von HackHub überwacht drei Signale: **Versuchsgeschwindigkeit**, **Vermutungs-Ähnlichkeit** und **Wörterbuch-Fingerabdruck**. Das letzte ist hinterhältig, denn wenn deine Wortliste die exakt gleiche Eintragsreihenfolge wie eine öffentliche Leak-Datenbank enthält, markiert sie der Verteidiger nach 200 Versuchen und schlägt den Tresor zu.
+
+### Verteidigersignale und Reaktionen
+
+| Signal | Auslöser | Verteidigerreaktion | Gegenmaßnahme |
+|---|---|---|---|
+| Versuchsgeschwindigkeit | Über 80 Vermutungen/Min. | Erhöht Spur um 1,5× | Auf Sequenziell verlangsamen |
+| Vermutungs-Ähnlichkeit | Wiederholt gängige Muster | Fügt **Salt-Schicht** hinzu | Rauschvarianten einfügen |
+| Wörterbuch-Fingerabdruck | Übereinstimmung mit bekanntem Leak | Sperrt Tresor frühzeitig | Listenreihenfolge mischen |
+
+Wenn der Verteidiger eine **Salt-Schicht** hinzufügt, muss jede nachfolgende Vermutung on-the-fly neu gehasht werden, was die Zeit pro Versuch ungefähr verdreifacht. Die Gegenmaßnahme ist das Einfügen von **Rauschvarianten** wie das Anhängen von `!`, das Ersetzen von `o` durch `0` oder das Großschreiben des ersten Buchstabens. Diese halten den Wörterbuchangriff gangbar, ohne die Fingerabdrucksperre auszulösen.
+
+### Defensivtaktiken im Spiel
+
+Wenn du jemals in einem PvP-Auftrag auf die Verteidigerseite wechselst, ist die sauberste Gegenmaßnahme die **verzögerte Sperrung**-Einstellung. Sie friert den angreifenden Wörterbuchangriff nach 150 falschen Vermutungen ein und erzwingt eine 90-Sekunden-Abklingzeit. Laut Community-Daten stoppt dieser einzelne Schalter mehr Wörterbuchangriffe als jedes andere Verteidigungsupgrade, da die meisten Angreifer nicht genügend Wortlisten-Masse mitbringen, um den Timer auszusitzen.
+
+Kombiniere das mit einer **dynamischen Salt-Rotation**, die alle 60 Sekunden die Hashing-Schicht neu aufbaut, und selbst ein fetter Angriff im Parallel-Modus stockt, bevor er 1.500 Einträge durchläuft. Veteranen-Verteidiger stapeln beide Upgrades, bevor sie sich überhaupt Firewalls oder Honeypots anschauen.
+
+## Fortgeschrittene Optimierungsstrategien
+
+Sobald die Grundlagen sitzen, kommen die echten Geschwindigkeitsgewinne aus dem Schichten von drei Gewohnheiten: **Listenmischen**, **Regel-Stapelung** und **Session-Pacing**. Keine davon erfordert ein kostenpflichtiges Upgrade, aber zusammen kürzen sie bei jedem Wörterbuchangriff-Auftrag Minuten ab.
+
+### Regel-Stapelung und Mutation
+
+Das HackHub-Terminal unterstützt Inline-**Regel-Stapel**, die jeden Wortlisteneintrag vor dem Test mutieren. Eine einfache Regel wie `{append:1,2,3,!,@,#}` wird `Biscuit` in `Biscuit1`, `Biscuit2` usw. verwandeln und deine effektive Abdeckung mit sieben multiplizieren, ohne die zugrunde liegende Wortliste aufzublähen.
+
+| Regel | Beispieleingabe | Beispielausgabe | Ertragssteigerung |
+|---|---|---|---|
+| Ziffern anhängen | password | password7 | ~12 Prozent |
+| Ersten Buchstaben groß | biscuit | Biscuit | ~6 Prozent |
+| Leet-Austausch | hacker | h4ck3r | ~9 Prozent |
+| Umkehren | Lily | yliL | ~3 Prozent |
+| Suffix-Zeichensetzung | dragon | dragon! | ~8 Prozent |
+
+### Session-Pacing und Energieverwaltung
+
+Jeder Wörterbuchangriff-Auftrag zieht ein kleines Stück **Operator-Energie** ab, die sich in Echtzeit regeneriert. Die meisten Spieler verbrennen ihre volle Energieleiste innerhalb von 90 Minuten, indem sie drei Aufträge hintereinander laufen lassen. Das klügere Tempo sind zwei Aufträge, dann eine 10-minütige Pause, um fehlgeschlagene Wortlisten zu überprüfen und Lücken zu schließen. Spieler, die sich selbst gut einteilen, räumen konsequent 8–10 Aufträge pro Energiezyklus ab, gegenüber 5–6 für diejenigen, die sprinten und abstürzen.
+
+Wenn du einen tieferen Einblick in die breitere Auftragsökonomie möchtest, zeigt die [HackHub Anfänger-Roadmap](/en/password-hacking/HackHub-Getting-Started/), wie Wörterbuchangriffe in die ersten zehn Stunden des Fortschritts passen. Andernfalls wirf deine kniffligsten Wortlisten-Fragen in den nächsten Abschnitt.
+
+## Häufig gestellte Fragen
+
+**Bei welchem Schwierigkeitsgrad-Tresor sollte ich mit dem Üben des HackHub Wörterbuchangriffs beginnen?**
+
+Beginne mit Tresoren der Schwierigkeit 2 oder 3, da diese weniger Verteidigungen durchlaufen und dir bestätigen, dass deine Wortliste gut geformt ist. Sobald du fünf Aufträge in Folge räumst, ohne den Spurmesser auszulösen, steigere auf Schwierigkeit 5 und beginne mit dem Schichten von Regel-Stapeln. Direkt zu Schwierigkeit 8+ zu springen, bevor du eine getestete Wortliste hast, wird Credits schnell verbrennen.
+
+**Übertrifft der HackHub Wörterbuchangriff jemals Brute Force bei langen Passwörtern?**
+
+Ja, bei jedem Passwort unter 10 Zeichen, da ein fokussierter Wörterbuchangriff die exponentielle Explosion vermeidet, die Brute Force bei jedem zusätzlichen Zeichen trifft. Jenseits von 12 Zeichen kann Brute Force mit einem gezielten Zeichensatz gelegentlich gewinnen, aber die meisten NPC-Passwörter in HackHub bleiben unter 9 Zeichen, daher ist der Wörterbuchangriff die Standard-Bestwahl.
+
+**Kann ich meine benutzerdefinierte Wortliste mit Freunden in Koop-Aufträgen teilen?**
+
+Koop-Aufträge erlauben dir, Wortlisten zusammenzuführen, aber die Engine nimmt nur die obersten 30.000 eindeutigen Einträge aus dem zusammengeführten Pool, um den Spuraufbau fair zu halten. Trimme Duplikate vor dem Zusammenführen und setze deine besten benutzerdefinierten Einträge in das erste Drittel der Datei, damit die Zusammenführungslogik sie bewahrt. Von Spielern berichtet, verhindert dieser kleine Schritt allein, dass Koop-Sessions bei wiederholten Einträgen stocken.
+
+**Wie erkenne ich, wann ein Wörterbuchangriff ins Stocken geraten ist und ich die Methode wechseln sollte?**
+
+Wenn der Spurmesser über 60 Prozent steigt und die Wortliste zu mehr als 70 Prozent verbraucht ist ohne grünes Blinken, ist der Angriff ins Stocken geraten. Schneide deine Verluste, wechsle zu einem **Hybrid-Masken-Angriff** und überarbeite deine Wortliste später. Einen ins Stocken geratenen Wörterbuchangriff bis zum Ende zu zwingen endet gewöhnlich mit einem fehlgeschlagenen Auftrag und keiner Auszahlung.
+
+**Gibt es Strafen für das Fehlschlagen eines HackHub Wörterbuchangriff-Auftrags?**
+
+Ja, das Fehlschlagen eines Auftrags kostet dich 50 Prozent der erwarteten Auszahlung und einen kleinen **Reputationsverlust** beim In-Game-Kunden. Der Reputationsverlust verringert sich über die nächsten sechs Echtzeitstunden, aber der Credit-Verlust ist dauerhaft. Deshalb sind Pacing und Spurmesser-Disziplin wichtiger als rohe Geschwindigkeit, wenn du Wörterbuchangriffe in einer heißen Serie laufen lässt.
+
+Hast du eine Wortliste ausprobiert, die endlich einen brutalen Tresor geknackt hat, oder hast du einen defensiven Trick, der deinen Spurmesser gerettet hat? Lass deinen besten Fund in den Kommentaren fallen, teile dies mit deiner Koop-Gruppe und lasst uns das HackHub Wörterbuchangriff-Playbook Auftrag für Auftrag weiter wachsen lassen.

@@ -1,0 +1,152 @@
+export const metadata = {
+    id: "hackhub-stealth-guide",
+    slug: "hackhub-stealth-guide",
+    order: 2,
+    difficulty: "intermediate",
+    title: "HackHub Stealth Guide: Stay Undetected in Every Mission",
+    description: "Master HackHub stealth guide fundamentals, loadouts, guard AI, and noise tricks that keep your detection meter pinned to zero on every mission.",
+    keywords: ["HackHub stealth guide", "HackHub stealth mechanics", "HackHub stealth tips", "HackHub stealth strategy", "HackHub stealth loadout", "HackHub detection meter", "HackHub guard patterns", "stay undetected HackHub", "HackHub mission walkthrough", "HackHub beginner stealth"],
+    image: "/images/articles/yfoI-m6Ux00.webp",
+    video: "yfoI-m6Ux00",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Master the HackHub stealth guide fundamentals and ghost every mission without tripping a single alarm. Learn loadout picks, guard AI tells, and noise control tactics that separate clean runs from restart-heavy chaos.
+
+## HackHub Stealth Guide: Detection, Vision, and Sound Basics
+
+Every HackHub stealth guide starts in the same place: understanding how the game actually catches you. The detection system runs on three overlapping layers — the on-screen **Detection Meter**, vision cones projected from guards and cameras, and a **Sound Propagation** model that radiates noise through walls and floors. Tripping any one of them begins a countdown; tripping two at once usually ends the run.
+
+### How the Detection Meter Actually Works
+
+The **Detection Meter** fills when a guard or camera spots you, and the speed at which it fills depends on whether you are fully visible, partially obscured, or already in a suspect state. Standing still inside a **Vision Cone** for more than a second or two pushes the meter into the yellow zone, where guards start radioing for backup. The meter only drains when every observing NPC loses line of sight, and it drains faster the further away you are from the observer.
+
+### Sound Levels by Action Type
+
+Sound is the silent killer in HackHub, because it travels through vents, thin walls, and even one floor of elevation. Different actions emit different radii, and choosing the quiet option is often the difference between a clean infiltration and a five-alarm shootout.
+
+| Action | Noise Radius | Notes |
+|---|---|---|
+| Walking | &lt;2 m | Default movement; safe near patrols |
+| Crouch-walking | &lt;1 m | Slow but nearly silent |
+| Running | ~6 m | Triggers nearby guards instantly |
+| Breaking glass | ~10 m | Avoid unless scripted |
+| Throwing distraction | ~8 m | Directional; line of sight required |
+| Melee takedown | ~3 m | Loud; masks below recommended |
+| Gadget use (EMP, etc.) | ~12 m | Pair with distractions |
+
+Community testing indicates that **Crouch-walking** is the quietest reliable movement, while **Running** should be reserved for confirmed empty corridors. Players consistently report that venting through a vent grate produces a brief but loud burst that patrols can hear from an adjacent room, so vent exits should always be timed to patrol cycles.
+
+## Stealth Loadouts and Gadgets That Actually Matter
+
+Loadout choice in HackHub is not about raw damage — it is about how much forgiveness each tool gives you when a plan goes sideways. New players often stack offensive gadgets, but experienced ghost runners prioritize tools that **buy time** rather than tools that **create noise**.
+
+### Early-Game Gadget Priorities
+
+In the opening hours, you only get a handful of gadget slots, so every pick should solve a problem you have already died to. Community recommendations consistently highlight three starting tools that anchor a reliable build.
+
+- **Emotion Mask** — lets you walk past low-tier guards by mimicking a friendly NPC, but breaks the moment you sprint or attack.
+- **Soft-Step Boots** — cut the noise radius of crouch-walking to almost zero and stack with **Casting Distance** upgrades.
+- **Distraction Coin** — a throwable that emits a directional ping for roughly four seconds, perfect for peeling a guard off a chokepoint.
+
+### Late-Game Tools Worth the Grind
+
+Once you have a stockpile of crafting materials, the late-game gadget tree unlocks tools that turn brutal missions into near-solo walks. The most cited winners among veteran players are **Phase Cloak** (a short-duration invisibility that also mutes footstep noise), **Echo Mine** (a deployed sensor that pulses guard positions through walls), and **Far Reach** (a grappling line that lets you bypass entire patrol loops).
+
+| Gadget | Best Use Case | Trade-off |
+|---|---|---|
+| Emotion Mask | Patrol-dense corridors | Breaks on aggressive input |
+| Soft-Step Boots | Long quiet approaches | No offensive utility |
+| Distraction Coin | Single-guard peel | Useless in groups |
+| Phase Cloak | Emergency extraction | Long cooldown |
+| Echo Mine | Pre-mission intel | Consumes charge quickly |
+| Far Reach | Vertical shortcuts | Line-of-sight only |
+
+If you are building toward a true **Ghost Run**, pair **Phase Cloak** with **Soft-Step Boots** — the combination lets you traverse loud zones silently and is the loadout most recommended by community runners on the HackHub Discord.
+
+## Guard AI Patterns and Patrol Timing Windows
+
+Every guard in HackHub follows one of three behavior archetypes, and learning to read each type is the single biggest leap from beginner to intermediate. The AI does not "see" like a human — it polls a set of waypoints, checks cone overlap, and reacts to scripted audio triggers. Once you understand the loop, the entire map becomes predictable.
+
+### Reading Vision Cones and Facing Direction
+
+A guard's **Vision Cone** is rendered as a colored arc on the floor: green means fully unaware, yellow means the meter is filling, red means combat. The cone follows the guard's head, not their feet, which means crouching below their hip line while they look forward can keep you invisible even at close range. Reported by players, the most reliable crouch spot is directly behind a guard's heel, because their cone rotates past you before it sweeps back.
+
+### Exploiting Patrol Reset Loops
+
+Patrol routes in HackHub are deterministic — they follow a fixed set of waypoints and reset to the nearest node if disturbed. Exploiting this means you can intentionally trigger a **Patrol Reset** to move a guard away from your objective. The classic trick is to throw a **Distraction Coin** down a side corridor, let the guard investigate, then loop back to the original path while they stand idle at the noise origin.
+
+| Guard Type | Detection Speed | Behavior | Counter |
+|---|---|---|---|
+| Patrol | Slow | Fixed route, predictable | Time throws to reset |
+| Sentry | Fast | Stationary, 180° cone | Use cover and elevation |
+| Rover | Medium | Wanders, investigates noise | Lead away from objective |
+| Elite | Very fast | Cone + sound stacking | Avoid line of sight entirely |
+| Camera | Instant | 90° cone, no sound | Loop or EMP |
+
+According to community data, **Sentry** guards are the easiest to cheese because their cone does not rotate, while **Elite** guards are almost impossible to brute-force and should always be bypassed rather than confronted.
+
+## Mission-Specific Stealth Tactics in HackHub
+
+Not every HackHub mission rewards a full ghost run, and knowing when to switch styles is part of the strategy. Some objectives are timed, some reward non-lethal takedowns, and a few explicitly punish loud play with bonus-locked endings.
+
+### Data Heist and Server Room Infiltrations
+
+Data heists are the purest stealth missions in HackHub, and they are where the HackHub stealth guide advice pays off the most. The core loop is: slip past outer patrols, hack a terminal to unlock the server room, extract the data, then exit before the **Alert State** timer expires. The trick most beginners miss is that the terminal hack takes 12 seconds, during which you cannot move, so the patrol cycle must be timed to put the nearest guard on the far side of the map before you start.
+
+### When Loud Beats Quiet (and Vice Versa)
+
+A handful of missions in HackHub are built around **Loud Approach** bonuses — completing them with full combat earns bonus rewards that ghost runners miss. The smart play is to read the mission briefing for tags like "Loud Reward" or "Ghost Reward" and choose your style upfront. Trying to ghost a loud-tagged mission usually results in a botched run with no bonus, while trying to fight a ghost-tagged mission burns resources for nothing.
+
+| Mission Tag | Recommended Style | Bonus Type |
+|---|---|---|
+| Data Heist | Ghost | XP multiplier |
+| Escort | Loud | Crafting materials |
+| Sabotage | Either | Depends on sub-objective |
+| Extraction | Ghost | Rare gadget blueprint |
+| Defense | Loud | Currency bonus |
+
+If you want to see a full mission-by-mission breakdown, the [HackHub beginner tips walkthrough](/en/stealth-strategy/HackHub-Beginner-Tips/) covers which objectives reward which play style, and our [HackHub loadout tier list](/en/stealth-strategy/HackHub-Loadout-Guide/) ranks every gadget against the missions where it shines.
+
+## Common Mistakes That Blow Your HackHub Stealth Run
+
+Even with the right loadout, a few recurring mistakes can collapse an otherwise clean HackHub stealth guide run. Most of them come down to impatience — pressing a button two seconds too early — but a few are mechanical misunderstandings that persist even into mid-game.
+
+### The Detection Spiral Trap
+
+The most lethal mistake in HackHub is what veterans call the **Detection Spiral** — the moment a guard spots you, you panic and run, which generates noise that pulls more guards, which raises the **Alert State**, which summons reinforcements. The only escape is to break line of sight, stand still, and let the meter drain before moving again. Running from one spotted guard almost always turns a yellow meter into a full combat encounter.
+
+### Resource and Cooldown Mismanagement
+
+The second most common mistake is burning cooldowns on minor problems. **Phase Cloak** should be saved for true emergencies, not used to skip a single guard. **Distraction Coins** should be aimed at the *next* waypoint in a patrol's route, not the current one, because guards only investigate the closest noise for a short window before resuming.
+
+- Do not break line of sight unless you can reach full cover within two seconds.
+- Do not melee a guard inside another guard's cone, even if the first guard is alone.
+- Do not hack a terminal while a **Sentry** guard is facing the room, even at long range.
+- Do not throw a distraction that lands closer to you than to the target guard.
+
+According to community data, the average first-time player triggers the **Alert State** within the first 90 seconds of any new mission, usually because they misread a **Vision Cone** or vent at the wrong moment.
+
+## Frequently Asked Questions
+
+**What is the best loadout for a pure ghost run in HackHub?**
+
+For a true ghost run, stack Soft-Step Boots with Phase Cloak and a single Distraction Coin. This combination keeps your noise radius near zero and gives you one emergency extraction if a Patrol Reset goes wrong. Players on the official community channels consistently rate this trio as the strongest ghost loadout in the current patch, and you can grab the official build on the [HackHub Steam page](https://store.steampowered.com/) for reference screenshots.
+
+**How long does the Detection Meter take to drain after losing line of sight?**
+
+The Detection Meter drains in roughly two to four seconds once every observer loses sight of you, but the exact speed depends on distance. Standing still in cover three meters away drains faster than crouching at the edge of a cone, so always back away before you stop moving. Players report that ducking behind waist-high boxes is faster than going prone, because prone briefly spikes noise on contact.
+
+**Can you finish every HackHub mission without killing anyone?**
+
+Yes, every mission in the base game is completable with a non-lethal, no-detection run, although a few bonus objectives are gated behind ghost runs and require flawless execution. Some elite-tier missions spawn additional Elite guards on higher difficulties, which makes a pure ghost run significantly harder but still possible. Community-tested routes for the trickiest missions are regularly posted on the HackHub Discord.
+
+**Do cameras alert guards faster than human patrols?**
+
+Yes, cameras alert guards almost instantly because their detection triggers the Alert State directly without filling the Detection Meter first. They also ignore sound entirely, which makes them a unique threat. The cleanest counter is an EMP gadget or a timed loop through their 90° cone while a Patrol guard faces away, and many players chain both methods on dense camera floors.
+
+**Is it worth restarting a mission for a ghost bonus instead of going loud?**
+
+It depends on the mission tag and your current crafting needs. Loud bonuses favor currency and materials, while ghost bonuses favor XP and rare blueprints, so if you are chasing a specific gadget, a restart is almost always worth it. If you are early-game and short on Distraction Coins, going loud once to stock up is more efficient than repeatedly failing a ghost run.

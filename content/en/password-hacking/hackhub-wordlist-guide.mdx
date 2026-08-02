@@ -1,0 +1,142 @@
+export const metadata = {
+    id: "hackhub-wordlist-guide",
+    slug: "hackhub-wordlist-guide",
+    order: 5,
+    difficulty: "beginner",
+    title: "HackHub Wordlist Guide: Build Better Password Lists",
+    description: "Build, source, and tune HackHub wordlists that crack passwords faster. Learn wordlist types, custom lists, and community-shared files in this practical guide.",
+    keywords: ["HackHub wordlist guide", "HackHub password cracking", "HackHub wordlist tips", "best wordlist HackHub", "HackHub beginner wordlist", "HackHub custom wordlist", "HackHub password lists", "HackHub wordlist optimization", "HackHub brute force guide", "HackHub dictionary attack"],
+    image: "/images/articles/eRZuGK53D5U.webp",
+    video: "eRZuGK53D5U",
+    category: "password-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+This HackHub wordlist guide shows you how to build, source, and tune password lists that actually crack faster in-game. Skip the trial-and-error grind and start with files that deliver real hits on day one.
+
+## Why Your HackHub Wordlist Matters More Than Your Tools
+
+Most new operators in HackHub obsess over upgrading their cracking engine or chasing the latest hash utility, while completely ignoring the **wordlist engine** sitting underneath every attack. That priority is backwards, because your wordlist dictates which passwords get tried first, how many attempts the engine burns on dead candidates, and ultimately how fast your queue drains. A great engine fed a junk list will still crawl, while a baseline engine fed a curated list can sweep a target in minutes.
+
+The game models real-world password cracking closely enough that the same lessons apply. Targets in HackHub are graded on entropy, length, and pattern complexity, and the scoring system rewards operators who match their wordlist to the target class. If you are attacking a corporate mailbox with a rockyou-style list, you are leaving points on the table. If you are attacking a gamer handle with a **dictionary attack** file full of fantasy terms and esports tags, you will also miss.
+
+This section sets up the rest of the guide. The goal is not to hand you a single magic file, but to teach you how to read a target, pick the right list family, and know when to stop grinding one list and switch to another. Every other chapter builds on that skill.
+
+- **Wordlist quality > engine tier** in nearly every scenario the game presents.
+- Target class dictates list family more than difficulty rating does.
+- A rotating set of 3-4 focused lists beats one giant 50 GB dump.
+- Community-shared lists save dozens of hours of grind per campaign.
+
+## Core Wordlist Types and Where They Come From
+
+HackHub ships with several built-in wordlist families, and operators can also import external files from the game's content folder. Each family fills a different slot in your rotation, and learning to recognize the trade-offs is the first real skill the game tests.
+
+### Built-In Lists Versus Imported Lists
+
+The starter **common passwords** file covers the obvious low-hanging fruit: "password123", "qwerty", "admin2024", and similar patterns that real human users pick when they are tired or lazy. It is small (under 10 MB in most installs) and very fast to scan, which makes it the right opener against any target before you escalate to heavier lists.
+
+Imported lists come from community packs, modder folders, and the official HubLibrary, which is the in-game repository for community-vetted files. These tend to be larger, more specialized, and often themed around a particular target class. An esports-themed pack, for example, will outperform a generic dictionary when the target is a competitive player's account.
+
+The trade-off is straightforward. Built-in lists are safe and predictable but limited. Imported lists bring much higher hit rates but require disk space, vetting, and occasional cleaning before they run cleanly. According to community data, operators who rotate between one small built-in and one themed imported list report the best early-campaign results.
+
+### Wordlist Family Comparison
+
+| Type | Typical Size | Best Target Class | Crack Speed |
+|------|--------------|-------------------|-------------|
+| Common passwords | ~10 MB | Tired users, default accounts | Very fast |
+| Standard dictionary | ~100 MB | General public accounts | Fast |
+| RockYou-style leak | ~140 MB | Real leaked patterns | Moderate |
+| Themed community pack | 50-500 MB | Niche audiences (gamers, devs) | Variable |
+| Custom targeted list | 1-50 MB | Specific known target | Fastest |
+
+Notice how the **best wordlist HackHub** operators use is rarely the largest one. The right list is the one whose entries match the target's likely vocabulary. A 50 MB custom list built from a target's social media will outperform a 5 GB generic dump every single time, because the candidate space is already pre-filtered.
+
+## Building a Custom Wordlist from Scratch
+
+Once you understand the built-in and imported options, the next step is building your own. Custom lists are the highest-yield skill in HackHub because they let you match the target's exact password habits, and the game rewards that precision with bonus score multipliers on successful cracks.
+
+### Harvesting Candidate Material
+
+Every HackHub target profile comes with a set of public clues: display name, bio, employer tag, joined date, and occasionally a sample post or comment history. These are your raw materials. A target named "kira_1998_dev" whose bio mentions "lab", "coffee", and "archlinux" gives you a candidate pool that no public wordlist covers well.
+
+The harvesting workflow looks like this in practice. Pull the clues into a text file, normalize the casing, then generate candidates using the game's built-in Mangler rules. You will end up with variants like "kira1998", "Kira_Dev", "arch_lab_98", and "kiraCoffee!" — most of which would never appear in a generic list.
+
+### Custom Wordlist Sources at a Glance
+
+| Source | Data Type | Quality | Safe to Use |
+|--------|-----------|---------|-------------|
+| Public social media | Names, hobbies, pets | High | Yes |
+| Username permutations | Handle variants | Medium | Yes |
+| Target's own posts | Slang, phrases | Very High | Yes |
+| Keyboard patterns | qwerty, asdf | Low | Yes |
+| Leaked breach dumps | Real passwords | High | Gray area |
+
+The **HackHub wordlist tips** that veteran operators share in the community Discord almost always come back to this: spend 10 minutes harvesting, save hours of cracking. A 200-entry custom list built from real clues will crack targets that 200 million generic entries never touch, because the entropy has already been narrowed for you.
+
+If you are new to building lists, start with one target, harvest 30-50 clues, and run your first custom file through a single attack job. You will see hits in the first 5% of the candidate space, which is the clearest signal that your harvesting worked.
+
+## Tuning and Optimizing Wordlists for Speed
+
+A raw wordlist is rarely runnable as-is. Tuning is the step where you squeeze out dead weight, fix encoding issues, and arrange entries so the **hash rate** stays high throughout the run. Skip this step and even a great list will underperform.
+
+### Common Hygiene Problems
+
+The three most common problems community operators report are duplicate entries, embedded comments, and inconsistent encoding. Duplicates waste time because the engine re-checks the same hash against the same candidate. Comments — usually left over from the original file's creator — break parsing in some import tools and force the engine to skip large chunks. Encoding issues, especially mixed **UTF-8 encoding** and Windows codepage characters, silently corrupt candidates so the right password never gets tested in its true form.
+
+Fixing these is mechanical. Run your list through a deduplicator, strip lines starting with "#", and convert everything to UTF-8 with no BOM. According to player reports, this cleanup alone recovers 5-15% of total runtime, because the engine stops choking on bad input and spends every cycle on real candidates.
+
+### Optimization Techniques and Their Impact
+
+| Technique | Speed Gain | Memory Cost | Skill Required |
+|-----------|-----------|-------------|----------------|
+| Deduplication | 5-15% | Lower | Easy |
+| Strip comments | 1-3% | Lower | Easy |
+| Sort by frequency | 10-25% | Same | Moderate |
+| Compress file | 20-40% I/O | Same | Easy |
+| Apply **rule-based mutations** | 2-5x | Higher | Advanced |
+| Hybrid with masks | 1.5-3x | Higher | Advanced |
+
+The table shows why **HackHub wordlist optimization** is treated as its own discipline. Sorting by frequency, for example, puts your most likely hits at the front of the file. Because HackHub's scoring system awards partial credit based on how early in the run you find a hit, sorting can boost your campaign score even when total cracks stay the same. This is the kind of lever that separates mid-tier operators from the leaderboard.
+
+For more on how masks and rule chains interact with sorted lists, the [HackHub brute force guide](/en/password-hacking/HackHub-Bruteforce-Explained/) covers the engine-side tuning that pairs well with the file-side tuning covered here.
+
+## Community Resources and Sharing Culture
+
+HackHub has a surprisingly active wordlist culture, and ignoring it will slow your progression. The community runs shared drives, weekly themed challenges, and a verification system that flags lists known to contain malware or junk entries. Tapping into that network is one of the highest-leverage moves a new operator can make.
+
+### Where to Find Vetted Lists
+
+The HubLibrary is the official in-game marketplace for community wordlists. Every pack there has been scanned, and the listing shows the file size, theme, last update, and a community rating. Stick to packs rated 4 stars or higher, and check the comments for any reports of stale or broken entries. The best packs tend to be narrowly themed — "esports handles 2024", "indie devs", "retro gaming forums" — because the theme keeps the candidate space tight.
+
+Outside the game, the official Discord maintains a wordlist channel where operators share smaller custom lists and request feedback. According to community testing reports, operators who participate in these channels progress roughly 30% faster than solo players, because the feedback loop catches bad lists before they waste hours of runtime.
+
+### Building a Reputation as a List Builder
+
+Once you have a few custom lists under your belt, consider contributing them back. Pack your list with a short README explaining the theme, the harvesting method, and any known limits. Use a clean filename like `esports_handles_v3.txt` so others can find it. According to community reports, builders who share regularly get early access to themed challenges and occasionally earn in-game cosmetics through the contributor program.
+
+If you want to deepen your understanding of how wordlists fit into the broader cracking workflow, the [HackHub tool chain guide](/en/password-hacking/HackHub-Tool-Chain-Guide/) walks through how your list choice cascades into tool selection, attack mode, and scoring outcomes.
+
+## Frequently Asked Questions
+
+**What is the single best wordlist for beginners in HackHub?**
+
+The built-in common passwords file is the right starter for almost every new operator. It is small, fast, and covers the low-hanging fruit that 30-40% of targets use. Once you start hitting harder targets, pair it with a themed community pack from HubLibrary rather than reaching for the largest file you can find.
+
+**How large should a custom HackHub wordlist be?**
+
+Quality beats size every time. A custom list of 200-500 well-targeted entries will outperform a generic 5 GB dump on any target whose profile you have actually read. As a rule of thumb, stop adding entries when new lines start duplicating themes you already cover.
+
+**Do wordlists from real breach dumps work in HackHub?**
+
+Yes, and the game supports importing them through the content folder. Just make sure you dedupe and clean any breach list before running it, because raw breach dumps often contain encoding junk and duplicate entries. According to community data, a cleaned RockYou-style list outperforms the raw version by 10-20% on real targets.
+
+**Can I combine multiple wordlists into one attack?**
+
+You can, and HackHub supports both concatenation and the hybrid attack mode. Concatenation is fastest for small campaigns, while hybrid mode lets you mix a base list with rules or masks on the fly. For multi-target campaigns, hybrid mode usually scores better because it adapts per target without rebuilding the file each time.
+
+**How often should I refresh my wordlist rotation?**
+
+Refresh whenever the meta shifts or you notice your hit rate dropping on similar target classes. Community packs get updated monthly, and themed challenges often introduce vocabulary that older lists miss. A good cadence is one full rotation review every 2-3 weeks during active play.
+
+If you have built your first custom list and want to compare notes, drop into the wordlist channel on the official Discord and share your harvest method — you will usually get back at least one tip that saves you hours on your next run.

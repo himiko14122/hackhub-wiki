@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'x-default': `${SITE_URL}/privacy-policy`,
       },
     },
-    keywords: ['DragonSword Awakening Wiki Privacy Policy', 'DragonSword Awakening privacy', 'DragonSword Awakening data collection'],
+    keywords: ['HackHub Awakening Wiki Privacy Policy', 'HackHub Awakening privacy', 'HackHub Awakening data collection'],
   };
 }
 

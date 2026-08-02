@@ -1,0 +1,139 @@
+export const metadata = {
+    id: "hackhub-man-in-the-middle",
+    slug: "hackhub-man-in-the-middle",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub Man-in-the-Middle-Angriff – Komplettstrategie-Leitfaden",
+    description: "Beherrsche den HackHub Man-in-the-Middle-Angriff mit Werkzeugvergleichen, Schritt-für-Schritt-Anleitung, Verteidigungstipps und FAQ zur Netzwerkabfangung.",
+    keywords: ["HackHub Man-in-the-Middle-Angriff", "HackHub MITM-Leitfaden", "HackHub Netzwerkabfangung", "HackHub Packet Sniffing", "HackHub ARP-Spoofing", "HackHub MITM für Anfänger", "HackHub Abfangwerkzeuge", "HackHub Netzwerk-Hacking-Tipps"],
+    image: "/images/articles/DJrrUqNeNMQ.webp",
+    video: "DJrrUqNeNMQ",
+    category: "network-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## Was ist ein Man-in-the-Middle-Angriff in HackHub
+
+Ein HackHub Man-in-the-Middle-Angriff ist die ikonischste Abfangtechnik in der gesamten Netzwerk-Hacking-Simulation, und ihn zu beherrschen trennt gelegentliche Paketbeobachter von Operatoren, die den Datenverkehr in einem aktiven Subnetz umleiten, klonen und umschreiben können. Vereinfacht ausgedrückt platziert der Angriff dein System physisch und logisch zwischen zwei virtuellen Endpunkten – normalerweise einem Zielserver und einem Client –, sodass jedes Paket, das sie austauschen, durch deinen Sniffer läuft, bevor es sein Ziel erreicht. HackHub bildet dies in einer bewusst sandbox-isolierten Umgebung nach, weshalb so viele Spieler den HackHub Man-in-the-Middle-Angriff als Initiationsritus betrachten.
+
+Der Grund, warum dieser Angriff so wichtig ist, liegt darin, dass er jeden anderen Zweig der Netzwerkmanipulation freischaltet. Sobald du in der Mitte einer Konversation sitzt, kannst du Anmeldedaten lesen, DNS-Antworten umschreiben, Skripte einschleusen, Sitzungen wiederholen oder einfach alles für die Offline-Analyse protokollieren. Spieler, die direkt zu Brute-Force- oder DDoS-Mechaniken übergehen, ohne Abfangung zu lernen, stagnieren oft bei Aufträgen der Stufe 3, da die Simulation ihre besser bezahlten Jobs hinter dem Nachweis verbirgt, dass du den Datenfluss verstehst. Wenn du das breitere Netzwerk noch nicht kartiert hast, ist unsere [HackHub Netzwerk-Kartierung Anleitung](/en/network-hacking/HackHub-Network-Mapping/) eine nützliche Einführung, bevor du tief in MITM einsteigst.
+
+HackHub gliedert den Angriff in drei klar getrennte Phasen – Positionierung, Vergiftung und Ernte –, und jede Phase hat ihr eigenes Werkzeugset, ihr eigenes Zeitfenster und ihren eigenen Fehlerzustand. Der erste Versuch gelingt selten, was absichtlich so ist: Das Spiel möchte, dass du mindestens einmal scheiterst, damit du lernst, wie sich der **Address Resolution Protocol-Cache** verhält, wenn er widersprüchliche Antworten erhält. Diese einzelne Lektion trägt sich durch jeden folgenden Auftrag weiter.
+
+## Kernmechaniken hinter dem HackHub Man-in-the-Middle-Angriff
+
+Die zugrundeliegende Engine in HackHub ist eine abgespeckte Simulation davon, wie reale LANs Adressen auflösen, Frames weiterleiten und Nachbarn vertrauen. Bevor du irgendein Werkzeug anklickst, musst du den Fluss eines normalen Pakets verinnerlichen, da der gesamte Angriff darauf aufbaut, die Annahmen zu brechen, auf die dieser Fluss sich stützt.
+
+### Wie der Datenverkehr ohne Abfangung fließt
+
+Unter normalen Bedingungen sendet Host A, wenn er mit Host B sprechen möchte, zunächst eine ARP-Anfrage als Broadcast und fragt „wer hat diese IP?" Jedes Gerät im Subnetz empfängt die Anfrage, aber nur Host B antwortet. A speichert die MAC-zu-IP-Zuordnung von B für einige Minuten in einem kleinen Cache und sendet dann Frames direkt an B. Diese Konversation ist für dich unsichtbar, weil dein System darin nie auftaucht. Der HackHub Man-in-the-Middle-Angriff funktioniert, indem er dein System in diese unsichtbare Konversation einschleust.
+
+### Was sich ändert, wenn du dich positionierst
+
+Wenn du ein MITM-Werkzeug startest, versetzt HackHub deinen Knoten in den **Promiscuous Mode** und weist den Simulator an, deine Schnittstelle als transparente Bridge zu behandeln. Du stiehlst nicht tatsächlich Pakete – du erhältst Kopien und leitest die Originale weiter. Das Ziel weiß nie, dass du da bist, weshalb der Angriff in der Praxis so befriedigend ist. Der Trick besteht darin, sicherzustellen, dass deine weitergeleiteten Pakete schneller ankommen als die echten, sonst aktualisiert sich der Cache des Ziels und sperrt dich aus.
+
+### Vergiften, nicht abbrechen
+
+Ein häufiger Anfängerfehler ist es, den echten Endpunkt vollständig zu trennen. HackHub bestraft dies sofort, indem es den Auftrag als „verrauscht" markiert und deine Auszahlung kürzt. Korrektes MITM erfordert **Cache Poisoning** statt einer Trennung. Du sendest gefälschte ARP-Antworten, die langsam die Vorstellung des Opfers davon umschreiben, wo das Gateway sitzt, sodass der Datenverkehr durch dich hindurchfließt statt um dich herum. Wenn deine Fälschungsrate zu aggressiv ist, springt das Betriebssystem des Opfers zum echten Eintrag zurück, was die Simulation als Lehre zum Rate-Limiting nutzt.
+
+## MITM-Werkzeuge und Arsenal-Vergleich
+
+HackHub wird mit fünf Abfangwerkzeugen ausgeliefert, die jeweils auf einen anderen Auftragstyp abgestimmt sind. Die Wahl des richtigen Werkzeugs ist wichtig, da einige Werkzeuge heimlich, aber langsam sind, während andere schnell sind, aber Reputation verbrennen, wenn das IDS des Ziels auslöst. Unten findest du den vollständigen Vergleich basierend auf Community-Tests im Patch-Zyklus August 2026.
+
+| Werkzeug | Geschwindigkeit | Heimlichkeitsbewertung | Am besten verwendet für | Energiekosten |
+|------|-------|----------------|---------------|-------------|
+| **ArpSpoon** | Schnell | Niedrig (sichtbare Logs) | Schnelle Credential-Grabs bei Aufträgen niedriger Stufe | 12 Energie |
+| **GhostBridge** | Mittel | Hoch | Langfristige Paketerfassung ohne IDS auszulösen | 20 Energie |
+| **OxideRelay** | Langsam | Sehr hoch | Hochwertige Aufträge, bei denen Geduld sich auszahlt | 35 Energie |
+| **PacketVamp** | Sehr schnell | Mittel | Replay-Angriffe und Session-Hijack-Ketten | 18 Energie |
+| **SilentFern** | Mittel | Hoch | DNS- und HTTPS-Abfangung mit Zertifikatsklonen | 28 Energie |
+
+Die Energie-Spalte ist entscheidend, da sich Aufträge in HackHub mit einer festen Rate erholen, und das Verbrennen von 35 Energie für **OxideRelay**, wenn du nur noch 40 übrig hast, sperrt dich für die nächsten zwei Spielstunden von Wiederherstellungsaktionen aus. Spieler, die GhostBridge für die ersten 60 % eines Auftrags bevorzugen und dann für die finale Erfassung auf PacketVamp eskalieren, berichten laut Community-Daten von der höchsten Erfolgsquote.
+
+### Werkzeug-Tier-Ranking nach Anwendungsfall
+
+Nicht jedes Werkzeug gewinnt in jedem Szenario, daher folgt hier, wie die Community sie über die vier häufigsten Auftragstypen hinweg einordnet.
+
+| Auftragstyp | #1 Wahl | #2 Wahl | Vermeiden |
+|---------------|---------|---------|-------|
+| Credential-Ernte | GhostBridge | ArpSpoon | SilentFern |
+| Session-Replay | PacketVamp | GhostBridge | OxideRelay |
+| DNS-Hijack | SilentFern | ArpSpoon | OxideRelay |
+| Langzeit-Logging-Job | OxideRelay | SilentFern | PacketVamp |
+
+Wenn du ganz neu beim HackHub Man-in-the-Middle-Angriff bist, bleib bei GhostBridge für deine ersten zehn Aufträge. Seine Heimlichkeitsbewertung bedeutet, dass du Fehler machen kannst, ohne den Job zu verlieren, und die Energiekosten bleiben überschaubar. Nach ungefähr zehn erfolgreichen Durchläufen solltest du genug Auftragsguthaben haben, um **SilentFern** freizuschalten, das das Einstiegswerkzeug für Aufträge mit HTTPS-Niveau ist.
+
+## Schritt für Schritt: Deinen ersten MITM-Auftrag ausführen
+
+Einen einzelnen Auftrag von Anfang bis Ende durchzugehen, ist der schnellste Weg, den HackHub Man-in-the-Middle-Angriff zu verinnerlichen, da jeder Klick in der Benutzeroberfläche einem echten Netzwerkkonzept entspricht. Die folgende Anleitung geht davon aus, dass du dich im Standard-Starter-Subnetz mit freigeschalteten Standardwerkzeugen befindest.
+
+### Schritt 1 – Aufklärung des Subnetzes
+
+Öffne das **Netzwerk-Karten**-Overlay und pinge jeden Host an. Du suchst nach zwei Dingen: der Gateway-IP und der Ziel-IP. Die meisten Aufträge beschriften sie, aber die Simulation versteckt das Ziel gelegentlich hinter einem Ablenkungs-Host. Verwende einen leichtgewichtigen Scan statt eines vollständigen Port-Sweeps, da Sweeps Rauschen erzeugen, das deine Heimlichkeitsbewertung senkt, bevor der Angriff überhaupt beginnt. Spieler berichten, dass die **ICMP-Echo**-Sonde die leiseste Option ist.
+
+### Schritt 2 – GhostBridge starten
+
+Wähle GhostBridge aus dem Werkzeugrad, ziele auf die Ziel-IP und bestätige. Das Werkzeug beginnt, ARP-Antworten mit niedriger Rate an das Ziel zu senden und dessen Cache langsam umzuschreiben. Überstürze diese Phase nicht. Wenn du die Rate beschleunigst, löst die Verteidigungsschicht des Ziels aus und du musst den Auftrag neu starten. Die Standardrate braucht etwa 90 Sekunden, um den Cache vollständig zu vergiften, was sich langsam anfühlt, aber der sicherste Weg ist.
+
+### Schritt 3 – Die Vergiftung überprüfen
+
+Öffne den **Paket-Inspektor** und beobachte, ob Rückverkehr erscheint, der vom Gateway stammt, aber an deiner Schnittstelle ankommt. Wenn du ihn siehst, hat die Vergiftung funktioniert. Wenn der Inspektor zwei volle Minuten leer bleibt, hat der Cache des Ziels standgehalten und du musst bei Schritt 2 neu beginnen. Die Community nennt dies den „Zwei-Minuten-Stille"-Fehlermodus, und er zeigt fast immer auf eine falsche Subnetz-Annahme.
+
+### Schritt 4 – Ernten oder Einschleusen
+
+Sobald der Datenverkehr durch dich hindurchfließt, entscheide, ob du Anmeldedaten erntest oder eine Payload einschleust. Für einen Ernte-Auftrag protokolliere einfach die Sitzung für die Auftragsdauer. Für einen Einschleusungs-Auftrag wechsle zu PacketVamp und reihe die Payload ein. Der HackHub Man-in-the-Middle-Angriff unterstützt offiziell beide Zweige aus demselben vergifteten Zustand, also verschwende keine Energie mit erneuter Vergiftung, wenn du Aktionen verketten kannst.
+
+### Schritt 5 – Sauberer Ausstieg
+
+Der letzte Schritt besteht darin, den ARP-Cache des Ziels in seinen ursprünglichen Zustand wiederherzustellen. Das Überspringen hinterlässt eine „schmutziges Subnetz"-Markierung, die das Erkennungsrisiko bei deinem nächsten Auftrag erhöht. Der sauberste Ausstieg dauert etwa 30 Sekunden und kostet 5 Energie, was sich langfristig für die Reputation lohnt. Wenn du einen tieferen Blick auf die Spurenbeseitigung werfen möchtest, behandelt unser [HackHub Packet Sniffing Grundlagen](/en/network-hacking/HackHub-Packet-Sniffing/) die zugehörige Protokollierungs-Hygiene ausführlicher.
+
+## Verteidigung gegen einen HackHub Man-in-the-Middle-Angriff
+
+Verteidigung ist auch in einer offensiven Simulation wichtig, da das Spiel häufig den Spieß umdreht und dich auffordert, ein eingehendes MITM auf dein eigenes System zu erkennen und zu blockieren. Die Angreiferseite zu verstehen, die du gerade gelernt hast, macht die Verteidigung dramatisch einfacher, da jede offensive Bewegung eine defensive Gegenbewegung hat.
+
+### Erkennungsmerkmale, die du immer beobachten solltest
+
+Der Simulator legt drei verlässliche Indikatoren offen, die anzeigen, dass jemand versucht, deinen Cache zu vergiften. Wenn einer davon während eines Auftrags ansteigt, brich ab und untersuche, bevor du fortfährst.
+
+| Indikator | Normaler Bereich | Verdächtiger Schwellenwert | Aktion |
+|-----------|--------------|----------------------|--------|
+| ARP-Antwortrate | 0–2/Sek. | Über 8/Sek. | Absender-MAC blockieren |
+| Doppelte-IP-Warnungen | 0/Std. | 1 oder mehr | Virtuelle NIC neu starten |
+| Gateway-MAC-Änderungen | 0/Std. | 1 oder mehr | Alle Sitzungen abbrechen |
+
+Spieler, die alle drei Indikatoren gleichzeitig überwachen, berichten laut Community-Tests davon, 95 % der eingehenden MITM-Versuche innerhalb der ersten 30 Sekunden zu erkennen. Der Simulator belohnt schnelle Erkennung mit einem **Counter-Intel**-Bonus, der langfristig bessere offensive Werkzeuge finanzieren kann.
+
+### Deinen eigenen Knoten härten
+
+Über die Erkennung hinaus bietet HackHub drei defensive Module, die deine Anfälligkeit für eingehende MITM-Aufträge reduzieren. Das **Static ARP**-Modul sperrt deinen Cache, sodass gefälschte Antworten vollständig ignoriert werden, was perfekt klingt, aber tatsächlich legitime DHCP-Erneuerungen unterbricht, weshalb die meisten erfahrenen Spieler es nur für hochwertige Aufträge aktivieren. Das **Port Isolation**-Modul trennt deinen Knoten in ein privates VLAN aus, was dich für Scan-Verkehr unsichtbar macht, auf Kosten eines langsameren Auftrags-Matchmakings. Schließlich ist das **IDS Watchdog**-Modul die leichteste Option – es protokolliert verdächtige Aktivitäten, ohne sie zu blockieren, sodass du Angreifermuster im Laufe der Zeit studieren kannst.
+
+Eine ausgewogene Ausrüstung für fortgeschrittene Spieler ist Static ARP für Aufträge ab Stufe 4, Port Isolation für Offline-Studien-Sitzungen und IDS Watchdog überall sonst. Anfänger sollten nur mit IDS Watchdog beginnen, da die anderen beiden Module scharfe Lernkurven haben, die bei falscher Konfiguration den frühen Fortschritt behindern können.
+
+### Wann Verteidigung Offensive schlägt
+
+Es gibt eine Klasse von Aufträgen in HackHub, bei denen die optimale Strategie Verteidigung statt Angriff ist. Diese werden **Mirror Contracts** genannt und kehren das Standardziel um: Statt ein Ziel zu vergiften, musst du für die gesamte Dauer unvergiftet bleiben. Erfolg bei diesen Jobs wird deutlich besser bezahlt als offensive MITM-Aufträge derselben Stufe, was sie zu einer starken Einnahmequelle macht, sobald du beide Seiten des HackHub Man-in-the-Middle-Angriffs gemeistert hast.
+
+## Häufig gestellte Fragen
+
+**Was ist das einfachste Werkzeug für den Einstieg in den HackHub Man-in-the-Middle-Angriff?**
+
+GhostBridge ist das anfängerfreundlichste Werkzeug aufgrund seiner hohen Heimlichkeitsbewertung und mittleren Energiekosten. Es verzeiht Timing-Fehler und löst selten das IDS des Ziels aus, was bedeutet, dass neue Spieler sich auf das Lernen der Cache-Vergiftungsphase konzentrieren können, ohne sich über Erkennungsstrafen Sorgen machen zu müssen. Die meisten Community-Leitfäden empfehlen, mindestens zehn GhostBridge-Aufträge durchzuführen, bevor ein anderes MITM-Werkzeug freigeschaltet wird.
+
+**Kann ich mehrere MITM-Aufträge im selben Subnetz verketten?**
+
+Ja, der Simulator unterstützt Auftragsverkettung, solange deine Heimlichkeitsbewertung zwischen den Durchläufen über 70 % bleibt. Ein Abfall unter 70 % löst eine Abkühlphase aus, in der das Subnetz neue Aufträge ablehnt, daher ist der Schlüssel, jeden Job sauber zu beenden, bevor der nächste beginnt. Spieler berichten, dass das Verketten von drei bis vier Aufträgen hintereinander realistisch ist, wenn du den ARP-Cache am Ende jedes Durchlaufs konsequent wiederherstellst.
+
+**Funktioniert der HackHub Man-in-the-Middle-Angriff gegen HTTPS-Ziele?**
+
+Standard-MITM liest HTTPS-Payloads nicht direkt, da sie verschlüsselt sind, aber SilentFern enthält eine Zertifikatsklon-Funktion, mit der du dem Ziel ein gefälschtes Zertifikat präsentieren kannst. Das gefälschte Zertifikat ermöglicht es dir, verschlüsselte Payloads zu sehen, obwohl der Simulator dies als Hochrisikoaktion markiert, die deine Reputation senkt, wenn du erwischt wirst. Zu Übungszwecken stellt das Spiel einen Sandbox-HTTPS-Auftrag bereit, in dem Zertifikatsklonen vollständig erlaubt ist.
+
+**Wie lange dauert es, einen ARP-Cache vollständig zu vergiften?**
+
+Ein typischer Cache braucht 60 bis 120 Sekunden, um mit der Standardrate vergiftet zu werden, abhängig von der defensiven Haltung des Ziels. Aggressive Vergiftung kann den Prozess in 30 Sekunden abschließen, erhöht aber drastisch die Chance, das IDS des Ziels auszulösen. Der von der Community akzeptierte Sweet Spot liegt bei etwa 90 Sekunden, was Geschwindigkeit gegen Erkennungsrisiko abwägt.
+
+**Gibt es eine Möglichkeit, MITM zu üben, ohne die Reputation zu riskieren?**
+
+Ja, der Simulator enthält einen dedizierten **Lab Mode**, in dem jeder Knoten freundlich ist und keine Reputation verfolgt wird. Der Lab Mode ermöglicht es dir, mit gefälschten ARP-Antworten, Paketeinschleusung und Werkzeugwechsel ohne Karrierekonsequenzen zu experimentieren. Die meisten erfahrenen Spieler empfehlen, mindestens zwei Stunden im Lab Mode zu verbringen, bevor du Aufträge der Stufe 2 versuchst, da das dort aufgebaute Muskelgedächtnis sich direkt in höhere Erfolgsquoten bei Live-Jobs übersetzt.
+
+Willst du deine Abfangfähigkeiten noch weiter ausbauen? Hinterlasse einen Kommentar unten mit dem härtesten MITM-Auftrag, den du gemeistert hast, und teile diesen Leitfaden mit einem Mitoperator, der noch bei Stufe 2 feststeckt.

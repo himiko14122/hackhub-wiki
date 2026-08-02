@@ -1,0 +1,167 @@
+export const metadata = {
+    id: "first-mission-guide",
+    slug: "first-mission-guide",
+    order: 3,
+    difficulty: "beginner",
+    title: "HackHub 初回ミッションガイド：2026年に素早くレベルアップ",
+    description: "このステップバイステップガイドでHackHubの初回ミッションをマスターしましょう。リーダーボードを支配するための必須戦略、ミッション構造、HackHubレベルアップテクニックを学びます。",
+    keywords: ["HackHub 初回ミッションガイド", "HackHub レベルアップ"],
+    image: "/images/articles/Hvw2Z7kuszc.webp",
+    video: "Hvw2Z7kuszc",
+    category: "guides",
+    date: "2026-08-02T14:00:00+08:00",
+    lastModified: "2026-08-02T14:00:00+08:00"
+}
+
+HackHubでの最初の瞬間は、あなたの旅全体のトーンを決定づけ、しっかりとした初回ミッションの理解こそが、カジュアルなプレイヤーと未来のエリートプレイヤーを分けるものです。このガイドでは、最新のコミュニティデータを使用して初回ミッションをステップごとに分解します。なぜなら、ここでの効率的な実行が、**HackHubレベルアップ**のためにどれだけ早く勢いをつけるかを決定するからです。経験豊富なプレイヤーが使用して、初期プレイの毎秒を最適化するための実践的な戦術に焦点を当てます。
+
+## 初回ミッションの構造を理解する
+
+ターミナルコマンドに飛びつく前に、ミッションフレームワークを理解する必要があります。なぜなら、ゲームは意図的に**ミッション制の構造**を通じて実際のネットワーク侵入を模倣しているからです。初回ミッションはチュートリアルとして機能しますが、単なる簡単なウォークスルー以上のものです。それは、すべての将来のジョブを制御する3つの基本メカニズムを学ぶ場所です：**偵察**、**侵入**、**脱出**。
+
+コミュニティのテストによると、初回ミッションは固定された低レベルセキュリティノードのプールから手続き的に生成されます。つまり、特定のIPアドレスやサービスポートはプレイセッションごとにわずかに変動する可能性があります。この手続き的生成は経験を新鮮に保ちますが、コアの目的は一定です。ターゲットデータフラグメントを見つけ、トレースが完了する前に脱出する。このフェーズでの成功はあなたの信頼度ステータスに直接影響し、次のミッションの難易度に影響します。
+
+| ミッションフェーズ | 目的 | 主要メカニズム | 時間制限（平均） |
+| :--- | :--- | :--- | :--- |
+| 偵察 | ネットワークをスキャンしてアクティブノードをマップ | ポートスキャン、サービス検出 | 120秒 |
+| 侵入 | 主要データボールトを突破 | パスワードクラッキング、バッファオーバーフロー | 90秒 |
+| 脱出 | ターゲットファイルをダウンロードしてログアウト | データ圧縮、トレース回避 | 60秒 |
+
+この表は、すべてのHackHubオペレーションで遭遇する3部構成のリズムを強調しています。例えば、**偵察**フェーズは、`scan`コマンドを使用して接続されたノードを明らかにする場所です。このフェーズをマスターする鍵は、**ノード署名パターン**を学ぶことです。なぜなら、ベテランプレイヤーはハッシュIDの最初の3桁を見るだけで、5秒未満で脆弱なノードを識別できるからです。**侵入**フェーズは、ゲームが**ICEメカニズム**を導入する場所であり、これらは本質的に無効化する必要がある防御対策です。最後に、**脱出**フェーズは正確さを要求します。なぜなら、最後の10秒で**ネットワークアラート**を発動させると、完全なトレース再開が強制されるからです。
+
+## ステップバイステップのミッションウォークスルー
+
+このセクションでは、あなたが直面する必須コマンドと選択の構造化されたウォークスルーを提供します。なぜなら、最初の30秒での誤った判断が貴重な評判ポイントを失わせる可能性があるからです。ゲームは最も効率的なパスを明示的にガイドしませんが、コミュニティデータはリソース獲得を最大化する特定のルートを示唆しています。
+
+### フェーズ1：ターミナルセッションの初期化
+
+仮想ターミナルに初めてログインすると、黒い画面と1つの点滅カーソルが表示されます。最初のアクションは決して`help`と入力することではありません。なぜなら、それはあなたの**偵察ウィンドウ**の5秒を消費するからです。代わりに、経験豊富なプレイヤーはすぐに`netscan -p`を実行してパッシブネットワークスキャンを行い、**システム管理者AI**に警告せずにトポロジを明らかにします。初期スキャン結果は常に3つのノードを表示します：ゲートウェイ、データボールト、および**ハニーポットトラップ**。トラップは、対話すると時間を浪费するように特別に設計されているため、それを回避することを学ぶことがあなたの最初の実際のテストです。
+
+入力する必要があるコマンドは常に小文字で、正しいフラグが続く必要があります。例えば、`scan -a`はアクティブスキャンを実行し、より高速ですが**トレース試行**をトリガーするリスクがあります。コミュニティレポートによると、まだ防御プログラムがロードされていないため、初回ミッションにはパッシブスキャン使用がより安全な選択です。ネットワークをマップした後、`connect`コマンドを使用して隣接ノードにジャンプできます。
+
+### フェーズ2：ボールトのクラッキング
+
+ボールトは**データアイコン**でノードマップに表示されます。それに接続すると、**ICEレイヤー**を表すミニゲームが開きます。最初のICEレイヤーは常にシンプルな暗号パズルで、回転するキーフラグメントをマッチングする必要があります。多くの新規プレイヤーがここでつまずきます。なぜなら、パズルに時間制限があるからです。トリックは、キーフラグメントの外側のリングに焦点を当てることです。なぜなら、内側のコアは色をゆっくりと変えるため、あまり問題なく揃えることができるからです。このパズルを完了すると、最初の**クラッキングツール**が授与され、自動的にソフトウェアデッキに装備されます。
+
+暗号を回避した後、**バッファスタック**に直面します。これは、割り当てられたバッファよりも長い文字列を入力してスタックをオーバーフローさせる必要がある、生の数字ゲームです。正しい文字列の長さはセッションごとに異なりますが、プレイヤーデータによると、ちょうど48文字のシーケンスが初回ミッションの標準**バッファサイズ**破壊に対して機能します。バーを埋めるためにキーを押し続けることもできますが、**スタックオーバーフローエラー**を回避してシステムに警告を与えないために、正しいタイミングでリリースすることが重要です。
+
+## HackHubレベルアップ：XP獲得の最大化
+
+HackHubでのレベルアップは、ミッションを完了することだけではありません。それはどのように完了するかです。ゲームはあなたの効率を追跡する隠された**評判スコア**システムを使用し、このスコアはアンロックされる契約の種類に直接影響します。**HackHubレベルアップ**メカニズムを早期に理解することで、後で何十時間もの時間を節約できます。
+
+### 評判スコア倍率
+
+ミッション中に行うすべてのアクションが、最終スコア倍率に寄与します。この倍率はミッション終了時にベースXPに適用され、**HackHubレベルアップ**のための最も重要な要素になります。ゲームは複数の隠された変数を追跡しますが、コミュニティデータが最も影響力のあるものを集約しています。
+
+| パフォーマンメトリック | 重み | レベルアップへの影響 |
+| :--- | :--- | :--- |
+| トレースリスク | 30% | トレースリスクを下げると高い倍率を獲得 |
+| フロー下の時間 | 40% | サイレント時間制限内にフェーズを完了 |
+| サイド目的 | 20% | 偵察中に隠されたデータキャッシュを発見 |
+| ツール効率 | 10% | 最低限必要なコマンドを使用 |
+
+上記の表は、なぜアラートをトリガーするのを避けるべきかを示しています。なぜなら、**トレースリスク**と**フロー下の時間**メトリックがあなたの総パフォーマンススコアの70%を占めるからです。純粋にスピードと静粛さに焦点を当てると、ミッションをブルートフォースで突破するプレイヤーよりも、1時間あたりのXPを大幅に多く獲得します。なぜなら、**HackHubレベルアップ**カーブは生のスピードよりも技巧に報酬を与えるように設計されているからです。例えば、偵察フェーズで隠された**データフラグメント**を発見すると、最終XPを最大15%までブーストでき、最初の10ミッションで急速に複利的に増加します。
+
+### 初期ゲームのスキルツリー最適化
+
+初回ミッションを完了した後、最初のスキルポイントを受け取り、**HackHubレベルアップ**を効率的に行うために賢く使うことが重要です。**スキルツリー**は3つのブランチに分かれています：**ゴースト**、**ゴーストランナー**、**テクノマンサー**。ゴーストランナーブランチはスピードボーナスで魅力的に見えるかもしれませんが、ゴーストブランチがレベルアップに対して最も即時の価値を提供します。
+
+- **ゴーストプロトコル：** すべてのノードでのトレース率をランクごとに5%削減します。これは単一の最も効果的な初期ゲーム投資です。なぜなら、前のセクションで言及された**トレースリスク**パフォーマンスメトリックに直接貢献するからです。
+- **バッファオーバーフローマスタリー：** クラッキングツールの安定性を高め、侵入フェーズ中のランダムアラートを防ぎます。コミュニティデータによると、ここに2ポイントだけ投資すると、初回ミッションの暗号パズルでのRNG失敗確率を排除します。
+- **データ圧縮アルゴリズム：** ランクごとにダウンロード時間を10%削減してターゲットファイルを抽出できます。この特典は、ほぼ即座に元が取れます。なぜなら、**脱出フェーズ**で過ごす時間を短縮することで、**フロー下の時間**メトリックに大幅なブーストを提供するからです。
+
+## 高度なループ：反復によるXPファーミング
+
+初回ミッションを完全に理解したら、それを非常に効率的な**XPファーム**に変えることができます。HackHubはより高い難易度スケーリングで完了したミッションをリプレイできるため、处理できないメカニズムを導入せずにXP獲得を劇的に増加させる修飾子付きで初回ミッションを再実行できます。
+
+この特定のミッションの最良の修飾子は、**ホワイトICEバリアント**として知られています。この修飾子は、標準の暗号パズルをより複雑な**ロジックゲート**チャレンジに置き換えますが、ベースXP報酬を200%増加させます。**ゴーストプロトコル**スキルに投資している場合、ホワイトICEからの増加したトレースリスクは完全に無効化され、これはゼロリスクの高報酬ファーミング方法になります。プレイヤーによると、この方法は初期ゲームツールと中期ゲームギアの間のギャップを埋める最速の方法です。この特定のファーミング戦略の詳細な内訳は、[ビルド最適化](/en/guides/best-builds-hackhub/)に関するガイドで見つけることができます。
+
+ファーミングのもう一つの重要なテクニックは、**サイレントテイクダウン**に焦点を当てることです。ターゲットノードをすぐにクラッシュさせる代わりに、`analyze`コマンドを使用して**バックドアアクセス**ポートを探査できます。ノードがバックドアを生成する場合、**ICEレイヤー**を完全にバイパスでき、結果として完璧な**サイレントスコア**を獲得できます。このスコアは、ミッションごとにフラットな500XPボーナスを授与し、ゲームプレイの最初の5時間で**HackHubレベルアップ**に対して他に類を見ない効率性です。
+
+## 必須ツールと装備
+
+あなたの初期装備は意図的に弱いですが、最初のアップグレードパスの統計を理解することが不可欠です。ゲームはアイテム統計の技術用語を説明する際にあなたを甘やかすことはなく、プレイヤーが間違ったコンポーネントをアップグレードすることにつながります。
+
+| ツール名 | 機能 | アップグレード優先度 | コスト |
+| :--- | :--- | :--- | :--- |
+| ベーシックデクリプター | 暗号の複雑さを10%削減 | 低 | 50クレジット |
+| ピングマニピュレーター | 検出を遅延させるための偽トレース信号を追加 | 高 | 150クレジット |
+| バッファキャパシター | バッファオーバーフローセーフティマージンを増加 | 中 | 80クレジット |
+| ゴーストリンクアダプター | トレース下での接続安定性を維持 | 高 | 200クレジット |
+
+**ピングマニピュレーター**は、あなたの最初の購入であるべきツールです。なぜなら、**システムトレース**を積極的に誤誘導できるからです。アクティブ化されると、**脱出フェーズ**中に追加の15秒の安全時間を提供し、多くの場合、成功した抽出とミッション失敗の違いを生みます。コミュニティテストは、**ゴーストリンクアダプター**が2番目に重要な装備であることを確認しています。なぜなら、ファイル転送中に接続が切断されると、ノードにフラグが立てられ、次のログインで**ブラックICE**インスタンスが生成され、シンプルな初回ミッションを不必要に複雑にするからです。
+
+## よくある質問
+
+**HackHubの初回ミッションをどのように始めますか？**
+
+初回ミッションはキャラクターを作成してネットワークハブに入った後に自動的に開始されます。中央デスクのターミナルアイコンをクリックする必要があり、コマンドプロンプトが開きます。`mission start --id 0x1A`と入力すると、ボードから最初のジョブが手動で取得されます。なぜなら、サーバーへのレイテンシが高い場合、自動トリガーがバグることがあるからです。
+
+**HackHubレベルアップの最速の方法は何ですか？**
+
+最速の方法は、**ホワイトICE**修飾子で初回ミッションをリプレイすることです。なぜなら、初期ゲームキャラクターにとって最高のリスク対報酬比率を提供するからです。トレース速度を無効化するために**ゴースト**スキルツリーのみに投資することで、1つのアラートもトリガーせずに90秒ごとにランを完了できます。この一貫性により、中期ティアノードをアンロックするまで、1時間あたりの最も信頼性の高いXPになります。
+
+**なぜトレースがそんなに速く始まるのですか？**
+
+トレース速度は、生成するノイズレベルに直接結びついており、新しいプレイヤーはせっかちさから能動スキャンを繰り返し実行することがよくあります。能動スキャンごとにすべてのノードにpingするブロードキャストパケットを送信し、**セキュリティデーモン**があなたの物理的位置のトレースをすぐに開始できるようにします。パッシブスキャンに切り替え、仮想OSで不要なバックグラウンドプログラムをオフにすることで、トレース速度を低下させることができます。
+
+**初回ミッションを失敗することはできますか？**
+
+はい、トレースが完了すると失敗する可能性があり、これは単一ノードに接続したまま移動せずに長時間留まった場合に発生します。**トレース完了**バーが100%に達すると、あなたの接続は切断され、そのラン中に収集されたすべての**データフラグメント**を失います。キャラクターは失いませんが、50クレジットの再接続料金を支払う必要があり、ゲームの初期では重い負担です。
+
+**新しいCPUとRAMのどちらを最初に購入すべきですか？**
+
+最初に**RAM**のアップグレードを優先すべきです。なぜなら、あなたの初期RAMが同時にロードできるプログラム数を制限するからです。初期ミッションでは、**デクリプター**と**ピングマニピュレーター**を同時に実行できることはゲームチェンジャーであり、これにはベンダーから入手可能な標準の256mbから512mbチップへのRAMアップグレードが必要です。一部のコミュニティメンバーはパズルをより速く解決するためにCPUアップグレードを主張しますが、ボトルネックは生の処理速度ではなく、ほとんど常にトレースリスク管理です。
+
+初回ミッションを制覇し、**HackHubレベルアップ**をマスターするためのツールと知識を習得したので、残されているのはプレッシャーの中でそれらを適用することだけです。ターミナルに飛び込んで、初期ノードマップをどれだけ速くクリアできるか試してみてください。なぜなら、経験が最良の教師だからです。コメント欄で最速のクリアタイムを共有し、自分のプレイテスト中に発見したより良いルートがあればコミュニティに知らせてください。
+
+skill points, and spending them wisely is critical for **HackHub leveling up** efficiently. The **Skill Tree** is divided into three branches: **Ghost**, **Ghostrunner**, and **Techromancer**. While the Ghostrunner branch might seem appealing for its speed bonuses, the Ghost branch offers the most immediate value for leveling up.
+
+- **Ghost Protocol:** Reduces the trace rate on all nodes by 5% per rank. This is the single most effective early-game investment, because it directly feeds into the **Trace Risk** performance metric mentioned in the previous section.
+- **Buffer Overflow Mastery:** Increases the stability of your cracking tools, which prevents random alerts during the exploitation phase. According to community data, investing just two points here eliminates the RNG failure chance on the first mission's cipher puzzle.
+- **Data Compression Algorithms:** Allows you to exfiltrate target files with a download time reduction of 10% per rank. This perk pays for itself almost immediately, because reducing your time spent in the **Exfiltration Phase** provides a massive boost to your **Time Under Flow** metric.
+
+## Advanced Looping: Farming XP via Repetition
+
+Once you understand the first mission completely, you can turn it into a highly efficient **XP Farm**. Because HackHub allows you to replay completed missions with a higher difficulty scaling, you can re-run the first mission with modifiers that drastically increase your XP gain without introducing mechanics you cannot handle.
+
+The best modifier for this specific mission is known as the **White ICE Variant**. This modifier replaces the standard cipher puzzle with a more complex **Logic Gate** challenge, but it also increases the base XP reward by 200%. If you have invested in the **Ghost Protocol** skill, the increased trace risk from the White ICE is completely negated, making this a zero-risk, high-reward farming method. Players report that this method is the fastest way to bridge the gap between early-game tools and mid-game gear. You can find a detailed breakdown of this specific farming strategy in our guide on [build optimization](/en/guides/best-builds-hackhub/).
+
+Another critical technique for farming is focusing on **Silent Takedowns**. Instead of crashing the target node immediately, you can use the `analyze` command to probe for a **Backdoor Access** port. If the node generates a backdoor, you can bypass the **ICE Layer** completely, which results in a perfect **Silent Score**. This score awards a flat 500 XP bonus for every mission, which is an unbeatable efficiency for **HackHub leveling up** in the first five hours of gameplay.
+
+## Essential Tools and Equipment
+
+Your starting equipment is intentionally weak, but understanding the stats of your first upgrade path is vital. The game does not hold your hand in explaining the technical jargon of the item stats, which leads to players upgrading the wrong components.
+
+| Tool Name | Function | Upgrade Priority | Cost |
+| :--- | :--- | :--- | :--- |
+| Basic Decrypter | Reduces cipher complexity by 10% | Low | 50 Credits |
+| Ping Manipulator | Adds false trace signals to delay detection | High | 150 Credits |
+| Buffer Capacitor | Increases buffer overflow safety margin | Medium | 80 Credits |
+| Ghostlink Adaptor | Maintains connection stability under trace | High | 200 Credits |
+
+The **Ping Manipulator** is a tool that should be your first purchase, because it allows you to actively misdirect the **System Trace**. When activated, it buys you an extra 15 seconds of safe time during the **Exfiltration Phase**, which is often the difference between a successful extraction and mission failure. Community testing confirms that the **Ghostlink Adaptor** is the second most crucial piece of gear, because a dropped connection during the file transfer will flag your node and spawn a **Black ICE** instance on your next login, which complicates the simple first mission unnecessarily.
+
+## Frequently Asked Questions
+
+**How do I start the HackHub first mission?**
+
+The first mission initiates automatically upon creating your character and entering the network hub. You must click on the terminal icon on the central desk, which opens the command prompt. Typing `mission start --id 0x1A` will manually pull the first job from the board, because sometimes the automatic trigger can bug out if your latency to the server is high.
+
+**What is the fastest way for HackHub leveling up?**
+
+The fastest method is to replay the first mission with the **White ICE** modifier, because it offers the best risk-to-reward ratio for early-game characters. By investing solely in the **Ghost** skill tree to negate trace speed, you can complete a run every 90 seconds without triggering a single alarm. This consistency makes it the most reliable XP-per-hour until you unlock the mid-tier nodes.
+
+**Why does the trace start so fast?**
+
+The trace speed is directly tied to the noise level you generate, and new players often run active scans repeatedly out of impatience. Each active scan sends a broadcast packet that pings all nodes, which allows the **Security Daemon** to begin tracing your physical location immediately. You can reduce the trace speed by switching to passive scanning and turning off unnecessary background programs in your virtual OS.
+
+**Can I fail the first mission?**
+
+Yes, you can fail if the trace completes, which happens if you remain connected to a single node for too long without moving. If the **Trace Completion** bar reaches 100%, your connection is cut, and you lose all the **Data Fragments** collected during that run. You do not lose your character, but you will have to pay a reconnection fee of 50 credits, which is a heavy toll at the beginning of the game.
+
+**Should I buy a new CPU or RAM first?**
+
+You should prioritize upgrading your **RAM** first, because your starting RAM limits how many programs you can have loaded simultaneously. In the early missions, being able to run a **Decrypter** and a **Ping Manipulator** at the same time is a game-changer, and this requires a RAM upgrade from the standard 256mb to the 512mb chip available at the vendor. While some community members argue for CPU upgrades to solve puzzles faster, the bottleneck is almost always your trace risk management, not your raw processing speed.
+
+Now that you have the tools and knowledge to smash the first mission and master **HackHub leveling up**, the only thing left is to apply them under pressure. Jump into the terminal and see how quickly you can clear the initial node map, because experience is the best teacher. Share your fastest completion time in the comments and let the community know if you discovered a better route during your own playtesting.

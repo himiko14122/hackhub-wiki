@@ -1,0 +1,215 @@
+export const metadata = {
+    id: "hackhub-wifi-switching",
+    slug: "hackhub-wifi-switching",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub WiFi 스위칭 가이드: 신호 강화 및 은폐 유지",
+    description: "검증된 은폐 전략, 신호 비교, 단계별 네트워크 전환으로 모든 미션에서 탐지를 피하며 HackHub WiFi 스위칭을 마스터하세요.",
+    keywords: ["HackHub WiFi 스위칭", "HackHub 네트워크 전환", "HackHub 신호 강도", "HackHub 은폐 네트워크", "HackHub WiFi 변경", "HackHub 인터넷 전환", "HackHub WiFi 가이드", "HackHub 네트워크 교체"],
+    image: "/images/articles/kymunUlm0HM.webp",
+    video: "kymunUlm0HM",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## HackHub 은폐 런에서 WiFi 스위칭이 중요한 이유
+
+HackHub의 은폐는 브로드캐스트하는 네트워크에 따라 성공과 실패가 갈리므로, **HackHub WiFi 스위칭**이 커뮤니티 게시판에서 가장 많이 논의되는 메커니즘 중 하나가 되었습니다. 기업 서버 팜, 임원 펜트하우스, 또는 라이벌 해커의 다락방에 슬쩍 들어갈 때, 연결된 모든 기기는 추적 가능한 지문을 남깁니다. 적절한 순간에 브로드캐스트 SSID를 전환하는 것이 경비원, 드론, 자동 침입 스크립트가 위치를 잡지 못하게 하는 핵심입니다.
+
+이 레이어를 무시하는 플레이어들은 보통 몇 초 안에 플래그됩니다. 네트워크를 깔끔하게 로테이션하는 플레이어들은 단 한 번의 경보도 울리지 않고 전체 층을 유령처럼 통과할 수 있습니다. **HackHub WiFi 스위칭**을 제대로 수행하면 패닉에 찬 전력 질주를 계산된 천천한 기어로 바꾸며, 모든 조용한 제거에서 점수 배율을 직접적으로 높여줍니다.
+
+이 시스템은 의도적으로 가볍게 설계되어 있어, 신참 요원들도 첫날 밤에 실험해볼 수 있습니다. 초보와 베테랑을 가르는 것은 *언제* 교체할지, *어떤* 프로필로 교체할지, 그리고 패킷 스니핑 카운터 트리거를 피하기 위해 교체가 *얼마나 빠르게* 이루어져야 하는지를 아는 것입니다.
+
+## WiFi 신호 시스템 이해하기
+
+HackHub는 모든 미션 구역 내에 다층 네트워크 환경을 시뮬레이션하며, 노트북의 WiFi 프로필은 수동 송신기로 취급됩니다. 게임은 세 가지 경쟁력을 모델링합니다: 브로드캐스트하는 로컬 SSID, 캐릭터가 수동으로 스니핑할 수 있는 액세스 포인트의 근접성, 그리고 레벨 내 순찰 AI의 감지 반경입니다.
+
+### 신호 강도 대 감지 반경
+
+로드아웃의 모든 WiFi 프로필에는 세 가지 숨겨진 스탯이 있습니다: **신호 강도**, **익명성 등급**, **바운스 지연**. 게임은 이 숫자를 화면에 표시하지 않지만, 커뮤니티 테스트를 통해 대략적인 동작이 매핑되었습니다.
+
+| WiFi 프로필 | 신호 강도 | 익명성 등급 | 바운스 지연 |
+|---|---|---|---|
+| 기본 HomeNet | 높음 | 낮음 | 빠름 |
+| GhostLink (기본 은폐) | 중간 | 높음 | 중간 |
+| PivotRouter | 낮음 | 중간 | 매우 빠름 |
+| CafeHopper | 중간 | 중간 | 빠름 |
+| BurnerNet (Lv 12에서 잠금 해제) | 낮음 | 매우 높음 | 느림 |
+
+높은 **신호 강도**는 더 먼 거리에서 액세스 포인트에 도달할 수 있게 하지만, 감지 루틴에 더 밝은 타겟이 됩니다. **익명성 등급**은 순찰 AI가 시야 콘을 통과할 때 "이 사람 낯선가?" 체크를 얼마나 자주 굴리는지를 결정합니다. **바운스 지연**은 교체 애니메이션이 완료되는 데 걸리는 시간을 제어하며, 그 애니메이션 동안에는 움직일 수 없습니다.
+
+공식 HackHub Discord에서 공유된 커뮤니티 데이터에 따르면, 대부분의 은폐 계약에 가장 적합한 프로필은 도달 거리를 약간 포기하고 큰 폭의 투명성 향상을 얻는 **GhostLink** 프로필입니다. 넓게 펼쳐진 사무실 레벨에서 추가 범위가 필요한 베테랑들은 종종 병목 지점에서 **PivotRouter** 교체를 레이어링합니다.
+
+### 장착 가능한 네트워크 유형
+
+로드아웃은 한 번에 최대 네 개의 WiFi 프로필을 지원하며, 특정 미션 단계를 완료하거나 게임 내 암시장 상점에서 구매하여 새로운 것을 잠금 해제할 수 있습니다. 카테고리는 주거, 공공, 기업, 버너로 나뉩니다.
+
+- **주거 프로필**은 가정용 라우터를 모방하며 신호는 높지만 은폐는 낮게 평가됩니다.
+- CafeHopper와 같은 **공공 프로필**은 균형 잡혀 있으며 혼합 민간 환경에서 잘 작동합니다.
+- **기업 프로필**은 로컬 네트워크의 SSID 패턴과 일치하여 사무실 층 내부에서 감지를 크게 줄입니다.
+- **버너 프로필**은 일회용이며 세션별로 생성되어 가장 높은 익명성을 가지지만 최악의 범위를 가집니다.
+
+현재 계약에 어떤 패밀리가 적합한지 아는 것이 절반의 전투입니다. 나머지 절반은 다음 섹션에서 자세히 다루는 실제 교체 타이밍입니다.
+
+## HackHub에서 단계별로 WiFi 네트워크를 전환하는 방법
+
+HackHub WiFi 스위칭의 메커니즘은 단일 방사형 메뉴 뒤에 있지만, 입력은 플랫폼에 따라 변경됩니다. PC에서는 기본 키바인딩이 **F4**입니다. 콘솔에서는 **L1**을 길게 누르면 WiFi 휠이 열립니다. 모바일에서는 미니맵 모서리를 길게 누르면 동일한 방사형이 열립니다.
+
+### 교체 시퀀스
+
+WiFi 휠을 트리거할 때 시간은 멈추지 않습니다 — 순찰은 계속 움직이고 타이머는 계속 줄어듭니다. 이 때문에, 항상 엄폐물에서 교체를 시작해야 합니다. 깔끔한 전환의 전체 시퀀스는 다음과 같습니다:
+
+| 단계 | 행동 | 지속 시간 | 위험 창 |
+|---|---|---|---|
+| 1 | 엄폐물 진입 (책상, 사물함, 환기구) | 1.5 초 | 낮음 |
+| 2 | WiFi 휠 열기 (F4 / L1) | 0.3 초 | 중간 |
+| 3 | 새 프로필 선택 | 0.4 초 | 중간 |
+| 4 | 교체 확인 | 0.6 초 | 높음 |
+| 5 | 움직임 재개 | 즉시 | 낮음 |
+
+4단계 동안, 노트북은 근처 경비원들이 들을 수 있는 짧은 **재인증 핑**을 방출합니다. 이 핑의 지속 시간은 떠나고 있는 프로필이 아니라 전환 *중인* 프로필의 **바운스 지연** 스탯에 의해 결정됩니다. 버너 프로필은 PivotRouter보다 거의 1초 더 오래 걸리며, 이것이 새로운 플레이어들이 교체 중에 감지되는 흔한 원인입니다.
+
+### 휠을 스팸하지 말아야 하는 이유
+
+자주 하는 실수는 경비원이 나타날 때마다 WiFi 휠을 마구 눌러 교체가 구해주기를 바라는 것입니다. 실제로 교체 자체가 은폐 구간에서 캐릭터가 하는 가장 시끄러운 행동이며, 스팸하면 겹쳐진 핑이 감지 반경을 누적시킵니다. 숙련된 요원들은 **HackHub WiFi 스위칭** 로테이션을 두세 방 미리 계획하고, 자신과 모든 순찰 경로 사이에 최소한 하나의 견고한 벽이 있는 완전한 엄폐물 뒤에 있을 때만 실행합니다.
+
+더 부드러운 경험을 원한다면, 교체 키를 편안한 핫키로 재바인딩하고 **Tutorial Rooftop** 미션에서 휠을 연습하세요. 이 미션은 실패 상태가 없고 무한 재시도를 제공합니다.
+
+## 미션 유형별 최고의 WiFi 스위칭 전략
+
+모든 계약이 동일한 교체 패턴에 보상하는 것은 아닙니다. 커뮤니티 테스트가 각 주요 미션 유형에 대한 대략적인 플레이북을 만들었으며, 배치 전에 로드아웃을 조정하면 현장에서 귀중한 초를 절약할 수 있습니다.
+
+### 기업 침투 계약
+
+긴 복도, 유리 컨퍼런스 룸, 그리고 높은 경비 밀도가 이러한 미션을 정의합니다. 지배적인 전략은 **Corporate-Net**(건물에 자동 매칭)으로 시작하여 제한 구역으로 건너갈 때만 **GhostLink**로 전환하는 것입니다.
+
+| 계약 유형 | 시작 프로필 | 중간 교체 | 최종 구역 프로필 |
+|---|---|---|---|
+| Cubicle Crawl | Corporate-Net | 계단참에서 PivotRouter | 서버 룸용 BurnerNet |
+| Executive Floor | Corporate-Net | 엘리베이터에서 GhostLink | 금고용 BurnerNet |
+| Server Farm Raid | GhostLink | 없음 | 전체적으로 GhostLink |
+
+특히 **Cubicle Crawl** 유형은 단일 프로필에 머물려는 플레이어를 처벌합니다. Corporate-Net → PivotRouter → BurnerNet을 체이닝하여 각 구간을 60초 미만으로 유지하는데, 이는 순찰 드론이 감지 큐를 새로 고치는 데 걸리는 평균 시간 이하입니다.
+
+### 주거 및 다락방 미션
+
+이 작고 밀집된 가구 배치 맵은 은폐 레이어링보다 속도를 선호합니다. **CafeHopper**는 민간인 노이즈 플로어에 섞이기 때문에 기본 선택이며, 대부분의 플레이어는 단 한 번 — 대상의 서재에 침투하기 직전에만 교체합니다.
+
+### 야외 및 옥상 계약
+
+야외 구역은 감지 반경을 일반 사무실 벽 너머까지 확장하므로, 신호 강도가 다시 중요해집니다. **기본 HomeNet**은 가장 긴 도달 거리를 가지며 도시 블록 전체에 걸쳐 액세스 포인트에 일관되게 연결되는 유일한 프로필입니다. 건물에 들어가는 순간 단일 **GhostLink** 교체와 페어링하면, 대부분의 옥상을 플래그 없이 클리어할 수 있습니다.
+
+### 공격적 대 수동적 플레이 스타일
+
+시끄러운 유인과 가젯 스팸을 선호한다면, **PivotRouter**에 의존하세요. 매우 빠른 바운스 지연 덕분에 알람이 트리거될 때 추격 중에도 교체할 수 있기 때문입니다. 순수 은폐 플레이어는 스폰되는 순간부터 **BurnerNet**에 전념해야 합니다 — 범위가 좋지 않지만, 익명성이 충분히 높아서 웅크리기 버튼을 계속 누르고 있는 한 정지한 경비원의 팔 길이 안에서 걸어도 의심 없이 이동할 수 있습니다.
+
+웅크리기 움직임과 음파 전파가 네트워크 교체와 어떻게 상호작용하는지에 대한 더 깊은 분석은, 모든 감지 체크의 오디오 측면을 분석하는 [HackHub Sound Stealth Guide](/en/stealth-strategy/sound-stealth-guide/)를 참조하세요.
+
+## 피해야 할 일반적인 WiFi 스위칭 실수
+
+베테랑도 기본적인 것에서 실수합니다. 아래 목록은 커뮤니티 포스트 모템에서 가장 자주 나타나는 다섯 가지 실수와 해당 문제를 보고한 대다수 플레이어에게 효과가 있었던 해결책을 담고 있습니다.
+
+- **공개된 곳에서 교체.** 항상 먼저 엄폐물에 진입하세요. 그렇지 않으면 재인증 핑이 벽을 통해 위치를 누설합니다.
+- **프로필 복원을 잊음.** 서버 룸용으로 BurnerNet으로 전환했지만 나갈 때 다시 전환하는 것을 잊으면, 신호 강도가 급격히 떨어져 이후 층에 흩어져 있는 선택적 데이터 캐시를 놓치게 됩니다.
+- **잘못된 SSID 패밀리 매칭.** 주거 다락방 안에서 Corporate-Net을 사용하면 스크립트된 경비원 AI에 의심스러워 보이며 즉시 노란색 경보가 트리거됩니다.
+- **기본 프로필에 과도하게 의존.** HomeNet은 튜토리얼에는 괜찮지만 미션 3까지는 교체해야 합니다. 레벨 5 이후에도 계속 사용하는 플레이어들은 집계된 커뮤니티 런에 따르면 40% 더 높은 감지율을 보고합니다.
+- **순찰 회전 중 교체.** 경비원들은 몇 초마다 머리를 90도 회전합니다. 그들이 멀리 보는 프레임에 교체를 맞추면 무료 1.5초의 엄폐가 추가됩니다.
+
+이러한 실수들이 더 큰 감지 시스템에 어떻게 기여하는지에 대한 더 넓은 시각을 원한다면, [HackHub Patrol AI Guide](/en/stealth-strategy/patrol-ai-behavior/)에서 게임이 사용하는 정확한 시야 콘 수학을 다룹니다.
+
+### 모든 런 전 빠른 체크리스트
+
+- [ ] 로드아웃에 최소 하나의 **BurnerNet** 또는 **GhostLink**가 있는지 확인.
+- [ ] 레벨의 지배적인 SSID 패밀리에 대한 미션 브리핑 확인.
+- [ ] 교체 지점 미리 계획 (계단참, 환기구, 화장실 칸).
+- [ ] 현재 핫키가 어색하게 느껴지면 WiFi 휠 키 재바인딩.
+- [ ] Tutorial Rooftop에서 교체 애니메이션을 최소 두 번 연습.
+
+## WiFi 스위칭이 최종 점수에 미치는 영향
+
+HackHub의 모든 조용한 미션은 스왑 기록이 얼마나 깔끔한지에 따라 1.0x에서 3.0x까지 스케일링되는 **Network Discipline** 보너스를 부여합니다. 완벽한 런 — 계획된 웨이포인트에서만 교체하고, 공개된 곳에서는 절대 교체하지 않으며, 이미 사용된 프로필을 다시 교체하지 않는다는 의미 — 은 전체 배수를 받습니다. 두 번 이상의 패닉 교체가 있는 서투른 런은 보너스를 1.2x로 떨어뜨립니다.
+
+스코어링 서버는 런 동안 가장 자주 사용한 **HackHub WiFi 스위칭** 패밀리도 추적합니다. 동일한 패밀리의 프로필은 보너스를 누적하는 반면, 패밀리를 너무 공격적으로 혼합하면 작은 "불안정한 핸드쉐이크" 페널티를 트리거합니다. 커뮤니티 포럼에서 공유된 플레이어 보고 텔레메트리에 따르면, 최적의 조합은 한 패밀리에서 두 개의 프로필과 다른 패밀리에서 단일 백업으로, 계약당 최대 세 번의 교체입니다.
+
+이것이 또한 고득점 러너가 모든 미션에 정확히 네 개의 WiFi 프로필을 가지고 다닙니다: 하나의 스타터, 두 개의 중간 런 로테이션, 하나의 비상 버너. 네 개 이상은 스코어링 수학에 과잉이며 방사형 메뉴를 복잡하게 만듭니다.
+
+## 자주 묻는 질문
+
+**HackHub WiFi 스위칭이 멀티플레이어 협동 런에 영향을 줍니까?**
+
+예. 협동에서는 모든 요원의 WiFi 프로필이 모든 팀원에게 브로드캐스트되며, 스쿼드에서 가장 강한 신호가 공유 감지 체크에 대해 다른 신호들을 재정의합니다. 조정된 팀은 보통 한 명은 GhostLink에, 한 명은 BurnerNet에 두어 평균 신호를 낮게 유지하면서도 범위를 완전히 포기하지 않습니다.
+
+**경비원들이 벽 너머로 재인증 핑을 들을 수 있습니까?**
+
+벽 두께 하나까지만입니다. 핑은 제한된 전파를 가진 사운드 이벤트로 취급되므로, 단일 파티션 뒤로 엎드리는 것으로 충분합니다. 얇은 유리 파티션은 차단하지 않으므로, 항상 견고한 석고보드나 금속 사물함 뒤에서 교체하세요.
+
+**프롤로그 미션에 가장 좋은 WiFi 프로필은 무엇입니까?**
+
+프롤로그는 메커니즘을 가르치도록 스크립트되어 있으므로, GhostLink이 권장 교체로 하드코딩되어 있습니다. BurnerNet으로 실험해볼 수 있지만, 튜토리얼의 감지 콘은 HomeNet에 맞춰져 있어 무엇을 선택하든 현실적으로 플래그되지 않습니다.
+
+**WiFi 교체가 자원을 소모합니까?**
+
+직접적인 스태미나나 배터리 비용은 없지만, 모든 교체는 미션 종료 시 Network Discipline 보너스에 영향을 주는 숨겨진 카운터를 증가시킵니다. 단일 계약에서 여섯 번의 교정을 소진하면 개별 교정이 얼마나 깔끔했든 상관없이 보너스가 1.0x로 떨어집니다.
+
+**향후 패치가 WiFi 스위칭 시스템을 변경할까요?**
+
+공개 베타 브랜치의 커뮤니티 보고에 따르면, 개발자들이 BurnerNet의 바운스 지연을 약 0.2초 정도 줄이고 있다고 합니다. 이는 좁은 복도에서 GhostLink과 더 경쟁력이 있게 만들 것입니다. 패치 날짜는 아직 확인되지 않았지만, 업데이트가 적용되면 새 타이밍이 최적 프로필 순서를 바꾸는지 확인하기 위해 교체 로테이션을 다시 실행할 가치가 있습니다. 다음 계약에서 먼저 시도해볼 교체 패턴은 무엇인가요 — 보수적인 두 로테이션 로드아웃, 아니면 공격적인 세 버너 돌진?
+
+s to access points across a full city block. Pair it with a single **GhostLink** swap the moment you enter the building, and you can clear most rooftops without ever being flagged.
+
+### Aggressive Versus Passive Playstyles
+
+If you favor loud distractions and gadget spam, lean on **PivotRouter** because its very fast bounce latency lets you swap mid-chase when alarms trigger. Pure stealth players should commit to **BurnerNet** from the second they spawn — yes, the range is poor, but the anonymity is high enough that you can walk within arm's length of a stationary guard without raising suspicion, provided you also keep your crouch button held.
+
+For a deeper dive into how crouch movement and sound propagation interact with network swaps, see our [HackHub Sound Stealth Guide](/en/stealth-strategy/sound-stealth-guide/), which breaks down the audio half of every detection check.
+
+## Common WiFi Switching Mistakes to Avoid
+
+Even veterans slip on the basics. The list below captures the five mistakes that show up most often in community post-mortems, along with the fix that has worked for the majority of players who reported the issue.
+
+- **Swapping in the open.** Always enter cover first. The re-authentication ping will leak your position through walls otherwise.
+- **Forgetting to revert your profile.** If you swap to BurnerNet for a server room but forget to swap back when you leave, your signal strength will crater and you will miss the optional data caches scattered across later floors.
+- **Matching the wrong SSID family.** Using Corporate-Net inside a residential loft looks suspicious to scripted guard AI and triggers an instant yellow alert.
+- **Over-relying on the default profile.** HomeNet is fine for the tutorial but should be swapped out by mission three. Players who stick with it past level five report a 40% higher detection rate, according to aggregated community runs.
+- **Swapping during a patrol turn.** Guards rotate their head 90 degrees every few seconds. Time your swap to coincide with their looking-away frames, which adds a free 1.5 seconds of cover.
+
+If you want a broader look at how these mistakes feed into the larger detection system, our [HackHub Patrol AI Guide](/en/stealth-strategy/patrol-ai-behavior/) walks through the exact cone-of-vision math the game uses.
+
+### Quick Checklist Before Every Run
+
+- [ ] Confirm at least one **BurnerNet** or **GhostLink** is in your loadout.
+- [ ] Check the mission briefing for the dominant SSID family in the level.
+- [ ] Pre-plan the swap point (stairwell, vent, bathroom stall).
+- [ ] Rebind the WiFi wheel key if your current hotkey feels awkward.
+- [ ] Practice the swap animation at least twice in the Tutorial Rooftop.
+
+## How WiFi Switching Affects Your Final Score
+
+Every silent mission in HackHub awards a **Network Discipline** bonus, scaled from 1.0x to 3.0x based on how clean your swap history is. A perfect run — meaning you swapped only at planned waypoints, never in the open, and never re-swapped an already-used profile — scores the full multiplier. A sloppy run with two or more panic swaps drops the bonus to 1.2x.
+
+The scoring server also tracks which **HackHub WiFi switching** family you used most often during the run. Profiles from the same family stack their bonuses, while mixing families too aggressively triggers a small "Unstable Handshake" penalty. According to player-reported telemetry shared on community forums, the optimal mix is two profiles from one family plus a single backup from another, capped at three total swaps per contract.
+
+This is also why high-score runners carry exactly four WiFi profiles into every mission: one starter, two mid-run rotations, and one emergency burner. Anything beyond four is overkill for the scoring math and clutters the radial menu.
+
+## Frequently Asked Questions
+
+**Does HackHub WiFi switching affect multiplayer co-op runs?**
+
+Yes. In co-op, every operative's WiFi profile is broadcast to all teammates, and the strongest signal in the squad overrides the others for shared detection checks. Coordinated teams usually have one player on GhostLink and one on BurnerNet so the average signal stays low without sacrificing range entirely.
+
+**Can guards hear the re-authentication ping through walls?**
+
+Only one wall thick. The ping is treated as a sound event with limited propagation, which is why ducking behind a single partition is enough. Thin glass partitions do not block it, so always swap behind solid drywall or metal lockers.
+
+**What is the best WiFi profile for the Prologue mission?**
+
+The Prologue is scripted to teach the mechanic, so GhostLink is hard-coded as the recommended swap. You can experiment with BurnerNet, but the tutorial's detection cone is tuned to HomeNet and will not realistically flag you no matter what you choose.
+
+**Does swapping WiFi drain any resource?**
+
+No direct stamina or battery cost, but every swap increments a hidden counter that influences the Network Discipline bonus at the end of the mission. Burning through six swaps in a single contract will knock the bonus down to 1.0x regardless of how clean the individual swaps were.
+
+**Will future patches change the WiFi switching system?**
+
+Community reports from the public beta branch suggest the developers are tuning BurnerNet's bounce latency down by roughly 0.2 seconds, which would make it more competitive with GhostLink in tight corridors. No patch date has been confirmed yet, but it is worth re-running your swap rotations once the update lands to see if the new timings change your optimal profile order. Which swap pattern are you planning to try first on your next contract — the conservative two-rotation loadout or the aggressive three-burner rush?

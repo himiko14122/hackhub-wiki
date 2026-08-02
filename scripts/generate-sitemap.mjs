@@ -1,25 +1,21 @@
 import fs from 'fs';
 import path from 'path';
 
-const SITE_URL = 'https://dragon-sword-awakening.wiki';
+const SITE_URL = 'https://www.hackhub.wiki';
 const LOCALES = ['en', 'ko', 'ja', 'de'];
 const routing_defaultLocale = 'en';
-const CONTENT_TYPES = ['heroes', 'tier-list', 'tag-combos', 'guides', 'builds', 'status-ailments', 'exploration', 'familiars', 'updates', 'cooking-crafting', 'story-lore', 'system-requirements', 'buying-guide'];
+const CONTENT_TYPES = ['developer', 'guides', 'missions', 'network-hacking', 'password-hacking', 'stealth-strategy', 'tools', 'tools-tier-list', 'updates'];
 const NAV_PAGES = [
   { path: '/', priority: 1, changefreq: 'daily' },
-  { path: '/heroes', priority: 0.9, changefreq: 'weekly' },
-  { path: '/tier-list', priority: 0.9, changefreq: 'weekly' },
-  { path: '/tag-combos', priority: 0.9, changefreq: 'weekly' },
+  { path: '/developer', priority: 0.9, changefreq: 'weekly' },
   { path: '/guides', priority: 0.9, changefreq: 'weekly' },
-  { path: '/builds', priority: 0.9, changefreq: 'weekly' },
-  { path: '/status-ailments', priority: 0.8, changefreq: 'weekly' },
-  { path: '/exploration', priority: 0.8, changefreq: 'weekly' },
-  { path: '/familiars', priority: 0.8, changefreq: 'weekly' },
+  { path: '/missions', priority: 0.9, changefreq: 'weekly' },
+  { path: '/network-hacking', priority: 0.9, changefreq: 'weekly' },
+  { path: '/password-hacking', priority: 0.9, changefreq: 'weekly' },
+  { path: '/stealth-strategy', priority: 0.8, changefreq: 'weekly' },
+  { path: '/tools', priority: 0.9, changefreq: 'weekly' },
+  { path: '/tools-tier-list', priority: 0.8, changefreq: 'weekly' },
   { path: '/updates', priority: 0.8, changefreq: 'weekly' },
-  { path: '/cooking-crafting', priority: 0.8, changefreq: 'weekly' },
-  { path: '/story-lore', priority: 0.8, changefreq: 'weekly' },
-  { path: '/system-requirements', priority: 0.8, changefreq: 'weekly' },
-  { path: '/buying-guide', priority: 0.8, changefreq: 'weekly' },
   { path: '/about', priority: 0.7, changefreq: 'monthly' },
   { path: '/sitemap', priority: 0.5, changefreq: 'monthly' },
   { path: '/privacy-policy', priority: 0.4, changefreq: 'yearly' },

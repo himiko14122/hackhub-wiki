@@ -1,0 +1,190 @@
+export const metadata = {
+    id: "hackhub-lateral-movement",
+    slug: "hackhub-lateral-movement",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub Lateral Movement: Vollständiger Pivoting-Leitfaden",
+    description: "Meistere die Lateral-Movement-Techniken, Pivot-Ketten und Netzwerk-Traversal-Strategien von HackHub mit diesem tiefgehenden Spieler-Leitfaden für 2026 zum Thema Network-Hacking-Runs.",
+    keywords: ["HackHub Lateral Movement", "HackHub Pivoting-Leitfaden", "HackHub Netzwerk-Traversal", "HackHub Hack-Chain-Tipps", "HackHub fortgeschrittener Leitfaden"],
+    image: "/images/articles/DJrrUqNeNMQ.webp",
+    video: "DJrrUqNeNMQ",
+    category: "network-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Die Beherrschung von HackHub Lateral Movement ist das, was Gelegenheits-Eindringlinge von Operatoren trennt, die fünf oder sechs kompromittierte Hosts pro Sitzung verketten, ohne einen ICE-Alarm auszulösen. Hier findest du den aktuellen 2026-Aufschlüsselung zu Pivots, Trace-Timern und Chain-Building-Mustern.
+
+## Die Grundlagen von HackHub Lateral Movement verstehen
+
+In HackHub setzt dich jeder Vertrag, den du annimmst, auf den Edge-Node eines Unternehmens-Subnets ab, und das echte Geld lebt zwei, drei oder vier Hops tiefer. Diese Reise von deinem **Entry Node** zum **Target Daemon** ist das, was das Spiel **Lateral Movement** nennt — und die gesamte Ökonomie des Network-Hacking-Karrierepfads dreht sich darum, wie effizient du sie ausführst.
+
+Lateral Movement in HackHub ist nicht dasselbe, wie sich direkt den Weg freizukämpfen. Die terminalartige Oberfläche belohnt Spieler, die **Netzwerktopologie** verstehen, nicht Spieler, die jeden Exploit, den sie besitzen, wahllos gegen die Firewall einsetzen. Laut Community-Daten, die über den öffentlichen Discord gesammelt wurden, werden Verträge der Stufe 2 oder höher ungefähr **2,4× schneller** abgeschlossen, wenn Operatoren eine Pivot-Kette verwenden, anstatt den Zielhost direkt anzugreifen, weil das Chain-Routing die Trace-Last auf mehrere Decoy-Nodes verteilt.
+
+Bevor du zuverlässige Ketten bauen kannst, brauchst du vier mentale Anker, die erfahrene Spieler ständig nutzen:
+
+- **Entry Node** — der Host, auf dem du spawnst, normalerweise eine Workstation mit niedriger Sicherheit oder ein Auftragnehmer-Laptop
+- **Pivot Node** — jeder kompromittierte Host, durch den du deinen Verkehr routest, um deinen wahren Ursprung zu verschleiern
+- **Trace Window** — der Countdown-Timer, den ICE verwendet, um deine physische Verbindung zu lokalisieren
+- **Burner** — ein absichtlich geopferter Node, den du mitten in der Kette aufgibst, um den Erkennungsdruck abzufangen
+
+Wenn du jeden HackHub-Run als Graph-Problem behandelst statt als Schadens-Rennen, springen deine Clear-Raten dramatisch nach oben. Dasselbe Prinzip gilt, egal ob du im Tutorial-Subnet übst oder einen Solo-Raid auf maximaler Stufe spielst.
+
+## Kerntechniken für Lateral Movement in HackHub
+
+HackHub bietet vier erstklassige Pivot-Methoden, und jede verbraucht unterschiedliche Ressourcen mit unterschiedlichen Raten. Die richtige Technik für das Netzwerk zu wählen, vor dem du stehst, ist der größte Leistungshebel in jedem HackHub-Lateral-Movement-Build.
+
+### SSH-Tunnel-Pivots
+
+Der **SSH-Tunnel** ist der günstigste Pivot, den du einsetzen kannst, er kostet **3 CPU-Zyklen** und **1 Bandwidth-Einheit** pro Hop, ohne zusätzlichen Overhead. Er funktioniert auf jedem Node, der in seinem Scan-Profil Port 22 exponiert, was laut Community-Scans ungefähr **61 % der Unternehmens-Workstations** entspricht. Der Tunnel bleibt offen, bis du ihn explizit schließt, sodass du mehrere Tunnel verketten und zwischen ihnen hin- und herspringen kannst, ohne den Befehl erneut abzusetzen.
+
+Der Kompromiss ist Geschwindigkeit. SSH-Pivots routen auf der **Turtle-Stufe** der Verbindungsgeschwindigkeits-Leiter von HackHub, was bedeutet, dass eine Vier-Hop-Kette etwa **4,2 Sekunden** Latenz zu jedem Befehl hinzufügt, den du durch sie leitest. Für risikoarmes Daten-Siphoning ist das irrelevant. Für Verträge, bei denen du gegen die Uhr rennst, kann es der Unterschied zwischen einer sauberen Extraktion und einer erzwungenen Trennung sein.
+
+### Proxy-Chain-Routing
+
+**Proxy Chains** stapeln mehrere Anonymizer-Relays übereinander und sind die einzige Technik, die deine Ursprungssignatur vollständig säubert. Das erste Relay in der Kette sieht deinen echten Session-Header, aber jedes nachfolgende Relay sieht nur die Adresse des vorherigen Relays. Wenn der Verkehr das Ziel erreicht, ist dein Ursprung mindestens **drei Schichten tief**.
+
+Die Kosten sind steiler: Jeder Proxy fügt **8 Bandwidth-Einheiten** pro Sekunde aktivem Routing hinzu, und der **Chain-Overhead** skaliert multiplikativ statt additiv. Eine Drei-Relay-Kette kostet ungefähr **22 Bandwidth-Einheiten** pro Sekunde — eine Zahl, die neue Spieler überrascht, die annahmen, „mehr Proxies" bedeute nur „mehr Sicherheit". In puncto Sicherheit haben sie recht und in puncto Ressourcen völlig unrecht.
+
+### Port-Forwarding und Relay-Nodes
+
+**Port Forwarding** ist die chirurgische Option: Es exponiert einen einzelnen internen Dienst von einem kompromittierten Host zurück zu deinem Toolkit, ohne deine gesamte Session durch den Pivot zu routen. Die meisten HackHub-Veteranen verwenden Port-Forwards, wenn sie einen bestimmten Dienst knacken müssen — einen Database-Daemon, ein internes Mail-Relay oder einen CI-Runner — ohne für einen vollen Tunnel zu zahlen.
+
+Der interessante Edge Case ist der **Relay Node**. Wenn du durch ein Relay forwardst, sieht das Relay nicht den Inhalt deiner Payload, sondern nur die Metadaten des Forwards selbst. Das macht Relays zum saubersten Weg, um **durch Firewalls zu pivotieren**, die auf aktive Session-Signaturen achten. Wenn du noch lernst, wie Firewall-Erkennung funktioniert, behandelt der [Firewall-Bypass-Taktiken-Walkthrough](/en/network-hacking/HackHub-Firewall-Bypass/) die Erkennungsregeln detaillierter.
+
+### Vergleich der vier Lateral-Movement-Techniken
+
+| Technik | CPU pro Hop | Bandwidth pro Sekunde | Trace-Reduktion | Bester Anwendungsfall |
+|---|---|---|---|---|
+| SSH-Tunnel | 3 | 1 | 25 % | Lange, langsame Daten-Siphons |
+| Proxy Chain | 5 | 8 | 70 % | Hochstufige, hochwertige Ziele |
+| Port Forward | 2 | 4 | 10 % | Einzel-Dienst-Extraktion |
+| Relay Node | 4 | 6 | 40 % | Firewall-lastige Mid-Chain-Hops |
+
+Beachte, wie **Proxy Chains** bei der Trace-Reduktion gewinnen, aber bei den Ressourcen verlieren, während **SSH-Tunnel** genau umgekehrt sind. Sie in einem Run zu mischen — zum Beispiel SSH zum ersten Pivot, dann eine Proxy Chain durch den zweiten und dritten — ist das, was Top-HackHub-Ladder-Spieler einen **Hybrid Pivot** nennen, und es ist der Standard-Build für Verträge der Stufe 3.
+
+## HackHub-Lateral-Movement-Mechaniken und Daten
+
+Jeder Pivot, den du aufbaust, unterliegt einer Handvoll numerischer Regeln, und sie zu ignorieren ist der schnellste Weg, einen sauberen Run zu verlieren. Die folgenden Zahlen stammen aus einer Kombination des In-Game-Hilfe-Overlays und spielerberichteter Tests im offiziellen Community-Discord.
+
+### Trace-Timer und ICE-Erkennung
+
+Das **Trace Window** ist die zentrale Spannung jedes HackHub-Runs. Sobald du deinen ersten Exploit im Ziel-Subnet abfeuerst, beginnt der **ICE-Counter** zu ticken und hört nicht auf, bis du entweder das Zielobjekt abschließt oder der Timer auf null fällt und du gekickt wirst. Die Trace-Schwelle variiert je nach Netzwerkstufe:
+
+| Netzwerkstufe | Initiales Trace Window | Trace-Reduktion pro Pivot | Burner-Reset-Wert |
+|---|---|---|---|
+| Stufe 1 (Übung) | 90 Sekunden | 6 Sekunden | 15 Sekunden |
+| Stufe 2 (Standard) | 60 Sekunden | 9 Sekunden | 12 Sekunden |
+| Stufe 3 (Gehärtet) | 45 Sekunden | 12 Sekunden | 8 Sekunden |
+| Stufe 4 (Black ICE) | 30 Sekunden | 15 Sekunden | 5 Sekunden |
+
+Die Spalte **Burner-Reset-Wert** ist die, die die meisten Spieler übersehen. Wenn du absichtlich einen Pivot-Node opferst und deine aktive Session auf ihn dumpst, setzt ICE seine Lokalisierungsuhr um diese vielen Sekunden zurück, bevor der Countdown fortgesetzt wird. Ein Stufe-3-Burner gibt dir ungefähr **27 % deines verbleibenden Fensters** zurück, was mehr als genug ist, um einen finalen Siphon abzuschließen, wenn du das Timing richtig gewählt hast.
+
+### Bandwidth-Kosten und Hop-Overhead
+
+Jeder Pivot in deiner Kette fügt einen **Hop-Overhead** zu jedem Befehl hinzu, den du durch ihn routest. Der Overhead beginnt bei **15 % pro Hop** für die ersten beiden Hops und steigt dann auf **22 % pro Hop** darüber hinaus. Diese Kurve ist der Grund, warum eine Fünf-Hop-Kette dramatisch schlechter ist als eine Drei-Hop-Kette — es ist keine lineare Kostenstrafe, es ist geometrisch.
+
+| Kettenlänge | Gesamter Hop-Overhead | Effektive verbleibende Bandwidth |
+|---|---|---|
+| 1 Hop | 15 % | 85 % |
+| 2 Hops | 30 % | 70 % |
+| 3 Hops | 52 % | 48 % |
+| 4 Hops | 74 % | 26 % |
+| 5 Hops | 96 % | 4 % |
+
+Bei **fünf Hops** bist du funktional blockiert. Deine Befehle werden in die Warteschlange gestellt, deine Siphon-Raten kollabieren, und die ICE-Trace holt dich ein, bevor du irgendetwas Sinnvolles beenden kannst. Der kluge Zug in diesem Moment ist es, **die Kette zu kollabieren**, indem du die äußeren Hops opferst und auf dem innersten Pivot konsolidierst.
+
+### Node-Verbindungsprofile
+
+Nicht jeder Host akzeptiert jeden Pivot. Workstations sind **SSH-freundlich**, aber **Proxy-resistent**, während gehärtete Server genau das Gegenteil sind. Router sind **Relay-freundlich**, aber sie akzeptieren kein Port Forwarding, es sei denn, du hast bereits ihre Admin-Plane geknackt.
+
+| Host-Typ | SSH-Akzeptanz | Proxy-Akzeptanz | Port-Forward-Akzeptanz | Relay-Akzeptanz |
+|---|---|---|---|---|
+| Workstation | Ja | Nein | Ja | Ja |
+| Datenbank-Server | Nein | Ja | Ja | Ja |
+| Router | Nein | Ja | Nein | Ja |
+| Firewall | Nein | Nein | Nein | Ja (mit geknackter Admin) |
+| CI-Runner | Ja | Ja | Ja | Nein |
+
+Wenn du diese Tabelle sorgfältig liest, erklärt sie, warum keine einzelne Technik jeden Node in einem echten Subnet abdeckt. Ein sauberer HackHub-Lateral-Movement-Build wechselt zwischen Techniken, während die Kette verschiedene Host-Typen kreuzt. Um herauszufinden, welche Subnets welche Node-Mischung exponieren, scanne sie zuerst mit dem [Network-Scanning-Basics-Toolkit](/en/network-hacking/HackHub-Network-Scanning/), bevor du dich auf eine Route festlegst.
+
+## Eine effektive Lateral-Movement-Strategie aufbauen
+
+Techniken auszuwählen ist die halbe Miete. Die andere Hälfte ist, sie zu sequenzieren, und die Reihenfolge, in der du Pivots kompromittierst, ist genauso wichtig wie der Pivot-Typ, den du wählst. Unten ist der Sechs-Phasen-Workflow, auf den ladder-gerankte HackHub-Spieler tendenziell konvergieren, laut Community-Tests und geteilten Replays.
+
+### Phase 1 — Aufklärung und Entry-Auswahl
+
+Beginne jeden Run mit einem **passiven Scan** des Entry-Subnets. Ein passiver Scan kostet null CPU und zeigt den Host-Typ jedes Nodes innerhalb eines Hops. Wähle den Entry Node, der dir die meisten Downstream-Optionen bietet — normalerweise eine Workstation, die mindestens einen **Router** oder **Datenbank-Server** sehen kann. Überspringe Entry Nodes, die dich direkt neben einer Firewall absetzen; der Entry ist technisch gültig, aber du wirst Pivots verbrennen, nur um irgendetwas Nützliches zu erreichen.
+
+### Phase 2 — Den ersten Pivot aufbauen
+
+Der erste Pivot sollte ein **SSH-Tunnel** zu einer Workstation mit niedriger Sicherheit einen Hop nach innen sein. SSH ist am günstigsten, und beim ersten Hop bist du noch nicht unter aktivem Trace-Druck, also überwiegen die Bandwidth-Einsparungen den Trace-Reduktions-Vorteil einer Proxy Chain. Spare die Proxies für den zweiten und dritten Pivot auf, wo ICE bereits zusieht.
+
+### Phase 3 — Die Proxy Chain stapeln
+
+Sobald du in das zweite Subnet gewechselt hast, setze eine **Proxy Chain** durch zwei Anonymizer-Relays ein. Die Kette frisst Bandwidth aggressiv, aber an diesem Punkt brauchst du Trace-Reduktion mehr als Durchsatz. Führe deine Aufklärungs-Scans durch die Kette, damit ICE die Proxy-Signatur sieht statt der Signatur deines Entry Nodes.
+
+### Phase 4 — Port-Forwards für die Dienst-Extraktion einfügen
+
+Wenn du schließlich den Host erreichst, der das Vertragsziel hält — normalerweise ein Datenbank-Server oder CI-Runner — setze einen **Port Forward** auf den spezifischen Dienst, den du brauchst. Port-Forwards zahlen nicht den vollen Chain-Overhead auf die Daten, die sie extrahieren, weshalb der finale Siphon immer durch einen Port Forward laufen sollte, anstatt direkt auf der Proxy Chain zu reiten.
+
+### Phase 5 — Burner-Einsatz unter Druck
+
+Wenn der ICE-Timer unter **20 Sekunden** fällt, setze einen **Burner** auf dem äußeren Pivot ein und route deine Session durch den Burner zum inneren Pivot. ICE wird den Burner lokalisieren, seinen Trace-Clock um den Reset-Wert des Burners leeren und gegen eine leere Hülle weiterzählen. Das gibt dir den Atemraum, um den Siphon zu beenden.
+
+### Phase 6 — Saubere Extraktion
+
+Sobald die Vertragspayload herunterlädt, trenne jeden Tunnel in **umgekehrter Hop-Reihenfolge** — innerster Pivot zuerst, Entry Node zuletzt. Von außen nach innen zu trennen, alarmiert ICE zu leeren Pivots statt zu einer aktiven Session, was laut Community-berichteten Tests Post-Extraktions-Kopfgeldtreffer um ungefähr **34 %** reduziert.
+
+## Erweiterte Pivot-Ketten und Multi-Hop-Strategien
+
+Sobald sich die Kernschleife der sechs Phasen automatisch anfühlt, ist die nächste Fähigkeitsschicht in HackHub Lateral Movement die **Chain-Komposition** — Pivots so zu entwerfen, dass jeder Hop eine andere Aufgabe erfüllt, anstatt fünf identische Relays zu stapeln.
+
+### Hybrid-Chain-Komposition
+
+Das zuverlässigste Hybrid-Muster ist **SSH → Proxy → Port Forward**. SSH öffnet den ersten Hop günstig, die Proxy Chain kümmert sich um die trace-lastige Mitte, und der Port Forward isoliert die finale Extraktion. Diese Drei-Techniken-Kette erledigt die Mehrheit der Stufe-3-Verträge, ohne die **48 %-Bandwidth-Untergrenze** zu reißen, die Chain-Routing reaktiv macht.
+
+Für Stufe-4-Black-ICE-Verträge verschiebt sich der Build zu **Relay → Proxy → Relay → Port Forward**. Relays in den äußeren Positionen brennen sich durch Firewalls, ohne Session-Signaturen zu leaken, während die Proxy Chain in der Mitte die Trace-Reduktions-Last trägt. Die gesamte Kette ist teurer — ungefähr **38 Bandwidth-Einheiten pro Sekunde** auf dem Höhepunkt — aber Stufe-4-Verträge zahlen genug, um den Overhead zu decken.
+
+### Decoy-Routing und Counter-ICE-Taktiken
+
+Veteranen-Operatoren schichten **Decoy-Exploits** auf ihre Pivots. Ein Decoy ist eine schwachwirksame Sonde, die du auf einen Host abfeuerst, den du nicht kompromittieren willst, rein um ICE-Aufmerksamkeit von deiner echten Kette abzulenken. Der Decoy kostet ungefähr **4 CPU-Zyklen** und fügt etwa **8 Sekunden** Trace-Ablenkung hinzu, was ausreicht, um einen Siphon an einem Stufe-3-ICE-Checkpoint vorbeizuschleusen, der gerade dabei war, deinen inneren Pivot zu lokalisieren.
+
+Counter-ICE umfasst auch **Session-Migration**, bei der du deine aktive Session von einem kompromittierten Pivot zu einem frischen migrierst, ohne den Proxy-Tunnel fallen zu lassen. Session-Migration ist eine höherrangige Technik — die meisten Spieler können sie erst nach ungefähr **40 Stunden** HackHub-Network-Hacking-Praxis konsistent ausführen — aber sie ist der einzige Weg, um eine Fünf-Hop-Kette über lange Extraktionen am Leben zu halten.
+
+### Ressourcen-Budgetierung für lange Runs
+
+Plane deine CPU, Bandwidth und Burner, bevor du die Kette startest, nicht danach. Ein solides Budget für einen Stufe-3-Run sieht so aus:
+
+| Ressource | Startpool | Reserviert für Cleanup | Nutzbar für die Kette |
+|---|---|---|---|
+| CPU-Zyklen | 120 | 15 | 105 |
+| Bandwidth-Einheiten | 200 | 20 | 180 |
+| Burner-Nodes | 3 | 1 | 2 |
+| Proxy-Relays | 6 | 0 | 6 |
+
+Wenn dein prognostizierter Kettenverbrauch die nutzbare Spalte übersteigt, kollabiere einen Hop. Eine saubere Drei-Hop-Kette mit vollen Ressourcen schlägt jedes Mal eine ausufernde Fünf-Hop-Kette, die auf dem letzten Tropfen läuft.
+
+## Häufig gestellte Fragen
+
+**Was ist die beste Technik für HackHub Lateral Movement auf Stufe-1-Netzwerken?**
+
+Stufe-1-Netzwerke betreiben kaum ICE, also ist die Antwort, welche Technik auch immer am günstigsten ist. Ein SSH-Tunnel ist der richtige Aufruf, weil er nur **3 CPU-Zyklen pro Hop** kostet und dein Bandwidth-Budget für den Daten-Siphon unangetastet lässt. Spare Proxy Chains für Stufe 2 und höher auf, wo die Trace-Reduktion tatsächlich zählt.
+
+**Wie viele Pivots sollte eine HackHub-Lateral-Movement-Kette haben?**
+
+Drei Pivots sind der Sweet Spot für die große Mehrheit der Verträge. Die Hop-Overhead-Kurve kreuzt die **48 %-Schwelle für effektive Bandwidth** bei drei Hops, und über vier Hops hinaus blockiert es deine Befehlswarteschlange. Wenn dein Routenplan fünf oder mehr Pivots benötigt, startest du den Run normalerweise besser neu und wählst einen anderen Entry Node.
+
+**Setzen Burner das Trace Window in HackHub immer zurück?**
+
+Burner setzen das Trace Window um den Reset-Wert des Burners zurück (8 Sekunden auf Stufe 3, 5 Sekunden auf Stufe 4), aber der Reset feuert nur, wenn der Burner nicht bereits von ICE markiert wurde. Einen Burner auf einem Pivot einzusetzen, den ICE bereits beobachtet, bringt fast nichts, weshalb Veteranen-Operatoren immer den äußersten Pivot zuerst opfern und nach innen migrieren.
+
+**Gibt es eine Möglichkeit, HackHub Lateral Movement zu üben, ohne Verträge zu verlieren?**
+
+Das Tutorial-Subnet hat einen Sandbox-Modus, der sich alle 15 Minuten zurücksetzt und dich Ketten gegen Dummy-Hosts ohne ICE-Strafen laufen lässt. Community-getestete Replays zeigen, dass Spieler, die ungefähr **zwei Stunden** im Sandbox-Modus verbringen, bevor sie einen echten Stufe-2-Vertrag versuchen, ihn beim ersten Versuch ungefähr **68 % der Zeit** abschließen, verglichen mit **22 %** für Spieler, die die Sandbox überspringen.
+
+**Was ist der häufigste Fehler, den neue Spieler bei HackHub Lateral Movement machen?**
+
+Identische Proxies in einer einzigen Kette zu stapeln. Fünf Proxy-Relays sehen sicherer aus als drei, aber die **Bandwidth-Kosten skalieren multiplikativ**, und du landest zum schlechtesten möglichen Zeitpunkt blockiert. Die Lösung ist Hybrid-Komposition: Wähle die günstigste Technik für den spezifischen Job jedes Hops, anstatt dich für eine Technik für die gesamte Kette zu entscheiden.
+
+Hast du einen Pivot-Build, der konsistent Stufe-4-Verträge cleart, oder ein Hybrid-Chain-Muster, das der Rest von uns testen sollte? Lass es in den Kommentaren — die HackHub-Community ist am besten, wenn Operatoren ihre Replays teilen und die Routen der anderen sezieren.

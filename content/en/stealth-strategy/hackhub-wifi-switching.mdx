@@ -1,0 +1,157 @@
+export const metadata = {
+    id: "hackhub-wifi-switching",
+    slug: "hackhub-wifi-switching",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub WiFi Switching Guide: Boost Signal & Stay Hidden",
+    description: "Master HackHub WiFi switching with proven stealth strategies, signal comparisons, and step-by-step network swaps to avoid detection on every mission.",
+    keywords: ["HackHub WiFi switching", "HackHub network switching", "HackHub signal strength", "HackHub stealth network", "HackHub change WiFi", "HackHub internet switch", "HackHub WiFi guide", "HackHub network swap"],
+    image: "/images/articles/kymunUlm0HM.webp",
+    video: "kymunUlm0HM",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## Why WiFi Switching Matters in HackHub Stealth Runs
+
+Stealth in HackHub lives or dies on the network you broadcast from, which is why **HackHub WiFi switching** has become one of the most-discussed mechanics on community boards. When you slip into a corporate server farm, an executive penthouse, or a rival hacker's loft, every connected device leaves a traceable fingerprint. Switching the broadcast SSID at the right moment is what keeps guards, drones, and automated intrusion scripts from locking onto your position.
+
+Players who ignore this layer tend to get flagged within seconds. Those who rotate networks cleanly can ghost entire floors without raising a single alarm. Getting **HackHub WiFi switching** right turns a panicked sprint into a calculated crawl, and it directly multiplies your score multiplier on every silent takedown.
+
+The system is intentionally lightweight, so even new operatives can experiment on the first night. What separates a novice from a veteran is knowing *when* to swap, *which* profile to swap to, and *how* fast the swap must happen to avoid a packet-sniff counter-trigger.
+
+## Understanding the WiFi Signal System
+
+HackHub simulates a layered network environment inside every mission zone, and your laptop's WiFi profile is treated as a passive emitter. The game models three competing forces: the local SSID you broadcast on, the proximity of access points your character can passively sniff, and the detection radius of in-level patrol AI.
+
+### Signal Strength vs Detection Radius
+
+Every WiFi profile in your loadout carries three hidden stats: **signal strength**, **anonymity rating**, and **bounce latency**. The game never prints these numbers on screen, but community testing has mapped their approximate behavior.
+
+| WiFi Profile | Signal Strength | Anonymity Rating | Bounce Latency |
+|---|---|---|---|
+| Default HomeNet | High | Low | Fast |
+| GhostLink (default stealth) | Medium | High | Medium |
+| PivotRouter | Low | Medium | Very Fast |
+| CafeHopper | Medium | Medium | Fast |
+| BurnerNet (unlocked at Lv 12) | Low | Very High | Slow |
+
+A higher **signal strength** lets you reach access points from a longer distance, but it also paints a brighter target for detection routines. **Anonymity rating** determines how often patrol AI rolls an "is this stranger?" check when you pass through their cones of vision. **Bounce latency** controls how long it takes the swap animation to complete — and during that animation, you cannot move.
+
+According to community data shared on the official HackHub Discord, the sweet spot for most stealth contracts is the **GhostLink** profile, which trades a small amount of reach for a massive bump in invisibility. Veterans who need extra range in sprawling office levels often layer in a **PivotRouter** swap at choke points.
+
+### Network Types You Can Equip
+
+Your loadout supports up to four WiFi profiles at a time, and you unlock new ones by completing specific mission tiers or buying them from the in-game black market vendor. The categories break down into residential, public, corporate, and burner.
+
+- **Residential profiles** mimic home routers and tend to score high on signal but low on stealth.
+- **Public profiles** like CafeHopper are balanced and work well in mixed civilian environments.
+- **Corporate profiles** match the local network's SSID pattern and drastically reduce detection inside office floors.
+- **Burner profiles** are disposable, generated per session, and have the highest anonymity but the worst range.
+
+Knowing which family fits the current contract is half the battle. The other half is timing the actual swap, which the next section covers in detail.
+
+## How to Switch WiFi Networks in HackHub Step-by-Step
+
+The mechanics of HackHub WiFi switching live behind a single radial menu, but the inputs change based on your platform. On PC, the default keybind is **F4**. On console, holding **L1** opens the WiFi wheel. On mobile, a long-press on the minimap corner opens the same radial.
+
+### The Swap Sequence
+
+When you trigger the WiFi wheel, time does not freeze — patrols continue to move and timers continue to drain. Because of this, you should always enter the swap from cover. The full sequence for a clean switch looks like this:
+
+| Step | Action | Duration | Risk Window |
+|---|---|---|---|
+| 1 | Enter cover (desk, locker, vent) | 1.5 s | Low |
+| 2 | Open WiFi wheel (F4 / L1) | 0.3 s | Medium |
+| 3 | Select new profile | 0.4 s | Medium |
+| 4 | Confirm swap | 0.6 s | High |
+| 5 | Resume movement | Instant | Low |
+
+During step 4, your laptop emits a brief **re-authentication ping** that nearby guards can hear. The duration of this ping is governed by the **bounce latency** stat on the profile you are switching *to*, not the one you are leaving. Burner profiles take almost a full second longer than PivotRouter, which is a common cause of mid-swap detections for new players.
+
+### Why You Should Never Spam the Wheel
+
+A frequent mistake is mashing the WiFi wheel whenever a guard appears, hoping a swap will save you. In practice, the swap itself is the loudest thing your character does during a stealth segment, and spamming it creates overlapping pings that compound the detection radius. Experienced operatives plan their **HackHub WiFi switching** rotations two or three rooms in advance and only commit when they are behind full cover with at least one solid wall between themselves and any patrol path.
+
+If you want a smoother experience, rebind the swap key to a comfortable hotkey and practice the wheel on the **Tutorial Rooftop** mission, which has no fail state and infinite retries.
+
+## Best WiFi Switching Strategies for Different Mission Types
+
+Not every contract rewards the same swap pattern. Community testing has produced a rough playbook for each major mission archetype, and adapting your loadout before deployment saves precious seconds in the field.
+
+### Corporate Infiltration Contracts
+
+Long corridors, glass conference rooms, and heavy guard density define these missions. The dominant strategy is to start on **Corporate-Net** (auto-matched to the building) and rotate to **GhostLink** only when you cross into restricted zones.
+
+| Contract Type | Starting Profile | Mid-Run Swap | Final Zone Profile |
+|---|---|---|---|
+| Cubicle Crawl | Corporate-Net | PivotRouter at stairwell | BurnerNet for server room |
+| Executive Floor | Corporate-Net | GhostLink at elevator | BurnerNet for vault |
+| Server Farm Raid | GhostLink | None | GhostLink throughout |
+
+The **Cubicle Crawl** archetype in particular punishes players who try to camp on a single profile. By chaining Corporate-Net → PivotRouter → BurnerNet, you keep each segment under 60 seconds, which is below the average time it takes a patrolling drone to refresh its detection queue.
+
+### Residential and Loft Missions
+
+These smaller, densely furnished maps favor speed over stealth layering. **CafeHopper** is the default pick because it blends into the civilian noise floor, and most players only swap once — right before they breach the target's study.
+
+### Outdoor and Rooftop Contracts
+
+Outdoor zones stretch the detection radius far beyond the usual office walls, so signal strength starts to matter again. **Default HomeNet** has the longest reach and is the only profile that consistently connects to access points across a full city block. Pair it with a single **GhostLink** swap the moment you enter the building, and you can clear most rooftops without ever being flagged.
+
+### Aggressive Versus Passive Playstyles
+
+If you favor loud distractions and gadget spam, lean on **PivotRouter** because its very fast bounce latency lets you swap mid-chase when alarms trigger. Pure stealth players should commit to **BurnerNet** from the second they spawn — yes, the range is poor, but the anonymity is high enough that you can walk within arm's length of a stationary guard without raising suspicion, provided you also keep your crouch button held.
+
+For a deeper dive into how crouch movement and sound propagation interact with network swaps, see our [HackHub Sound Stealth Guide](/en/stealth-strategy/sound-stealth-guide/), which breaks down the audio half of every detection check.
+
+## Common WiFi Switching Mistakes to Avoid
+
+Even veterans slip on the basics. The list below captures the five mistakes that show up most often in community post-mortems, along with the fix that has worked for the majority of players who reported the issue.
+
+- **Swapping in the open.** Always enter cover first. The re-authentication ping will leak your position through walls otherwise.
+- **Forgetting to revert your profile.** If you swap to BurnerNet for a server room but forget to swap back when you leave, your signal strength will crater and you will miss the optional data caches scattered across later floors.
+- **Matching the wrong SSID family.** Using Corporate-Net inside a residential loft looks suspicious to scripted guard AI and triggers an instant yellow alert.
+- **Over-relying on the default profile.** HomeNet is fine for the tutorial but should be swapped out by mission three. Players who stick with it past level five report a 40% higher detection rate, according to aggregated community runs.
+- **Swapping during a patrol turn.** Guards rotate their head 90 degrees every few seconds. Time your swap to coincide with their looking-away frames, which adds a free 1.5 seconds of cover.
+
+If you want a broader look at how these mistakes feed into the larger detection system, our [HackHub Patrol AI Guide](/en/stealth-strategy/patrol-ai-behavior/) walks through the exact cone-of-vision math the game uses.
+
+### Quick Checklist Before Every Run
+
+- [ ] Confirm at least one **BurnerNet** or **GhostLink** is in your loadout.
+- [ ] Check the mission briefing for the dominant SSID family in the level.
+- [ ] Pre-plan the swap point (stairwell, vent, bathroom stall).
+- [ ] Rebind the WiFi wheel key if your current hotkey feels awkward.
+- [ ] Practice the swap animation at least twice in the Tutorial Rooftop.
+
+## How WiFi Switching Affects Your Final Score
+
+Every silent mission in HackHub awards a **Network Discipline** bonus, scaled from 1.0x to 3.0x based on how clean your swap history is. A perfect run — meaning you swapped only at planned waypoints, never in the open, and never re-swapped an already-used profile — scores the full multiplier. A sloppy run with two or more panic swaps drops the bonus to 1.2x.
+
+The scoring server also tracks which **HackHub WiFi switching** family you used most often during the run. Profiles from the same family stack their bonuses, while mixing families too aggressively triggers a small "Unstable Handshake" penalty. According to player-reported telemetry shared on community forums, the optimal mix is two profiles from one family plus a single backup from another, capped at three total swaps per contract.
+
+This is also why high-score runners carry exactly four WiFi profiles into every mission: one starter, two mid-run rotations, and one emergency burner. Anything beyond four is overkill for the scoring math and clutters the radial menu.
+
+## Frequently Asked Questions
+
+**Does HackHub WiFi switching affect multiplayer co-op runs?**
+
+Yes. In co-op, every operative's WiFi profile is broadcast to all teammates, and the strongest signal in the squad overrides the others for shared detection checks. Coordinated teams usually have one player on GhostLink and one on BurnerNet so the average signal stays low without sacrificing range entirely.
+
+**Can guards hear the re-authentication ping through walls?**
+
+Only one wall thick. The ping is treated as a sound event with limited propagation, which is why ducking behind a single partition is enough. Thin glass partitions do not block it, so always swap behind solid drywall or metal lockers.
+
+**What is the best WiFi profile for the Prologue mission?**
+
+The Prologue is scripted to teach the mechanic, so GhostLink is hard-coded as the recommended swap. You can experiment with BurnerNet, but the tutorial's detection cone is tuned to HomeNet and will not realistically flag you no matter what you choose.
+
+**Does swapping WiFi drain any resource?**
+
+No direct stamina or battery cost, but every swap increments a hidden counter that influences the Network Discipline bonus at the end of the mission. Burning through six swaps in a single contract will knock the bonus down to 1.0x regardless of how clean the individual swaps were.
+
+**Will future patches change the WiFi switching system?**
+
+Community reports from the public beta branch suggest the developers are tuning BurnerNet's bounce latency down by roughly 0.2 seconds, which would make it more competitive with GhostLink in tight corridors. No patch date has been confirmed yet, but it is worth re-running your swap rotations once the update lands to see if the new timings change your optimal profile order. Which swap pattern are you planning to try first on your next contract — the conservative two-rotation loadout or the aggressive three-burner rush?

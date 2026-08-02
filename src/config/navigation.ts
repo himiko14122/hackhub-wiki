@@ -1,26 +1,21 @@
 import {
-  BookOpen, Crown, Flame, Map, ScrollText, Home, Info,
-  Swords, Shield, Sparkles, Star, Users, UtensilsCrossed,
-  type LucideIcon,
+  BookOpen, Terminal, Target, Crown, Wifi, KeyRound, Eye, Sparkles, Code2,
+  Home, Info, ScrollText, type LucideIcon,
 } from 'lucide-react';
 
 export const NAVIGATION_CONFIG = [
   { key: 'home', labelKey: 'nav_home', path: '/', icon: Home, showInHeader: false, showInSidebar: true, showInFooter: false, sitemap: true, priority: 1, changeFrequency: 'daily' },
-  { key: 'heroes', labelKey: 'nav_heroes', path: '/heroes', icon: Star, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
-  { key: 'tier-list', labelKey: 'nav_tierList', path: '/tier-list', icon: Crown, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
-  { key: 'tag-combos', labelKey: 'nav_tagCombos', path: '/tag-combos', icon: Swords, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
   { key: 'guides', labelKey: 'nav_guides', path: '/guides', icon: BookOpen, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
-  { key: 'builds', labelKey: 'nav_builds', path: '/builds', icon: Flame, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
-  { key: 'status-ailments', labelKey: 'nav_statusAilments', path: '/status-ailments', icon: Shield, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
-  { key: 'exploration', labelKey: 'nav_exploration', path: '/exploration', icon: Map, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
-  { key: 'familiars', labelKey: 'nav_familiars', path: '/familiars', icon: Users, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
+  { key: 'tools', labelKey: 'nav_tools', path: '/tools', icon: Terminal, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
+  { key: 'missions', labelKey: 'nav_missions', path: '/missions', icon: Target, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
+  { key: 'tools-tier-list', labelKey: 'nav_toolsTierList', path: '/tools-tier-list', icon: Crown, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.9, changeFrequency: 'weekly' },
+  { key: 'network-hacking', labelKey: 'nav_networkHacking', path: '/network-hacking', icon: Wifi, isContentType: true, showInHeader: true, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
+  { key: 'password-hacking', labelKey: 'nav_passwordHacking', path: '/password-hacking', icon: KeyRound, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
+  { key: 'stealth-strategy', labelKey: 'nav_stealthStrategy', path: '/stealth-strategy', icon: Eye, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
   { key: 'updates', labelKey: 'nav_updates', path: '/updates', icon: Sparkles, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.8, changeFrequency: 'weekly' },
-  { key: 'cooking-crafting', labelKey: 'nav_cookingCrafting', path: '/cooking-crafting', icon: UtensilsCrossed, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'weekly' },
-  { key: 'story-lore', labelKey: 'nav_storyLore', path: '/story-lore', icon: ScrollText, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'weekly' },
-  { key: 'system-requirements', labelKey: 'nav_systemRequirements', path: '/system-requirements', icon: Info, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'monthly' },
-  { key: 'buying-guide', labelKey: 'nav_buyingGuide', path: '/buying-guide', icon: ScrollText, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'monthly' },
+  { key: 'developer', labelKey: 'nav_developer', path: '/developer', icon: Code2, isContentType: true, showInHeader: false, showInSidebar: true, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'monthly' },
   { key: 'about', labelKey: 'nav_about', path: '/about', icon: Info, showInHeader: false, showInSidebar: false, showInFooter: true, sitemap: true, priority: 0.7, changeFrequency: 'monthly' },
-  { key: 'sitemap', labelKey: 'nav_sitemap', path: '/sitemap', icon: Map, showInHeader: false, showInSidebar: false, showInFooter: true, sitemap: false, priority: 0.5, changeFrequency: 'monthly' },
+  { key: 'sitemap', labelKey: 'nav_sitemap', path: '/sitemap', icon: ScrollText, showInHeader: false, showInSidebar: false, showInFooter: true, sitemap: false, priority: 0.5, changeFrequency: 'monthly' },
   { key: 'privacy-policy', labelKey: 'nav_privacyPolicy', path: '/privacy-policy', icon: ScrollText, showInHeader: false, showInSidebar: false, showInFooter: true, sitemap: true, priority: 0.4, changeFrequency: 'yearly' },
   { key: 'terms-of-service', labelKey: 'nav_termsOfService', path: '/terms-of-service', icon: ScrollText, showInHeader: false, showInSidebar: false, showInFooter: true, sitemap: true, priority: 0.4, changeFrequency: 'yearly' },
 ] as const;
@@ -42,19 +37,15 @@ export function getNavigationItem(path: string) {
 }
 
 export const CONTENT_DIR_NAMES: Record<ContentType | string, string> = {
-  heroes: 'heroes',
-  'tier-list': 'tier-list',
-  'tag-combos': 'tag-combos',
   guides: 'guides',
-  builds: 'builds',
-  'status-ailments': 'status-ailments',
-  exploration: 'exploration',
-  familiars: 'familiars',
+  tools: 'tools',
+  missions: 'missions',
+  'tools-tier-list': 'tools-tier-list',
+  'network-hacking': 'network-hacking',
+  'password-hacking': 'password-hacking',
+  'stealth-strategy': 'stealth-strategy',
   updates: 'updates',
-  'cooking-crafting': 'cooking-crafting',
-  'story-lore': 'story-lore',
-  'system-requirements': 'system-requirements',
-  'buying-guide': 'buying-guide',
+  developer: 'developer',
 } as Record<ContentType, string>;
 
 export function getContentDir(contentType: ContentType): string {
@@ -62,19 +53,15 @@ export function getContentDir(contentType: ContentType): string {
 }
 
 export const GUIDE_CATEGORIES: Record<string, { emoji: string; order: number }> = {
-  general:           { emoji: '🚀', order: 1 },
-  heroes:            { emoji: '⭐', order: 2 },
-  'tier-list':       { emoji: '👑', order: 3 },
-  'tag-combos':      { emoji: '⚔️', order: 4 },
-  'status-ailments': { emoji: '🛡️', order: 5 },
-  builds:            { emoji: '🔥', order: 6 },
-  exploration:       { emoji: '🗺️', order: 7 },
-  familiars:         { emoji: '🐾', order: 8 },
-  updates:           { emoji: '✨', order: 9 },
-  'cooking-crafting':{ emoji: '🍳', order: 10 },
-  'story-lore':      { emoji: '📖', order: 11 },
-  'system-requirements': { emoji: '💻', order: 12 },
-  'buying-guide':    { emoji: '🛒', order: 13 },
+  guides:            { emoji: '🚀', order: 1 },
+  tools:             { emoji: '💻', order: 2 },
+  missions:          { emoji: '🎯', order: 3 },
+  'tools-tier-list': { emoji: '👑', order: 4 },
+  'network-hacking': { emoji: '📶', order: 5 },
+  'password-hacking':{ emoji: '🔑', order: 6 },
+  'stealth-strategy':{ emoji: '👁️', order: 7 },
+  updates:           { emoji: '✨', order: 8 },
+  developer:         { emoji: '🛠️', order: 9 },
 };
 
 export const CATEGORY_ORDER = Object.entries(GUIDE_CATEGORIES)
@@ -82,18 +69,13 @@ export const CATEGORY_ORDER = Object.entries(GUIDE_CATEGORIES)
   .map(([key]) => key);
 
 export const CATEGORY_AFFINITY: Record<string, string[]> = {
-  general:            ['guides', 'heroes'],
-  heroes:             ['tier-list', 'builds', 'tag-combos'],
-  'tier-list':        ['heroes', 'builds', 'tag-combos'],
-  'tag-combos':       ['heroes', 'status-ailments', 'builds'],
-  guides:             ['heroes', 'tier-list', 'builds'],
-  'status-ailments':  ['tag-combos', 'heroes'],
-  builds:             ['heroes', 'tier-list', 'tag-combos'],
-  exploration:        ['familiars', 'cooking-crafting', 'guides'],
-  familiars:          ['exploration', 'heroes'],
-  updates:            ['guides', 'heroes'],
-  'cooking-crafting': ['exploration', 'builds'],
-  'story-lore':       ['heroes', 'guides'],
-  'system-requirements': ['buying-guide'],
-  'buying-guide':     ['system-requirements', 'guides'],
+  guides:             ['tools', 'missions', 'stealth-strategy'],
+  tools:              ['tools-tier-list', 'guides', 'network-hacking'],
+  missions:           ['guides', 'tools', 'stealth-strategy'],
+  'tools-tier-list':  ['tools', 'guides', 'network-hacking'],
+  'network-hacking':  ['tools', 'password-hacking', 'stealth-strategy'],
+  'password-hacking': ['network-hacking', 'tools', 'stealth-strategy'],
+  'stealth-strategy': ['guides', 'network-hacking', 'missions'],
+  updates:            ['guides', 'tools', 'developer'],
+  developer:          ['updates', 'guides', 'tools'],
 };

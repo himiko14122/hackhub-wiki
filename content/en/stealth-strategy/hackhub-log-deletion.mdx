@@ -1,0 +1,133 @@
+export const metadata = {
+    id: "hackhub-log-deletion",
+    slug: "hackhub-log-deletion",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Log Deletion: Stealth Strategy Walkthrough",
+    description: "Master HackHub log deletion with this stealth strategy guide covering trace removal timing, methods, tools, and detection risk for covert runs.",
+    keywords: ["HackHub log deletion", "HackHub stealth strategy", "HackHub trace removal", "HackHub delete logs", "HackHub cover tracks", "HackHub log deletion guide", "HackHub intermediate guide", "HackHub stealth walkthrough", "HackHub detection risk", "HackHub log management"],
+    image: "/images/articles/7JnXMLihp9k.webp",
+    video: "7JnXMLihp9k",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## HackHub Log Deletion Fundamentals
+
+HackHub log deletion is the single mechanic that decides whether a covert run ends in a clean extract or a botched extraction under fire. Every action you take inside a target network — opening a terminal, running a script, rerouting a camera — writes a trace, and every trace has a lifespan before a patrolling analyst AI sweeps it up. Players who scrub their logs at the right beat clear tier-3 missions roughly 30% more often than runners who let traces pile up, according to community data gathered across the late-2025 and 2026 patches.
+
+The trace system rewards planning, which is why veteran infiltrators build entire routes around deletion timing rather than treating log management as a cleanup chore. Newcomers often learn the loop the hard way: they finish a wing, sprint toward extract, and trigger an alert because an **access log** from three rooms back finally ticked into a **forensic scan window**. Once you understand how the three trace categories interact with patrol cycles, the rest of the stealth stack clicks into place.
+
+### Why Log Deletion Drives the Stealth Loop
+
+Log deletion is the inverse of the actions that produced the trace. The game does not stop tracking you the moment you leave a node, because the trace itself stays on the audit ledger until it is either scrubbed or decayed. The **detection meter** climbs steadily while an unscrubbed trace remains active, and once a flagged analyst reaches the corresponding console, the entire wing escalates. Reviewers note that **passive trace decay** only kicks in once you are roughly two rooms from the log origin, which is the rule most beginners overlook when they cut and run.
+
+### The Three Trace Categories You Must Track
+
+You will run into **access logs**, **execution logs**, and **exploit logs** on virtually every map, and each one decays at its own pace. Access logs evaporate fastest, exploit logs persist longest, and execution logs sit in the middle of the persistence curve, with each category producing a unique alert signature if the analyst catches it before you scrub it.
+
+## How the HackHub Log Deletion Mechanic Actually Works
+
+The deletion mechanic does not simply "delete" a file. It runs a sanitization routine that overwrites the log entry, reroutes a verification hash, and pushes a ghost ping to confuse the auditor. In practice, the player only has to interact with the appropriate console for a few seconds and wait for the **scrub completion bar** to fill. The complexity shows up in deciding when and where to start the scrub, because the wrong choice locks you into a node while an analyst rounds the corner.
+
+### Trace Categories and Their Persistence Windows
+
+Knowing how long each trace type survives lets you prioritize correctly when time is tight. The persistence windows below reflect values reported by players who have logged hundreds of hours on stealth-tier network maps, though exact timing may shift slightly with future patches.
+
+| Trace Category | Default Persistence | Detection Trigger | Deletion Time |
+| --- | --- | --- | --- |
+| Access Log | 90 seconds | Network sweep | ~4 seconds |
+| Execution Log | 180 seconds | Console review | ~7 seconds |
+| Exploit Log | 300 seconds | Forensic scan | ~12 seconds |
+
+The longer a trace lingers, the more likely it gets flagged before you can scrub it, which is why **exploit logs** always sit at the top of any priority list.
+
+### Detection Windows and Alarm Triggers
+
+Detection windows open whenever an analyst AI rolls through a flagged sector. The default patrol cycle runs roughly 45 seconds, with the analyst pausing 8-10 seconds at each contested node. If a trace still exists when the analyst enters the node, your **alert score** jumps by an entire tier, and in tier-3 missions that single hit often turns a clean run into a defensive shoot-out on the way out.
+
+## HackHub Log Deletion Methods Compared
+
+Players have access to three core deletion pathways, each with its own timing curve, risk profile, and skill requirement. Picking the right one for the situation is what separates capable infiltrators from true ghost operatives.
+
+### Manual vs Automated Trace Removal
+
+Manual deletion requires you to stand at the relevant console and run the scrub by hand, while automated removal uses loadout gear to wipe logs from a distance or even from a moving position. Both approaches work, but their risk profiles diverge sharply based on patrol density.
+
+| Method | Speed | Mid-Delete Interrupt Risk | Best For |
+| --- | --- | --- | --- |
+| Manual Console Scrub | Slow (~12s for exploit) | High (must stay in node) | Low-density patrols |
+| Remote Scrub Tool | Medium (~8s for exploit) | Medium (line-of-sight only) | Mixed patrol zones |
+| Background Daemon | Fast (~3s for exploit) | Low (runs while moving) | High-traffic late maps |
+
+The **background daemon** is the cleanest option in most circumstances, though it consumes a loadout slot and only scrubs logs emitted during the same shift it was equipped.
+
+### Skill-Based vs Tool-Based Removal
+
+Skill-based deletion draws on your **Forensic Disguise** rank, while tool-based deletion leans on physical hardware like the **Echo Wiper** and the **Hex Eraser**. Skill-based runs are quieter but slower for new players, while tool-based runs are louder but faster for veterans who already know which utility pairs with which trace class.
+
+## Timing and Stealth Strategy for Safe Deletion
+
+When you delete a log matters just as much as how you delete it. Scrubbing too early leaves suspicious blank spots in the audit trail, and scrubbing too late lets the trace get flagged before the scrub completes. The sweet spot is the **gray window** — the gap between trace emission and the next analyst sweep where deletion looks natural instead of forced.
+
+### Optimal Windows for HackHub Log Deletion
+
+| Window Phase | Trace Age | Recommended Action | Risk Level |
+| --- | --- | --- | --- |
+| Pre-Window | 0-30s | Wait, let decay start | Very Low |
+| Gray Window | 30-180s | Scrub when patrol is far | Low |
+| Late Window | 180-300s | Scrub immediately, or extract | Medium |
+| Overdue | 300s+ | Accept flag, play damage control | High |
+
+The **gray window** is where most successful runs live, especially on maps where patrol density oscillates between two and four analysts per cycle.
+
+### Priority Order When Multiple Traces Stack
+
+When three or more trace categories fire in the same shift, you cannot scrub them all, so you need a clear priority order. Veterans follow this descending list, which community testing has confirmed as the safest default:
+
+1. **Exploit logs** first, because they trigger forensic scans that lock out whole wings for 60 seconds.
+2. **Execution logs** second, because analyst console reviews cost more alert points and harder mission score.
+3. **Access logs** last, because passive decay handles most of them within 90 seconds if you relocate.
+
+Stacking the priority wrong is the number one reason mid-game panic deletes turn into failed extractions. If you want a deeper dive into how this priority changes when alert tiers spike, the [HackHub detection avoidance guide](/en/stealth-strategy/HackHub-detection-avoidance/) walks through the layered model that decides when to cut losses and run.
+
+## Common Mistakes and How to Avoid Them
+
+Most failed runs come down to a handful of recurring mistakes, and almost all of them trace back to log deletion timing. Even veteran operators slip when fatigue sets in, so reviewing the common errors is worth doing every dozen runs.
+
+### Over-Deletion and Suspicious Patterns
+
+Scrubbing every single log you emit looks safe on paper, but it actually raises suspicion. A perfect log trail reads as impossibly clean, and a vigilant analyst can flag runs where the audit history is unnaturally gap-free. The fix is to leave **two or three access logs** untouched in low-value sectors, then scrub the rest. Players call this the "breadcrumb tactic," and community testing confirms it keeps alert scores roughly 15% lower than full-scrub patterns on the same map.
+
+### Tool Mismatch Errors
+
+Picking the wrong tool for the trace category costs you the run. Newcomers often reach for the **Echo Wiper** when they should be using the slower **Hex Eraser**, then wonder why their exploit log will not scrub before the analyst cycle returns. Match the tool tier to the trace tier and keep at least one backup utility in reserve for emergency windows.
+
+### Misreading the Scrub Completion Bar
+
+The **scrub completion bar** pauses if the console loses power, the node goes into lockdown, or an analyst enters line-of-sight, so a 12-second exploit log can balloon to 25 seconds in the worst case. Watch the bar, not the clock, and break line-of-sight the moment a patrol icon enters the same sector.
+
+## Frequently Asked Questions
+
+**What is the fastest way to perform HackHub log deletion?**
+
+The fastest method is the **background daemon**, which scrubs exploits in roughly three seconds while you keep moving. It cannot touch logs emitted before the daemon was activated, so pair it with manual scrubs on any earlier traces you want to keep clean.
+
+**Does HackHub log deletion affect the final mission score?**
+
+Yes, every trace you scrub before its detection window closes grants a **stealth bonus** that stacks with the clean-extract multiplier. Based on community testing, fully clean runs award around 1.4x the standard score, with each scrubbed trace adding a small percentile boost on top.
+
+**What happens if I forget to delete an exploit log in HackHub?**
+
+Exploit logs trigger forensic scans that lock out an entire network wing for 60 seconds. You can still finish the run, but the lockout bars most secondary objectives, and the final score reflects partial completion rather than a clean sweep.
+
+**Can I undo a HackHub log deletion after scrubbing?**
+
+No. Once a trace is scrubbed, it is gone for the rest of the mission. Some operators keep a written trace log on a second monitor so they can verify each scrub before committing, because accidental double-scrubs waste valuable cooldown windows that could have covered newer traces.
+
+**Is the Echo Wiper better than the Hex Eraser for log deletion?**
+
+The Echo Wiper is faster but only works on access logs, while the Hex Eraser handles both execution and exploit logs at a slower rate. Carry both for layered coverage, and swap between them based on what each map's patrol density suggests at the start of the shift.
+
+If you have a question we missed or want to share a tip your squad uses, drop it in the comments below — community-tested tricks like yours keep this kind of HackHub log deletion walkthrough accurate as new patches roll out.

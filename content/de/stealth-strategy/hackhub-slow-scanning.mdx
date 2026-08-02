@@ -1,0 +1,141 @@
+export const metadata = {
+    id: "hackhub-slow-scanning",
+    slug: "hackhub-slow-scanning",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Slow Scanning Modus: Vollständiger Strategieleitfaden",
+    description: "Beherrsche den HackHub Slow Scanning Modus mit diesem Stealth-Strategieleitfaden, der Erkennungsschwellen, Scanprofile, Ausrüstungsempfehlungen und lukrative Zielläufe abdeckt.",
+    keywords: ["HackHub Slow Scanning Modus", "HackHub Stealth Leitfaden", "HackHub Scangeschwindigkeit", "HackHub Erkennungsmechanik", "HackHub Scanner-Strategie", "HackHub Slow Scan Build"],
+    image: "/images/articles/7JnXMLihp9k.webp",
+    video: "7JnXMLihp9k",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Der HackHub Slow Scanning Modus tauscht Geschwindigkeit gegen lautlose Aufklärung, sodass du an Patrouillen vorbeischlüpfst, ohne Näherungsalarme auszulösen. Diese Scanner-Einstellung erlaubt es dir, jeden Spätschicht-Lauf vom ersten Knoten bis zur finalen Extraktion zu kontrollieren.
+
+## Was der HackHub Slow Scanning Modus tatsächlich tut
+
+Der Slow Scanning Modus ist eines von drei primären Scanner-Profilen in HackHub und befindet sich am entgegengesetzten Ende des Spektrums zu **Burst Scan**. Anstatt einen breiten Radius in einem einzigen lauten Impuls zu räumen, fegt das langsame Profil einen schmaleren Bogen über ein längeres Zeitfenster und liest Knoten-Signaturen nacheinander aus. Das Ergebnis ist ein wesentlich leiserer Sweep, der deine **Geräuschsignatur** unter der Patrouillen-Erkennungsschwelle für nahezu jede Standard-Wachausrüstung im Spiel hält.
+
+Wenn du über das Scanner-Rad in den HackHub Slow Scanning Modus wechselst, verdoppelt sich die Scanzeit pro Knoten im Vergleich zu **Standard Scan** ungefähr, und das Audio-Signal wechselt von einem scharfen Ping zu einem tiefen, anhaltenden Summen. Dieses Summen ist das, was bei Stealth-Verträgen am wichtigsten ist, denn nahegelegene Patrouillen reagieren auf den hochfrequenten Ping und nicht auf das tiefe Summen. Operator, die den Audio-Unterschied ignorieren, fragen sich am Ende meist, warum Patrouillen sie immer noch auf Karten finden, die sie für frei hielten.
+
+Spieler, die sich auf das langsame Profil festlegen, berichten von einem deutlichen Rückgang der **Näherungsalarme**, insbesondere auf Karten der Stufen 3 und 4, wo die Wachpatrouillen-Dichte am höchsten ist. Laut Community-Daten, die im HackHub Discord geteilt wurden, steigen die Lauferfolgsraten bei der **Westbridge Vault**-Mission von etwa 41 % unter Standard Scan auf nahezu 68 %, wenn Spieler sich für die gesamte Eröffnungsphase des Laufs auf das langsame Profil festlegen. Das ist keine kleine Optimierung. Es ist eine Stufenverschiebung darin, wie der Vertrag abläuft.
+
+### Wie der Modus umgeschaltet wird
+
+Das Slow Scan-Profil ist standardmäßig an das **Richtungspad unten** gebunden und liegt zwischen Standard Scan und **Pulse Scan** auf dem Rad. Wenn du die gebundene Taste eine halbe Sekunde lang hältst, wird der Modus scharfgeschaltet, und das HUD-Fadenkreuz wechselt von Weiß zu einem blassen Blau, um den Wechsel zu bestätigen. Ein Druck auf den Abzug innerhalb eines Knotens bei blau-scharfgeschaltetem Zustand löst den langsamen Sweep aus, und der Scanner bleibt in diesem Profil, bis du erneut umschaltest oder die Waffe wechselst.
+
+### Warum das Audio wichtig ist
+
+Die meisten neuen Spieler konzentrieren sich auf das visuelle Fadenkreuz und übersehen die Audio-Verschiebung, was ein kostspieliger Fehler ist. Die Patrouillen-KI nutzt sowohl visuelle Sichtfeldkegel als auch einen **Audio-Wahrnehmungsradius**, und der Audio-Radius ist es, der dich erwischt, wenn du um eine unübersichtliche Ecke kommst. Der Slow Scanning Modus hält deinen Audio-Radius auf etwa eine **Drei-Meter-Blase** komprimiert, während Standard Scan diese Blase auf etwa sechs Meter ausdehnt. Burst Scan hingegen lässt ihn für die Dauer des Impulses über zwölf Meter ansteigen, weshalb Burst Scan auf einer ruhigen Karte fast immer in einer roten Netzwerk-Warnung endet.
+
+## Erkennungsschwellen und Geräuschmechanik
+
+Erkennung in HackHub basiert auf einem mehrschichtigen System, und der Slow Scanning Modus neutralisiert nur eine dieser Schichten. Zu verstehen, welche Schicht der Modus beeinflusst – und welche nicht –, ist der Unterschied zwischen einer sauberen Extraktion und einem geplatzten Lauf auf halbem Weg durch die zweite Etage eines Vertrags.
+
+### Die drei Erkennungsschichten
+
+Es gibt drei Erkennungsschichten, um die sich ein Stealth-Operator auf jeder Karte sorgen muss:
+
+- **Audio-Radius** – die passive Hörblase um deinen Operator. Slow Scan komprimiert diesen drastisch.
+- **Visueller Kegel** – der Sichtfeldkegel der Patrouille. Der Scanner-Modus hat darauf keinerlei Auswirkung.
+- **Netzwerk-Ping** – die Warnung, die ein ausgelöster Sensor an das Sicherheitsnetzwerk sendet. Slow Scan hält deine Pings unter der Alarmschwelle.
+
+Der Slow Scanning Modus ist hervorragend darin, den Audio-Radius zu neutralisieren und Netzwerk-Pings unter der Alarmlinie zu halten, aber er tut nichts für den visuellen Kegel. Wenn eine Patrouille einen Flur hinunterstarrt, den du überqueren musst, wird dich kein Scanner-Profil retten. Gehe, ducke dich, warte sie ab, und feghe erst dann den Knoten auf der anderen Seite.
+
+### Geräuschsignatur-Werte
+
+Die genauen Geräuschwerte unten stammen aus Community-Tests, die im HackHub Discord gemeldet wurden, und sind mit dem Patch vom August 2026 aktuell, wobei sich die exakten Werte mit zukünftigen Balance-Anpassungen verschieben können:
+
+| Scanner-Profil   | Audio-Radius | Netzwerk-Ping-Stufe | Scanzeit pro Knoten |
+|------------------|--------------|----------------------|----------------------|
+| Slow Scan        | ~3 m         | Niedrig              | ~4,2 s               |
+| Standard Scan    | ~6 m         | Mittel               | ~2,1 s               |
+| Burst Scan       | ~12 m        | Hoch                 | ~0,8 s               |
+| Pulse Scan       | ~8 m         | Mittel-Hoch          | ~1,4 s               |
+
+Beachte, wie der Slow Scanning Modus den Netzwerk-Ping über den gesamten Sweep hinweg auf **Niedrig** hält, während Standard Scan nur **Mittel** erreicht. Dieser Unterschied um eine Stufe ist es, der es dem langsamen Profil erlaubt, für Netzwerk-Monitoren unsichtbar zu bleiben, selbst wenn du einen ganzen Korridor voller Knoten in einem Durchgang fegst, da der Ping nie die Schwelle überschreitet, die eine Wachumleitung auslöst.
+
+## Slow Scan im Vergleich zu Standard Scan und Burst Scan
+
+Jedes Scanner-Profil in HackHub erfüllt eine andere Rolle, und das falsche für den Missionstyp zu wählen, ist einer der schnellsten Wege, einen sauberen Lauf zu vermasseln. Unten findest du einen direkten Vergleich, wie sich der HackHub Slow Scanning Modus gegen die anderen beiden primären Profile stapelt, die du während einer vollen Spielsitzung verwenden wirst.
+
+| Profil         | Bester Einsatzfall                       | Risikostufe | Belohnungseffizienz | Skill-Mindestniveau |
+|----------------|-------------------------------------------|--------------|----------------------|---------------------|
+| Slow Scan      | Stealth-Verträge, Karten mit hoher Alarmbereitschaft | Niedrig      | Mittel               | Fortgeschritten     |
+| Standard Scan  | Gemischte Kampf- und Aufklärungsläufe    | Mittel       | Hoch                 | Anfänger            |
+| Burst Scan     | Speedrun-Clears, Karten im Alarmzustand  | Hoch         | Sehr hoch            | Fortgeschritten     |
+
+### Wann Slow Scan gewinnt
+
+Wähle den Slow Scanning Modus, wenn das Missions-Briefing **Hohe Patrouillendichte** oder **Keine Alarmtoleranz** markiert. Der Modus glänzt bei Datenextraktions-Verträgen, bei denen jeder Knoten gefegt werden muss, ohne das Netzwerk aufzuwecken, und es ist das einzige Profil, das es dir zuverlässig erlaubt, einen Serverraum zu fegen, während eine Wache draußen den Perimeter abschreitet. Wenn das Briefing den Vertrag als **Silent Run** markiert, ist Slow Scan fast immer die richtige Standardwahl.
+
+### Wann du wechseln solltest
+
+Der Slow Scanning Modus ist die falsche Wahl, wenn die Uhr der Feind ist und nicht die Patrouillen. Zeitangriffs-Verträge und **Alarmzustand**-Missionen, bei denen das Netzwerk bereits rot ist und du nur Knoten schnell räumen musst, belohnen Burst Scan. Community-Spieler bemerken, dass der Wechsel zu Slow Scan auf einer bereits alarmierten Karte etwa vierzig zusätzliche Sekunden pro Etage kostet, was den Timer oft scheitern lässt, selbst wenn du jede Wache vermeidest. Der Modus ist ein Stealth-Werkzeug, kein Geschwindigkeitswerkzeug.
+
+## Beste Ziele und Kartenzonen für den Slow Scanning Modus
+
+Nicht jede Karte belohnt das langsame Profil gleichermaßen. Einige Zonen sind praktisch um die Mechanik herum gestaltet, während andere sie aktiv bestrafen. Hier erfährst du, wie die großen HackHub-Karten abschneiden, wenn du dich für den Eröffnungs-Sweep auf den Slow Scanning Modus festlegst, basierend auf aggregierten Laufdaten, die von Spielern in Community-Foren geteilt wurden.
+
+| Karte / Zone             | Slow Scan Eignung  | Empfohlene Knotenanzahl | Bester Einstiegspfad   |
+|--------------------------|--------------------|--------------------------|------------------------|
+| Westbridge Vault         | Hervorragend       | 14                       | Nord-Treppenhaus       |
+| Cargo Pier 7             | Gut                | 11                       | Containerreihe B       |
+| Subway Relay             | Mittelmäßig        | 9                        | Wartungsschacht        |
+| Helix Tower Lobby        | Schlecht           | 6                        | Ost-Service-Aufzug     |
+| Foundry Sublevel         | Hervorragend       | 18                       | Lüftungsnetzwerk       |
+
+### Westbridge Vault und Foundry Sublevel
+
+Die beiden herausragenden Karten für den HackHub Slow Scanning Modus sind **Westbridge Vault** und **Foundry Sublevel**. Beide bieten enge Korridore, schwache Umgebungsbeleuchtung und dichte Knoten-Cluster, die geduldiges Sweeping belohnen. Besonders auf Foundry Sublevel bietet das Lüftungsnetzwerk so viel Deckung, dass sich Burst Scan tatsächlich verschwenderisch anfühlt, da die zusätzliche Geschwindigkeit selten Zeit spart, wenn du physisch durch das Kriechgangtempo eingeschränkt bist. Die meisten Operator berichten, dass ihre schnellsten Foundry Sublevel-Clears unter Slow Scan stattfinden, nicht unter Burst.
+
+### Karten, auf denen Slow Scan Probleme hat
+
+**Helix Tower Lobby** ist die schlechteste Übereinstimmung für das langsame Profil, da die Karte weitläufig, hell beleuchtet ist und lange Sichtlinien erzwingt. Patrouillen dort verlassen sich fast ausschließlich auf visuelle Erkennung, die der Slow Scanning Modus nicht adressiert. Spieler berichten von besseren Ergebnissen, wenn sie zu Standard Scan wechseln und die Audio-Komprimierung des mittleren Profils nutzen, um die wenigen Audio-Bedrohungen zu handhaben, während sie sich beim visuellen Layer auf Duckbewegung und Lüftungs-Abkürzungen stützen.
+
+## Fortgeschrittene Taktiken mit dem HackHub Slow Scanning Modus
+
+Sobald du die Grundlagen draufhast, trennen einige fortgeschrittene Taktiken gelegentliche Slow-Scan-Operator von den Spielern, die Stufe-5-Verträge ohne Kratzer räumen. Keine dieser Tricks erfordert neue Freischaltungen, aber alle erfordern ein anderes mentales Modell, als Standard Scan fördert.
+
+### Kombiniere Slow Scan mit dem Soft-Stepper Perk
+
+Der **Soft-Stepper**-Perk-Baum senkt deinen Fußschritt-Audio-Radius um zusätzliche 25 %, solange du geduckt bist. Kombiniert mit der komprimierten Audio-Blase des Slow Scanning Modus erhältst du so eine Stealth-Hülle, dass selbst die lautesten Patrouillen im Spiel an dir vorbeilaufen, wenn du in Deckung bleibst. Die meisten hochrangigen Stealth-Spieler setzen Soft-Stepper Stufe 3 als harte Pflichtwahl für jeden Slow-Scan-Build.
+
+### Nutze Knoten-Gruppierung für schnellere Sweeps
+
+Der Slow Scanning Modus scannt einen Knoten nach dem anderen, aber Knoten innerhalb von etwa zwei Metern zueinander ketten sich zu einem einzigen Sweep, wenn du sie der Reihe nach auslöst. Auf dichten Karten wie Foundry Sublevel verkürzt die Routenplanung durch **Knotenketten** anstelle einzelner Knoten die effektive Scanzeit um etwa 30 %, ohne den Audio-Vorteil aufzugeben. Der Trick ist, die Kette von der Seite mit der meisten Deckung zu betreten, sodass die Kette als ein ruhiger Sweep gelesen wird und nicht als mehrere verteilte.
+
+### Spare dir Burst Scan für die Extraktion auf
+
+Ein häufiger Fehler ist es, sich für den gesamten Lauf – einschließlich der Extraktionsphase – auf den Slow Scanning Modus festzulegen. Sobald du die Fracht hast und Alarme auszulösen beginnen, verschiebt sich die Mission von einem Stealth-Problem zu einem Überlebensproblem. Wechsle im letzten Abschnitt zu Burst Scan, räume die verbleibenden Knoten schnell und lass den Timer die Geräuschstrafe absorbieren. Unter einem roten Netzwerk wirst du fast nie sauber mit Slow Scan extrahieren, und der Versuch kostet normalerweise den Vertrag.
+
+### Beobachte das blaue Fadenkreuz, nicht den Timer
+
+Anfänger neigen dazu, den Scan-Timer zu beobachten und in Panik zu geraten, wenn er sich über vier Sekunden pro Knoten dehnt. Erfahrene Operator ignorieren den Timer vollständig und beobachten den **blauen Fadenkreuz-Ring**. Der Ring füllt sich in einem gleichmäßigen Bogen, wenn der Sweep sauber ist, aber er stottert und blinkt, wenn eine Patrouille in deinen reduzierten Audio-Radius eintritt. Dieser visuelle Hinweis ist dein eigentliches Warnsystem, und ihn zu lesen ist der größte einzelne Skillsprung in der Slow-Scan-Lernkurve.
+
+Spieler, die einen tieferen Einblick darin möchten, wie die Scanner-Profile mit den Perk-Bäumen interagieren, sollten auch unseren [HackHub Stealth Build Überblick](/en/stealth-strategy/HackHub-stealth-builds/) lesen, um Tier-List-Empfehlungen zu erhalten, welche Perks am besten mit dem langsamen Profil harmonieren. Die Kombination dieses Build-Leitfadens mit den obigen Taktiken ist der schnellste Weg zu einem Stufe-5-Clear.
+
+## Häufig gestellte Fragen
+
+**Lohnt es sich, den HackHub Slow Scanning Modus bei jeder Mission zu verwenden?**
+
+Nein. Der Slow Scanning Modus ist gezielt für Stealth-Verträge und Karten mit hoher Patrouillendichte gebaut. Bei Zeitangriffs- oder Alarmzustand-Missionen kostet die zusätzliche Scanzeit mehr, als der Audio-Vorteil einspart, und Standard oder Burst Scan werden den Lauf schneller räumen.
+
+**Beeinflusst der Slow Scanning Modus die Hack-Geschwindigkeit oder nur die Erkennung?**
+
+Er beeinflusst nur den Sweep-Teil. Die Hack-Geschwindigkeit wird vom Knoten selbst und von deinem ausgerüsteten **Code Cracker**-Werkzeug bestimmt. Der Slow Scanning Modus bestimmt, wie leise du sweepst, nicht wie schnell der Hack sich auflöst, sobald der Sweep abgeschlossen ist.
+
+**Kann ich Slow Scan mit einer schallgedämpften Waffenausrüstung kombinieren?**
+
+Ja, und es ist eine der stärksten Kombinationen im Spiel. Eine schallgedämpfte Seitenwaffe erlaubt es dir, die seltene Wache zu handhaben, die in deine Audio-Blase läuft, ohne dass der Schuss eine breitere Warnung auslöst, während der Slow Scanning Modus den Rest des Laufs lautlos hält.
+
+**Welche Perk-Stufe sollte ich haben, bevor ich dauerhaft auf Slow Scan umsteige?**
+
+Der Community-Konsens zeigt auf Perk-Stufe 6 als komfortablen Einstiegspunkt. Darunter wirst du Schwierigkeiten haben, dich von den ein oder zwei Audio-Fehlern zu erholen, die du beim Lernen des Timings unweigerlich machen wirst. Ab Stufe 8 oder höher fühlen sich Slow-Scan-Builds auf Stufe-5-Verträgen wirklich erdrückend an.
+
+**Funktioniert der Slow Scanning Modus in Koop-Läufen?**
+
+Er funktioniert, aber die Koordination wird schwieriger. In einem Vier-Personen-Trupp gilt die Audio-Blase von Slow Scan pro Operator, was bedeutet, dass ein Teamkollege auf Burst Scan immer noch den Netzwerk-Ping in die Höhe treiben und eine Warnung auslösen kann, die du nicht stummschalten kannst. Die meisten Koop-Teams weisen einem Operator Slow Scan zu und dem Rest Standard Scan für eine geschichtete Abdeckung.

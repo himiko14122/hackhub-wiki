@@ -1,0 +1,164 @@
+export const metadata = {
+    id: "hackhub-telnet-usage",
+    slug: "hackhub-telnet-usage",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub Telnet Usage Guide: Master Remote Commands Fast",
+    description: "Master HackHub telnet usage with this 2026 command reference. Learn connection setup, protocols, scripting, and troubleshooting for in-game networks.",
+    keywords: ["HackHub telnet usage", "HackHub telnet commands", "HackHub remote terminal", "HackHub network tools", "HackHub telnet protocol", "HackHub beginner guide", "HackHub tips", "HackHub tools"],
+    image: "/images/articles/is5SLMb0gvU.webp",
+    video: "is5SLMb0gvU",
+    category: "tools",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+HackHub telnet usage is the fastest way to reach remote servers inside the game, and most new operators underestimate how much of the campaign depends on it. Get the latest 2026 command reference and protocol tips so you can stop clicking through menus and start running real sessions.
+
+## What HackHub Telnet Usage Actually Does
+
+Telnet in HackHub functions as a lightweight remote shell client that lets your in-game workstation talk to any listening server on the simulated network. Every mission that involves corporate intranets, ISP backbones, or rogue IoT devices assumes you have at least a basic understanding of how the protocol routes commands, opens sessions, and returns output. HackHub telnet usage shows up in roughly 60 percent of mid-game contracts, according to community testing on the official Discord, because nearly every scripted target responds to port 23 before you ever need to escalate to SSH or custom exploits.
+
+The tool itself is delivered through the **Terminal Console** module, which you unlock after completing the Network Fundamentals tutorial chain. Once active, you can open multiple parallel sessions, pipe output into log files, and feed pre-built scripts from your **Script Library**. Think of it as the command-line bridge between your operator avatar and the rest of the map. Players who skip this layer tend to fall behind on timed objectives because the GUI wrappers add three to five seconds per interaction, while a single typed command collapses the same workflow into a fraction of a second.
+
+For a wider look at the surrounding toolkit, the [HackHub terminal commands overview](/en/tools/HackHub-Terminal-Commands/) covers how telnet fits next to FTP, Nmap, and packet sniffers. That article is a useful companion if you are building a full remote-access workflow rather than just memorizing one protocol.
+
+## Setting Up Your First Telnet Session in HackHub
+
+Before you can run anything useful, you need a working session. HackHub telnet usage starts with two prerequisites: a reachable **target IP address** and an open **port 23 listener**. Both come from prior reconnaissance, which usually means an Nmap scan or a leaked credential bundle found on a previous job.
+
+### Launching the Telnet Console
+
+Open the Terminal Console from your workstation desktop and type `telnet` followed by the target IP. The basic syntax is:
+
+- `telnet &lt;ip> &lt;port>` for a single session
+- `telnet -pool &lt;ip_range> &lt;port>` to fan out across a subnet
+- `telnet -resume &lt;session_id>` to reconnect to a dropped session
+
+The console parses the command, opens a **TCP/IP handshake**, and prints a banner identifying the target operating system. If you see `Connection refused`, the port is closed and you need to find another entry point. If you see `Timeout`, the host is up but filtered by a firewall or routed through a slow relay.
+
+### Authentication Workflow
+
+Most mid-game servers use a simple username and password combo. Once the banner appears, the prompt switches to `login:`. Type the credential you harvested earlier, press Enter, and repeat for the password field. HackHub validates against an in-memory **credential cache** that persists between missions, so successful logins are remembered across the campaign. Failed logins trigger a soft lockout after five attempts, so brute-forcing through telnet is intentionally punished — you are expected to gather credentials first.
+
+If you are new to the broader credential loop, the [HackHub network scanner basics](/en/tools/HackHub-Network-Scanner/) guide explains how to find open ports and harvest banners without burning attempts.
+
+## HackHub Telnet Usage: Command Reference and Syntax
+
+Once you are inside a session, every keystroke is interpreted by the target's **command parser**. The parser varies by in-game OS, but the core verbs are consistent enough that one cheat sheet covers most contracts. The table below lists the commands you will type most often during the 2026 campaign tiers.
+
+### Basic Commands Table
+
+| Command | Function | Typical Use Case |
+|---|---|---|
+| `ls` | List directory contents | Confirm you landed in the right folder |
+| `cd &lt;path>` | Change directory | Navigate to user folders or logs |
+| `cat &lt;file>` | Print file contents | Read config or credential files |
+| `get &lt;file>` | Download file locally | Exfiltrate evidence to your rig |
+| `put &lt;file>` | Upload file to target | Plant a backdoor or script |
+| `exec &lt;bin>` | Run a binary on target | Trigger payloads or scripts |
+| `logout` | Close current session | Clean exit before moving on |
+| `help` | List parser verbs | Recover when you forget syntax |
+
+Every one of these commands is case-sensitive on Linux-derived in-game hosts and case-insensitive on legacy Windows shells, which is a frequent trap for new operators running mixed missions. Run `help` first whenever the banner looks unfamiliar.
+
+### Scripting Shortcuts
+
+For repeat contracts, the **Script Library** lets you save a sequence of commands under a hotkey. HackHub telnet usage improves dramatically once you bind common chains like `get secrets.txt; logout` to a single key, because it removes the typing overhead during time trials. Scripts execute top-to-bottom and stop on the first error, so order matters. A typical automation script looks like this:
+
+- Authenticate with cached credentials
+- Navigate to the target directory
+- Download the marked file
+- Wipe the access log
+- Close the session cleanly
+
+Wiping the access log is optional but recommended for stealth contracts, since leaving a trail will raise the target's suspicion meter on later visits.
+
+## Comparing Telnet Protocols in HackHub
+
+HackHub is not limited to plain telnet. As you progress, you unlock variants that behave differently against hardened targets. Picking the wrong protocol is one of the most common reasons contracts stall, so the comparison below is worth memorizing before the late-game hits.
+
+### Protocol Comparison Table
+
+| Protocol | Port | Encryption | Speed | Detection Risk |
+|---|---|---|---|---|
+| Telnet | 23 | None | Fastest | High |
+| SSH | 22 | AES-256 | Fast | Low |
+| FTP | 21 | Optional TLS | Medium | Medium |
+| HackHub SecureShell | 9022 | Custom cipher | Fast | Very Low |
+
+Plain telnet wins on raw speed, which is why it stays relevant even after SSH becomes available. The tradeoff is that every byte you send is visible to any packet sniffer the defending AI deploys on the same subnet. SSH trades a small amount of throughput for full **encrypted channel** behavior, which makes it the default choice for high-stakes exfiltration missions. FTP falls in the middle and is mostly useful for bulk file transfers where you want resumable downloads. The custom **HackHub SecureShell** protocol is the endgame option — it is invisible to most AI defenders but requires the Hardened Operator perk.
+
+### Port Selection Guide
+
+If port 23 is closed but the host is reachable, you can sometimes force telnet onto an alternate port using `telnet &lt;ip> &lt;custom_port>`. Common fallbacks in the 2026 map set include:
+
+- Port 80 — web admin panels with telnet fallback
+- Port 8080 — proxy relays that mirror telnet behavior
+- Port 2323 — alternate telnet used by older IoT firmware
+
+This trick only works when the target application is configured to listen on the alternate port, so check the **Network Map** overlay before assuming a fallback will respond.
+
+## Advanced HackHub Telnet Usage Techniques
+
+Once the basics feel automatic, you can start layering in techniques that separate average operators from the top of the leaderboard. Most of these come from veteran playtesting on the competitive ladder and from community-curated Discord channels.
+
+### Multi-Session Management
+
+The Terminal Console supports up to four concurrent sessions by default, expandable to eight with the **Parallel Operator** perk. Practical workflows include:
+
+- One session running an exfiltration stream
+- A second session on a pivot host
+- A third session tailing logs in real time
+- A fourth session ready as a fail-safe exit
+
+Coordinating four windows takes practice. Bind each session to a numbered hotkey so you never lose track of which window owns which target, and color-code the prompts through the console settings menu. When a session times out, the **connection pool** drops it cleanly and frees the slot, so stale sessions do not pile up.
+
+### Automation Tips
+
+For long contracts, scripting becomes a force multiplier. The two patterns players rely on most are **batch login loops**, which fan a credential list across a subnet to find the right host, and **persistent listeners**, which keep a session alive through scripted reconnects when a defender kicks you off. Both patterns are legal inside the game and are the same approach speedrunners use to clear the hardest campaign tiers under par time.
+
+If you are scripting for the first time, start small — a three-command loop that pulls one file is enough to prove the workflow before you scale it up to a full automation chain.
+
+## Troubleshooting and Common Errors in HackHub
+
+Even experienced operators hit errors, and HackHub telnet usage is no exception. The error table below maps the most common failure messages to their likely cause and the fastest fix.
+
+### Error Codes and Fixes
+
+| Error Message | Likely Cause | Recommended Fix |
+|---|---|---|
+| `Connection refused` | Target port closed | Run an Nmap scan for an open port |
+| `Connection timed out` | Firewall or slow relay | Switch to pivot host or reroute |
+| `Auth failed (5/5)` | Credential lockout | Reset the lockout via console admin |
+| `Banner mismatch` | Wrong OS assumption | Re-run fingerprint with `-osdetect` |
+| `Session dropped` | Defender kicked you | Reconnect with `-resume` flag |
+| `Parser error` | Bad syntax for this OS | Run `help` and retry with correct verb |
+
+Most errors resolve in under a minute once you know which fix to apply. The slowest class of error is the `Banner mismatch`, because it usually means you connected to the right port on the wrong host — a subnet confusion that costs time until you recheck your **IP address** range.
+
+Defender AI in 2026 has been tuned to be more aggressive about dropping sessions, so carrying a pre-canned reconnect script is now table stakes for any timed contract. Players who skip this step report losing an average of two to three minutes per contested session, according to community data shared on the Discord.
+
+## Frequently Asked Questions
+
+**What is the fastest way to start HackHub telnet usage as a new player?**
+
+Open the Terminal Console after finishing the Network Fundamentals tutorial and practice on the practice subnet in your safehouse. The practice subnet does not penalize failed logins, so you can burn through every error type without losing campaign progress.
+
+**Can I use HackHub telnet usage on every mission, or are there missions that block it?**
+
+Most contracts allow telnet, but a handful of high-security endgame targets filter port 23 entirely. Those missions require SSH or the custom HackHub SecureShell protocol, so build your toolkit beyond plain telnet before you reach the final campaign tier.
+
+**Does HackHub telnet usage work the same on Linux and Windows in-game targets?**
+
+The verbs are mostly identical, but the **command parser** behaves differently. Linux-derived hosts are case-sensitive and use forward slashes in paths, while legacy Windows hosts are case-insensitive and use backslashes. Run `help` on every new host to confirm the local syntax before typing anything important.
+
+**How do I recover a dropped HackHub telnet session without losing progress?**
+
+Use `telnet -resume &lt;session_id>` from the Terminal Console. The session ID is printed in the console log when the original session opens, so keep the log visible during timed contracts. Resuming reattaches your buffer and any partially downloaded files, which is why dropping a session is rarely catastrophic if you planned for it.
+
+**Is there a way to practice HackHub telnet usage without affecting my campaign save?**
+
+Yes. The practice subnet in the safehouse offers unlimited replay with no scoring penalty, and community-built custom contracts on the workshop tab often include telnet-only training rooms. Both options let you grind the command set until it is muscle memory before risking a real mission.
+
+Want to push your remote-access game further? Drop your favorite telnet trick in the comments and share this guide with your squad so nobody on your roster shows up to the next raid still clicking through menus.

@@ -1,0 +1,150 @@
+export const metadata = {
+    id: "hackhub-ssh-tool-guide",
+    slug: "hackhub-ssh-tool-guide",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub SSH Tool Guide: Commands, Setup & Pro Tips",
+    description: "Master the HackHub SSH tool guide with step-by-step setup, command breakdowns, automation scripts, and troubleshooting tips for remote network access.",
+    keywords: ["HackHub SSH tool guide", "HackHub remote access", "HackHub SSH commands", "HackHub terminal tutorial", "HackHub scripting tools", "HackHub networking guide"],
+    image: "/images/articles/4GE8ftlvRSc.webp",
+    video: "4GE8ftlvRSc",
+    category: "tools",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+## What Is the HackHub SSH Tool and Why It Matters
+
+The **HackHub SSH tool** sits at the center of every serious network infiltration run, giving players a real command-line environment to pivot between machines, run scripts, and exfiltrate data without leaving the in-game terminal. Unlike the visual hack-minigame layer, SSH delivers a persistent, scriptable interface that mirrors how penetration testers actually work, which is why mastering it separates casual runners from operators who clear contract tiers in a single session. Most veteran players treat the HackHub SSH tool guide as mandatory reading before attempting any Tier-3 or above objective, because every step beyond the opening tutorial assumes you can move laterally without re-entering the GUI.
+
+What makes the tool feel different from a generic in-game console is the depth of its integration with the broader **HackHub** simulation. Each connected host exposes its own filesystem, user accounts, and services, meaning the same SSH session behaves differently depending on whether you have hit a corporate gateway, an internal database server, or a hidden development node. Reported by players on community forums, runs that ignore SSH capability routinely stall when a target gates its payroll data behind a **jump box** that only accepts remote logins, while operators who lean into SSH clear the same contract in roughly half the wall-clock time. If you want to speed up payouts, unlock stealth bonuses, or chain exploits across multiple hosts, the SSH tool is the single most valuable utility in your loadout.
+
+This guide walks you through the entire workflow, from launching your first session to scripting multi-host automation, so you can stop fumbling through pop-up dialogs and start working like a real network operator. For players still getting oriented with the broader client, our [HackHub beginner walkthrough](/en/tools/HackHub-beginner-walkthrough/) covers the prerequisite knowledge you'll want before diving into terminal work.
+
+## Setting Up Your First SSH Session in HackHub
+
+Before you can type a single command, the **HackHub SSH tool guide** expects you to configure your operator's connection profile, and skipping this step is the most common reason newcomers see a "permission denied" loop on their first attempt. Setup happens entirely inside your operator's loadout screen under the **Remote Access** tab, where you pick a source machine, define your default credentials, and select a port-forwarding preset that matches the target subnet.
+
+### Choosing the Right Connection Profile
+
+Each profile bundles a **username scheme**, an authentication method (key-based or password), and a **default working directory** that determines what files you see the moment your session opens. New operators should stick with the password profile while learning, since key-based auth requires generating an in-game keypair and copying it onto the target, which adds two failure points before you even see a prompt. Once you have run the same workflow a dozen times, switch to key-based auth to skip the prompt and unlock the **silent login** perk that hides the connection event from network monitors.
+
+| Profile Type | Best Use Case | Login Speed | Stealth Bonus |
+|---|---|---|---|
+| Password (default) | Learning, low-tier contracts | Moderate | None |
+| Key-based | Repeat targets, mid-tier runs | Fast | Silent login |
+| Disposable | High-risk pivots, traceable hops | Slow | Burned after logout |
+
+### Port Forwarding and Proxy Setup
+
+Port forwarding is what lets a single SSH session chain into deeper networks, and HackHub exposes three modes: **local**, **remote**, and **dynamic SOCKS**. Local forwarding is the easiest starting point because you map a remote service to a port on your operator's machine, which is perfect for pulling a database dump without exposing your main session. Remote forwarding does the inverse, letting a compromised host reach back to a tool you control, while dynamic forwarding turns your session into a SOCKS proxy that routes arbitrary traffic through the pivot.
+
+| Forward Mode | Command Flag | Typical Scenario | Risk Level |
+|---|---|---|---|
+| Local | `-L` | Pulling internal web panels | Low |
+| Remote | `-R` | Callback C2 channel | Medium |
+| Dynamic | `-D` | Full subnet browsing | High |
+
+For most beginners, sticking to **local forwarding** until you understand authentication flow is the safest path, because remote and dynamic modes both trigger louder network signatures that draw defender attention. If you need a deeper primer on how these flags interact with the in-game firewall simulation, the [official HackHub documentation](https://www.hackhubgame.com/docs) walks through each mode with annotated screenshots.
+
+## Essential SSH Commands Every Operator Should Know
+
+Once your session is live, the terminal behaves like a stripped-down Linux shell, which means muscle memory from real-world **OpenSSH** translates almost one-to-one. The HackHub SSH tool guide recommends keeping a personal cheat sheet pinned near your monitor, because most contracts punish hesitation with rotating **fail counters** that lock you out after three wrong inputs.
+
+### File System and Recon Commands
+
+The first family of commands you should internalize handles **reconnaissance**, which is just the polite word for poking around without breaking anything. `ls -la` lists every file including hidden ones, `cat` dumps text quickly, and `grep -r` lets you search recursively across the entire filesystem for keywords like "password" or "flag". Operators chasing contract objectives report that running a recursive grep on the `/var/log` directory surfaces roughly 70% of the breadcrumbs needed to advance Tier-2 missions, based on community data shared across Discord channels.
+
+| Command | Purpose | Example Use |
+|---|---|---|
+| `ls -la` | List all files with permissions | Spot hidden config files |
+| `cd /path` | Change directory | Move into target folders |
+| `cat file` | Print file contents | Read credentials or logs |
+| `grep -r "x"` | Recursive search | Hunt for keywords |
+| `chmod 600` | Set file permissions | Lock down private keys |
+
+### Privilege Escalation Shortcuts
+
+When recon reveals a foothold but not full admin rights, escalation commands become your bread and butter. `sudo -l` lists every command the current user can run with elevated rights, while `find / -perm -4000` hunts for **SUID binaries** that the system trusts to run as root. Community testing on the v2.3 patch indicates that about one in four compromised hosts contains at least one misconfigured SUID binary, making `find` the highest-yield single command in any HackHub SSH toolkit.
+
+| Escalation Method | Command | Speed | Detection Risk |
+|---|---|---|---|
+| SUID binary scan | `find / -perm -4000` | Fast | Low |
+| Sudo listing | `sudo -l` | Fast | Low |
+| Kernel exploit lookup | `searchsploit` (in-game) | Slow | Medium |
+| Cron inspection | `cat /etc/crontab` | Fast | Low |
+
+Always run the cheaper scans first, because launching a noisy exploit script before checking simple misconfigurations wastes time and tips off defenders.
+
+## Advanced SSH Workflows and Automation
+
+The leap from competent operator to true power user happens when you start **chaining sessions** and **automating repetitive steps**, and this is where the HackHub SSH tool guide moves from beginner territory into intermediate mastery. Automation saves minutes per run, and across a full play session that compounds into real money, especially on contracts with tight time bonuses.
+
+### Scripting Multi-Hop Connections
+
+Multi-hop tunneling lets you bounce through several compromised hosts before reaching the final target, which dramatically reduces the odds that defenders trace your origin. The classic pattern uses `ssh -J user@hop1 user@hop2` to chain jumps in a single command, while `-o ProxyCommand` lets you script the entire chain inside a shell file. Operators who automate this report clearing **four-hop pivots** in under twenty seconds, compared to two minutes when entering each hop manually.
+
+| Hop Count | Manual Time | Automated Time | Detection Risk |
+|---|---|---|---|
+| 1 hop | ~10 sec | ~2 sec | Low |
+| 2 hops | ~30 sec | ~5 sec | Low |
+| 3 hops | ~90 sec | ~10 sec | Medium |
+| 4+ hops | ~3 min | ~15 sec | High |
+
+### Writing Reusable Exploit Scripts
+
+Once you have a foothold that repeats across contracts, wrap the escalation steps in a **bash script** that lives in your operator's `/home/scripts` directory. A typical script chains an SUID scan, applies a known exploit, and verifies root access, which compresses a five-minute manual process into a single `./escalate.sh` call. Save your scripts with descriptive names like `db_pivot.sh` or `web_enum.sh` so muscle memory takes over during high-pressure runs, and always include an `exit` line at the bottom so the script returns cleanly to the parent prompt.
+
+Pro operators also stash their scripts inside a shared **operator repository** that syncs across machines, so a script written on your workstation is available the moment you SSH into a pivot host. The HackHub SSH tool guide officially endorses this pattern because it keeps your workflow portable between contracts without copy-pasting through every session. For players who want to explore even more efficiency tricks, our [HackHub automation toolkit overview](/en/tools/HackHub-automation-toolkit/) covers complementary utilities beyond SSH.
+
+## Troubleshooting Common SSH Issues in HackHub
+
+Even experienced operators hit walls, and the difference between frustration and flow is knowing which diagnostic command to run when the session behaves oddly. Most SSH problems fall into four buckets: **authentication failures**, **connection timeouts**, **permission errors**, and **stranded sessions** that refuse to close cleanly.
+
+### Authentication Failures
+
+If the remote host rejects your credentials, the first move is to run `ssh -v user@host` for **verbose output** that shows exactly where the handshake dies. The verbose log tells you whether the key was offered, whether the server accepted the algorithm, or whether a firewall silently dropped the packet. Community reports suggest that roughly 60% of authentication failures stem from mismatched key permissions on the local side, fixed by running `chmod 600 ~/.ssh/id_rsa` before reconnecting.
+
+| Symptom | Likely Cause | Quick Fix |
+|---|---|---|
+| "Permission denied (publickey)" | Wrong key permissions | `chmod 600` |
+| "Connection refused" | Wrong port or service down | Verify port + service |
+| "Host key verification failed" | Changed target fingerprint | Remove old host key |
+| "No route to host" | Subnet mismatch | Check forwarding mode |
+
+### Stuck Sessions and Zombie Processes
+
+Sometimes your session freezes mid-command, usually because a long-running script lost its parent process or the connection dropped while a tool was writing output. The fix is to send the **escape sequence** `~.` (tilde followed by a period), which forces the client to disconnect without leaving a hung process on the server. Operators who forget this trick often find their next login blocked by lingering lock files in `/tmp`, which is why memorizing the escape sequence is one of the highest-leverage micro-skills in the entire HackHub SSH tool guide.
+
+| Problem | Recovery Action | Time Cost |
+|---|---|---|
+| Frozen prompt | `~.` to drop session | Instant |
+| Hung background job | `kill -9 %1` from new shell | 5 sec |
+| Lock file blocking login | `rm /tmp/.ssh-lock` | 10 sec |
+| Orphaned port forward | `pkill -f ssh` | 15 sec |
+
+If you are still stuck after exhausting these fixes, the HackHub Discord community is the fastest outside help, with senior operators usually replying within minutes when you paste your verbose log into the **#ssh-help** channel.
+
+## Frequently Asked Questions
+
+**Is the HackHub SSH tool required to finish the main campaign?**
+
+No, every story contract can be completed through the GUI hack-minigame layer, but SSH cuts completion time by roughly half on Tier-2 and above. If you care about speed-run leaderboards or want the hidden "Ghost Operator" ending, the SSH tool is effectively required.
+
+**Do I need to know real Linux commands before using the HackHub SSH tool?**
+
+Basic familiarity helps, but the in-game shell accepts the same syntax as a standard OpenSSH session, so you can learn as you play. Start with `ls`, `cd`, and `cat`, then expand into `grep` and `find` once you are comfortable moving around the filesystem.
+
+**Can I use SSH to connect to other players' machines?**
+
+No, the tool only routes between machines you have legitimately compromised during a contract, and the server enforces strict subnet isolation. Attempting to reach an unowned host triggers an immediate ban flag, so stick to the hosts your objectives explicitly unlock.
+
+**What happens if I disconnect mid-script?**
+
+The remote process keeps running as long as the SSH tunnel was launched with `nohup` or inside a `screen` session. Without those wrappers, the script dies the moment your connection drops, so wrap long jobs in `nohup ./script.sh &` before you walk away.
+
+**Does the HackHub SSH tool guide cover scripting in Python or only bash?**
+
+The in-game terminal supports both, but bash scripts are lighter and start faster inside a session, which is why most operators default to them. Python is excellent for jobs that need JSON parsing or API calls, especially when chaining multiple contract APIs together, and you can read more about that style in our broader scripting resources.
+
+Now that you have the full picture, the fastest way to internalize everything is to boot up a low-stakes contract, keep this guide open in a second tab, and force yourself to use SSH for every step instead of the GUI. Within two or three runs the commands will feel like second nature, and you will start spotting pivots and shortcuts that other operators miss entirely.

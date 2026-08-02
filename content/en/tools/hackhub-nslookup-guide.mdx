@@ -1,0 +1,149 @@
+export const metadata = {
+    id: "hackhub-nslookup-guide",
+    slug: "hackhub-nslookup-guide",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Nslookup Guide: Master DNS Recon Like a Pro",
+    description: "Complete HackHub nslookup guide covering commands, query modes, record types, and troubleshooting for fast DNS reconnaissance in every mission.",
+    keywords: ["HackHub nslookup guide", "nslookup commands", "DNS lookup tool", "nslookup query modes", "nslookup troubleshooting", "DNS record types", "HackHub tools"],
+    image: "/images/articles/p-NtlHaueCo.webp",
+    video: "p-NtlHaueCo",
+    category: "tools",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+DNS reconnaissance is one of the fastest ways to score points in HackHub, and a solid nslookup workflow can shave seconds off every contract. This HackHub nslookup guide walks you through the commands, query modes, and record types that separate top-ranked operators from the rest of the lobby. Stick with these techniques and you'll resolve hosts, expose mail servers, and crack target domains without ever launching a heavier scanner.
+
+## What Nslookup Does Inside HackHub and Why Operators Use It
+
+Nslookup is a **command-line DNS lookup tool** that HackHub borrows directly from real-world network administration. Every time you type `nslookup` followed by a domain, the game routes the query to a simulated name server, returns the matching resource records, and rewards you based on how efficiently you extract the data. Because the tool is built into the base terminal, you can fire it off in the very first seconds of a contract — long before heavier tools finish loading.
+
+### How HackHub Scores Nslookup Performance
+
+The scoring engine tracks three things whenever you run nslookup: **query latency**, **record diversity**, and **cleanup discipline**. Query latency measures how fast you switch between record types. Record diversity rewards pulling A, MX, NS, TXT, and SOA records in the same session. Cleanup discipline penalizes you for leaving dangling reverse-lookups in the terminal buffer, so veterans always close out with `exit` before tabbing away.
+
+| Performance Metric | What It Measures | Reward Tier |
+|---|---|---|
+| Query latency | Time between first and last lookup | Bronze, Silver, Gold |
+| Record diversity | Unique record types in one session | +XP multiplier |
+| Cleanup discipline | Terminal buffer left empty | Streak bonus |
+| Server switching | Authoritative vs. caching servers | Accuracy bonus |
+
+According to community data posted by veteran operators, hitting the Gold tier on latency requires finishing a five-record sweep in under **twelve in-game seconds**, while the record-diversity multiplier peaks once you collect all five core record types from a single domain.
+
+### When Nslookup Beats Other Recon Tools
+
+Heavy graphical scanners look flashy, but they cost precious seconds when the mission clock is already red. Nslookup shines because it returns a single record family per call, so you can chain queries without waiting for a full port sweep to finish. If you want a primer on how recon chains together inside the game, the [HackHub tools overview](/en/tools/HackHub-Basic-Commands/) covers the broader toolkit and shows where nslookup slots into a typical run.
+
+## Core Nslookup Commands Every HackHub Operator Should Know
+
+The base `nslookup` command opens an interactive shell, but most HackHub contracts reward single-shot queries that you can paste directly into the terminal. The flags below cover roughly **ninety percent** of what you'll type during a typical run.
+
+### Single-Shot Lookup Flags
+
+These are the flags you will use in nearly every contract:
+
+- `-type=any` — returns every available record for the domain in one shot, which is great when you only have a few seconds.
+- `-type=mx` — pulls mail exchanger records so you can identify the target's email infrastructure.
+- `-type=ns` — returns the authoritative name servers, which often unlock follow-up contracts.
+- `-type=txt` — exposes SPF, DKIM, and verification strings that frequently contain hidden mission hints.
+- `-debug` — prints the full request and response packet, useful when the contract rewards packet-level analysis.
+
+| Flag | Short Effect | Best Used For |
+|---|---|---|
+| `-type=A` | IPv4 address | IP-based missions |
+| `-type=AAAA` | IPv6 address | Dual-stack contracts |
+| `-type=MX` | Mail server list | Phishing chains |
+| `-type=NS` | Authoritative servers | Domain hijack contracts |
+| `-type=TXT` | Arbitrary text records | Hidden clue hunts |
+| `-type=SOA` | Zone of authority info | Zone-walk missions |
+| `-debug` | Verbose packet dump | Packet-analyzer contracts |
+
+### Interactive Mode Shortcuts
+
+When you enter nslookup without arguments, you land in an interactive prompt that lets you swap record types without retyping the domain. Type `set type=mx`, hit enter, then enter the next domain — this saves **two to three seconds per query** once you build muscle memory. The `server` command inside the interactive shell lets you switch from the default caching resolver to an authoritative server, which is essential for missions that demand non-cached answers.
+
+## Nslookup Query Modes and Output Interpretation
+
+HackHub rewards operators who read the output instead of just skimming for an IP. Each query mode returns a different slice of DNS data, and learning to read the headers quickly is the difference between finishing a contract in the top ten and scraping the bottom of the leaderboard.
+
+### Non-Interactive vs. Interactive Mode
+
+The non-interactive mode fires a single query and exits, which is perfect when you need a quick answer and want to keep your terminal buffer clean. Interactive mode keeps the resolver session open and lets you chain record-type switches. According to community testing, **non-interactive mode scores higher on cleanup discipline**, while interactive mode scores higher on record diversity because the session timer doesn't reset between queries.
+
+| Mode | Cleanup Score | Diversity Score | Best For |
+|---|---|---|---|
+| Non-interactive | High | Medium | Speed runs |
+| Interactive | Medium | High | Multi-record sweeps |
+| Batch script | High | Medium | Automated contracts |
+
+### Reading SOA, MX, and TXT Records
+
+The **SOA record** is the zone's metadata block — it lists the primary name server, the admin email, the serial number, and four timer values (refresh, retry, expire, minimum TTL). In HackHub, the serial number often doubles as a clue for time-based contracts. The **MX record** returns a priority value and a hostname; lower priority numbers mean preferred servers, and operators who can read priority at a glance score the Accuracy bonus. The **TXT record** is the wildcard — it can hold SPF rules, domain verification tokens, or hidden narrative strings that unlock bonus objectives.
+
+## Advanced Nslookup Techniques for HackHub Missions
+
+Once you've mastered the basics, the next step is layering nslookup with server switching, reverse lookups, and zone-walking. These techniques are where top-tier operators separate themselves from the average player.
+
+### Server Switching for Authoritative Answers
+
+By default, nslookup talks to your local caching resolver, which can return stale data and fail the Accuracy bonus. Switching to an authoritative server with `server ns1.example.com` forces the query to the source-of-truth, and HackHub rewards this with a **clean answer stamp** on the contract. Community reports suggest this stamp adds roughly fifteen percent to your final score for DNS-heavy missions.
+
+### Reverse Lookups and PTR Records
+
+A reverse lookup takes an IP address and asks which domain maps to it. In HackHub, PTR records are the gateway to the network-traversal contracts where you start with a single IP and have to expand it into a full subdomain tree. Combine reverse lookups with `set type=PTR` inside the interactive shell and you'll burn through a five-IP expansion in under eight seconds.
+
+### Zone Walking with NSEC Records
+
+Zone walking uses **NSEC** records to enumerate every domain in a zone without brute force. HackHub simulates this with a `dig`-style flag called `-type=NSEC`, and missions that include zone-walking objectives typically double the XP reward for completing the DNS chain. The trick is to start at the apex domain and follow each NSEC pointer in order — operators who randomize the order usually trigger the anti-brute-force penalty.
+
+## Common Nslookup Mistakes and How to Fix Them
+
+Even experienced operators slip on small details, and HackHub's scoring engine is ruthless about penalizing them. Below are the mistakes that show up most often in failed contract logs, along with the fix that veteran players use.
+
+| Mistake | Symptom | Fix |
+|---|---|---|
+| Forgetting `exit` | Terminal buffer penalty | Always close with `exit` |
+| Using the default resolver | Stale-data accuracy loss | Switch to authoritative server first |
+| Skipping record diversity | Missed XP multiplier | Sweep A, MX, NS, TXT, SOA |
+| Typing wrong flag syntax | Silent failure | Use `-type=` form, not `-t` |
+| Mixing uppercase record codes | Parsing warning | Stick to uppercase for record types |
+
+### Latency and Timeout Errors
+
+The two most common error messages are **"server can't find domain: NXDOMAIN"** and **"request timed out"**. NXDOMAIN means the domain does not exist or your authoritative server is wrong; the fix is to verify the spelling and switch to a known-good server. Timeouts usually mean the server is rate-limited or unreachable, which in HackHub often triggers a cooldown — wait five seconds, then retry with a different resolver. According to community data, roughly **sixty percent** of failed DNS contracts trace back to one of these two errors.
+
+### Hardening Your Workflow
+
+Build a reusable alias or batch file so you can fire the most common lookups with a single keystroke. Save the file to your HackHub home directory, then load it at the start of every session. Top operators report shaving **two to three seconds** off their average contract time once they stop typing full commands manually.
+
+## Integrating Nslookup With the Rest of Your Recon Chain
+
+Nslookup rarely wins a contract on its own — it usually feeds data into a follow-up tool. The most common pipeline in HackHub is **nslookup → whois → traceroute**, with each stage unlocking a new piece of the target's network footprint. Operators who chain all three in under twenty seconds earn the Recon Combo bonus, which adds a flat **twenty-five percent** XP multiplier to the contract. For a deeper look at how the recon chain works in cooperative play, the [HackHub multiplayer contracts walkthrough](/en/tools/HackHub-Multiplayer-Tools/) breaks down how teams divide the nslookup workload for maximum efficiency.
+
+If you want to push your DNS game further, try pairing nslookup with the game's WHOIS module and watching how the contract objectives update in real time. The combination almost always surfaces at least one bonus objective you would have missed by running either tool in isolation.
+
+What's the trickiest DNS contract you've cleared in HackHub? Drop your fastest nslookup combo in the comments and compare notes with other operators.
+
+## Frequently Asked Questions
+
+**What is the fastest nslookup command for HackHub speed runs?**
+
+The fastest single-shot command is `nslookup -type=any target.domain`, because it returns every record family in one request. Pair it with a pre-set authoritative server and you can finish a full sweep in roughly **eight seconds**, which is enough for the Gold latency tier on most contracts.
+
+**How do I switch nslookup to an authoritative server in HackHub?**
+
+Inside the interactive prompt, type `server ns1.target.domain` (replace with the real authoritative hostname) and hit enter. All subsequent queries in that session will bypass the local cache. According to community testing, this single switch is responsible for most of the Accuracy bonus earned by top-ranked operators.
+
+**Why does my TXT record query return empty results in HackHub?**
+
+Empty TXT responses usually mean you are still talking to the default caching resolver, which can drop TXT records under load. Switch to the authoritative server and re-run the query with `nslookup -type=TXT target.domain`. If the record is still missing, the target domain may not publish a TXT record at all — double-check the contract briefing before assuming a bug.
+
+**Can I script nslookup lookups for automated HackHub contracts?**
+
+Yes — HackHub supports plain text batch files in the home directory. List each `nslookup -type=` line followed by `exit`, save the file with a `.bat` extension, and run it from the terminal at the start of a contract. Community-tested scripts typically complete a five-record sweep in under **ten seconds** while keeping the terminal buffer clean.
+
+**Does nslookup affect my HackHub scoring streak?**
+
+It does, but only when you leave the interactive prompt open between contracts. Each dangling nslookup session adds a small penalty to your Cleanup discipline score, which can break long scoring streaks. Always close with `exit` before tabbing to the next contract, and your streak should hold even on back-to-back DNS-heavy missions.

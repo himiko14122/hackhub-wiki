@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('site_title'),
       description: t('site_description'),
       url: absoluteUrl(locale === 'en' ? '/' : `/${locale}`),
-      siteName: 'DragonSword: Awakening Wiki',
+      siteName: 'HackHub Wiki',
       locale: getOgLocale(locale),
       alternateLocale: localeList.map(getOgLocale),
       type: 'website',

@@ -1,0 +1,117 @@
+export const metadata = {
+    id: "hackhub-bugbounty-hub-mission",
+    slug: "hackhub-bugbounty-hub-mission",
+    order: 5,
+    difficulty: "intermediate",
+    title: "HackHub BugBounty Hub Mission: Vollständiger Walkthrough & Tipps",
+    description: "Vollständiger Walkthrough für die HackHub BugBounty Hub Mission mit Anforderungen, phasenweiser Strategie, Belohnungen und Profi-Tipps, um den Auftrag effizient abzuschließen.",
+    keywords: ["HackHub BugBounty Hub Mission", "HackHub Missionen", "HackHub Walkthrough", "HackHub Tipps", "BugBounty Hub Anleitung", "HackHub Hacking-Mission", "HackHub Einsteiger-Missionen"],
+    image: "/images/articles/AC7UxWLoipw.webp",
+    video: "AC7UxWLoipw",
+    category: "missions",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Die **HackHub BugBounty Hub Mission** wirft dich in ein Firmen-Intranet, in dem jede ausnutzbare Schnittstelle Reputation einbringt, und das richtige Werkzeugset verwandelt einen chaotischen Scan in einen sauberen Vier-Phasen-Sweep.
+
+## BugBounty Hub Mission Übersicht
+
+Die **HackHub BugBounty Hub Mission** sitzt genau in der mittleren Stufe von HackHubs Missionsleiter — schwieriger als die Onboarding-Aufträge, die im [HackHub Einsteiger-Missionen Leitfaden](/en/missions/HackHub-starter-missions/) behandelt werden, aber nachsichtiger als die späten Firmen-Infiltrationen. Laut Community-Daten führt diese Mission das erste echte Bug-Bounty-Board ein, auf dem du Exploits über mehrere Subsysteme hinweg verkettest, anstatt ein einzelnes Ziel zu jagen, und sie gibt den Ton für jeden Tier-2-Auftrag vor, der folgt.
+
+Spieler berichten, dass der Markenzeichen-Hook der Mission ihre **Multi-Phasen-Scan-Architektur** ist. Anders als bei den unkomplizierten „Finde die Flagge"-Jobs, die frühe HackHub-Inhalte dominieren, zwingt dich BugBounty Hub, zwischen mindestens drei verbundenen Systemen zu pivotieren: einem öffentlich zugänglichen **Web-Portal**, einem internen **API-Gateway** und einer privilegierten **Admin-Datenbank**. Jede Schicht gibt eine andere Art von Beweisen preis, und deine Scan-Reihenfolge bestimmt, welche Belohnungen du am Ende des Durchlaufs tatsächlich freischaltest.
+
+Die Mission schaltet außerdem HackHubs **Reputations-Ökonomie** frei. Jeder gültige Exploit, den du einreichst, treibt deinen Auftragnehmer-Score nach oben, und das Überschreiten bestimmter Schwellenwerte innerhalb der BugBounty Hub Mission schaltet die nächste Stufe von Firmen-Aufträgen frei. Läuft sie schlecht, bleibst du in der Mittelstufe stecken; läuft sie sauber, leitet dich das Spiel zu den hochbezahlten **Tier-3-Schwachstellen-Offenlegungen**, die den Endgame-Grind definieren.
+
+Unten findest du einen schnellen Überblick darüber, was der Auftrag dir entgegenwirft.
+
+| Missionsphase | Primäres Ziel | Schwierigkeitsspitze | Empfohlene Scan-Stufe |
+|---|---|---|---|
+| Aufklärung | Belichtete Endpunkte kartieren | Niedrig | 1–2 |
+| Web-Portal-Bruch | Authentifizierungs-Tokens extrahieren | Mittel | 3–4 |
+| API-Gateway-Pivot | Sitzungsrechte eskalieren | Hoch | 5–6 |
+| Admin-Datenbank-Sweep | Schwachstellenbericht erstellen | Hoch | 7+ |
+
+Die Vier-Phasen-Leiter ist nicht optional — ein Sprung zum Datenbank-Sweep ohne Abschluss des API-Pivots löst einen **stillen Lockdown** aus, der deinen Fortschritt auf den letzten Checkpoint zurücksetzt, ein häufig auf Community-Threads berichteter Frust. Behandle die Phasen als strikte Pipeline und der Durchlauf fließt natürlich; versuche, sie abzukürzen, und die Mission bestraft jeden Versuch.
+
+## Einstiegsanforderungen und Vorbereitung
+
+Unvorbereitet in die **HackHub BugBounty Hub Mission** zu gehen, ist der häufigste Grund, warum neue Auftragnehmer ihre ersten drei Versuche verheizen. Der Auftrag setzt voraus, dass du bereits funktionierende Versionen von HackHubs Mittelstufen-Scan-Werkzeugen, mindestens ein Social-Engineering-Modul und genügend Reputation hast, um den Mittelstufen-Freigabe-Badge freigeschaltet zu haben.
+
+### Mindest-Ausrüstung
+
+Bevor du für den Durchlauf antrittst, sollte deine Ausrüstung den **Port Scanner Mk. II** (oder höher), ein funktionierendes **Exploit Framework** mit mindestens zwei fertigen Skripten und entweder den **Credential Dumper** oder den **Hash Cracker** enthalten. Community-Daten deuten darauf hin, dass Auftragnehmer, die nur den Standard-Einsteiger-Scanner mitbringen, die API-Gateway-Phase etwa 70 Prozent der Zeit nicht bestehen, weil der Standard-Scanner die benutzerdefinierte Middleware, die BugBounty Hub verwendet, nicht fingerprinten kann.
+
+| Erforderliches Werkzeug | Zweck | Mindest-Stufe | Empfohlene Stufe |
+|---|---|---|---|
+| Port Scanner | Endpunkt-Erkennung | Mk. I | Mk. II |
+| Exploit Framework | Skriptbasierte Angriffe ausführen | Tier 1 | Tier 2 |
+| Credential Dumper | Admin-Tokens sammeln | Basic | Advanced |
+| Hash Cracker | Sitzungs-Hashes knacken | Basic | Pro |
+
+### Empfohlene Skills und Boosts
+
+Mehrere **Support-Skills** in HackHub verkürzen die BugBounty Hub-Zeiten erheblich. **Trace Obfuscation** reduziert die Chance, defensive Gegenmaßnahmen während des API-Pivots auszulösen, während **Parallel Sweep** es dir ermöglicht, zwei Scans gleichzeitig während des Datenbank-Sweeps auszuführen, was die Dauer der letzten Phase halbiert. Wenn du nur einen Skill-Punkt übrig hast, bevor du antrittst, empfiehlt die Community im Allgemeinen, ihn in **Trace Obfuscation** zu investieren, weil die Alternative — ein Neustart von einem erzwungenen Checkpoint — weit mehr Zeit verschwendet als ein einzelner gespeicherter Scan.
+
+Spieler empfehlen außerdem, die Mission mit mindestens **zwei verfügbaren Auftragnehmer-Boosts** zu beginnen. Der **Intel Boost** enthüllt versteckte Unterziele, die Bonus-Reputation wert sind, und der **Time Buffer Boost** gewährt eine zusätzliche Minute in der letzten Phase, wenn der Datenbank-Sweep unter starker Abfragelast zu hängen beginnt. Beide Boosts stapeln sich mit den natürlichen Belohnungsmultiplikatoren der Mission, was sie bei diesem speziellen Auftrag überproportional wertvoll macht.
+
+## BugBounty Hub Mission Walkthrough
+
+Sobald du die **HackHub BugBounty Hub Mission** annimmst, spawnt der Auftrag dich in einem simulierten Firmen-Intranet. Das HUD hebt drei primäre Subsysteme hervor, und dein Ziel ist es, gültige Exploits quer durch alle innerhalb des Zeitbudgets zu verketten. Unten ist die Reihenfolge, der erfahrene Auftragnehmer im Allgemeinen folgen, basierend auf aggregierten Community-Durchläufen und geteilten Sitzungsprotokollen.
+
+### Phase 1 — Aufklärung
+
+Starte damit, den **Port Scanner** auf dem zu Missionsbeginn zugewiesenen Netzwerkbereich zu spawnen. Der Scanner gibt eine Liste offener Endpunkte zurück, aber nur drei davon sind für BugBounty Hubs Hauptpfad relevant. Laut Spielerberichten sind das **öffentliche Web-Portal** (Port 80/443), das **API-Gateway** (Port 8443) und die **Admin-Datenbank** (Port 5432). Alle anderen offenen Ports sind entweder rote Heringe oder Teil der optionalen Seitenziele, die Bonus-Reputation freischalten, wenn sie mit dem **Intel Boost** kombiniert werden.
+
+Ein nützlicher Trick, der von erfahrenen Spielern berichtet wird, ist, zuerst das Web-Portal anzupingen, weil das API-Gateway oft Verbindungen ablehnt, bis das Web-Portal authentifiziert wurde. Eine Umkehrung dieser Reihenfolge verbrennt 30–45 Sekunden Leerlaufzeit, während das Gateway deine Handshake-Pakete stillschweigend verwirft.
+
+### Phase 2 — Web-Portal-Bruch
+
+Sobald die Aufklärung abgeschlossen ist, setze dein **Exploit Framework** gegen das Web-Portal ein. Die Mission erwartet, dass du hier zwei Exploits verkettest: eine anfängliche **SQL-Injection-Sonde**, um die Benutzertabelle zu dumpen, gefolgt von einer **Authentifizierungs-Umgehung**, die dir das Admin-Sitzungs-Token gewährt. Überspringst du einen der Schritte, weist das API-Gateway deine nachfolgenden Verbindungen zurück, was dich zum Start dieser Phase zurückzwingt.
+
+| Exploit-Ketten-Schritt | Werkzeug | Typische Dauer | Fehlerkosten |
+|---|---|---|---|
+| SQL-Injection-Sonde | Exploit Framework | 45–60 Sek. | Portal-Phase neu starten |
+| Auth-Umgehung | Credential Dumper | 30–45 Sek. | Sitzungs-Token verlieren |
+| Token-Erfassung | Hash Cracker | 15–30 Sek. | Ab Portal-Einstieg wiederholen |
+
+### Phase 3 — API-Gateway-Pivot
+
+Mit dem Admin-Token in der Hand wird das API-Gateway zugänglich. Hier kommen die meisten Erstversuche ins Stocken. Das Gateway betreibt einen **ratelimitierten Sitzungs-Validator**, der Auftragnehmer aussperrt, die Anfragen zu schnell senden, und das Toleranzfenster ist enger als es aussieht. Verteile deine Anfragen über Intervalle von mindestens fünf Sekunden und nutze den **Trace Obfuscation**-Skill, um zu verhindern, dass das Gateway deine Sitzung als automatisiert markiert.
+
+Das Ziel hier ist es, von einem Standard-Benutzer-Token zu einem privilegierten **Service-Konto**-Token zu eskalieren. Der Exploit, der laut Community-Tests auf dem öffentlichen Beta-Branch konsistent funktioniert, ist die **Header-Injection**-Payload, die mit dem Tier-2-Exploit Framework gebündelt ist. Niedrigere Stufen scheinen erfolgreich zu sein, geben aber tatsächlich ein sandboxed Token zurück, das während des Datenbank-Sweeps zusammenbricht — einer der am häufigsten berichteten Frustpunkte von Erstläufern.
+
+### Phase 4 — Admin-Datenbank-Sweep
+
+Die letzte Phase ist die längste, aber die unkomplizierteste. Mit einem privilegierten Service-Konto-Token kannst du nun schreibgeschützte Abfragen gegen die Admin-Datenbank ausführen und deinen Schwachstellenbericht erstellen. Die Mission verfolgt, wie viele unterschiedliche Schwachstellen du katalogisierst, und jede erhöht deine Reputation-Auszahlung.
+
+| Datenbank-Abfragetyp | Reputations-Ertrag | Zeitaufwand |
+|---|---|---|
+| Standard-CVEs | 10 Rep. pro Stück | 20 Sek. |
+| Benutzerdefinierte Schwachstellen | 25 Rep. pro Stück | 35 Sek. |
+| Versteckte Zero-Days | 50 Rep. pro Stück | 60 Sek. |
+
+Wenn dir die Zeit knapp wird, priorisiere **benutzerdefinierte Schwachstellen**, weil sie mehr Reputation pro Sekunde einbringen als Standard-CVEs. Versteckte Zero-Days lohnen den Zeitaufwand nur, wenn du den **Time Buffer Boost** aktiv hast, weil die zusätzlichen 60 Sekunden die längeren Abfragefenster abdecken, ohne dass du ein Ziel überspringen musst.
+
+## Belohnungen und Freischaltpfad
+
+Die **HackHub BugBounty Hub Mission** zahlt in drei Währungen aus: **Reputations-Punkte**, **Auftragnehmer-Credits** und eine kleine Chance auf exklusive **Binary-Drops**. Reputation treibt deinen Zugang zu Aufträgen höherer Stufen voran; Auftragnehmer-Credits kaufen Ausrüstung auf dem In-Game-Marktplatz; Binary-Drops schalten kosmetische und funktionale Gegenstände frei, die auf keine andere Weise erhältlich sind.
+
+| Belohnungstyp | Basisbetrag | Mit Intel Boost | Hinweise |
+|---|---|---|---|
+| Reputation | 250 | 400 | Erforderlich, um Tier-2-Aufträge freizuschalten |
+| Auftragnehmer-Credits | 1.200 | 1.800 | Verwendet auf dem Ausrüstungs-Marktplatz |
+| Binary-Drops | 1–3 zufällig | 2–4 zufällig | Beinhaltet seltene Werkzeug-Skins |
+| Bonus-Seitenziel-Rep. | +50 pro Seite | +75 pro Seite | Erfordert Intel Boost |
+
+Die Mission schaltet außerdem den **Bug Hunter-Badge** frei, wenn du zum ersten Mal alle vier Phasen abschließt, ohne einen einzigen Lockdown auszulösen. Der Badge ist rein kosmetisch, aber viele Veteranen-Auftragnehmer zeigen ihn, weil er gleichzeitig als Beweis dient, dass du die **HackHub BugBounty Hub Mission** sauber abschließen kannst. Für einen breiteren Vergleich, wie sich BugBounty Hub gegen andere HackHub-Aufträge auszahlt, siehe die [HackHub Mission Tier-Liste](/en/missions/HackHub-mission-tier-list/), die die Reputation pro Minute über die gesamte Mittelstufen-Leiter aufschlüsselt.
+
+Eine oft übersehene Belohnung ist das **persistente Scan-Log**, das HackHub nach jedem erfolgreichen BugBounty Hub-Durchlauf in dein Auftragnehmer-Profil schreibt. Im Laufe der Zeit schaltet dieses Log narrative Nebenquests frei, die auf spezifische Exploits verweisen, die du während des Auftrags ausgeführt hast. Spieler berichten, dass die Nebenquests vollständig optional sind, aber einige der besten **lore-freundlichen Dialoge** im Spiel bieten, weshalb Completionists die Mission erneut spielen, selbst nachdem sie bereits die Reputation-Auszahlung maximiert haben.
+
+## Profi-Tipps für schnellere BugBounty Hub-Clears
+
+Sobald du die Mission zuverlässig abschließen kannst, ist das nächste Ziel Geschwindigkeit. Die Community hat sich auf eine Handvoll Optimierungen geeinigt, die 3–5 Minuten von einem typischen Durchlauf abschneiden, und sie drehen sich alle um Ausrüstungs-Disziplin und Zeitfenster.
+
+### Optimiere die Reihenfolge deiner Ausrüstung
+
+Die meisten Auftragnehmer spawnen ihre Werkzeuge ad hoc, aber erfahrene Läufer verwenden eine **feste Ausrüstungs-Reihenfolge**: Port Scanner → Exploit Framework → Credential Dumper → Hash Cracker. Diese Reihenfolge entspricht exakt der Phasenreihenfolge, was bedeutet, dass jedes Werkzeug in dem Moment bereit ist, in dem seine Phase beginnt. Das falsche Werkzeug zuerst zu spawnen kostet ungefähr

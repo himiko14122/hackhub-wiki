@@ -1,0 +1,153 @@
+export const metadata = {
+    id: "hackhub-service-enumeration",
+    slug: "hackhub-service-enumeration",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Service Enumeration Leitfaden und Scan-Tipps",
+    description: "Lerne HackHub Service-Enumeration-Techniken, Scan-Tools und Taktiken, um Netzwerke zu kartieren und versteckte Ports in jeder Mission aufzudecken.",
+    keywords: ["HackHub Service Enumeration", "HackHub Scan-Tools", "HackHub Port-Scanning", "HackHub Netzwerk-Mapping", "HackHub Enumeration-Leitfaden", "HackHub Anfänger-Tipps", "HackHub Hacking-Leitfaden", "HackHub Befehlsliste", "HackHub Stealth-Scan", "HackHub Firewall-Umgehung"],
+    image: "/images/articles/8yEVvmCxr2E.webp",
+    video: "8yEVvmCxr2E",
+    category: "network-hacking",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+Jeder erfolgreiche HackHub-Lauf beginnt auf die gleiche Weise: Du starrst auf eine schwarze Konsole, wählst ein Ziel aus und fragst das Netzwerk, was darauf läuft. Diese einzelne Handlung des Fragens — sauber, methodisch und ohne das IDS auszulösen — ist das, worum es bei der HackHub Service Enumeration geht. Machst du es richtig, fühlt sich der Rest der Intrusion an wie das Lesen eines Rezepts; machst du es falsch, löst du eine Rückverfolgung aus, bevor das erste Paket überhaupt ankommt.
+
+Dieser Leitfaden zerlegt die **HackHub Service Enumeration**-Schleife von der Werkzeugauswahl bis zur Ergebnisinterpretation, mit konkreten Scan-Strategien für Netzwerke im frühen, mittleren und späten Spielverlauf. Egal, ob du dem **Phantom Contract**-Ende hinterherjagst oder einfach nur Tier 2 abschließen willst, ohne protokolliert zu werden — die folgenden Muster werden jede Aufklärungsphase schärfen, die du durchführst.
+
+## Service Enumeration in HackHub verstehen
+
+Service Enumeration ist die spielinterne Disziplin, offene Ports eines Zielhosts zu sondieren und Banner von den dahinter laufenden Diensten abzurufen. HackHub modelliert dies mit einem kleinen, aber überraschend tiefen Satz an Mechaniken: Jeder Host betreibt einen versionierten Dienst-Stack, jeder Dienst reagiert unterschiedlich auf Sondierungs-Payloads, und jeder Scan-Typ hinterlässt einen bestimmten Fußabdruck im Intrusion Detection System des Ziels.
+
+### Was Enumeration tatsächlich enthüllt
+
+Ein erfolgreicher Scan zieht vier Kategorien von Informationen aus einem Ziel, und jede davon speist einen anderen Teil deines Plans. Die folgende Tabelle zeigt, was HackHub während der Enumeration ans Licht bringt und wie es deinen nächsten Zug beeinflusst.
+
+| Informationstyp | Was HackHub meldet | Wie du es nutzt |
+|---|---|---|
+| **Offene Ports** | Portnummer + Protokoll (TCP/UDP) | Entscheidet, welche Exploit-Module in Frage kommen |
+| **Dienst-Banner** | Dienstname, Version, Build-Hash | Abgleich mit deiner Bibliothek bekannter Schwachstellen |
+| **OS-Fingerabdruck** | Vertrauensgewichtete Vermutung (Win/Linux/IOT) | Anpassung der Payload-Kodierung an den Ziel-Stack |
+| **Zugriffsstufe** | Öffentlich, Eingeschränkt, Geheim | Bestimmt, ob du vor dem Exploit Anmeldedaten brauchst |
+
+Der Banner ist das wertvollste Element, weil HackHubs Schwachstellen-Datenbank Versionszeichenketten sofort nach Abschluss eines Scans mit bekannten CVEs abgleicht. Ein Banner mit der Aufschrift `Apache/2.4.49` schaltet sofort das **Path Traversal Module** frei, während `OpenSSH 7.2` einen völlig anderen Exploit-Pfad öffnet. Wenn du einen breiteren Überblick darüber haben möchtest, wie Aufklärung in einen vollständigen Lauf passt, behandelt die [HackHub Anfänger-Progression-Anleitung](/en/network-hacking/HackHub-Beginner-Guide/) den größeren Zusammenhang.
+
+### Warum Enumeration der entscheidende Schritt ist
+
+Spieler, die direkt zum Exploit-Start übergehen, stoßen meist auf eine von zwei Hürden: Das falsche Modul schlägt still fehl, oder das laute Modul lässt den Trace-Messer anspringen, bevor der Exploit abgeschlossen ist. Enumeration gibt dir die Geduld-Steuer zurück. Sobald du weißt, was lauscht, kannst du einen **stealth-kompatiblen Exploit** auswählen, der sowohl zur Dienstversion als auch zur Erkennungsschwelle des Ziels passt — deshalb behandeln erfahrene Läufer die Scan-Phase als nicht verhandelbare Vorbereitung und nicht als optionale Hausaufgabe.
+
+## Kern-Scan-Mechaniken und Werkzeugauswahl
+
+HackHub liefert sechs Scanner-Module in der Standardausrüstung, plus eine Handvoll freischaltbarer Module, die hinter dem **Network Architect**-Fertigkeitsbaum verborgen sind. Jeder Scanner hat sein eigenes Geschwindigkeits-, Geräusch- und Genauigkeitsprofil, und die Wahl zwischen ihnen ist die erste echte Entscheidung, die du in jeder Mission triffst.
+
+### Die sechs Standard-Scanner im Vergleich
+
+| Scanner | Geschwindigkeit | Geräusch | Banner-Genauigkeit | Bester Anwendungsfall |
+|---|---|---|---|---|
+| **Ping Sweep** | Sofort | Keines | N/A | Nur Host-Erkennung |
+| **Quick TCP** | Schnell | Niedrig | 60 % | Erste Aufklärung in verrauschten Netzwerken |
+| **Full TCP** | Mittel | Mittel | 85 % | Standard-Tiefenscan |
+| **SYN Stealth** | Langsam | Sehr niedrig | 80 % | IDS auf gehärteten Hosts vermeiden |
+| **UDP Probe** | Langsam | Mittel | 50 % | DNS/SNMP-Dienste erfassen |
+| **Aggressive** | Schnell | Hoch | 95 % | Finale Bestätigung vor dem Exploit |
+
+Die obigen Zahlen spiegeln von der Community gemeldete Durchschnittswerte wider und können je nach Missionsschwierigkeit variieren. Wie ein erfahrener Läufer es in einem Discord-Thread formulierte: „Ich habe **SYN Stealth** auf der linken Hotbar und **Full TCP** auf der rechten gebunden — alles andere ist situationsabhängig."
+
+### Wie Scan-Geräusche tatsächlich funktionieren
+
+Jedes Sondierungs-Paket erhöht das **Detection Meter** des Ziels, das sich auf gehärteten Hosts und Unternehmens-Tier-Netzwerken schneller füllt. Wenn das Messer sein Maximum erreicht, sperrt dich der Host aus und löst ein Counter-Hack-Ereignis aus, das deine Krypto-Wallet leert. Das Geräusch wird aus der Anzahl der Sonden, dem Sondentyp und der Frage berechnet, ob das Ziel ein IDS-Modul installiert hat — daher summiert sich ein SYN-Stealth-Scan auf einem gehärteten Geheim-Host auch dann auf, wenn du ihn zehn Minuten lang laufen lässt.
+
+Wenn du die Grundlagen lernst, wie sich Scan-Geräusche auf dein gesamtes Trace-Messer auswirken, geht der [HackHub Stealth-Mechanik-Überblick](/en/network-hacking/HackHub-Stealth-Guide/) tiefer auf Erkennungsschwellen und Counter-Hack-Auslöser ein.
+
+## Scan-Ergebnisse lesen und interpretieren
+
+Der Terminal-Dump nach dem Scan ist dicht, und neue Spieler überfliegen ihn oft auf der Suche nach der offensichtlichen „offener Port"-Zeile und übersehen die Metadaten, die tatsächlich über den Exploit-Pfad entscheiden. Ein sauberer Ergebnisblock enthält sieben Felder, und die letzten drei sind dort, wo sich die echten Informationen verbergen.
+
+### Anatomie eines HackHub-Scan-Ergebnisses
+
+Hier ist ein repräsentativer Ergebnisblock, kommentiert mit der Bedeutung jedes Feldes:
+
+[+] Ziel: 10.42.18.7  (host-arcade.corp)
+[+] Scan:    Full TCP, 1-65535
+[+] Dauer: 47s   Geräusch: MITTEL   Trace: +12 %
+[+] Offene Ports:
+    22/tcp   ssh        OpenSSH 7.2        (Linux, 91 % Konfidenz)
+    80/tcp   http       nginx 1.18.0       (Linux, 88 % Konfidenz)
+   443/tcp   https      nginx 1.18.0       (Linux, 88 % Konfidenz)
+  3306/tcp   mysql      MySQL 5.7.33       (Linux, 84 % Konfidenz)
+[+] Hinweise: Banner-Mismatch auf 443 — möglicher WAF-Proxy
+
+Der **Banner-Mismatch**-Hinweis am Ende ist die Art von Detail, die eine Erfolgsquote von 50 % in eine von 80 % verwandelt. Ein Mismatch bedeutet meist, dass ein Reverse Proxy oder eine WAF vor dem echten Dienst sitzt, was bedeutet, dass du durch den Proxy chainen musst, bevor dein Exploit das Backend erreichen kann. Dies zu ignorieren führt dazu, dass du protokolliert wirst — genau das Versagensmuster, das neuere Spieler frustriert.
+
+### Ports nach Exploit-Wert priorisieren
+
+Nicht alle offenen Ports sind gleich. Einige bilden hochwertige Exploits mit niedrigen Erkennungskosten ab, andere sind Köder, die dein Trace-Budget verschwenden. Community-Tests über Hunderte von Verträgen hinweg legen die folgende Prioritätsreihenfolge für die meisten Verträge nahe:
+
+| Priorität | Port / Dienst | Warum es wichtig ist |
+|---|---|---|
+| 1 | **SSH (22)** | Brute-Force-freundlich, langsame Trace-Akkumulation |
+| 2 | **HTTP (80/443)** | Schaltet Web-Exploitation-Module frei |
+| 3 | **SMB (445)** | Höchste Beuteausbeute bei Schwachstellen |
+| 4 | **RDP (3389)** | Direkter Shell-Zugriff auf Windows-Hosts |
+| 5 | **MySQL (3306)** | Credential-Dumps entsperren benachbarte Hosts |
+| 6 | **FTP (21)** | Anonymes Login oft in Tier 1 aktiviert |
+
+Beachte, dass **SSH** trotz seines „Alters" an erster Stelle steht — weil Brute-Forcing von SSH in HackHub weit weniger Trace-Geräusch erzeugt als das Sondieren von Web-Diensten, was es zum saubersten Weg zur Shell in gehärteten Netzwerken macht.
+
+## Service-Enumeration-Strategie nach Netzwerk-Tier
+
+HackHub skaliert seine Netzwerkkomplexität über drei Schwierigkeitsstufen hinweg, und der richtige Enumeration-Ansatz verschiebt sich dramatisch zwischen ihnen. Eine Tier-1-Strategie auf einem Tier-3-Netzwerk auszuführen bringt dich in unter einer Minute zur Erkennung, während eine Tier-3-Strategie auf Tier 1 deinen Missions-Timer verschwendet.
+
+### Tier-1-Netzwerke — Geschwindigkeit statt Tarnung
+
+Frühe Verträge setzen dich gegen leicht verteidigte Hosts mit Standardkonfigurationen und minimaler IDS-Abdeckung. Der schnellste Weg durch diese ist ein **Quick TCP**-Sweep, gefolgt von einem **Aggressive**-Bestätigungsscan auf jedem offenen Port, weil sich das Detection Meter langsam füllt und die meisten Dienste Vanilla-Banner mit bekannten Schwachstellen ausführen. Spieler berichten, dass sie Tier-1-Verträge in ungefähr 4–6 Minuten abschließen, wenn sie SYN Stealth komplett überspringen — das ist der richtige Kompromiss, wenn dein Missions-Timer die bindende Einschränkung ist.
+
+### Tier-2-Netzwerke — Ausgewogene Scans
+
+Verträge der mittleren Stufe installieren IDS-Module, die aggressives Scannen bestrafen, aber die Dienste selbst haben immer noch bekannte CVEs, wenn du nachschaust. Das optimale Muster hier ist ein **Ping Sweep** zur Host-Erkennung, ein **SYN Stealth**-Sweep zur Port-Kartierung und ein gezielter **Full TCP** nur gegen die 3–5 Ports, die du tatsächlich exploitieren willst. Dieser dreiphasige Ansatz hält dein Trace-Messer unter 40 %, während du trotzdem vollständige Banner ziehst — die Schwelle, bei der die meisten Tier-2-Verträge lösbar bleiben.
+
+### Tier-3-Netzwerke — Geduld ist das ganze Spiel
+
+Netzwerke im späten Spiel betreiben gehärtete Kernel, geschichtete Proxies und aggressive IDS-Module, die jedes einzelne SYN-Paket über der Grundlinie flaggen. Community-Daten zeigen, dass erfolgreiche Tier-3-Läufe ausschließlich **SYN Stealth** verwenden, Scans mit 30–60-sekündigen Abklingfenstern durchsetzen und die Enumeration über mehrere kurze Sitzungen statt eine lange Sondierung aufteilen. Das Warten fühlt sich mühsam an, aber den Scan-Timer durch das Hinzufügen von Abklingzeiten zu verkürzen ist das, was eine saubere Verletzung von einem Counter-Hack unterscheidet. Wenn du gerade einen Tier-3-Vertrag durcharbeitest, lohnt es sich, die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) in einem zweiten Tab zur schnellen Referenz geöffnet zu halten.
+
+## Häufige Fallstricke und Optimierungstipps
+
+Auch erfahrene Läufer fallen in einige wiederholbare Fallen während der Enumeration. Sie früh zu erkennen hält dein Trace-Budget intakt und deinen Missions-Timer komfortabel.
+
+### Drei Fallstricke, die es wert sind, hervorgehoben zu werden
+
+- **Aggressive Scans auf gehärteten Hosts ausführen** — die Erkennungsstrafe summiert sich über Sonden hinweg, und ein einzelner Aggressive-Scan mit 95 % Genauigkeit kann einen gehärteten Host über seine Aussperrungsschwelle bringen, bevor dein Exploit überhaupt ausgelöst wird.
+- **Dem OS-Fingerabdruck blind vertrauen** — Banner können lügen, besonders hinter Reverse Proxies. Ein Linux-Fingerabdruck auf Port 443 mit einem Windows-Fingerabdruck auf Port 80 bedeutet meist, dass ein Dual-Stack-Proxy davor liegt, und dein Exploit muss durch ihn hindurch chainen.
+- **UDP-Dienste vergessen** — die meisten Spieler standardmäßig auf TCP-only-Scans und übersehen DNS-, SNMP- und NetBIOS-Dienste, die oft die schwächsten Anmeldedaten im Netzwerk offenlegen.
+
+### Vier Gewohnheiten, die sich summieren
+
+Die Läufer mit der höchsten Missionsabschlussrate teilen tendenziell vier kleine Gewohnheiten. Sie führen immer zuerst einen **Ping Sweep** aus, um zu bestätigen, dass der Host tatsächlich lebt, bevor sie sich auf einen längeren Scan festlegen. Sie binden **SYN Stealth und Full TCP** an separate Hotkeys, damit sie mitten in der Mission wechseln können, ohne den Flow zu verlieren. Sie scannen nach jeder Privilegien-Eskalation erneut, weil neue Zugriffsstufen verschiedene Ports enthüllen. Und sie führen ein persönliches Protokoll darüber, welche Scanner-Kombinationen auf welchen Netzwerktypen Counter-Hacks auslösen — die Art von Musterdaten, die die In-Game-Telemetrie nie direkt ans Licht bringt.
+
+Wenn ein Muster wie dieses Protokoll nach etwas klingt, das du aufbauen möchtest, ist die [HackHub Befehlsliste und das Cheat-Sheet](/en/network-hacking/HackHub-Commands-Cheat-Sheet/) der richtige Begleiter, den du neben diesem Enumeration-Leitfaden behältst, während du übst.
+
+HackHub Service Enumeration zu meistern bedeutet weniger, Ports auswendig zu lernen, als einen wiederholbaren Rhythmus aufzubauen: entdecken, sondieren, interpretieren, exploitieren, protokollieren. Sobald dieser Rhythmus klickt, fühlen sich selbst Tier-3-Verträge wie eine Checkliste statt wie eine Plackerei an.
+
+## Häufig gestellte Fragen
+
+**Was ist der schnellste Scanner, den man in HackHub verwenden kann?**
+
+Quick TCP ist der schnellste eingebaute Scanner und räumt die meisten Hosts in unter 20 Sekten ab, zieht aber nur teilweise Banner und hinterlässt einen moderaten Geräusch-Fußabdruck. Für gehärtete oder Tier-3-Netzwerke ist SYN Stealth in der Praxis schneller, weil es den Erkennungszähler nicht auslöst, der dich sonst zwingen würde, die Mission neu zu starten.
+
+**Löst HackHub Service Enumeration jemals Counter-Hacks aus?**
+
+Ja, besonders wenn du Aggressive Scans auf gehärteten Hosts ausführst oder wenn das Detection Meter auf Unternehmens-Tier-Netzwerken über 80 % füllt. Das Counter-Hack-Ereignis leert deine In-Game-Krypto-Wallet und sperrt dich für den Rest des Vertrags vom Ziel aus, daher lohnt es sich, dein Trace-Budget von der ersten Sondierung an unter Kontrolle zu halten.
+
+**Kann man Dienste enumerieren, ohne das Trace-Messer zu erhöhen?**
+
+Das Trace-Messer bewegt sich nur, wenn du tatsächlich Sonden an das Ziel sendest, daher trägt passive Informationsbeschaffung — das Lesen von Missionsbriefings, das Prüfen des Intel-Shops, das Scannen benachbarter Hosts — nie dazu bei. Aktives Scannen fügt immer mindestens einen kleinen Betrag hinzu, selbst mit SYN Stealth, weil das IDS die Pakete trotzdem sieht, auch wenn es sie nicht so schnell klassifizieren kann.
+
+**Welcher Scanner liefert die genauesten Banner?**
+
+Aggressive Scanning meldet die vollständigsten Banner-Daten mit ungefähr 95 % Genauigkeit laut Community-Tests, erzeugt aber auch das höchste Geräusch. Full TCP ist der praktische Mittelweg mit ungefähr 85 % Genauigkeit bei mittlerem Geräusch, was für die meisten Verträge präzise genug ist, um gegen die In-Game-Schwachstellen-Datenbank abgeglichen zu werden.
+
+**Sollte ich UDP-Dienste in jedem Vertrag scannen?**
+
+Nicht in jedem Vertrag, aber du solltest immer mindestens eine UDP-Sonde auf Tier-2- und Tier-3-Netzwerken ausführen, weil DNS-, SNMP- und NetBIOS-Dienste oft Anmeldedaten offenlegen, die TCP-Scans komplett übersehen. Auf Tier-1-Netzwerken verschwendet UDP-Sondierung meist mehr Missions-Timer als sie einspart, daher ist es sicher, sie zu überspringen, es sei denn, das Briefing deutet auf Datenbank- oder IoT-Infrastruktur hin.

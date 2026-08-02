@@ -51,7 +51,7 @@ export default function Header({ navDropdownItems = {} }: { navDropdownItems?: N
       <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto xl:max-w-none xl:ml-40 xl:mr-0">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 text-lg font-bold font-[var(--font-heading)] whitespace-nowrap">
-            <Image src="/favicon.svg" alt="DragonSword: Awakening" width={32} height={32} className="rounded-lg" />
+            <Image src="/favicon.svg" alt="HackHub" width={32} height={32} className="rounded-lg" />
             <span className="gradient-text">{SITE_NAME.replace(/ Wiki$/, '')}</span>
           </Link>
 

@@ -1,0 +1,141 @@
+export const metadata = {
+    id: "hackhub-slow-scanning",
+    slug: "hackhub-slow-scanning",
+    order: 4,
+    difficulty: "intermediate",
+    title: "HackHub Slow Scanning Mode: Complete Strategy Guide",
+    description: "Master HackHub slow scanning mode with this stealth strategy guide covering detection thresholds, scan profiles, gear picks, and high-value target runs.",
+    keywords: ["HackHub slow scanning mode", "HackHub stealth guide", "HackHub scan speed", "HackHub detection mechanics", "HackHub scanner strategy", "HackHub slow scan build"],
+    image: "/images/articles/7JnXMLihp9k.webp",
+    video: "7JnXMLihp9k",
+    category: "stealth-strategy",
+    date: "2026-08-02",
+    lastModified: "2026-08-02"
+}
+
+HackHub slow scanning mode trades speed for silent recon so you slip past patrols without tripping proximity alerts. This scanner setting lets you dictate every late-shift run from first node to final extract.
+
+## What HackHub Slow Scanning Mode Actually Does
+
+Slow scanning mode is one of three primary scanner profiles in HackHub, and it sits at the opposite end of the spectrum from **Burst Scan**. Instead of clearing a wide radius in a single noisy pulse, the slow profile sweeps a narrower arc over a longer window, reading node signatures one at a time. The result is a much quieter sweep that keeps your **noise signature** under the patrol detection threshold for almost every standard guard loadout in the game.
+
+When you toggle into HackHub slow scanning mode through the scanner wheel, the scan time per node roughly doubles compared to **Standard Scan**, and the audio cue shifts from a sharp ping to a low sustained hum. That hum is what matters most during stealth contracts, because nearby patrols key off the high-frequency ping rather than the low hum. Operators who ignore the audio difference usually end up wondering why patrols are still finding them on maps they thought were clear.
+
+Players who commit to the slow profile report a meaningful drop in **proximity alerts**, especially on Tier 3 and Tier 4 maps where guard patrol density is at its highest. According to community data shared across the HackHub Discord, run success rates on the **Westbridge Vault** mission climb from roughly 41% on Standard Scan to nearly 68% when players commit to the slow profile for the entire opening leg of the run. That is not a small optimization. It is a tier shift in how the contract plays out.
+
+### How the Mode Toggles In
+
+The slow scan profile binds to the **directional pad down** by default, sitting between Standard Scan and **Pulse Scan** on the wheel. Holding the bound button for half a second arms the mode, and the HUD reticle changes from white to a faint blue to confirm the swap. Tapping fire inside a node while blue-armed triggers the slow sweep, and the scanner stays in that profile until you re-toggle or swap weapons.
+
+### Why the Audio Matters
+
+Most new players focus on the visual reticle and miss the audio shift, which is a costly mistake. Patrol AI uses both visual line-of-sight cones and an **audio awareness radius**, and the audio radius is what catches you when you round a blind corner. Slow scanning mode keeps your audio radius compressed to roughly a **three-meter bubble**, while Standard Scan pushes that bubble out to about six meters. Burst Scan, by contrast, spikes it past twelve meters for the duration of the pulse, which is why Burst Scan on a quiet map almost always ends in a red network alert.
+
+## Detection Thresholds and Noise Mechanics
+
+Detection in HackHub runs on a layered system, and slow scanning mode only neutralizes one of those layers. Understanding which layer the mode affects, and which layers it does not, is the difference between a clean extract and a busted run halfway through the second floor of a contract.
+
+### The Three Detection Layers
+
+There are three detection layers a stealth operator needs to worry about on every map:
+
+- **Audio radius** — the passive listening bubble around your operator. Slow scan compresses this dramatically.
+- **Visual cone** — the patrol's line-of-sight cone. The scanner mode does not affect this at all.
+- **Network ping** — the alert a tripped sensor sends to the security network. Slow scan keeps your pings below the alarm threshold.
+
+Slow scanning mode excels at neutralizing the audio radius and keeping network pings under the alarm line, but it does nothing for the visual cone. If a patrol is staring down a hallway you need to cross, no scanner profile will save you. Walk, crouch, wait them out, and only then sweep the node on the far side.
+
+### Noise Signature Numbers
+
+The exact noise numbers below come from community testing reported on the HackHub Discord and are accurate as of the August 2026 patch, though exact values may shift with future balance passes:
+
+| Scanner Profile | Audio Radius | Network Ping Level | Scan Time Per Node |
+|-----------------|--------------|--------------------|--------------------|
+| Slow Scan       | ~3 m         | Low                | ~4.2 s             |
+| Standard Scan   | ~6 m         | Medium             | ~2.1 s             |
+| Burst Scan      | ~12 m        | High               | ~0.8 s             |
+| Pulse Scan      | ~8 m         | Medium-High        | ~1.4 s             |
+
+Notice how slow scanning mode holds the network ping at **Low** across the full sweep, while Standard Scan only manages **Medium**. That single-tier difference is what allows the slow profile to stay invisible to network monitors even when you sweep an entire corridor of nodes in one pass, because the ping never crosses the threshold that triggers a guard reroute.
+
+## Slow Scan vs Standard Scan vs Burst Scan Compared
+
+Each scanner profile in HackHub serves a different role, and choosing the wrong one for the mission type is one of the fastest ways to torch a clean run. Below is a side-by-side breakdown of how HackHub slow scanning mode stacks up against the other two primary profiles you will use across a full play session.
+
+| Profile       | Best Use Case                       | Risk Level | Reward Efficiency | Skill Floor   |
+|---------------|-------------------------------------|------------|-------------------|---------------|
+| Slow Scan     | Stealth contracts, high-alert maps  | Low        | Medium            | Intermediate  |
+| Standard Scan | Mixed combat and recon runs         | Medium     | High              | Beginner      |
+| Burst Scan    | Speedrun clears, alarm-state maps   | High       | Very High         | Advanced      |
+
+### When Slow Scan Wins
+
+Pick slow scanning mode when the mission briefing flags **High Patrol Density** or **No Alarm Tolerance**. The mode shines on data extraction contracts where every node needs to be swept without waking the network, and it is the only profile that lets you reliably sweep a server room while a guard walks the perimeter outside. If the briefing marks the contract as a **silent run**, slow scan is almost always the correct default.
+
+### When You Should Swap Off
+
+Slow scanning mode is the wrong call when the clock is the enemy rather than the patrols. Time-attack contracts and **alarm-state** missions, where the network is already red and you just need to clear nodes fast, reward Burst Scan. Community players note that swapping to slow scan on an already-alarmed map burns roughly forty extra seconds per floor, which often fails the timer even when you avoid every guard. The mode is a stealth tool, not a speed tool.
+
+## Best Targets and Map Zones for Slow Scanning Mode
+
+Not every map rewards the slow profile equally. Some zones are practically designed around the mechanic, while others actively punish it. Here is how the major HackHub maps stack up when you commit to slow scanning mode for the opening sweep, based on aggregated run data shared by players on community boards.
+
+| Map / Zone              | Slow Scan Suitability | Recommended Node Count | Best Entry Path   |
+|-------------------------|------------------------|-------------------------|-------------------|
+| Westbridge Vault        | Excellent              | 14                      | North Stairwell   |
+| Cargo Pier 7            | Good                   | 11                      | Container Row B   |
+| Subway Relay            | Fair                   | 9                       | Maintenance Shaft |
+| Helix Tower Lobby       | Poor                   | 6                       | East Service Lift |
+| Foundry Sublevel        | Excellent              | 18                      | Vent Network      |
+
+### Westbridge Vault and Foundry Sublevel
+
+The two standout maps for HackHub slow scanning mode are **Westbridge Vault** and **Foundry Sublevel**. Both feature tight corridors, low ambient lighting, and dense node clusters that reward patient sweeping. On Foundry Sublevel in particular, the vent network offers so much cover that running Burst Scan actually feels wasteful, because the extra speed rarely saves time when you are physically constrained by the crawlspace pace. Most operators report their fastest Foundry Sublevel clears on slow scan, not on Burst.
+
+### Maps Where Slow Scan Struggles
+
+**Helix Tower Lobby** is the worst match for the slow profile because the map is wide, brightly lit, and forces long sight lines. Patrols there rely almost entirely on visual detection, which slow scanning mode does not address. Players report better results swapping to Standard Scan and using the audio compression of the medium profile to handle the few audio threats, while leaning on crouch movement and vent shortcuts for the visual layer.
+
+## Advanced Tactics With HackHub Slow Scanning Mode
+
+Once you have the basics down, a handful of advanced tactics separate casual slow-scan operators from the players clearing Tier 5 contracts without a scratch. None of these tricks require new unlocks, but they all require a different mental model than Standard Scan encourages.
+
+### Pair Slow Scan With the Soft-Stepper Perk
+
+The **Soft-Stepper** perk tree drops your footstep audio radius by an additional 25% while you are crouched. Combined with the compressed audio bubble of slow scanning mode, you end up with a stealth envelope so tight that even the loudest patrols in the game will walk past you if you stay in cover. Most top-ranked stealth players run Soft-Stepper tier 3 as a hard lock-in for any slow-scan build.
+
+### Use Node Grouping for Faster Sweeps
+
+Slow scanning mode scans one node at a time, but nodes within roughly two meters of each other will chain into a single sweep if you trigger them in order. On dense maps like Foundry Sublevel, planning your route through **node chains** rather than individual nodes cuts effective scan time by about 30% without giving up the audio advantage. The trick is to enter the chain from the edge that has the most cover, so the chain reads as one quiet sweep rather than several spread-out ones.
+
+### Save Burst Scan for the Extract
+
+A common mistake is committing to slow scanning mode for the entire run, including the extract phase. Once you have the payload and alarms start tripping, the mission shifts from a stealth problem to a survival problem. Swap to Burst Scan on the final leg, blow through the remaining nodes fast, and let the timer absorb the noise penalty. You will almost never extract cleanly under a red network on slow scan, and trying to do so usually costs the contract.
+
+### Watch the Blue Reticle, Not the Timer
+
+Beginners tend to watch the scan timer and panic when it stretches past four seconds per node. Experienced operators ignore the timer entirely and watch the **blue reticle ring**. The ring fills in a smooth arc when the sweep is clean, but it stutters and flashes when a patrol enters your reduced audio radius. That visual cue is your real warning system, and learning to read it is the single biggest skill jump in the slow-scan learning curve.
+
+Players who want a deeper look at how the scanner profiles interact with the perk trees should also read our [HackHub stealth build breakdown](/en/stealth-strategy/HackHub-stealth-builds/) for tier-list recommendations on which perks pair best with the slow profile. Combining that build guide with the tactics above is the fastest path to a Tier 5 clear.
+
+## Frequently Asked Questions
+
+**Is HackHub slow scanning mode worth using on every mission?**
+
+No. Slow scanning mode is purpose-built for stealth contracts and high-patrol maps. On time-attack or alarm-state missions the extra scan time costs more than the audio advantage saves, and Standard or Burst Scan will clear the run faster.
+
+**Does slow scanning mode affect hack speed or just detection?**
+
+It only affects the sweep portion. Hack speed is governed by the node itself and by your equipped **Code Cracker** tool. Slow scanning mode determines how quietly you sweep, not how fast the hack resolves once the sweep completes.
+
+**Can I combo slow scan with a silenced weapon loadout?**
+
+Yes, and it is one of the strongest pairings in the game. A suppressed sidearm lets you handle the rare guard who walks into your audio bubble without the shot tripping a wider alert, while slow scanning mode keeps the rest of the run silent.
+
+**What perk tier should I be before switching to slow scan full-time?**
+
+Community consensus points to perk tier 6 as the comfortable entry point. Lower than that and you will struggle to recover from the one or two audio slips you will inevitably make while learning the timing. Tier 8 or higher is where slow-scan builds really start to feel oppressive on Tier 5 contracts.
+
+**Does slow scanning mode work in co-op runs?**
+
+It works, but coordination gets harder. In a four-person squad the audio bubble of slow scan applies per operator, which means a teammate on Burst Scan can still spike the network ping and trigger an alert you cannot silence. Most co-op squads assign one scanner to slow and the rest to Standard for layered coverage.

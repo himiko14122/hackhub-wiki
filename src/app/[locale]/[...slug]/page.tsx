@@ -238,7 +238,7 @@ export default async function CatchAllPage({ params }: { params: Promise<{ local
     const allItems = await getAllContent(first, validLocale);
     const { prev, next } = getPrevNextContent(allItems, content.slug);
     const tocItems = getTocItems(validLocale, first, rest);
-    const GUIDE_STOP_WORDS = new Set(['dragon', 'sword', 'awakening', 'dragonsword', 'hero', 'heroes', 'guide', 'tier', 'list', 'combo', 'familiar', 'status', 'ailment', 'the', 'a', 'an', 'and', 'or', 'in', 'on', 'at', 'to', 'for', 'is', 'it', 'how', 'what', 'all', 'vs', 'game', 'wiki', 'best', 'build']);
+    const GUIDE_STOP_WORDS = new Set(['dragon', 'sword', 'awakening', 'HackHub', 'hero', 'heroes', 'guide', 'tier', 'list', 'combo', 'familiar', 'status', 'ailment', 'the', 'a', 'an', 'and', 'or', 'in', 'on', 'at', 'to', 'for', 'is', 'it', 'how', 'what', 'all', 'vs', 'game', 'wiki', 'best', 'build']);
     const currentCategory = content.metadata.category;
     const currentKeywords = (content.metadata.keywords || []).map((k) => k.toLowerCase());
     const currentTitleWords = (content.metadata.title || content.slug).toLowerCase().split(/[\s\-:]+/).filter((w) => w.length > 2 && !GUIDE_STOP_WORDS.has(w));
