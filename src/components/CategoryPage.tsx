@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { CATEGORY_AFFINITY, GUIDE_CATEGORIES } from '@/config/navigation';
+import { CATEGORY_AFFINITY, GUIDE_CATEGORIES, CONTENT_DIR_NAMES } from '@/config/navigation';
 import type { ContentMetadata } from '@/lib/content';
 
 interface ArticleItem {
@@ -14,14 +14,16 @@ interface ArticleItem {
 
 interface CategoryPageProps {
   catKey: string;
+  catPath?: string;
   showHero?: boolean;
   showOnThisPage?: boolean;
   children?: React.ReactNode;
   articles?: ArticleItem[];
 }
 
-export default function CategoryPage({ catKey, showHero = true, showOnThisPage = true, children, articles = [] }: CategoryPageProps) {
+export default function CategoryPage({ catKey, catPath, showHero = true, showOnThisPage = true, children, articles = [] }: CategoryPageProps) {
   const t = useTranslations();
+  const routePath = catPath || CONTENT_DIR_NAMES[catKey] || catKey;
 
   const hasFeature = !children && t.has(`category_feature_${catKey}_title`);
   const featureTitle = hasFeature ? t.raw(`category_feature_${catKey}_title`) : '';
@@ -228,7 +230,7 @@ export default function CategoryPage({ catKey, showHero = true, showOnThisPage =
                 {featured.map((item) => {
                   const kw = item.metadata.keywords || [];
                   return (
-                    <Link key={item.slug} href={`/${catKey}/${item.slug}/`} className="card-accent-bar group block rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-accent)] transition-all duration-200">
+                    <Link key={item.slug} href={`/${routePath}/${item.slug}/`} className="card-accent-bar group block rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-accent)] transition-all duration-200">
                       {item.metadata.image && (
                         <div className="relative w-full aspect-video overflow-hidden rounded-t-xl mb-3">
                           <Image src={item.metadata.image} alt={item.metadata.title || ''} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -261,7 +263,7 @@ export default function CategoryPage({ catKey, showHero = true, showOnThisPage =
                 {remaining.map((item) => {
                   const kw = item.metadata.keywords || [];
                   return (
-                    <Link key={item.slug} href={`/${catKey}/${item.slug}/`} className="card-accent-bar group block rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-accent)] transition-all duration-200">
+                    <Link key={item.slug} href={`/${routePath}/${item.slug}/`} className="card-accent-bar group block rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-accent)] transition-all duration-200">
                       {item.metadata.image && (
                         <div className="relative w-full aspect-video overflow-hidden rounded-t-xl mb-3">
                           <Image src={item.metadata.image} alt={item.metadata.title || ''} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />

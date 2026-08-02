@@ -46,7 +46,11 @@ export const CONTENT_DIR_NAMES: Record<ContentType | string, string> = {
   'stealth-strategy': 'stealth-strategy',
   updates: 'updates',
   developer: 'developer',
-} as Record<ContentType, string>;
+  toolstierlist: 'tools-tier-list',
+  networkhacking: 'network-hacking',
+  passwordhacking: 'password-hacking',
+  stealthstrategy: 'stealth-strategy',
+} as Record<string, string>;
 
 export function getContentDir(contentType: ContentType): string {
   return CONTENT_DIR_NAMES[contentType] || contentType;
